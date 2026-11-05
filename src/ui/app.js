@@ -6,12 +6,12 @@ import { LEVELS, ContinuousRun, ModeBook } from '../logic/modes.js';
 import { STAGES } from '../content/stages.js';
 import { CHALLENGES } from '../content/challenges.js';
 import { SCENES } from '../content/story.js';
-import { ART, INK, crown } from './art.js';
+import { ART, INK } from './art.js';
 import { GRAPHICS, cargoArt } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.7.2';
+const APP_VERSION = '0.8.0';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -61,23 +61,13 @@ function scene(k,next){const s=SCENES[k];book.markSeen(k);const c=show(`${topbar
   wire(c);$('#n',c).onclick=()=>{wood();next()}}
 
 /* ---------- 序章：天秤 ---------- */
-function balanceArt(tilt,water){const L=180-96,R=180+96,dy=Math.sin(tilt*Math.PI/180)*96;
-  const pan=(x,y,o)=>`<path d="M${x} 62 L${x-28} ${y} M${x} 62 L${x+28} ${y}" transform="translate(0 ${0})" stroke="${INK}" stroke-width="2"/>`;
-  const ly=120-dy,ry=120+dy;
-  return `<svg viewBox="0 0 360 230" role="img" aria-label="天秤"><rect width="360" height="230" fill="#f3c86a"/>
-  <rect y="${water?90:230}" width="360" height="140" fill="#3f97c0" opacity=".8"/>
-  <path d="M180 200V60" stroke="${INK}" stroke-width="7"/><rect x="146" y="196" width="68" height="14" fill="#8a5a2e" stroke="${INK}" stroke-width="3"/>
-  <g transform="rotate(${tilt} 180 60)"><path d="M${L} 60H${R}" stroke="${INK}" stroke-width="7"/></g>
-  <path d="M${L} ${60-dy} V${ly}" stroke="${INK}" stroke-width="2.5"/><path d="M${R} ${60+dy} V${ry}" stroke="${INK}" stroke-width="2.5"/>
-  ${crown(L,ly+26,1)}<rect x="${R-14}" y="${ry+18}" width="28" height="20" fill="#efb32a" stroke="${INK}" stroke-width="3"/>
-  <path d="M${L-30} ${ly+40}H${L+30}" stroke="${INK}" stroke-width="4"/><path d="M${R-30} ${ry+40}H${R+30}" stroke="${INK}" stroke-width="4"/>
-  <text x="${L}" y="${ly+58}" text-anchor="middle" font-size="14" fill="#fff">王冠</text><text x="${R}" y="${ry+58}" text-anchor="middle" font-size="14" fill="#fff">純金</text></svg>`}
+const balanceArt=(tilt,water)=>ART[water?'balance-water':'balance-air']();
 function bal1(next){const c=show(`${topbar('序章 1　天秤')}<div class="frame" id="f">${balanceArt(0,false)}</div>
   <div class="say" id="t"><span class="nar">王冠と、同じ重さの純金。天秤にかけて比べてみましょう。</span></div><button class="btn" id="a">空気の中で量る</button>`);
   wire(c);$('#a',c).onclick=function(){wood();this.textContent='つづき';$('#t',c).innerHTML='<span class="who">見習い</span>つり合った。重さでは、見分けられない……。';this.onclick=()=>{wood();next()}}}
 function bal2(next){const c=show(`${topbar('序章 2　水の中の天秤')}<div class="frame" id="f">${balanceArt(0,false)}</div>
   <div class="say" id="t"><span class="who">アルキメデス</span>師匠の風呂を思い出すのだ。では、水に沈めて測ってごらん。</div><button class="btn" id="a">水に沈める</button>`);
-  wire(c);$('#a',c).onclick=function(){bell(84);let i=0;const f=$('#f',c);const tick=()=>{i++;f.innerHTML=balanceArt(Math.min(i,12),true);if(i<12)requestAnimationFrame(tick)};tick();
+  wire(c);$('#a',c).onclick=function(){bell(84);$('#f',c).innerHTML=balanceArt(12,true);
     this.textContent='つづき';$('#t',c).innerHTML='<span class="who">見習い</span>えっ？ 王冠の側が、上がった！';this.onclick=()=>{wood();next()}}}
 function quiz(next){const O=[['王冠のほうが、もともと軽いから',0],['王冠のほうが体積が大きく、水を多く押しのけたから',1],['水の中では、金だけが重くなるから',0]];
   const c=show(`${topbar('序章 3　なぜ？')}<div class="frame">${balanceArt(12,true)}</div><div class="say" id="t"><span class="who">アルキメデス</span>空気の中ではつり合ったな。なぜ、水の中で王冠が上がった？</div>

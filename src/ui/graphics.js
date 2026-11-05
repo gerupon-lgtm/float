@@ -6,6 +6,11 @@ export const GRAPHICS = {
   bath: new URL('../../public/graphics/prologue-bath.webp', import.meta.url).href,
   eureka: new URL('../../public/graphics/prologue-eureka-sign.webp', import.meta.url).href,
   harbor: new URL('../../public/graphics/prologue-harbor.webp', import.meta.url).href,
+  'balance-air': new URL('../../public/graphics/balance-air.webp', import.meta.url).href,
+  'balance-water': new URL('../../public/graphics/balance-water.webp', import.meta.url).href,
+  'chapter-cargo': new URL('../../public/graphics/chapter-cargo.webp', import.meta.url).href,
+  'chapter-oil': new URL('../../public/graphics/chapter-oil.webp', import.meta.url).href,
+  'chapter-silver': new URL('../../public/graphics/chapter-silver.webp', import.meta.url).href,
   'boat': new URL('../../public/graphics/boat.webp', import.meta.url).href,
   'bridge': new URL('../../public/graphics/bridge.webp', import.meta.url).href,
   'shoal': new URL('../../public/graphics/shoal.webp', import.meta.url).href,
@@ -22,10 +27,7 @@ export const GRAPHICS = {
   'cargo-gold': new URL('../../public/graphics/cargo-gold.webp', import.meta.url).href,
   'liquid-water': new URL('../../public/graphics/liquid-water.webp', import.meta.url).href,
   'liquid-oil': new URL('../../public/graphics/liquid-oil.webp', import.meta.url).href,
-  'liquid-mercury': new URL('../../public/graphics/liquid-mercury.webp', import.meta.url).href,
-  'char-apprentice': new URL('../../public/graphics/char-apprentice.webp', import.meta.url).href,
-  'char-apprentice-surprised': new URL('../../public/graphics/char-apprentice-surprised.webp', import.meta.url).href,
-  'char-master': new URL('../../public/graphics/char-master.webp', import.meta.url).href
+  'liquid-mercury': new URL('../../public/graphics/liquid-mercury.webp', import.meta.url).href
 };
 
 // 荷物の名前と絵の対応
