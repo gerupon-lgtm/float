@@ -1,0 +1,60 @@
+{
+  "title": "FLOAT NOTES palace prologue visual samples",
+  "date": "2026-11-06",
+  "sample_version": "v1",
+  "generation_mode": "built-in image_gen",
+  "images": 2,
+  "total_image_bytes": 6535476,
+  "code_modified": false,
+  "existing_images_modified": false,
+  "checks": {
+    "all_pngs_open": true,
+    "all_sizes_1448x1086": true,
+    "copies_match_original_bytes": true,
+    "visual_review": {
+      "king_crown_in_front_and_order": true,
+      "goldsmith_gentle_escort_by_soldier": true,
+      "no_rope_restraints_or_rough_contact": true,
+      "royal_command_inside_palace": true,
+      "king_archimedes_and_apprentice_visible_standing": true,
+      "master_and_boy_side_by_side": true,
+      "harbor_cargo_transport_visual_clue": true,
+      "mouths_inside_beards": true,
+      "no_narration_dialogue_or_labels": true
+    },
+    "game_integration_tested": false,
+    "physical_device_tested": false
+  },
+  "assets": [
+    {
+      "id": "01-prologue-goldsmith-escorted",
+      "file": "01-prologue-goldsmith-escorted.png",
+      "label": "金細工師が捕らえられる場面",
+      "description": "王が机の王冠を前に命じ、兵士が金細工師の隣を歩いて出口へ案内する。縄や拘束具、乱暴な接触は描かない。",
+      "width": 1448,
+      "height": 1086,
+      "mode": "RGB",
+      "transparent_background": false,
+      "bytes": 3228508,
+      "sha256": "d2c90bae128148b63f51195d3c055de3a4474e2b6f2025bba1b2f83348ce349b",
+      "git_blob_sha": "4056760ad58daa4918556f131f161eeefce22378",
+      "narration_baked_in": false,
+      "dialogue_baked_in": false
+    },
+    {
+      "id": "02-prologue-royal-command",
+      "file": "02-prologue-royal-command.png",
+      "label": "王の勅命の場面",
+      "description": "宮殿内で王がアルキメデスと見習いへ港の荷の運搬を命じる。師匠と見習いは隣に立ち、木箱と窓の港が命令の対象を示す。",
+      "width": 1448,
+      "height": 1086,
+      "mode": "RGB",
+      "transparent_background": false,
+      "bytes": 3306968,
+      "sha256": "c3125db0f2ea880a4f0d768a0367eb3ef905819f1a1e4c286b4b1797d7f989d0",
+      "git_blob_sha": "eda3875d15fcabbb1bc10acb63a2155d5f61096d",
+      "narration_baked_in": false,
+      "dialogue_baked_in": false
+    }
+  ]
+}
