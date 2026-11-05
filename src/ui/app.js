@@ -11,7 +11,7 @@ import { GRAPHICS } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.4.2';
+const APP_VERSION = '0.5.0';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -53,7 +53,7 @@ function enter(n){const list=(STAGES[n].intro??[]).filter(k=>!book.seen(k));
   const play=i=>{if(i>=list.length)return stage(n);book.markSeen(list[i]);scene(list[i],()=>play(i+1))};play(0)}
 function question(base){const list=CHALLENGES[base.id];if(!list?.length)return{};let i=Math.floor(Math.random()*list.length);if(list.length>1&&i===lastQuestion[base.id])i=(i+1)%list.length;lastQuestion[base.id]=i;return list[i]}
 function goalText(S){const c=S.gates.filter(g=>g.d!=null&&g.k!=='chamber').map(g=>g.k==='shoal'?`浅瀬は深さ${g.d}以下`:g.k==='bridge'?`低い橋は深さ${g.d}以上`:`レバーは深さ${g.d}以上`).join('、');
-  return S.goal??`${S.lead}${c}で通れます。船の底面積は${S.area}、船だけの重さは${SHIP}です。`}
+  return `${S.lead}${c}で通れます。船の底面積は${S.area}、船だけの重さは${SHIP}です。`}
 function ngText(){if(!R)return'';return R.level.limit===null?`　NG ${R.ng}`:`　あとNG ${R.left}回`}
 
 function scene(k,next){const s=SCENES[k];book.markSeen(k);const c=show(`${topbar('おはなし')}<div class="frame">${ART[s.art]()}</div>
@@ -101,7 +101,7 @@ function tween(ms,fn){const id=run;if(matchMedia('(prefers-reduced-motion:reduce
   const f=now=>{if(id!==run)return;const p=Math.min(1,(now-t0)/ms),e=p*p*(3-2*p);fn(e);if(p<1)requestAnimationFrame(f);else res()};requestAnimationFrame(f)})}
 
 function stage(n){stopRun();const base=STAGES[n],S={area:AREA,...base,...question(base)};
-  G={n,S,hide:!!R?.hidesDepth,placed:[],sel:null,on:new Set(S.on),liq:S.pre?S.start:S.start,x:0,d:0,lift:S.cradle?20:0,busy:false,floating:!S.cradle,room:null,opened:false,bottomExtra:0};
+  G={n,S,hide:!!R?.hidesDepth&&!S.showDepth,placed:[],sel:null,on:new Set(S.on),liq:S.pre?S.start:S.start,x:0,d:0,lift:S.cradle?20:0,busy:false,floating:!S.cradle,room:null,opened:false,bottomExtra:0};
   G.d=G.floating?dp(weight(),G.liq):0;
   const c=show(`${topbar(`${R?`${R.position+1}/${R.stageCount}　`:''}${S.name}<span id="ng">${ngText()}</span>`)}<div class="frame"><svg id="b" viewBox="0 0 ${W} ${H}" role="img" aria-label="航路の断面図"></svg></div>
     <div class="stat"><div>液体の比重<strong id="sg"></strong></div><div>船全体の重さ<strong id="wt"></strong></div><div>沈む深さ<strong id="dp"></strong></div></div>
@@ -122,7 +122,7 @@ function drawWorld(){const S=G.S,sp=liqSect();const b=$('#b',G.c);
   b.innerHTML=`<rect width="${W}" height="${H}" fill="var(--sky)"/>
   <path d="M0 40q30 -20 60 0t60 0M240 56q30 -20 60 0t50 0" fill="none" stroke="#fffaf0" stroke-width="7"/>
   <g id="cam"><rect id="l1" x="-500" y="${SURF}" width="${(sp??2000)+500}" height="${H-SURF}" fill="${LIQUIDS[G.liq].c}"/>
-  ${sp!=null?`<rect id="l2" x="${sp}" y="${SURF}" width="2000" height="${H-SURF}" fill="${LIQUIDS.oil.c}"/>`:''}
+  ${sp!=null?`<rect id="l2" x="${sp}" y="${SURF}" width="2000" height="${H-SURF}" fill="${LIQUIDS[G.S.gates.find(g=>g.k==='chamber').to].c}"/>`:''}
   <rect id="room" x="-70" y="${SURF}" width="0" height="${H-SURF}" fill="var(--mercury)"/>
   ${G.S.cradle?`<path d="M-500 ${SURF+1}H70L120 ${H}H-500Z" fill="var(--sand)" stroke="${INK}" stroke-width="3"/>`:''}
   ${gates}<path d="M${S.end} ${SURF+2}V${SURF-58}" stroke="${INK}" stroke-width="5"/><path d="M${S.end} ${SURF-58}l36 11l-36 11z" fill="var(--red)" stroke="${INK}" stroke-width="3"/><text x="${S.end+6}" y="${SURF-64}" font-size="13" fill="${INK}">港</text>
@@ -157,8 +157,8 @@ function renderPack(){const S=G.S,sh=$('#sh',G.c);sh.style.display='block';const
   sh.innerHTML=`<div class="pack"><svg id="pk" viewBox="0 0 180 180" role="img" aria-label="積み場所。列をタップして荷を落とす">${g}<path d="M0 90H180" stroke="${INK}" stroke-width="2.5" stroke-dasharray="6 4"/>${cells}${[0,1,2,3,4,5].map(i=>`<rect data-col="${i}" x="${i*c}" y="0" width="${c}" height="180" fill="transparent"/>`).join('')}</svg>
   <div class="side">${S.items.map(([w,n,cw,ch],i)=>`<button class="chip" data-i="${i}" aria-pressed="${G.sel===i}" ${used.has(i)?'disabled':''}>${n} ${w}<small>${cw}×${ch}マス</small></button>`).join('')}<button class="chip" id="undo">ひとつ戻す</button></div></div>`;
   sh.querySelectorAll('.chip[data-i]').forEach(b=>b.onclick=()=>{if(G.busy)return;unlock();tap();G.sel=+b.dataset.i;renderPack()});
-  sh.querySelectorAll('[data-col]').forEach(r=>r.onclick=()=>{if(G.busy)return;unlock();if(G.sel==null){say('先に、積む荷を選びましょう。');return}if(drop(G.sel,+r.dataset.col)){audio.land(S.items[G.sel][0]);G.sel=null}shipSVG();renderPack();syncUI()});
-  $('#undo',sh).onclick=()=>{if(G.busy||!G.placed.length)return;tap();G.placed.pop();shipSVG();renderPack();syncUI()}}
+  sh.querySelectorAll('[data-col]').forEach(r=>r.onclick=()=>{if(G.busy)return;unlock();if(G.sel==null){say('先に、積む荷を選びましょう。');return}if(drop(G.sel,+r.dataset.col)){audio.land(S.items[G.sel][0]);G.sel=null;if(G.floating)settle()}shipSVG();renderPack();syncUI()});
+  $('#undo',sh).onclick=()=>{if(G.busy||!G.placed.length)return;tap();G.placed.pop();if(G.floating)settle();shipSVG();renderPack();syncUI()}}
 function renderShelf(){if(G.S.grid)return renderPack();const S=G.S,sh=$('#sh',G.c);sh.innerHTML=S.items.map(([w,n],i)=>`<button class="chip${w>=100?' lead':''}" data-i="${i}" aria-pressed="${G.on.has(i)}">${w}<small>${n}</small></button>`).join('');
   sh.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{if(G.busy)return;unlock();const i=+b.dataset.i;const adding=!G.on.has(i);adding?G.on.add(i):G.on.delete(i);b.setAttribute('aria-pressed',G.on.has(i));adding?audio.land(S.items[i][0]):tap();shipSVG();
     if(G.floating)settle();syncUI()})}
@@ -169,7 +169,7 @@ async function intoMercury(){G.busy=true;lock(true);say('入れ替え室で、�
   const room=$('#room',G.c);room.setAttribute('width',140);const f=[];await tween(1200,e=>{room.setAttribute('opacity',e);G.d=1+(0.074-1)*e;});
   $('#l1',G.c).setAttribute('fill',LIQUIDS.mercury.c);G.liq='mercury';G.d=dp(weight(),'mercury');bell(midiOf(G.d));syncUI();G.busy=false;lock(false);
   await wait(300);scene2Return()}
-function scene2Return(){say(G.S.goal+'　まず、木箱と鉄箱を全部積んでみましょう。')}
+function scene2Return(){say(goalText(G.S))}
 function lock(v){$('#dep',G.c).disabled=v;$('#ring',G.c).disabled=false}
 
 async function depart(){if(G.busy)return;unlock();if(G.S.grid&&G.placed.length<G.S.items.length){say('荷はすべて積みましょう。');return}G.busy=true;lock(true);const id=run;const S=G.S;G.sailing=true;
@@ -185,10 +185,10 @@ async function depart(){if(G.busy)return;unlock();if(G.S.grid&&G.placed.length<G
   }
   await moveTo(S.end-30);if(id!==run)return;win()}
 async function moveTo(x){const from=G.x;await tween(Math.max(450,Math.abs(x-from)*7),e=>{G.x=from+(x-from)*e})}
-async function chamber(g){say('入れ替え室：水を油に入れ替えます。');const id=run;const l2=$('#l2',G.c);const room=$('#room',G.c);room.setAttribute('x',g.x);room.setAttribute('width',140);room.setAttribute('fill',LIQUIDS[g.to].c);
+async function chamber(g){say(`入れ替え室：${LIQUIDS[G.liq].n}を${LIQUIDS[g.to].n}に入れ替えます。`);const id=run;const l2=$('#l2',G.c);const room=$('#room',G.c);room.setAttribute('x',g.x);room.setAttribute('width',140);room.setAttribute('fill',LIQUIDS[g.to].c);
   const wait0=await tween(600,e=>room.setAttribute('opacity',e));G.liq=g.to;G.passed=true;
   const to=dp(weight(),g.to),from=G.d;await tween(900,e=>{G.d=from+(Math.min(to,HULL+1.2)-from)*e;syncUI()});G.d=to;bell(midiOf(to));syncUI();
-  if(isSunk(weight(),g.to,G.S.area)){sink(`油に入ると深さ${to.toFixed(2)}。船の高さ5を超えて沈みました。油に沈みきる重さは 0.8 × ${G.S.area} × 5 ＝ ${sinkingWeight(g.to,G.S.area)}です。`);return false}return true}
+  if(isSunk(weight(),g.to,G.S.area)){sink(`${LIQUIDS[g.to].n}に入ると深さ${to.toFixed(2)}。船の高さ5を超えて沈みました。沈みきる重さは ${sinkingWeight(g.to,G.S.area)}です。`);return false}return true}
 async function sink(msg){G.busy=true;G.sinking=true;lock(true);const from=G.d;tween(900,e=>{G.d=from+6*e});audio.sink();say(`<span class="who">アルキメデス</span>${msg}`);await wait(950);failButton()}
 function fail(msg){say(`<span class="who">アルキメデス</span>${msg}`);audio.miss();failButton()}
 function failButton(){const dep=$('#dep',G.c);G.busy=false;dep.disabled=false;
@@ -197,7 +197,7 @@ function failButton(){const dep=$('#dep',G.c);G.busy=false;dep.disabled=false;
   dep.textContent='積み直す';dep.onclick=()=>restart()}
 function restart(){stopRun();const keep=new Set(G.on);const n=G.n;const S=G.S;const pre=S.pre;
   G.x=0;G.lift=S.cradle?20:0;G.floating=!S.cradle;G.sinking=false;G.passed=false;G.sailing=false;G.busy=false;G.liq=pre||S.start;
-  G.d=G.floating?dp(G.hide?SHIP:weight(),G.liq):0;if(G.d>HULL)G.d=HULL;
+  G.d=G.floating?dp(G.hide&&!G.S.loaded?SHIP:weight(),G.liq):0;if(G.d>HULL)G.d=HULL;
   drawWorld();if(pre)$('#l1',G.c).setAttribute('fill',LIQUIDS[pre].c);renderShelf();syncUI();say(goalText(S));const dep=$('#dep',G.c);dep.textContent='出航';dep.disabled=false;dep.onclick=()=>depart();loop(run)}
 function win(){jingle();const S=G.S,n=G.n;const f=$('.frame',G.c);f.style.position='relative';f.insertAdjacentHTML('beforeend','<div class="stamp">エウレカ！</div>');
   say(`<span class="who">アルキメデス</span>${S.winner}<br><span class="nar">重さ${weight()}、深さ${G.d.toFixed(2)}で到着。</span>`);

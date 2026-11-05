@@ -66,6 +66,6 @@ export function problemOf(stage) {
   const sols = selections(stage), n = stage.items.length;
   if (sols.some(s => s.length === n)) return '全部積めば解ける';
   if (sols.some(s => s.length === 0)) return '何も積まなくても解ける';
-  if (!sols.some(s => onScale(depthFraction(totalWeight(stage.items, s), stage.pre ?? stage.start, stage.area ?? AREA)))) return '音階に乗る答えがない';
+  if (!stage.noScale && !sols.some(s => onScale(depthFraction(totalWeight(stage.items, s), stage.gates.find(g => g.k === 'chamber')?.to ?? stage.pre ?? stage.start, stage.area ?? AREA)))) return '音階に乗る答えがない';
   return null;
 }
