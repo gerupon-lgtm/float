@@ -11,7 +11,7 @@ import { GRAPHICS, cargoArt } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.8.9';
+const APP_VERSION = '0.8.10';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -74,10 +74,10 @@ function bal2(next){const c=show(`${topbar('序章 2　水の中の天秤')}<div
     this.textContent='つづき';$('#t',c).innerHTML='<span class="who">見習い</span>えっ？ 王冠の側が上がりました！';this.onclick=()=>{wood();next()}}}
 function quiz(next){const O=[['王冠のほうが、もともと軽いから',0],['王冠のほうが体積が大きく、水を多く押しのけたから',1],['水の中では、金だけが重くなるから',0]];
   const c=show(`${topbar('序章 3　なぜ？')}<div class="frame">${balanceArt(12,true)}</div><div class="say" id="t"><span class="who">アルキメデス</span>空気の中ではつり合ったのに、水の中では王冠が上がった。なぜだと思う？</div>
-  <div class="list foot" style="max-width:none">${O.map((o,i)=>`<button class="btn sub" data-i="${i}" style="font-size:18px">${o[0]}</button>`).join('')}</div>`);
+  <div class="list" style="max-width:none;gap:12px;margin-top:6px">${O.map((o,i)=>`<button class="btn sub" data-i="${i}" style="font-size:18px">${o[0]}</button>`).join('')}</div>`);
   wire(c);c.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{const ok=O[+b.dataset.i][1];if(ok){jingle();
     $('#t',c).innerHTML='<span class="who">アルキメデス</span>そのとおり。押しのけた液体の重さが、浮く力になる。王冠は体積が大きいので、純金より強く浮いたのだ。';
-    $('.list',c).innerHTML='<button class="btn" id="n">つづき</button>';$('#n',c).onclick=()=>{wood();next()}}
+    $('.list',c).classList.add('foot');$('.list',c).innerHTML='<button class="btn" id="n">つづき</button>';$('#n',c).onclick=()=>{wood();next()}}
     else{tap();$('#t',c).innerHTML='<span class="who">アルキメデス</span>ふむ。空気の中では、重さはつり合っていたぞ。もう一度考えてごらん。'}})}
 
 /* ---------- 航路の盤面 ---------- */

@@ -2,11 +2,11 @@
 // items の1行は [重さ, 名前]。積み方の面は [重さ, 名前, 幅, 高さ, 色]
 export const STAGES=[
  {id:'w1',name:'水 1　はじめの航路',start:'water',cradle:true,generated:true,window:1,maxAnswers:4,on:[],gates:[{k:'shoal',x:300},{k:'bridge',x:560}],end:800,
-  lead:'船を水に浮かべます。',winner:'計算どおりだな。出航の前に、深さを予想するのだぞ。'},
+  lead:'船を水に浮かべます。',winner:'見事に着いたな。浅瀬と低い橋の間には、ちょうどよい重さがあるのだ。'},
  {id:'w2',name:'水 2　細い水路',start:'water',cradle:true,generated:true,window:0.5,maxAnswers:3,on:[],gates:[{k:'bridge',x:300},{k:'shoal',x:560}],end:800,
-  lead:'通れる深さの幅が、せまくなりました。',winner:'選べる重さが少ないほど、計算が役に立つ。'},
+  lead:'通れる深さの幅が、せまくなりました。',winner:'通れる幅がせまくても、重さを計算すれば通れるのだ。'},
  {id:'w3',name:'水 3　別の船',start:'water',cradle:true,generated:true,window:0.5,maxAnswers:3,areas:[8,12],on:[],gates:[{k:'shoal',x:300},{k:'bridge',x:560}],end:800,
-  lead:'今度は船の底面積が違います。',winner:'底が広いほど、同じ荷でも浅く沈むのだ。'},
+  lead:'今度は船の底面積が違います。',winner:'底が広い船ほど、同じ重さでも浅く沈むのだ。'},
  {id:'w4',name:'水 4　積み方',intro:['s7'],start:'water',cradle:true,grid:true,generated:true,count:4,gap:1,on:[],gates:[{k:'bridge',x:320}],end:640,
   lead:'荷はすべて運びます。荷を選び、積む列をタップしましょう。',winner:'沈み方だけでなく、積み方も大事なのだ。軽い木ほど、場所をとるぞ。'},
  {id:'w5',name:'水 5　山積みの港',start:'water',cradle:true,grid:true,generated:true,count:5,gap:0.5,on:[],gates:[{k:'shoal',x:300},{k:'bridge',x:560}],end:800,
@@ -14,15 +14,15 @@ export const STAGES=[
  {id:'o1',name:'油 1　軽い液体',intro:['s8'],start:'water',generated:true,route:true,loaded:true,maxAnswers:4,gates:[{k:'chamber',x:300,to:'oil'},{k:'bridge',x:620}],end:860,
   lead:'重さだけの面です。入れ替え室の先は油です。',winner:'水より軽い液体では、同じ荷でも深く沈むのだ。'},
  {id:'o2',name:'油 2　水へ戻る',start:'oil',generated:true,route:true,loaded:true,maxAnswers:4,gates:[{k:'shoal',x:220},{k:'chamber',x:430,to:'water'},{k:'bridge',x:760}],end:1000,
-  lead:'重さだけの面です。今度は油から水へ移ります。',winner:'重い液体へ移ると、船は浮き上がる。橋に当たらぬよう、よく考えたな。'},
+  lead:'重さだけの面です。今度は油から水へ移ります。',winner:'重い液体へ移ると、船は浮き上がるのだ。'},
  {id:'o3',name:'油 3　両方の水路',start:'water',generated:true,route:true,loaded:true,maxAnswers:3,gates:[{k:'shoal',x:220},{k:'chamber',x:430,to:'oil'},{k:'bridge',x:760}],end:1000,
-  lead:'重さだけの面です。水の浅瀬と、油の低い橋を両方通ります。',winner:'同じ重さでも、液体ごとに深さが変わる。もう分かってきたな。'},
+  lead:'重さだけの面です。水の浅瀬と、油の低い橋を両方通ります。',winner:'同じ重さでも、液体が違えば沈む深さが変わるのだ。'},
  {id:'o4',name:'油 4　油の港',start:'oil',cradle:true,grid:true,generated:true,count:4,gap:1,gates:[{k:'bridge',x:320}],end:640,
   lead:'積み方も大事な面です。荷はすべて運びます。',winner:'軽い液体でも、積み方の考え方は同じだ。'},
  {id:'o5',name:'油 5　荷と液体',start:'water',cradle:true,grid:true,generated:true,count:5,gap:0.5,gates:[{k:'chamber',x:300,to:'oil'},{k:'bridge',x:620}],end:860,
-  lead:'積み方も大事な面です。水から油へ移っても、荷が橋に当たらないように積みましょう。',winner:'見事だ。だが次の湖は、これまでとはまるで違うぞ。'},
+  lead:'積み方も大事な面です。水から油へ移っても、荷が橋に当たらないように積みましょう。',winner:'見事だ。次の湖は、これまでとはまるで違うぞ。'},
  {id:'m1',name:'水銀 1　銀色の湖',intro:['s6'],start:'water',pre:'mercury',showDepth:true,generated:true,route:true,noScale:true,count:8,maxAnswers:999,on:[],gates:[{k:'lever',x:320},{k:'shoal',x:580}],end:800,
-  lead:'重さだけの面です。積むたびに深さが見えます。水なら沈む荷でも、積んでみましょう。',winner:'沈まぬことが、困りごとになることもあるのだ。'},
+  lead:'重さだけの面です。積むたびに深さが見えます。水なら沈む荷でも、積んでみましょう。',winner:'水なら沈む荷でも、水銀ではほとんど沈まぬのだ。'},
  {id:'m2',name:'水銀 2　重い荷を探す',start:'mercury',showDepth:true,generated:true,route:true,noScale:true,count:8,maxAnswers:999,on:[],gates:[{k:'lever',x:320},{k:'shoal',x:580}],end:800,
   lead:'重さだけの面です。今度は重い荷を探して、深く沈めます。',winner:'水では避けた重い荷が、ここでは役に立つ。'},
  {id:'m3',name:'水銀 3　水へ出る',start:'mercury',showDepth:true,generated:true,route:true,noScale:true,count:6,step:0.05,maxAnswers:6,on:[],gates:[{k:'lever',x:260},{k:'chamber',x:470,to:'water'},{k:'shoal',x:800}],end:1040,
@@ -30,5 +30,5 @@ export const STAGES=[
  {id:'m4',name:'水銀 4　小さな金',start:'mercury',grid:true,heavy:true,showDepth:true,generated:true,count:5,gap:1,gates:[{k:'bridge',x:320}],end:640,
   lead:'積み方も大事な面です。金は小さくても、とても重い荷です。',winner:'大きさと重さは別のものだ。金が教えてくれたな。'},
  {id:'m5',name:'水銀 5　最後の航路',start:'mercury',grid:true,heavy:true,showDepth:true,generated:true,count:5,gap:0.5,gates:[{k:'lever',x:320},{k:'bridge',x:580}],end:800,
-  lead:'積み方も大事な面です。レバーに届く重さと、橋を通る積み方を両方考えましょう。',winner:'エウレカ！ だが、まだ分からないことは次々に見つかるぞ。'}
+  lead:'積み方も大事な面です。レバーに届く重さと、橋を通る積み方を両方考えましょう。',winner:'見事だ。だが、まだ分からないことは次々に見つかるぞ。'}
 ];
