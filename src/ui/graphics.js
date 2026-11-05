@@ -4,6 +4,6 @@ export const GRAPHICS = {
   workshop: new URL('../../public/graphics/prologue-workshop.webp', import.meta.url).href,
   request: new URL('../../public/graphics/prologue-request.webp', import.meta.url).href,
   bath: new URL('../../public/graphics/prologue-bath.webp', import.meta.url).href,
-  eureka: new URL('../../public/graphics/prologue-eureka.webp', import.meta.url).href,
+  eureka: new URL('../../public/graphics/prologue-eureka-sign.webp', import.meta.url).href,
   harbor: new URL('../../public/graphics/prologue-harbor.webp', import.meta.url).href
 };
