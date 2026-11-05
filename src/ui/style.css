@@ -31,7 +31,7 @@ body{background:var(--wood2);color:var(--ink);font-family:var(--body);font-weigh
 .btn.sub{background:#fffaf0;font-size:20px}
 .btn:disabled{opacity:.45}
 button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
-.card:not(.cover)>.btn:last-child,.card:not(.cover)>.row:last-child{margin-top:auto;position:sticky;bottom:0}
+.card>.list.foot,.card:not(.cover)>.btn:last-child,.card:not(.cover)>.row:last-child{margin-top:auto;position:sticky;bottom:0}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .stat{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;font-size:13px;text-align:center}
 .stat div{background:#fffaf0;border:2px solid var(--ink);border-radius:7px;padding:2px 4px;min-width:0}
