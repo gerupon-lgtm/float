@@ -7,11 +7,11 @@ import { STAGES } from '../content/stages.js';
 import { CHALLENGES } from '../content/challenges.js';
 import { SCENES } from '../content/story.js';
 import { ART, INK, crown } from './art.js';
-import { GRAPHICS } from './graphics.js';
+import { GRAPHICS, cargoArt } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.6.2';
+const APP_VERSION = '0.7.1';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -121,32 +121,38 @@ function liqSect(){const g=G.S.gates.find(x=>x.k==='chamber');return g?g.x:null}
 
 function drawWorld(){const S=G.S,sp=liqSect();const b=$('#b',G.c);
   const gates=S.gates.map((g,i)=>gateSVG(g,i)).join('');
-  b.innerHTML=`<rect width="${W}" height="${H}" fill="var(--sky)"/>
+  b.innerHTML=`<defs>${Object.keys(LIQUIDS).map(l=>`<pattern id="liq-${l}" patternUnits="userSpaceOnUse" width="240" height="110" y="${SURF}"><image href="${GRAPHICS['liquid-'+l]}" width="240" height="110" preserveAspectRatio="none"/></pattern>`).join('')}</defs><rect width="${W}" height="${H}" fill="var(--sky)"/>
   <path d="M0 40q30 -20 60 0t60 0M240 56q30 -20 60 0t50 0" fill="none" stroke="#fffaf0" stroke-width="7"/>
-  <g id="cam"><rect id="l1" x="-500" y="${SURF}" width="${(sp??2000)+500}" height="${H-SURF}" fill="${LIQUIDS[G.liq].c}"/>
-  ${sp!=null?`<rect id="l2" x="${sp}" y="${SURF}" width="2000" height="${H-SURF}" fill="${LIQUIDS[G.S.gates.find(g=>g.k==='chamber').to].c}"/>`:''}
-  <rect id="room" x="-70" y="${SURF}" width="0" height="${H-SURF}" fill="var(--mercury)"/>
+  <g id="cam"><rect id="l1" x="-500" y="${SURF}" width="${(sp??2000)+500}" height="${H-SURF}" fill="${liquidFill(G.liq)}"/>
+  ${sp!=null?`<rect id="l2" x="${sp}" y="${SURF}" width="2000" height="${H-SURF}" fill="${liquidFill(G.S.gates.find(g=>g.k==='chamber').to)}"/>`:''}
+  <rect id="room" x="-70" y="${SURF}" width="0" height="${H-SURF}" fill="${liquidFill('mercury')}"/>
   ${G.S.cradle?`<path d="M-500 ${SURF+1}H70L120 ${H}H-500Z" fill="var(--sand)" stroke="${INK}" stroke-width="3"/>`:''}
   ${gates}<path d="M${S.end} ${SURF+2}V${SURF-58}" stroke="${INK}" stroke-width="5"/><path d="M${S.end} ${SURF-58}l36 11l-36 11z" fill="var(--red)" stroke="${INK}" stroke-width="3"/><text x="${S.end+6}" y="${SURF-64}" font-size="13" fill="${INK}">港</text>
   <g id="ship"></g><g id="fx"></g></g>
   <g id="scale"></g>`;
   const sc=$('#scale',b);let s='';for(let i=0;i<=5;i++){const y=SURF+i*U;s+=`<path d="M8 ${y}h${i%5?7:12}" stroke="${INK}" stroke-width="2"/><text x="23" y="${y+4}" font-size="10" fill="${INK}">${i}</text>`}sc.innerHTML=s+`<text x="6" y="${SURF-9}" font-size="10" fill="${INK}">深さ</text>`;
   shipSVG()}
+const liquidFill=l=>`url(#liq-${l})`;
+const img=(key,x,y,w,h,fit='none')=>`<image href="${GRAPHICS[key]}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="${fit}"/>`;
+const tag=(x,y,t)=>`<text x="${x}" y="${y}" text-anchor="middle" font-size="12" fill="${INK}" stroke="#fffaf0" stroke-width="3" paint-order="stroke">${t}</text>`;
 function gateSVG(g,i){const x=g.x;
-  if(g.k==='shoal'){const y=SURF+g.d*U;return `<path d="M${x-52} ${H}Q${x-30} ${y+2} ${x} ${y}Q${x+30} ${y+2} ${x+52} ${H}Z" fill="#8c7a63" stroke="${INK}" stroke-width="3"/><text x="${x}" y="${H-5}" text-anchor="middle" font-size="12" fill="#fff">深さ${g.d}以下</text>`}
-  if(g.k==='bridge'){const y=SURF-(HULL-g.d)*U;return `<rect x="${x-42}" y="${y-22}" width="84" height="22" fill="#b9793c" stroke="${INK}" stroke-width="3"/><path d="M${x-42} ${y-22}V0M${x+42} ${y-22}V0" stroke="${INK}" stroke-width="5"/><text x="${x}" y="${y-6}" text-anchor="middle" font-size="12" fill="#fff">深さ${g.d}以上</text>`}
-  if(g.k==='lever'){const y=SURF+g.d*U;return `<g id="gate${i}"><path d="M${x+74} ${SURF-60}V${H}" stroke="var(--red)" stroke-width="10"/></g><path d="M${x-30} ${y}H${x+30}" stroke="var(--red)" stroke-width="7"/><path d="M${x} ${y}V${H}" stroke="${INK}" stroke-width="5"/><text x="${x}" y="${H-5}" text-anchor="middle" font-size="12" fill="#fff">深さ${g.d}で届く</text>`}
-  if(g.k==='chamber'){return `<rect x="${x-3}" y="${SURF-74}" width="6" height="${H-SURF+74}" fill="#59616e"/><text x="${x}" y="${SURF-80}" text-anchor="middle" font-size="12" fill="${INK}">入れ替え室</text><rect id="door" x="${x-3}" y="0" width="0" height="0" fill="none"/>`}
+  if(g.k==='shoal'){const y=SURF+g.d*U;return img('shoal',x-58,y-2,116,H-y+2)+tag(x,H-5,`深さ${g.d}以下`)}
+  if(g.k==='bridge'){const y=SURF-(HULL-g.d)*U,h=44;return `<path d="M${x-52} ${y-h+2}V0M${x+52} ${y-h+2}V0" stroke="#8a5a2e" stroke-width="4"/>`+img('bridge',x-62,y-h,124,h)+tag(x,y+14,`深さ${g.d}以上`)}
+  if(g.k==='lever'){const y=SURF+g.d*U;return `<g id="gate${i}">${img('gate-door',x+52,SURF-62,46,H-SURF+62)}</g><path d="M${x} ${y+8}V${H}" stroke="${INK}" stroke-width="5"/>`+img('lever-arm',x-34,y-8,68,26)+tag(x,H-5,`深さ${g.d}で届く`)}
+  if(g.k==='chamber'){return img('chamber',x-6,SURF-34,152,H-SURF+34)+tag(x+70,SURF-40,'入れ替え室')}
   return ''}
-function shipSVG(){if(G.S.grid){const r=G.placed.map(p=>{const it=G.S.items[p.id];return `<rect x="${-54+p.c*18}" y="${-8-(p.r+it[3])*ROWH}" width="${it[2]*18}" height="${it[3]*ROWH}" fill="${it[4]}" stroke="${INK}" stroke-width="2"/>`}).join('');
-    $('#ship',G.c).innerHTML=`<path d="M-58 -60H58L46 0H-46Z" fill="#b9793c" stroke="${INK}" stroke-width="3.5"/>${r}`;return}
+const WET=`<rect id="wet" x="-60" y="0" width="120" height="0" opacity=".5"/>`;
+function shipSVG(){const hull=img('boat',-62,-60,124,60);
+  if(G.S.grid){const r=G.placed.map(p=>{const it=G.S.items[p.id];return `<image href="${cargoArt(it[1])}" x="${-54+p.c*18}" y="${-8-(p.r+it[3])*ROWH}" width="${it[2]*18}" height="${it[3]*ROWH}" preserveAspectRatio="none"/>`}).join('');
+    $('#ship',G.c).innerHTML=hull+r+WET;return}
   const items=[...G.on].sort((a,b)=>G.S.items[a][0]-G.S.items[b][0]);let r='';
-  items.forEach((id,i)=>{const [w]=G.S.items[id],col=i%3,row=Math.floor(i/3),x=-30+col*20,y=-10-14-row*14;
-    r+=`<rect x="${x-9}" y="${y}" width="18" height="14" fill="${w>=100?'#efb32a':w>=20?'#8c8f96':'#e7b76a'}" stroke="${INK}" stroke-width="2"/>`});
-  $('#ship',G.c).innerHTML=`<path d="M-58 -60H58L46 0H-46Z" fill="#b9793c" stroke="${INK}" stroke-width="3.5"/><path d="M-53 -38H53" stroke="#fffaf0" stroke-width="2.5" stroke-dasharray="7 5"/>${r}`}
+  items.forEach((id,i)=>{const [,n]=G.S.items[id],col=i%3,row=Math.floor(i/3),x=-30+col*20,y=-10-14-row*14;
+    r+=`<image href="${cargoArt(n)}" x="${x-9}" y="${y}" width="18" height="14"/>`});
+  $('#ship',G.c).innerHTML=hull+r+WET}
 function loop(id){if(id!==run)return;if(G&&G.c.isConnected){const t=performance.now()/1000,bob=G.sinking?0:Math.sin(t*1.7)*.8;
   const cam=Math.max(0,G.x-180+0)*1;const c=$('#cam',G.c);if(c)c.setAttribute('transform',`translate(${180-G.x} 0)`);
-  const s=$('#ship',G.c);if(s)s.setAttribute('transform',`translate(${G.x} ${SURF+G.d*U-G.lift+bob})`)}requestAnimationFrame(()=>loop(id))}
+  const s=$('#ship',G.c);if(s)s.setAttribute('transform',`translate(${G.x} ${SURF+G.d*U-G.lift+bob})`);
+  const w=$('#wet',G.c);if(w){const h=Math.max(0,Math.min(G.d*U-G.lift,60));w.setAttribute('y',-h);w.setAttribute('height',h);w.setAttribute('fill',liquidFill(G.liq))}}requestAnimationFrame(()=>loop(id))}
 
 function syncUI(){const c=G.c,s=LIQUIDS[G.liq].s,w=weight();$('#sg',c).textContent=s;$('#wt',c).textContent=w;
   const known=G.floating&&!(G.hide&&!G.sailing);$('#dp',c).innerHTML=known?G.d.toFixed(2):'？';
@@ -154,7 +160,7 @@ function syncUI(){const c=G.c,s=LIQUIDS[G.liq].s,w=weight();$('#sg',c).textConte
   const chamber=G.S.gates.find(g=>g.k==='chamber');const useS=(chamber&&!G.passed)?LIQUIDS[chamber.to].s:ts;const nm=(chamber&&!G.passed)?LIQUIDS[chamber.to].n:LIQUIDS[target].n;
   $('#fm',c).innerHTML=`${nm}での深さ ＝ 重さ <em>${w}</em> ÷（比重 <em>${useS}</em> × 底面積 <em>${G.S.area}</em>）＝ ？`+(known&&onScale(deep())?'<span class="scale">音階に乗った</span>':'')}
 function renderPack(){const S=G.S,sh=$('#sh',G.c);sh.style.display='block';const c=30,used=new Set(G.placed.map(p=>p.id));
-  const cells=G.placed.map(p=>{const it=S.items[p.id];return `<rect x="${p.c*c+1}" y="${(ROWMAX-p.r-it[3])*c+1}" width="${it[2]*c-2}" height="${it[3]*c-2}" fill="${it[4]}" stroke="${INK}" stroke-width="2"/>`}).join('');
+  const cells=G.placed.map(p=>{const it=S.items[p.id];return `<image href="${cargoArt(it[1])}" x="${p.c*c+1}" y="${(ROWMAX-p.r-it[3])*c+1}" width="${it[2]*c-2}" height="${it[3]*c-2}" preserveAspectRatio="none"/>`}).join('');
   let g='';for(let i=0;i<=CELLS;i++)g+=`<path d="M${i*c} 0V180M0 ${i*c}H180" stroke="#cdbf9f"/>`;
   sh.innerHTML=`<div class="pack"><svg id="pk" viewBox="0 0 180 180" role="img" aria-label="積み場所。列をタップして荷を落とす">${g}<path d="M0 90H180" stroke="${INK}" stroke-width="2.5" stroke-dasharray="6 4"/>${cells}${[0,1,2,3,4,5].map(i=>`<rect data-col="${i}" x="${i*c}" y="0" width="${c}" height="180" fill="transparent"/>`).join('')}</svg>
   <div class="side">${S.items.map(([w,n,cw,ch],i)=>`<button class="chip" data-i="${i}" aria-pressed="${G.sel===i}" ${used.has(i)?'disabled':''}>${n} ${w}<small>${cw}×${ch}マス</small></button>`).join('')}<button class="chip" id="undo">ひとつ戻す</button></div></div>`;
@@ -169,7 +175,7 @@ function settle(){if(G.hide&&!G.sailing)return;const to=dp(weight(),G.liq),from=
 
 async function intoMercury(){G.busy=true;lock(true);say('入れ替え室で、水を水銀に入れ替えます。');await wait(500);
   const room=$('#room',G.c);room.setAttribute('width',140);const f=[];await tween(1200,e=>{room.setAttribute('opacity',e);G.d=1+(0.074-1)*e;});
-  $('#l1',G.c).setAttribute('fill',LIQUIDS.mercury.c);G.liq='mercury';G.d=dp(weight(),'mercury');bell(midiOf(G.d));syncUI();G.busy=false;lock(false);
+  $('#l1',G.c).setAttribute('fill',liquidFill('mercury'));G.liq='mercury';G.d=dp(weight(),'mercury');bell(midiOf(G.d));syncUI();G.busy=false;lock(false);
   await wait(300);scene2Return()}
 function scene2Return(){say(goalText(G.S))}
 function lock(v){$('#dep',G.c).disabled=v;$('#ring',G.c).disabled=false}
@@ -187,7 +193,7 @@ async function depart(){if(G.busy)return;unlock();if(G.S.grid&&G.placed.length<G
   }
   await moveTo(S.end-30);if(id!==run)return;win()}
 async function moveTo(x){const from=G.x;await tween(Math.max(450,Math.abs(x-from)*7),e=>{G.x=from+(x-from)*e})}
-async function chamber(g){say(`入れ替え室：${LIQUIDS[G.liq].n}を${LIQUIDS[g.to].n}に入れ替えます。`);const id=run;const l2=$('#l2',G.c);const room=$('#room',G.c);room.setAttribute('x',g.x);room.setAttribute('width',140);room.setAttribute('fill',LIQUIDS[g.to].c);
+async function chamber(g){say(`入れ替え室：${LIQUIDS[G.liq].n}を${LIQUIDS[g.to].n}に入れ替えます。`);const id=run;const l2=$('#l2',G.c);const room=$('#room',G.c);room.setAttribute('x',g.x);room.setAttribute('width',140);room.setAttribute('fill',liquidFill(g.to));
   const wait0=await tween(600,e=>room.setAttribute('opacity',e));G.liq=g.to;G.passed=true;
   const to=dp(weight(),g.to),from=G.d;await tween(900,e=>{G.d=from+(Math.min(to,HULL+1.2)-from)*e;syncUI()});G.d=to;bell(midiOf(to));syncUI();
   if(isSunk(weight(),g.to,G.S.area)){sink(`${LIQUIDS[g.to].n}に入ると深さ${to.toFixed(2)}。船の高さ5を超えて沈みました。沈みきる重さは ${sinkingWeight(g.to,G.S.area)}です。`);return false}return true}
@@ -201,7 +207,7 @@ function failButton(){const dep=$('#dep',G.c);dep.disabled=false;
 function restart(){stopRun();const keep=new Set(G.on);const n=G.n;const S=G.S;const pre=S.pre;
   G.x=0;G.lift=S.cradle?20:0;G.floating=!S.cradle;G.sinking=false;G.passed=false;G.sailing=false;G.busy=false;G.liq=pre||S.start;
   G.d=G.floating?dp(G.hide&&!G.S.loaded?SHIP:weight(),G.liq):0;if(G.d>HULL)G.d=HULL;
-  drawWorld();if(pre)$('#l1',G.c).setAttribute('fill',LIQUIDS[pre].c);renderShelf();syncUI();say(goalText(S));const dep=$('#dep',G.c);dep.textContent='出航';dep.disabled=false;dep.onclick=()=>depart();loop(run)}
+  drawWorld();if(pre)$('#l1',G.c).setAttribute('fill',liquidFill(pre));renderShelf();syncUI();say(goalText(S));const dep=$('#dep',G.c);dep.textContent='出航';dep.disabled=false;dep.onclick=()=>depart();loop(run)}
 function win(){jingle();const S=G.S,n=G.n;const f=$('.frame',G.c);f.style.position='relative';f.insertAdjacentHTML('beforeend','<div class="stamp">エウレカ！</div>');
   say(`<span class="who">アルキメデス</span>${S.winner}<br><span class="nar">重さ${weight()}、深さ${G.d.toFixed(2)}で到着。</span>`);
   $('#sh',G.c).innerHTML='';const dep=$('#dep',G.c);dep.disabled=false;
