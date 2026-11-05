@@ -1,0 +1,185 @@
+// 画面の組み立てと進行。計算・判定は src/logic、面と語りは src/content にある。
+import { AREA, HULL, SHIP, LIQUIDS, depthOf, depthFraction, isSunk, clearsShoal, reachesDepth } from '../logic/physics.js';
+import { midiOf, onScale } from '../logic/pitch.js';
+import { CELLS, ROWMAX, ROWH, dropCargo, stackRows, pileClearsBridge } from '../logic/stacking.js';
+import { STAGES } from '../content/stages.js';
+import { SCENES } from '../content/story.js';
+import { ART, INK, crown } from './art.js';
+import { FloatAudio } from './audio.js';
+import { createUpdateManager } from './update-manager.js';
+
+const APP_VERSION = '0.1.0';
+const audio = new FloatAudio();
+const unlock = () => audio.unlock();
+const bell = (m, g, d) => audio.bell(m, g, d);
+const wood = () => audio.wood();
+const clack = () => audio.clack();
+const tap = () => audio.tap();
+const jingle = () => audio.jingle();
+/* ---------- 画面の土台 ---------- */
+const app=document.getElementById('app');
+const $=(s,r=document)=>r.querySelector(s);
+let cur=null, muted=false;
+function show(html,cls=''){const c=document.createElement('section');c.className='card enter '+cls;c.innerHTML=html;app.append(c);
+  const old=cur;cur=c;requestAnimationFrame(()=>requestAnimationFrame(()=>{c.classList.remove('enter');if(old){old.classList.add('leave');setTimeout(()=>old.remove(),460)}}));return c}
+const topbar=t=>`<div class="top"><b>${t}</b><span><button class="tiny" id="mute">${muted?'音なし':'音あり'}</button> <button class="tiny" id="home">表紙</button></span></div>`;
+function wire(c){const m=$('#mute',c),h=$('#home',c);if(m)m.onclick=()=>{muted=!muted;audio.setMuted(muted);m.textContent=muted?'音なし':'音あり'};if(h)h.onclick=()=>{stopRun();title()}}
+
+function title(){const c=show(`<div class="series">SIKUMI<br>NOTES<span>03</span></div><div><div class="logo">FLOAT</div><div class="logo2">NOTES</div></div>
+  <div class="tag">積んで、浮かべて、確かめる。</div><div class="list"><button class="btn" id="go">はじめる</button>
+  <div class="row"><button class="btn sub" id="j1">水の面</button><button class="btn sub" id="j2">積み方の面</button><button class="btn sub" id="j3">油の面</button><button class="btn sub" id="j4">水銀の面</button></div></div>
+  <div class="fine">© SIKUMI LAB　v${APP_VERSION} 試作　音が鳴ります</div>`,'cover');
+  $('#go',c).onclick=()=>{unlock();clack();flow(0)};
+  [1,2,3,4].forEach(n=>$('#j'+n,c).onclick=()=>{unlock();clack();stage(n-1)})}
+
+function scene(k,next){const s=SCENES[k];const c=show(`${topbar('紙芝居')}<div class="frame">${ART[s.art]()}</div>
+  <div class="say"><span class="nar">${s.nar}</span><span class="who" style="margin-top:4px">${s.who}</span>${s.say}</div><button class="btn" id="n">つづき</button>`);
+  wire(c);$('#n',c).onclick=()=>{wood();next()}}
+
+/* ---------- 序章：天秤 ---------- */
+function balanceArt(tilt,water){const L=180-96,R=180+96,dy=Math.sin(tilt*Math.PI/180)*96;
+  const pan=(x,y,o)=>`<path d="M${x} 62 L${x-28} ${y} M${x} 62 L${x+28} ${y}" transform="translate(0 ${0})" stroke="${INK}" stroke-width="2"/>`;
+  const ly=120-dy,ry=120+dy;
+  return `<svg viewBox="0 0 360 230" role="img" aria-label="天秤"><rect width="360" height="230" fill="#f3c86a"/>
+  <rect y="${water?150:230}" width="360" height="80" fill="#3f97c0" opacity=".85"/>
+  <path d="M180 200V60" stroke="${INK}" stroke-width="7"/><rect x="146" y="196" width="68" height="14" fill="#8a5a2e" stroke="${INK}" stroke-width="3"/>
+  <g transform="rotate(${tilt} 180 60)"><path d="M${L} 60H${R}" stroke="${INK}" stroke-width="7"/></g>
+  <path d="M${L} ${60-dy} V${ly}" stroke="${INK}" stroke-width="2.5"/><path d="M${R} ${60+dy} V${ry}" stroke="${INK}" stroke-width="2.5"/>
+  ${crown(L,ly+26,1)}<rect x="${R-14}" y="${ry+18}" width="28" height="20" fill="#efb32a" stroke="${INK}" stroke-width="3"/>
+  <path d="M${L-30} ${ly+40}H${L+30}" stroke="${INK}" stroke-width="4"/><path d="M${R-30} ${ry+40}H${R+30}" stroke="${INK}" stroke-width="4"/>
+  <text x="${L}" y="${ly+58}" text-anchor="middle" font-size="14" fill="#fff">王冠</text><text x="${R}" y="${ry+58}" text-anchor="middle" font-size="14" fill="#fff">純金</text></svg>`}
+function bal1(next){const c=show(`${topbar('序章 1　天秤')}<div class="frame" id="f">${balanceArt(0,false)}</div>
+  <div class="say" id="t"><span class="nar">王冠と、同じ重さの純金。天秤にかけて比べてみましょう。</span></div><button class="btn" id="a">空気の中で量る</button>`);
+  wire(c);$('#a',c).onclick=function(){wood();this.textContent='つづき';$('#t',c).innerHTML='<span class="who">見習い</span>つり合った。重さでは、見分けられない……。';this.onclick=()=>{wood();next()}}}
+function bal2(next){const c=show(`${topbar('序章 2　水の中の天秤')}<div class="frame" id="f">${balanceArt(0,false)}</div>
+  <div class="say" id="t"><span class="who">アルキメデス</span>師匠の風呂を思い出すのだ。では、水に沈めて測ってごらん。</div><button class="btn" id="a">水に沈める</button>`);
+  wire(c);$('#a',c).onclick=function(){bell(84);let i=0;const f=$('#f',c);const tick=()=>{i++;f.innerHTML=balanceArt(Math.min(i,12),true);if(i<12)requestAnimationFrame(tick)};tick();
+    this.textContent='つづき';$('#t',c).innerHTML='<span class="who">見習い</span>えっ？ 王冠の側が、上がった！';this.onclick=()=>{wood();next()}}}
+function quiz(next){const O=[['王冠のほうが、もともと軽いから',0],['王冠のほうが体積が大きく、水を多く押しのけたから',1],['水の中では、金だけが重くなるから',0]];
+  const c=show(`${topbar('序章 3　なぜ？')}<div class="frame">${balanceArt(12,true)}</div><div class="say" id="t"><span class="who">アルキメデス</span>空気の中ではつり合ったな。なぜ、水の中で王冠が上がった？</div>
+  <div class="list" style="max-width:none">${O.map((o,i)=>`<button class="btn sub" data-i="${i}" style="font-size:15px">${o[0]}</button>`).join('')}</div>`);
+  wire(c);c.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{const ok=O[+b.dataset.i][1];if(ok){jingle();
+    $('#t',c).innerHTML='<span class="who">アルキメデス</span>そのとおり。押しのけた液体の重さが、浮く力になる。銀が混ざると体積が増えるのだ。';
+    $('.list',c).innerHTML='<button class="btn" id="n">つづき</button>';$('#n',c).onclick=()=>{wood();next()}}
+    else{tap();$('#t',c).innerHTML='<span class="who">アルキメデス</span>ふむ。空気の中ではつり合っていたぞ。もう一度考えてごらん。'}})}
+
+/* ---------- 航路の盤面 ---------- */
+const U=12, SURF=128, W=360, H=236;
+let G=null, run=0;
+const deep=()=>depthFraction(weight(),G.liq);
+function stopRun(){run++}
+function wait(ms){return new Promise(r=>setTimeout(r,matchMedia('(prefers-reduced-motion:reduce)').matches?Math.min(ms,80):ms))}
+function tween(ms,fn){const id=run;if(matchMedia('(prefers-reduced-motion:reduce)').matches)ms=Math.min(ms,80);return new Promise(res=>{const t0=performance.now();
+  const f=now=>{if(id!==run)return;const p=Math.min(1,(now-t0)/ms),e=p*p*(3-2*p);fn(e);if(p<1)requestAnimationFrame(f);else res()};requestAnimationFrame(f)})}
+
+function stage(n){stopRun();const S=STAGES[n];
+  G={n,S,placed:[],sel:null,on:new Set(S.on),liq:S.pre?S.start:S.start,x:0,d:0,lift:S.cradle?20:0,busy:false,floating:!S.cradle,room:null,opened:false,bottomExtra:0};
+  G.d=G.floating?depthOf(weight(),G.liq):0;
+  const c=show(`${topbar(S.name)}<div class="frame"><svg id="b" viewBox="0 0 ${W} ${H}" role="img" aria-label="航路の断面図"></svg></div>
+    <div class="stat"><div>液体の比重<strong id="sg"></strong></div><div>船全体の重さ<strong id="wt"></strong></div><div>沈む深さ<strong id="dp"></strong></div></div>
+    <div class="formula" id="fm"></div><div class="say" id="t" style="min-height:60px"></div>
+    <div class="shelf" id="sh"></div><div class="row"><button class="btn sub" id="ring">深さの音</button><button class="btn" id="dep">出航</button></div>`);
+  wire(c);G.c=c;drawWorld();$('#t',c).innerHTML=S.goal;renderShelf();syncUI();loop(run);
+  $('#dep',c).onclick=()=>depart();$('#ring',c).onclick=()=>{unlock();if(G.floating)bell(midiOf(G.d));else{tap();say('船が水に入ると、沈んだ深さの音が鳴ります。')}};
+  if(S.pre)intoMercury()}
+
+const weight=()=>SHIP+(G.S.grid?G.placed.reduce((a,p)=>a+G.S.items[p.id][0],0):[...G.on].reduce((a,i)=>a+G.S.items[i][0],0));
+const pileRows=()=>stackRows(G.placed,G.S.items);
+function drop(id,col){const p=dropCargo(G.placed,G.S.items,id,col);if(!p){say('ここには置けません。荷が高くなりすぎます。');return false}G.placed.push(p);return true}
+const say=h=>{$('#t',G.c).innerHTML=h};
+function liqSect(){const g=G.S.gates.find(x=>x.k==='chamber');return g?g.x:null}
+
+function drawWorld(){const S=G.S,sp=liqSect();const b=$('#b',G.c);
+  const gates=S.gates.map((g,i)=>gateSVG(g,i)).join('');
+  b.innerHTML=`<rect width="${W}" height="${H}" fill="var(--sky)"/>
+  <path d="M0 40q30 -20 60 0t60 0M240 56q30 -20 60 0t50 0" fill="none" stroke="#fffaf0" stroke-width="7"/>
+  <g id="cam"><rect id="l1" x="-500" y="${SURF}" width="${(sp??2000)+500}" height="${H-SURF}" fill="${LIQUIDS[G.liq].c}"/>
+  ${sp!=null?`<rect id="l2" x="${sp}" y="${SURF}" width="2000" height="${H-SURF}" fill="${LIQUIDS.oil.c}"/>`:''}
+  <rect id="room" x="-70" y="${SURF}" width="0" height="${H-SURF}" fill="var(--mercury)"/>
+  ${G.S.cradle?`<path d="M-500 ${SURF+1}H70L120 ${H}H-500Z" fill="var(--sand)" stroke="${INK}" stroke-width="3"/>`:''}
+  ${gates}<path d="M${S.end} ${SURF+2}V${SURF-58}" stroke="${INK}" stroke-width="5"/><path d="M${S.end} ${SURF-58}l36 11l-36 11z" fill="var(--red)" stroke="${INK}" stroke-width="3"/><text x="${S.end+6}" y="${SURF-64}" font-size="13" fill="${INK}">港</text>
+  <g id="ship"></g><g id="fx"></g></g>
+  <g id="scale"></g>`;
+  const sc=$('#scale',b);let s='';for(let i=0;i<=5;i++){const y=SURF+i*U;s+=`<path d="M8 ${y}h${i%5?7:12}" stroke="${INK}" stroke-width="2"/><text x="23" y="${y+4}" font-size="10" fill="${INK}">${i}</text>`}sc.innerHTML=s+`<text x="6" y="${SURF-9}" font-size="10" fill="${INK}">深さ</text>`;
+  shipSVG()}
+function gateSVG(g,i){const x=g.x;
+  if(g.k==='shoal'){const y=SURF+g.d*U;return `<path d="M${x-52} ${H}Q${x-30} ${y+2} ${x} ${y}Q${x+30} ${y+2} ${x+52} ${H}Z" fill="#8c7a63" stroke="${INK}" stroke-width="3"/><text x="${x}" y="${H-5}" text-anchor="middle" font-size="12" fill="#fff">深さ${g.d}以下</text>`}
+  if(g.k==='bridge'){const y=SURF-(HULL-g.d)*U;return `<rect x="${x-42}" y="${y-22}" width="84" height="22" fill="#b9793c" stroke="${INK}" stroke-width="3"/><path d="M${x-42} ${y-22}V0M${x+42} ${y-22}V0" stroke="${INK}" stroke-width="5"/><text x="${x}" y="${y-6}" text-anchor="middle" font-size="12" fill="#fff">深さ${g.d}以上</text>`}
+  if(g.k==='lever'){const y=SURF+g.d*U;return `<g id="gate${i}"><path d="M${x+74} ${SURF-60}V${H}" stroke="var(--red)" stroke-width="10"/></g><path d="M${x-30} ${y}H${x+30}" stroke="var(--red)" stroke-width="7"/><path d="M${x} ${y}V${H}" stroke="${INK}" stroke-width="5"/><text x="${x}" y="${H-5}" text-anchor="middle" font-size="12" fill="#fff">深さ${g.d}で届く</text>`}
+  if(g.k==='chamber'){return `<rect x="${x-3}" y="${SURF-74}" width="6" height="${H-SURF+74}" fill="#59616e"/><text x="${x}" y="${SURF-80}" text-anchor="middle" font-size="12" fill="${INK}">入れ替え室</text><rect id="door" x="${x-3}" y="0" width="0" height="0" fill="none"/>`}
+  return ''}
+function shipSVG(){if(G.S.grid){const r=G.placed.map(p=>{const it=G.S.items[p.id];return `<rect x="${-54+p.c*18}" y="${-8-(p.r+it[3])*ROWH}" width="${it[2]*18}" height="${it[3]*ROWH}" fill="${it[4]}" stroke="${INK}" stroke-width="2"/>`}).join('');
+    $('#ship',G.c).innerHTML=`<path d="M-58 -60H58L46 0H-46Z" fill="#b9793c" stroke="${INK}" stroke-width="3.5"/>${r}`;return}
+  const items=[...G.on].sort((a,b)=>G.S.items[a][0]-G.S.items[b][0]);let r='';
+  items.forEach((id,i)=>{const [w]=G.S.items[id],col=i%3,row=Math.floor(i/3),x=-30+col*20,y=-10-14-row*14;
+    r+=`<rect x="${x-9}" y="${y}" width="18" height="14" fill="${w>=100?'#efb32a':w>=20?'#8c8f96':'#e7b76a'}" stroke="${INK}" stroke-width="2"/>`});
+  $('#ship',G.c).innerHTML=`<path d="M-58 -60H58L46 0H-46Z" fill="#b9793c" stroke="${INK}" stroke-width="3.5"/><path d="M-53 -38H53" stroke="#fffaf0" stroke-width="2.5" stroke-dasharray="7 5"/>${r}`}
+function loop(id){if(id!==run)return;if(G&&G.c.isConnected){const t=performance.now()/1000,bob=G.sinking?0:Math.sin(t*1.7)*.8;
+  const cam=Math.max(0,G.x-180+0)*1;const c=$('#cam',G.c);if(c)c.setAttribute('transform',`translate(${180-G.x} 0)`);
+  const s=$('#ship',G.c);if(s)s.setAttribute('transform',`translate(${G.x} ${SURF+G.d*U-G.lift+bob})`)}requestAnimationFrame(()=>loop(id))}
+
+function syncUI(){const c=G.c,s=LIQUIDS[G.liq].s,w=weight();$('#sg',c).textContent=s;$('#wt',c).textContent=w;
+  const known=G.floating;$('#dp',c).innerHTML=known?G.d.toFixed(2):'？';
+  const target=G.next||G.liq,ts=LIQUIDS[target].s;
+  const chamber=G.S.gates.find(g=>g.k==='chamber');const useS=(chamber&&!G.passed)?LIQUIDS[chamber.to].s:ts;const nm=(chamber&&!G.passed)?LIQUIDS[chamber.to].n:LIQUIDS[target].n;
+  $('#fm',c).innerHTML=`${nm}での深さ ＝ 重さ <em>${w}</em> ÷（比重 <em>${useS}</em> × 底面積 <em>${AREA}</em>）＝ ？`+(known&&onScale(deep())?'<span class="scale">音階に乗った</span>':'')}
+function renderPack(){const S=G.S,sh=$('#sh',G.c);sh.style.display='block';const c=30,used=new Set(G.placed.map(p=>p.id));
+  const cells=G.placed.map(p=>{const it=S.items[p.id];return `<rect x="${p.c*c+1}" y="${(ROWMAX-p.r-it[3])*c+1}" width="${it[2]*c-2}" height="${it[3]*c-2}" fill="${it[4]}" stroke="${INK}" stroke-width="2"/>`}).join('');
+  let g='';for(let i=0;i<=CELLS;i++)g+=`<path d="M${i*c} 0V180M0 ${i*c}H180" stroke="#cdbf9f"/>`;
+  sh.innerHTML=`<div class="pack"><svg id="pk" viewBox="0 0 180 180" role="img" aria-label="積み場所。列をタップして荷を落とす">${g}<path d="M0 90H180" stroke="${INK}" stroke-width="2.5" stroke-dasharray="6 4"/>${cells}${[0,1,2,3,4,5].map(i=>`<rect data-col="${i}" x="${i*c}" y="0" width="${c}" height="180" fill="transparent"/>`).join('')}</svg>
+  <div class="side">${S.items.map(([w,n,cw,ch],i)=>`<button class="chip" data-i="${i}" aria-pressed="${G.sel===i}" ${used.has(i)?'disabled':''}>${n} ${w}<small>${cw}×${ch}マス</small></button>`).join('')}<button class="chip" id="undo">ひとつ戻す</button></div></div>`;
+  sh.querySelectorAll('.chip[data-i]').forEach(b=>b.onclick=()=>{if(G.busy)return;unlock();tap();G.sel=+b.dataset.i;renderPack()});
+  sh.querySelectorAll('[data-col]').forEach(r=>r.onclick=()=>{if(G.busy)return;unlock();if(G.sel==null){say('先に、積む荷を選びましょう。');return}if(drop(G.sel,+r.dataset.col)){tap();G.sel=null}shipSVG();renderPack();syncUI()});
+  $('#undo',sh).onclick=()=>{if(G.busy||!G.placed.length)return;tap();G.placed.pop();shipSVG();renderPack();syncUI()}}
+function renderShelf(){if(G.S.grid)return renderPack();const S=G.S,sh=$('#sh',G.c);sh.innerHTML=S.items.map(([w,n],i)=>`<button class="chip${w>=100?' lead':''}" data-i="${i}" aria-pressed="${G.on.has(i)}">${w}<small>${n}</small></button>`).join('');
+  sh.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{if(G.busy)return;unlock();const i=+b.dataset.i;G.on.has(i)?G.on.delete(i):G.on.add(i);b.setAttribute('aria-pressed',G.on.has(i));tap();shipSVG();
+    if(G.floating)settle();syncUI()})}
+function settle(){const to=depthOf(weight(),G.liq),from=G.d;const id=run;
+  tween(380,e=>{if(id===run)G.d=from+(to-from)*e;syncUI()}).then(()=>{bell(midiOf(to),.17,.9);if(isSunk(weight(),G.liq))sink(`重さ${weight()}では、${LIQUIDS[G.liq].n}に沈みきってしまいます。`)})}
+
+async function intoMercury(){G.busy=true;lock(true);say('入れ替え室で、水を水銀に入れ替えます。');await wait(500);
+  const room=$('#room',G.c);room.setAttribute('width',140);const f=[];await tween(1200,e=>{room.setAttribute('opacity',e);G.d=1+(0.074-1)*e;});
+  $('#l1',G.c).setAttribute('fill',LIQUIDS.mercury.c);G.liq='mercury';G.d=depthOf(weight(),'mercury');bell(midiOf(G.d));syncUI();G.busy=false;lock(false);
+  await wait(300);scene2Return()}
+function scene2Return(){say(G.S.goal+'　まず、木箱と鉄箱を全部積んでみましょう。')}
+function lock(v){$('#dep',G.c).disabled=v;$('#ring',G.c).disabled=false}
+
+async function depart(){if(G.busy)return;unlock();if(G.S.grid&&G.placed.length<G.S.items.length){say('荷はすべて積みましょう。');return}G.busy=true;lock(true);const id=run;const S=G.S;
+  if(!G.floating){const to=depthOf(weight(),G.liq);await tween(700,e=>{G.lift=20*(1-e);G.x=120*e;G.d=Math.min(to,HULL+1)*e;syncUI()});G.floating=true;G.d=to;bell(midiOf(to));syncUI();
+    if(isSunk(weight(),G.liq))return sink(`重さ${weight()}は上限50を超えて、沈みました。水に沈みきる重さは、比重1 × 底面積10 × 高さ5 ＝ 50です。`)}
+  for(const g of S.gates){if(id!==run)return;
+    if(g.k==='chamber'){await moveTo(g.x+70);const r=await chamber(g);if(!r)return;continue}
+    const stop=g.k==='lever'?g.x+18:g.x;
+    if(g.k==='shoal'){if(!clearsShoal(deep(),g.d)){await moveTo(g.x-90);return fail(`深さ${G.d.toFixed(2)}では、浅瀬につかえました（深さ${g.d}以下）。`)}await moveTo(g.x+60)}
+    if(g.k==='bridge'){if(!reachesDepth(deep(),g.d)){await moveTo(g.x-96);return fail(`深さ${G.d.toFixed(2)}では、橋に船の縁が当たります（深さ${g.d}以上）。`)}if(G.S.grid&&!pileClearsBridge(deep(),g.d,pileRows())){await moveTo(g.x-96);return fail(`沈み方は足りていますが、荷の山が橋に当たりました。荷が${pileRows()}段になっています。積み方を変えましょう。`)}await moveTo(g.x+60)}
+    if(g.k==='lever'){await moveTo(g.x);if(!reachesDepth(deep(),g.d)){return fail(`深さ${G.d.toFixed(2)}では、レバーに届きません（深さ${g.d}以上）。`)}bell(72,.14,.7);const el=$('#gate'+S.gates.indexOf(g),G.c);if(el)await tween(500,e=>el.setAttribute('transform',`translate(0 ${-120*e})`))}
+  }
+  await moveTo(S.end-30);if(id!==run)return;win()}
+async function moveTo(x){const from=G.x;await tween(Math.max(450,Math.abs(x-from)*7),e=>{G.x=from+(x-from)*e})}
+async function chamber(g){say('入れ替え室：水を油に入れ替えます。');const id=run;const l2=$('#l2',G.c);const room=$('#room',G.c);room.setAttribute('x',g.x);room.setAttribute('width',140);room.setAttribute('fill',LIQUIDS[g.to].c);
+  const wait0=await tween(600,e=>room.setAttribute('opacity',e));G.liq=g.to;G.passed=true;
+  const to=depthOf(weight(),g.to),from=G.d;await tween(900,e=>{G.d=from+(Math.min(to,HULL+1.2)-from)*e;syncUI()});G.d=to;bell(midiOf(to));syncUI();
+  if(isSunk(weight(),g.to)){sink(`油に入ると深さ${to.toFixed(2)}。船の高さ5を超えて沈みました。油に沈みきる重さは 0.8 × 10 × 5 ＝ 40です。`);return false}return true}
+async function sink(msg){G.busy=true;G.sinking=true;lock(true);const from=G.d;tween(900,e=>{G.d=from+6*e});bell(62,.2,1.2);say(`<span class="who">アルキメデス</span>${msg}`);await wait(950);failButton()}
+function fail(msg){say(`<span class="who">アルキメデス</span>${msg}`);bell(66,.14,.5);failButton()}
+function failButton(){const dep=$('#dep',G.c);dep.textContent='積み直す';dep.disabled=false;G.busy=false;dep.onclick=()=>restart()}
+function restart(){stopRun();const keep=new Set(G.on);const n=G.n;const S=G.S;const pre=S.pre;
+  G.x=0;G.lift=S.cradle?20:0;G.floating=!S.cradle;G.sinking=false;G.passed=false;G.busy=false;G.liq=pre||S.start;
+  G.d=G.floating?depthOf(weight(),G.liq):0;if(G.d>HULL)G.d=HULL;
+  drawWorld();if(pre)$('#l1',G.c).setAttribute('fill',LIQUIDS[pre].c);renderShelf();syncUI();say(S.goal);const dep=$('#dep',G.c);dep.textContent='出航';dep.disabled=false;dep.onclick=()=>depart();loop(run)}
+function win(){jingle();const S=G.S,n=G.n;const f=$('.frame',G.c);f.style.position='relative';f.insertAdjacentHTML('beforeend','<div class="stamp">エウレカ！</div>');
+  say(`<span class="who">アルキメデス</span>${S.winner}<br><span class="nar">重さ${weight()}、深さ${G.d.toFixed(2)}で到着。</span>`);
+  $('#sh',G.c).innerHTML='';const dep=$('#dep',G.c);dep.disabled=false;dep.textContent=n<3?'次の面へ':'試作の終わりへ';dep.onclick=()=>{wood();if(n===0)scene('s7',()=>stage(1));else if(n===1)stage(2);else if(n===2)scene('s6',()=>stage(3));else ending()}}
+function ending(){stopRun();const c=show(`${topbar('試作の終わり')}<div class="frame">${ART.harbor()}</div><div class="say"><span class="nar">ここまでが試作です。ひとつ分かると、次の「まだ分からない」が見えてきます。</span></div>
+  <div class="goal">確かめたいこと：<br>・水銀で積んでも沈まない驚きはあったか<br>・音の変化で、液体の違いを感じたか<br>・序章の長さはちょうどよいか</div><button class="btn" id="n">表紙へ</button>`);wire(c);$('#n',c).onclick=()=>{wood();title()}}
+
+function flow(){scene('s1',()=>scene('s2',()=>bal1(()=>scene('s3',()=>scene('s4',()=>bal2(()=>quiz(()=>scene('s5',()=>stage(0)))))))))}
+// ---- 通信なしで使う仕組みと、新しい版の案内（F-012） ----
+function setupOffline(){if(!document.querySelector('meta[name="float-offline"]')||!('serviceWorker' in navigator))return;
+  const updates=createUpdateManager({serviceWorker:navigator.serviceWorker,currentVersion:APP_VERSION,canApply:()=>!G?.busy,reload:()=>location.reload(),
+    onChange:info=>{const n=document.getElementById('update-notice');if(!n)return;n.hidden=info?.status!=='ready'}});
+  document.getElementById('update-apply').onclick=()=>updates.apply();
+  updates.start().catch(()=>{/* 登録できない環境では、通信ありでそのまま遊べる */})}
+window.__float={STAGES,go:n=>stage(n),get G(){return G}};
+title();
+setupOffline();
