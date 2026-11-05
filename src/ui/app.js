@@ -11,7 +11,7 @@ import { GRAPHICS, cargoArt } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.7.1';
+const APP_VERSION = '0.7.2';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -141,7 +141,7 @@ function gateSVG(g,i){const x=g.x;
   if(g.k==='lever'){const y=SURF+g.d*U;return `<g id="gate${i}">${img('gate-door',x+52,SURF-62,46,H-SURF+62)}</g><path d="M${x} ${y+8}V${H}" stroke="${INK}" stroke-width="5"/>`+img('lever-arm',x-34,y-8,68,26)+tag(x,H-5,`深さ${g.d}で届く`)}
   if(g.k==='chamber'){return img('chamber',x-6,SURF-34,152,H-SURF+34)+tag(x+70,SURF-40,'入れ替え室')}
   return ''}
-const WET=`<rect id="wet" x="-60" y="0" width="120" height="0" opacity=".5"/>`;
+const WET=`<rect id="wet" x="-60" y="0" width="120" height="0" opacity=".32"/>`;
 function shipSVG(){const hull=img('boat',-62,-60,124,60);
   if(G.S.grid){const r=G.placed.map(p=>{const it=G.S.items[p.id];return `<image href="${cargoArt(it[1])}" x="${-54+p.c*18}" y="${-8-(p.r+it[3])*ROWH}" width="${it[2]*18}" height="${it[3]*ROWH}" preserveAspectRatio="none"/>`}).join('');
     $('#ship',G.c).innerHTML=hull+r+WET;return}
