@@ -11,7 +11,7 @@ import { GRAPHICS, cargoArt } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.8.13';
+const APP_VERSION = '0.8.14';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -220,7 +220,9 @@ function setupOffline(){if(!document.querySelector('meta[name="float-offline"]')
   const updates=createUpdateManager({serviceWorker:navigator.serviceWorker,currentVersion:APP_VERSION,canApply:()=>!G?.busy,reload:()=>location.reload(),
     onChange:info=>{const n=document.getElementById('update-notice');if(!n)return;n.hidden=info?.status!=='ready'}});
   document.getElementById('update-apply').onclick=()=>updates.apply();
-  updates.start().catch(()=>{/* 登録できない環境では、通信ありでそのまま遊べる */})}
+  updates.start().catch(()=>{/* 登録できない環境では、通信ありでそのまま遊べる */});
+  // アプリへ戻ったときにも新しい版を確かめる
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')updates.check().catch(()=>{})})}
 window.__float={STAGES,go:n=>stage(n),get G(){return G}};
 title();
 setupOffline();

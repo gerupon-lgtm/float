@@ -60,7 +60,7 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 .symbols{height:calc(var(--w)*.40);flex:none;width:100%}
 .series{display:flex;align-items:center;gap:10px;font-family:var(--latin);font-weight:700;color:var(--ink);letter-spacing:.12em;font-size:12px;line-height:1.2;text-align:left}
 .series span{border-left:2px solid var(--ink);padding-left:10px;font-size:26px;letter-spacing:0}
-.logo{margin:6px 0 0;font-family:var(--latin);font-weight:700;font-size:clamp(64px,22vw,110px);letter-spacing:.03em;line-height:1;color:var(--red);-webkit-text-stroke:2px var(--ink)}
+.logo{margin:6px 0 0;font-family:var(--latin);font-weight:700;font-size:clamp(64px,22vw,110px);letter-spacing:.03em;line-height:1;color:var(--red);-webkit-text-stroke:4px var(--ink);paint-order:stroke fill}
 .logo2{font-family:var(--latin);font-weight:500;letter-spacing:.42em;font-size:26px;margin-right:-.42em}
 .tag{margin:6px 0 0;font-family:var(--disp);font-size:18px}
 .list{display:grid;gap:8px;width:100%;max-width:360px}

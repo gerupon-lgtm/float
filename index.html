@@ -15,7 +15,7 @@
 <body>
 <!-- app:body:start -->
 <div id="app"></div>
-<div id="update-notice" hidden style="position:fixed;inset:auto 0 0;padding:8px 14px;background:#23304a;color:#fffaf0;text-align:center">新しい版を使えます。<button id="update-apply" type="button">更新する</button></div>
+<div id="update-notice" hidden style="position:fixed;z-index:20;inset:auto 0 0;padding:12px 14px calc(12px + env(safe-area-inset-bottom,0px));background:#23304a;color:#fffaf0;text-align:center;font-size:16px">新しい版を使えます。 <button id="update-apply" type="button" style="font:inherit;padding:6px 14px">更新する</button></div>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
   <filter id="wob"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="3.5"/></filter>
 </defs></svg>
