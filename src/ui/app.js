@@ -11,7 +11,7 @@ import { GRAPHICS, cargoArt } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.8.11';
+const APP_VERSION = '0.8.12';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -57,7 +57,7 @@ function goalText(S){let liq=S.pre??S.start;const mix=S.gates.some(g=>g.k==='cha
     return g.k==='shoal'?`・${at}浅瀬：${g.d}まで（深いと底につかえる）`:g.k==='bridge'?`・${at}低い橋：${g.d}以上（浅いと船の縁が当たる）`:`・${at}レバー：${g.d}以上（浅いと届かない）`};
   const rows=S.gates.map(line).filter(Boolean).join('<br>');
   return `${S.lead}<br>船の沈む深さに注意しましょう。<br>${rows}`}
-function ngText(){if(!R)return'';return R.level.limit===null?`　NG ${R.ng}`:`　あとNG ${R.left}回`}
+function ngText(){if(!R)return'';return R.level.limit===null?`失敗 ${R.ng}回`:`やり直し あと${R.left}回`}
 
 function scene(k,next){const s=SCENES[k];book.markSeen(k);const c=show(`${topbar('おはなし')}<div class="frame">${ART[s.art]()}</div>
   <div class="say"><span class="nar">${s.nar}</span><span class="who" style="margin-top:4px">${s.who}</span>${s.say}</div><button class="btn" id="n">つづき</button>`);
@@ -98,7 +98,7 @@ function tween(ms,fn){const id=run;ms*=calm();return new Promise(res=>{const t0=
 function stage(n){stopRun();const base=STAGES[n],S={area:AREA,...base,...question(base)};
   G={n,S,hide:!!R?.hidesDepth&&!S.showDepth,placed:[],sel:null,on:new Set(S.on),liq:S.pre?S.start:S.start,x:0,d:0,lift:S.cradle?20:0,busy:false,floating:!S.cradle,room:null,opened:false,bottomExtra:0};
   G.d=G.floating?dp(weight(),G.liq):0;
-  const c=show(`${topbar(`${R?`${R.position+1}/${R.stageCount}　`:''}${S.name}<span id="ng">${ngText()}</span>`)}<div class="frame"><svg id="b" viewBox="0 0 ${W} ${H}" role="img" aria-label="航路の断面図"></svg></div>
+  const c=show(`${topbar(`${S.name}${R?`<small class="sub">${R.position+1}/${R.stageCount}面　<span id="ng">${ngText()}</span></small>`:''}`)}<div class="frame"><svg id="b" viewBox="0 0 ${W} ${H}" role="img" aria-label="航路の断面図"></svg></div>
     <div class="stat"><div>液体の比重<strong id="sg"></strong></div><div>船全体の重さ<strong id="wt"></strong></div><div>沈む深さ<strong id="dp"></strong></div></div>
     <div class="formula" id="fm"></div><div class="say" id="t" style="min-height:60px"></div>
     <div class="shelf" id="sh"></div><div class="row"><button class="btn sub" id="ring">深さの音</button><button class="btn" id="dep">出航</button></div>`);
@@ -123,7 +123,8 @@ function drawWorld(){const S=G.S,sp=liqSect();const b=$('#b',G.c);
   ${gates}<path d="M${S.end} ${SURF+2}V${SURF-58}" stroke="${INK}" stroke-width="5"/><path d="M${S.end} ${SURF-58}l36 11l-36 11z" fill="var(--red)" stroke="${INK}" stroke-width="3"/><text x="${S.end+6}" y="${SURF-64}" font-size="13" fill="${INK}">港</text>
   <g id="ship"></g><g id="fx"></g></g>
   <g id="scale"></g>`;
-  const sc=$('#scale',b);let s='';for(let i=0;i<=5;i++){const y=SURF+i*U;s+=`<path d="M8 ${y}h${i%5?7:12}" stroke="${INK}" stroke-width="2"/><text x="23" y="${y+4}" font-size="10" fill="${INK}">${i}</text>`}sc.innerHTML=s+`<text x="6" y="${SURF-9}" font-size="10" fill="${INK}">深さ</text>`;
+  const sc=$('#scale',b);let s='';for(let i=0;i<=5;i++){const y=SURF+i*U;s+=`<path d="M8 ${y}h${i%5?8:12}" stroke="${INK}" stroke-width="2.5"/><text x="24" y="${y+4.5}" font-size="12.5" font-weight="700" fill="${INK}">${i}</text>`}
+  sc.innerHTML=`<rect x="3" y="${SURF-22}" width="36" height="${5*U+34}" rx="6" fill="#fffaf0" stroke="${INK}" stroke-width="2"/><text x="21" y="${SURF-9}" text-anchor="middle" font-size="11.5" font-weight="700" fill="${INK}">深さ</text>`+s+`<path id="mark" d="M0 0l9 -6v12z" fill="var(--red)" stroke="${INK}" stroke-width="1.5" opacity="0"/>`;
   shipSVG()}
 const liquidFill=l=>`url(#liq-${l})`;
 const img=(key,x,y,w,h,fit='none')=>`<image href="${GRAPHICS[key]}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="${fit}"/>`;
@@ -145,6 +146,7 @@ function shipSVG(){const hull=img('boat',-62,-60,124,60);
 function loop(id){if(id!==run)return;if(G&&G.c.isConnected){const t=performance.now()/1000,bob=G.sinking?0:Math.sin(t*1.7)*.8;
   const cam=Math.max(0,G.x-180+0)*1;const c=$('#cam',G.c);if(c)c.setAttribute('transform',`translate(${180-G.x} 0)`);
   const s=$('#ship',G.c);if(s)s.setAttribute('transform',`translate(${G.x} ${SURF+G.d*U-G.lift+bob})`);
+  const m=$('#mark',G.c);if(m){const known=G.floating&&!(G.hide&&!G.sailing);m.setAttribute('opacity',known?1:0);m.setAttribute('transform',`translate(20 ${SURF+Math.min(G.d,HULL)*U}) rotate(180)`)}
   const w=$('#wet',G.c);if(w){const h=Math.max(0,Math.min(G.d*U-G.lift,60));w.setAttribute('y',-h);w.setAttribute('height',h);w.setAttribute('fill',liquidFill(G.liq))}}requestAnimationFrame(()=>loop(id))}
 
 function syncUI(){const c=G.c,s=LIQUIDS[G.liq].s,w=weight();$('#sg',c).textContent=s;$('#wt',c).textContent=w;
