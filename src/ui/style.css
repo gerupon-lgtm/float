@@ -64,7 +64,7 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 .logo2{font-family:var(--latin);font-weight:500;letter-spacing:.42em;font-size:26px;margin-right:-.42em}
 .tag{margin:6px 0 0;font-family:var(--disp);font-size:18px}
 .list{display:grid;gap:8px;width:100%;max-width:360px}
-.fine{font-size:12px}
+.fine{font-family:var(--latin);font-weight:500;font-size:11px;letter-spacing:.02em;opacity:.75}
 .picture{position:relative}.sign{position:absolute;transform:translate(-50%,-50%) rotate(-3deg);font-family:var(--disp);color:var(--red);font-size:clamp(20px,6.5vw,30px);white-space:nowrap}
 .stamp{position:absolute;left:50%;top:22%;white-space:nowrap;transform:translate(-50%,-50%) rotate(-8deg);font-family:var(--disp);color:var(--red);border:5px solid var(--red);
   background:rgba(255,250,240,.9);padding:0 14px;font-size:30px;border-radius:8px;pointer-events:none}
