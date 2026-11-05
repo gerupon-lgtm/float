@@ -12,7 +12,7 @@
 - JavaScript（ES modules、追加のライブラリなし）、盤面はSVG、音は Web Audio、PWA
 - 判定は分数（`src/logic/fraction.js`）。浮動小数点は描画と発音の直前だけ
 - 計算は `src/logic`、面と語りは `src/content`、画面は `src/ui`
-- 公開用の自動配信は未設定。公開時期が決まってから用意する
+- main に送ると GitHub Actions でビルドし、GitHub Pages（独自ドメイン float.sikumilab.com）へ公開する
 
 ## 変更の扱い
 
