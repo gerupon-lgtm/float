@@ -1,6 +1,6 @@
 {
   "name": "float-notes",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,6 +8,8 @@
     "check": "node scripts/check-source.js",
     "build": "node scripts/build.js",
     "dev": "node scripts/serve.js",
-    "build:artifact": "node scripts/build-artifact.js"
+    "build:artifact": "node scripts/build-artifact.js",
+    "generate:challenges": "node scripts/generate-challenges.js",
+    "check:challenges": "node scripts/generate-challenges.js --check"
   }
 }

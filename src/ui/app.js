@@ -1,15 +1,17 @@
 // 画面の組み立てと進行。計算・判定は src/logic、面と語りは src/content にある。
-import { AREA, HULL, SHIP, LIQUIDS, depthOf, depthFraction, isSunk, clearsShoal, reachesDepth } from '../logic/physics.js';
+import { AREA, HULL, SHIP, LIQUIDS, depthOf, depthFraction, isSunk, sinkingWeight, clearsShoal, reachesDepth } from '../logic/physics.js';
 import { midiOf, onScale } from '../logic/pitch.js';
 import { CELLS, ROWMAX, ROWH, dropCargo, stackRows, pileClearsBridge } from '../logic/stacking.js';
+import { LEVELS, ContinuousRun, ModeBook } from '../logic/modes.js';
 import { STAGES } from '../content/stages.js';
+import { CHALLENGES } from '../content/challenges.js';
 import { SCENES } from '../content/story.js';
 import { ART, INK, crown } from './art.js';
 import { GRAPHICS } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.3.0';
+const APP_VERSION = '0.4.0';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -33,10 +35,20 @@ function title(){const c=show(`<div class="hero"><div class="series">SIKUMI<br>N
   <div class="fine">© SIKUMI LAB　v${APP_VERSION} 試作</div>`,'cover');
   c.style.backgroundImage=`url("${GRAPHICS.title}")`;
   $('#go',c).onclick=()=>{unlock();clack();flow(0)};
-  $('#cont',c).onclick=()=>{unlock();clack();stage(0)};
+  $('#cont',c).onclick=()=>{unlock();clack();levels()};
   $('#pick',c).onclick=()=>{unlock();clack();pick()}}
 function pick(){const c=show(`${topbar('選択プレイ')}<div class="list" style="max-width:none">${STAGES.map((s,i)=>`<button class="btn sub" data-s="${i}">${s.name}</button>`).join('')}</div>`);
-  wire(c);c.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{wood();stage(+b.dataset.s)})}
+  wire(c);c.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{wood();R=null;enter(+b.dataset.s)})}
+function levels(){const c=show(`${topbar('連続プレイ')}<div class="say"><span class="nar">全${STAGES.length}面を順に進みます。沈んだり関門に当たったりするとNGです。ノーマルとエキスパートでは、出航するまで深さが見えません。</span></div>
+  <div class="list" style="max-width:none">${LEVELS.map(l=>`<button class="btn sub" data-l="${l.id}">${l.name}<small style="display:block;font-size:12px">${l.note}　最高 ${book.best(l.id)}面</small></button>`).join('')}</div>`);
+  wire(c);c.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{unlock();clack();R=new ContinuousRun(b.dataset.l,STAGES.length);enter(0)})}
+// 面に入る。新しい要素の紙芝居は初回だけ流す
+function enter(n){const list=(STAGES[n].intro??[]).filter(k=>!book.seen(k));
+  const play=i=>{if(i>=list.length)return stage(n);book.markSeen(list[i]);scene(list[i],()=>play(i+1))};play(0)}
+function question(base){const list=CHALLENGES[base.id];if(!list?.length)return{};let i=Math.floor(Math.random()*list.length);if(list.length>1&&i===lastQuestion[base.id])i=(i+1)%list.length;lastQuestion[base.id]=i;return list[i]}
+function goalText(S){const c=S.gates.filter(g=>g.d!=null&&g.k!=='chamber').map(g=>g.k==='shoal'?`浅瀬は深さ${g.d}以下`:g.k==='bridge'?`低い橋は深さ${g.d}以上`:`レバーは深さ${g.d}以上`).join('、');
+  return S.goal??`${S.lead}${c}で通れます。船の底面積は${S.area}、船だけの重さは${SHIP}です。`}
+function ngText(){if(!R)return'';return R.level.limit===null?`　NG ${R.ng}`:`　あとNG ${R.left}回`}
 
 function scene(k,next){const s=SCENES[k];const c=show(`${topbar('紙芝居')}<div class="frame">${ART[s.art]()}</div>
   <div class="say"><span class="nar">${s.nar}</span><span class="who" style="margin-top:4px">${s.who}</span>${s.say}</div><button class="btn" id="n">つづき</button>`);
@@ -72,21 +84,25 @@ function quiz(next){const O=[['王冠のほうが、もともと軽いから',0]
 /* ---------- 航路の盤面 ---------- */
 const U=12, SURF=128, W=360, H=236;
 let G=null, run=0;
-const deep=()=>depthFraction(weight(),G.liq);
+const deep=()=>depthFraction(weight(),G.liq,G.S.area);
+const dp=(w,liq)=>depthOf(w,liq,G.S.area);
+let R=null;
+const book=(()=>{try{return new ModeBook(window.localStorage)}catch{return new ModeBook(null)}})();
+const lastQuestion={};
 function stopRun(){run++}
 function wait(ms){return new Promise(r=>setTimeout(r,matchMedia('(prefers-reduced-motion:reduce)').matches?Math.min(ms,80):ms))}
 function tween(ms,fn){const id=run;if(matchMedia('(prefers-reduced-motion:reduce)').matches)ms=Math.min(ms,80);return new Promise(res=>{const t0=performance.now();
   const f=now=>{if(id!==run)return;const p=Math.min(1,(now-t0)/ms),e=p*p*(3-2*p);fn(e);if(p<1)requestAnimationFrame(f);else res()};requestAnimationFrame(f)})}
 
-function stage(n){stopRun();const S=STAGES[n];
-  G={n,S,placed:[],sel:null,on:new Set(S.on),liq:S.pre?S.start:S.start,x:0,d:0,lift:S.cradle?20:0,busy:false,floating:!S.cradle,room:null,opened:false,bottomExtra:0};
-  G.d=G.floating?depthOf(weight(),G.liq):0;
-  const c=show(`${topbar(S.name)}<div class="frame"><svg id="b" viewBox="0 0 ${W} ${H}" role="img" aria-label="航路の断面図"></svg></div>
+function stage(n){stopRun();const base=STAGES[n],S={area:AREA,...base,...question(base)};
+  G={n,S,hide:!!R?.hidesDepth,placed:[],sel:null,on:new Set(S.on),liq:S.pre?S.start:S.start,x:0,d:0,lift:S.cradle?20:0,busy:false,floating:!S.cradle,room:null,opened:false,bottomExtra:0};
+  G.d=G.floating?dp(weight(),G.liq):0;
+  const c=show(`${topbar(`${R?`${R.position+1}/${R.stageCount}　`:''}${S.name}<span id="ng">${ngText()}</span>`)}<div class="frame"><svg id="b" viewBox="0 0 ${W} ${H}" role="img" aria-label="航路の断面図"></svg></div>
     <div class="stat"><div>液体の比重<strong id="sg"></strong></div><div>船全体の重さ<strong id="wt"></strong></div><div>沈む深さ<strong id="dp"></strong></div></div>
     <div class="formula" id="fm"></div><div class="say" id="t" style="min-height:60px"></div>
     <div class="shelf" id="sh"></div><div class="row"><button class="btn sub" id="ring">深さの音</button><button class="btn" id="dep">出航</button></div>`);
-  wire(c);G.c=c;drawWorld();$('#t',c).innerHTML=S.goal;renderShelf();syncUI();loop(run);
-  $('#dep',c).onclick=()=>depart();$('#ring',c).onclick=()=>{unlock();if(G.floating)bell(midiOf(G.d));else{tap();say('船が水に入ると、沈んだ深さの音が鳴ります。')}};
+  wire(c);G.c=c;drawWorld();$('#t',c).innerHTML=goalText(S);renderShelf();syncUI();loop(run);
+  $('#dep',c).onclick=()=>depart();$('#ring',c).onclick=()=>{unlock();if(G.floating&&!(G.hide&&!G.sailing))bell(midiOf(G.d));else{tap();say('船が出ると、沈んだ深さの音が鳴ります。')}};
   if(S.pre)intoMercury()}
 
 const weight=()=>SHIP+(G.S.grid?G.placed.reduce((a,p)=>a+G.S.items[p.id][0],0):[...G.on].reduce((a,i)=>a+G.S.items[i][0],0));
@@ -125,10 +141,10 @@ function loop(id){if(id!==run)return;if(G&&G.c.isConnected){const t=performance.
   const s=$('#ship',G.c);if(s)s.setAttribute('transform',`translate(${G.x} ${SURF+G.d*U-G.lift+bob})`)}requestAnimationFrame(()=>loop(id))}
 
 function syncUI(){const c=G.c,s=LIQUIDS[G.liq].s,w=weight();$('#sg',c).textContent=s;$('#wt',c).textContent=w;
-  const known=G.floating;$('#dp',c).innerHTML=known?G.d.toFixed(2):'？';
+  const known=G.floating&&!(G.hide&&!G.sailing);$('#dp',c).innerHTML=known?G.d.toFixed(2):'？';
   const target=G.next||G.liq,ts=LIQUIDS[target].s;
   const chamber=G.S.gates.find(g=>g.k==='chamber');const useS=(chamber&&!G.passed)?LIQUIDS[chamber.to].s:ts;const nm=(chamber&&!G.passed)?LIQUIDS[chamber.to].n:LIQUIDS[target].n;
-  $('#fm',c).innerHTML=`${nm}での深さ ＝ 重さ <em>${w}</em> ÷（比重 <em>${useS}</em> × 底面積 <em>${AREA}</em>）＝ ？`+(known&&onScale(deep())?'<span class="scale">音階に乗った</span>':'')}
+  $('#fm',c).innerHTML=`${nm}での深さ ＝ 重さ <em>${w}</em> ÷（比重 <em>${useS}</em> × 底面積 <em>${G.S.area}</em>）＝ ？`+(known&&onScale(deep())?'<span class="scale">音階に乗った</span>':'')}
 function renderPack(){const S=G.S,sh=$('#sh',G.c);sh.style.display='block';const c=30,used=new Set(G.placed.map(p=>p.id));
   const cells=G.placed.map(p=>{const it=S.items[p.id];return `<rect x="${p.c*c+1}" y="${(ROWMAX-p.r-it[3])*c+1}" width="${it[2]*c-2}" height="${it[3]*c-2}" fill="${it[4]}" stroke="${INK}" stroke-width="2"/>`}).join('');
   let g='';for(let i=0;i<=CELLS;i++)g+=`<path d="M${i*c} 0V180M0 ${i*c}H180" stroke="#cdbf9f"/>`;
@@ -140,19 +156,20 @@ function renderPack(){const S=G.S,sh=$('#sh',G.c);sh.style.display='block';const
 function renderShelf(){if(G.S.grid)return renderPack();const S=G.S,sh=$('#sh',G.c);sh.innerHTML=S.items.map(([w,n],i)=>`<button class="chip${w>=100?' lead':''}" data-i="${i}" aria-pressed="${G.on.has(i)}">${w}<small>${n}</small></button>`).join('');
   sh.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{if(G.busy)return;unlock();const i=+b.dataset.i;const adding=!G.on.has(i);adding?G.on.add(i):G.on.delete(i);b.setAttribute('aria-pressed',G.on.has(i));adding?audio.land(S.items[i][0]):tap();shipSVG();
     if(G.floating)settle();syncUI()})}
-function settle(){const to=depthOf(weight(),G.liq),from=G.d;const id=run;
-  tween(380,e=>{if(id===run)G.d=from+(to-from)*e;syncUI()}).then(()=>{bell(midiOf(to),.17,.9);if(isSunk(weight(),G.liq))sink(`重さ${weight()}では、${LIQUIDS[G.liq].n}に沈みきってしまいます。`)})}
+function settle(){if(G.hide&&!G.sailing)return;const to=dp(weight(),G.liq),from=G.d;const id=run;
+  tween(380,e=>{if(id===run)G.d=from+(to-from)*e;syncUI()}).then(()=>{bell(midiOf(to),.17,.9);if(isSunk(weight(),G.liq,G.S.area))sink(`重さ${weight()}では、${LIQUIDS[G.liq].n}に沈みきってしまいます。`)})}
 
 async function intoMercury(){G.busy=true;lock(true);say('入れ替え室で、水を水銀に入れ替えます。');await wait(500);
   const room=$('#room',G.c);room.setAttribute('width',140);const f=[];await tween(1200,e=>{room.setAttribute('opacity',e);G.d=1+(0.074-1)*e;});
-  $('#l1',G.c).setAttribute('fill',LIQUIDS.mercury.c);G.liq='mercury';G.d=depthOf(weight(),'mercury');bell(midiOf(G.d));syncUI();G.busy=false;lock(false);
+  $('#l1',G.c).setAttribute('fill',LIQUIDS.mercury.c);G.liq='mercury';G.d=dp(weight(),'mercury');bell(midiOf(G.d));syncUI();G.busy=false;lock(false);
   await wait(300);scene2Return()}
 function scene2Return(){say(G.S.goal+'　まず、木箱と鉄箱を全部積んでみましょう。')}
 function lock(v){$('#dep',G.c).disabled=v;$('#ring',G.c).disabled=false}
 
-async function depart(){if(G.busy)return;unlock();if(G.S.grid&&G.placed.length<G.S.items.length){say('荷はすべて積みましょう。');return}G.busy=true;lock(true);const id=run;const S=G.S;
-  if(!G.floating){const to=depthOf(weight(),G.liq);await tween(700,e=>{G.lift=20*(1-e);G.x=120*e;G.d=Math.min(to,HULL+1)*e;syncUI()});G.floating=true;G.d=to;bell(midiOf(to));syncUI();
-    if(isSunk(weight(),G.liq))return sink(`重さ${weight()}は上限50を超えて、沈みました。水に沈みきる重さは、比重1 × 底面積10 × 高さ5 ＝ 50です。`)}
+async function depart(){if(G.busy)return;unlock();if(G.S.grid&&G.placed.length<G.S.items.length){say('荷はすべて積みましょう。');return}G.busy=true;lock(true);const id=run;const S=G.S;G.sailing=true;
+  if(G.floating&&G.hide){const to=dp(weight(),G.liq),from=G.d;await tween(600,e=>{G.d=from+(Math.min(to,HULL+1)-from)*e;syncUI()});G.d=to;bell(midiOf(to));syncUI();if(isSunk(weight(),G.liq,G.S.area))return sink(`重さ${weight()}では、${LIQUIDS[G.liq].n}に沈みきってしまいます。`)}
+  if(!G.floating){const to=dp(weight(),G.liq);await tween(700,e=>{G.lift=20*(1-e);G.x=120*e;G.d=Math.min(to,HULL+1)*e;syncUI()});G.floating=true;G.d=to;bell(midiOf(to));syncUI();
+    if(isSunk(weight(),G.liq,G.S.area))return sink(`重さ${weight()}は上限${sinkingWeight(G.liq,G.S.area)}を超えて、沈みました。沈みきる重さは、比重 × 底面積${G.S.area} × 高さ${HULL}で決まります。`)}
   for(const g of S.gates){if(id!==run)return;
     if(g.k==='chamber'){await moveTo(g.x+70);const r=await chamber(g);if(!r)return;continue}
     const stop=g.k==='lever'?g.x+18:g.x;
@@ -164,22 +181,29 @@ async function depart(){if(G.busy)return;unlock();if(G.S.grid&&G.placed.length<G
 async function moveTo(x){const from=G.x;await tween(Math.max(450,Math.abs(x-from)*7),e=>{G.x=from+(x-from)*e})}
 async function chamber(g){say('入れ替え室：水を油に入れ替えます。');const id=run;const l2=$('#l2',G.c);const room=$('#room',G.c);room.setAttribute('x',g.x);room.setAttribute('width',140);room.setAttribute('fill',LIQUIDS[g.to].c);
   const wait0=await tween(600,e=>room.setAttribute('opacity',e));G.liq=g.to;G.passed=true;
-  const to=depthOf(weight(),g.to),from=G.d;await tween(900,e=>{G.d=from+(Math.min(to,HULL+1.2)-from)*e;syncUI()});G.d=to;bell(midiOf(to));syncUI();
-  if(isSunk(weight(),g.to)){sink(`油に入ると深さ${to.toFixed(2)}。船の高さ5を超えて沈みました。油に沈みきる重さは 0.8 × 10 × 5 ＝ 40です。`);return false}return true}
+  const to=dp(weight(),g.to),from=G.d;await tween(900,e=>{G.d=from+(Math.min(to,HULL+1.2)-from)*e;syncUI()});G.d=to;bell(midiOf(to));syncUI();
+  if(isSunk(weight(),g.to,G.S.area)){sink(`油に入ると深さ${to.toFixed(2)}。船の高さ5を超えて沈みました。油に沈みきる重さは 0.8 × ${G.S.area} × 5 ＝ ${sinkingWeight(g.to,G.S.area)}です。`);return false}return true}
 async function sink(msg){G.busy=true;G.sinking=true;lock(true);const from=G.d;tween(900,e=>{G.d=from+6*e});audio.sink();say(`<span class="who">アルキメデス</span>${msg}`);await wait(950);failButton()}
 function fail(msg){say(`<span class="who">アルキメデス</span>${msg}`);audio.miss();failButton()}
-function failButton(){const dep=$('#dep',G.c);dep.textContent='積み直す';dep.disabled=false;G.busy=false;dep.onclick=()=>restart()}
+function failButton(){const dep=$('#dep',G.c);G.busy=false;dep.disabled=false;
+  const r=R?R.record('ng'):'retry';const ng=$('#ng',G.c);if(ng)ng.textContent=ngText();
+  if(r==='gameover'){dep.textContent='結果へ';dep.onclick=()=>finish();return}
+  dep.textContent='積み直す';dep.onclick=()=>restart()}
 function restart(){stopRun();const keep=new Set(G.on);const n=G.n;const S=G.S;const pre=S.pre;
-  G.x=0;G.lift=S.cradle?20:0;G.floating=!S.cradle;G.sinking=false;G.passed=false;G.busy=false;G.liq=pre||S.start;
-  G.d=G.floating?depthOf(weight(),G.liq):0;if(G.d>HULL)G.d=HULL;
-  drawWorld();if(pre)$('#l1',G.c).setAttribute('fill',LIQUIDS[pre].c);renderShelf();syncUI();say(S.goal);const dep=$('#dep',G.c);dep.textContent='出航';dep.disabled=false;dep.onclick=()=>depart();loop(run)}
+  G.x=0;G.lift=S.cradle?20:0;G.floating=!S.cradle;G.sinking=false;G.passed=false;G.sailing=false;G.busy=false;G.liq=pre||S.start;
+  G.d=G.floating?dp(G.hide?SHIP:weight(),G.liq):0;if(G.d>HULL)G.d=HULL;
+  drawWorld();if(pre)$('#l1',G.c).setAttribute('fill',LIQUIDS[pre].c);renderShelf();syncUI();say(goalText(S));const dep=$('#dep',G.c);dep.textContent='出航';dep.disabled=false;dep.onclick=()=>depart();loop(run)}
 function win(){jingle();const S=G.S,n=G.n;const f=$('.frame',G.c);f.style.position='relative';f.insertAdjacentHTML('beforeend','<div class="stamp">エウレカ！</div>');
   say(`<span class="who">アルキメデス</span>${S.winner}<br><span class="nar">重さ${weight()}、深さ${G.d.toFixed(2)}で到着。</span>`);
-  $('#sh',G.c).innerHTML='';const dep=$('#dep',G.c);dep.disabled=false;dep.textContent=n<3?'次の面へ':'試作の終わりへ';dep.onclick=()=>{wood();if(n===0)scene('s7',()=>stage(1));else if(n===1)stage(2);else if(n===2)scene('s6',()=>stage(3));else ending()}}
-function ending(){stopRun();const c=show(`${topbar('試作の終わり')}<div class="frame">${ART.harbor()}</div><div class="say"><span class="nar">ここまでが試作です。ひとつ分かると、次の「まだ分からない」が見えてきます。</span></div>
-  <div class="goal">確かめたいこと：<br>・水銀で積んでも沈まない驚きはあったか<br>・音の変化で、液体の違いを感じたか<br>・序章の長さはちょうどよいか</div><button class="btn" id="n">表紙へ</button>`);wire(c);$('#n',c).onclick=()=>{wood();title()}}
+  $('#sh',G.c).innerHTML='';const dep=$('#dep',G.c);dep.disabled=false;
+  if(R){const r=R.record('clear');book.recordBest(R.level.id,R.cleared);
+    dep.textContent=r==='complete'?'結果へ':'次の面へ';dep.onclick=()=>{wood();r==='complete'?finish():enter(R.position)}}
+  else{dep.textContent='面を選ぶ';dep.onclick=()=>{wood();pick()}}}
+function finish(){stopRun();const run0=R,clear=run0.complete;const c=show(`${topbar(clear?'ALL CLEAR':'GAME OVER')}<div class="frame">${ART.harbor()}</div>
+  <div class="say"><span class="who">${clear?'エウレカ！':'見習い'}</span>${clear?'全部の面をクリアしました。':'今回はここまで。まだ分からないことが、見つかりました。'}<br><span class="nar">${run0.level.name}　クリア ${run0.cleared}/${run0.stageCount}面　NG ${run0.ng}回　最高 ${book.best(run0.level.id)}面</span></div><button class="btn" id="n">表紙へ</button>`);
+  wire(c);$('#n',c).onclick=()=>{wood();R=null;title()}}
 
-function flow(){scene('s1',()=>scene('s2',()=>bal1(()=>scene('s3',()=>scene('s4',()=>bal2(()=>quiz(()=>scene('s5',()=>stage(0)))))))))}
+function flow(){scene('s1',()=>scene('s2',()=>bal1(()=>scene('s3',()=>scene('s4',()=>bal2(()=>quiz(()=>scene('s5',()=>levels()))))))))}
 // ---- 通信なしで使う仕組みと、新しい版の案内（F-012） ----
 function setupOffline(){if(!document.querySelector('meta[name="float-offline"]')||!('serviceWorker' in navigator))return;
   const updates=createUpdateManager({serviceWorker:navigator.serviceWorker,currentVersion:APP_VERSION,canApply:()=>!G?.busy,reload:()=>location.reload(),
