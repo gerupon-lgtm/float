@@ -8,7 +8,7 @@ import { ART, INK, crown } from './art.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.1.0';
+const APP_VERSION = '0.2.0';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -129,10 +129,10 @@ function renderPack(){const S=G.S,sh=$('#sh',G.c);sh.style.display='block';const
   sh.innerHTML=`<div class="pack"><svg id="pk" viewBox="0 0 180 180" role="img" aria-label="積み場所。列をタップして荷を落とす">${g}<path d="M0 90H180" stroke="${INK}" stroke-width="2.5" stroke-dasharray="6 4"/>${cells}${[0,1,2,3,4,5].map(i=>`<rect data-col="${i}" x="${i*c}" y="0" width="${c}" height="180" fill="transparent"/>`).join('')}</svg>
   <div class="side">${S.items.map(([w,n,cw,ch],i)=>`<button class="chip" data-i="${i}" aria-pressed="${G.sel===i}" ${used.has(i)?'disabled':''}>${n} ${w}<small>${cw}×${ch}マス</small></button>`).join('')}<button class="chip" id="undo">ひとつ戻す</button></div></div>`;
   sh.querySelectorAll('.chip[data-i]').forEach(b=>b.onclick=()=>{if(G.busy)return;unlock();tap();G.sel=+b.dataset.i;renderPack()});
-  sh.querySelectorAll('[data-col]').forEach(r=>r.onclick=()=>{if(G.busy)return;unlock();if(G.sel==null){say('先に、積む荷を選びましょう。');return}if(drop(G.sel,+r.dataset.col)){tap();G.sel=null}shipSVG();renderPack();syncUI()});
+  sh.querySelectorAll('[data-col]').forEach(r=>r.onclick=()=>{if(G.busy)return;unlock();if(G.sel==null){say('先に、積む荷を選びましょう。');return}if(drop(G.sel,+r.dataset.col)){audio.land(S.items[G.sel][0]);G.sel=null}shipSVG();renderPack();syncUI()});
   $('#undo',sh).onclick=()=>{if(G.busy||!G.placed.length)return;tap();G.placed.pop();shipSVG();renderPack();syncUI()}}
 function renderShelf(){if(G.S.grid)return renderPack();const S=G.S,sh=$('#sh',G.c);sh.innerHTML=S.items.map(([w,n],i)=>`<button class="chip${w>=100?' lead':''}" data-i="${i}" aria-pressed="${G.on.has(i)}">${w}<small>${n}</small></button>`).join('');
-  sh.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{if(G.busy)return;unlock();const i=+b.dataset.i;G.on.has(i)?G.on.delete(i):G.on.add(i);b.setAttribute('aria-pressed',G.on.has(i));tap();shipSVG();
+  sh.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{if(G.busy)return;unlock();const i=+b.dataset.i;const adding=!G.on.has(i);adding?G.on.add(i):G.on.delete(i);b.setAttribute('aria-pressed',G.on.has(i));adding?audio.land(S.items[i][0]):tap();shipSVG();
     if(G.floating)settle();syncUI()})}
 function settle(){const to=depthOf(weight(),G.liq),from=G.d;const id=run;
   tween(380,e=>{if(id===run)G.d=from+(to-from)*e;syncUI()}).then(()=>{bell(midiOf(to),.17,.9);if(isSunk(weight(),G.liq))sink(`重さ${weight()}では、${LIQUIDS[G.liq].n}に沈みきってしまいます。`)})}
@@ -160,8 +160,8 @@ async function chamber(g){say('入れ替え室：水を油に入れ替えます�
   const wait0=await tween(600,e=>room.setAttribute('opacity',e));G.liq=g.to;G.passed=true;
   const to=depthOf(weight(),g.to),from=G.d;await tween(900,e=>{G.d=from+(Math.min(to,HULL+1.2)-from)*e;syncUI()});G.d=to;bell(midiOf(to));syncUI();
   if(isSunk(weight(),g.to)){sink(`油に入ると深さ${to.toFixed(2)}。船の高さ5を超えて沈みました。油に沈みきる重さは 0.8 × 10 × 5 ＝ 40です。`);return false}return true}
-async function sink(msg){G.busy=true;G.sinking=true;lock(true);const from=G.d;tween(900,e=>{G.d=from+6*e});bell(62,.2,1.2);say(`<span class="who">アルキメデス</span>${msg}`);await wait(950);failButton()}
-function fail(msg){say(`<span class="who">アルキメデス</span>${msg}`);bell(66,.14,.5);failButton()}
+async function sink(msg){G.busy=true;G.sinking=true;lock(true);const from=G.d;tween(900,e=>{G.d=from+6*e});audio.sink();say(`<span class="who">アルキメデス</span>${msg}`);await wait(950);failButton()}
+function fail(msg){say(`<span class="who">アルキメデス</span>${msg}`);audio.miss();failButton()}
 function failButton(){const dep=$('#dep',G.c);dep.textContent='積み直す';dep.disabled=false;G.busy=false;dep.onclick=()=>restart()}
 function restart(){stopRun();const keep=new Set(G.on);const n=G.n;const S=G.S;const pre=S.pre;
   G.x=0;G.lift=S.cradle?20:0;G.floating=!S.cradle;G.sinking=false;G.passed=false;G.busy=false;G.liq=pre||S.start;
