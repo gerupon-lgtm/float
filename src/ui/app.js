@@ -11,7 +11,7 @@ import { GRAPHICS } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.5.2';
+const APP_VERSION = '0.5.3';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -193,7 +193,8 @@ async function chamber(g){say(`入れ替え室：${LIQUIDS[G.liq].n}を${LIQUIDS
   if(isSunk(weight(),g.to,G.S.area)){sink(`${LIQUIDS[g.to].n}に入ると深さ${to.toFixed(2)}。船の高さ5を超えて沈みました。沈みきる重さは ${sinkingWeight(g.to,G.S.area)}です。`);return false}return true}
 async function sink(msg){G.busy=true;G.sinking=true;lock(true);const from=G.d;tween(900,e=>{G.d=from+6*e});audio.sink();say(`<span class="who">アルキメデス</span>${msg}`);await wait(950);failButton()}
 function fail(msg){say(`<span class="who">アルキメデス</span>${msg}`);audio.miss();failButton()}
-function failButton(){const dep=$('#dep',G.c);G.busy=false;dep.disabled=false;
+// 止まったあとは「積み直す」で港へ戻るまで、荷物を変えられない（busy のままにする）
+function failButton(){const dep=$('#dep',G.c);dep.disabled=false;
   const r=R?R.record('ng'):'retry';const ng=$('#ng',G.c);if(ng)ng.textContent=ngText();
   if(r==='gameover'){dep.textContent='結果へ';dep.onclick=()=>finish();return}
   dep.textContent='積み直す';dep.onclick=()=>restart()}
