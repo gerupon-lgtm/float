@@ -72,10 +72,11 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
   background:rgba(255,250,240,.9);padding:0 14px;font-size:30px;border-radius:8px;pointer-events:none}
 @media (prefers-reduced-motion:reduce){.card{transition:none}}
 
-/* PCだけ、絵・航路と読む／操作する場所を左右に分ける。SVG内部の座標は変えない。 */
-@media (min-width:1024px){
+/* 横置き（幅が高さより大きい画面）は、絵・航路と読む／操作する場所を左右に分ける。
+   AQUA・PRISMと同じく、幅の値ではなく画面の向きで切り替える。SVG内部の座標は変えない。 */
+@media (orientation:landscape){
   #app{max-width:1600px}
-  .card{padding:20px 28px}
+  .card{padding-block:20px;padding-left:max(28px,env(safe-area-inset-left,0px));padding-right:max(28px,env(safe-area-inset-right,0px))}
   .story-layout,.stage-layout{
     display:grid;grid-template-columns:minmax(0,1fr) clamp(340px,30vw,420px);
     grid-template-rows:auto minmax(0,1fr);gap:20px 24px;overflow:hidden;
@@ -107,11 +108,40 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
     align-items:center;gap:24px;padding:28px max(28px,calc((100% - 1000px)/2));background-image:none;
   }
   .title-hero{
-    --w:min(42vw,500px);display:flex;flex-direction:column;align-items:center;justify-self:center;
+    --w:min(42vw,500px,calc((100dvh - 110px)/1.2));display:flex;flex-direction:column;align-items:center;justify-self:center;
     width:var(--w);background-image:var(--title-art);background-size:100% auto;background-position:top center;background-repeat:no-repeat;
   }
   .title-menu{display:flex;flex-direction:column;align-items:center;gap:14px;min-width:0}
   .title-menu>.list{max-width:430px}
   .title-menu .btn{min-height:54px}
-  .title-hero .logo{font-size:100px}
+  .title-hero .logo{font-size:calc(var(--w)*.2)}
+}
+
+/* スマホの横置きなど、高さが低い画面（AQUAと同じ560px以下）。文字は保ち、余白とボタンを詰める。 */
+@media (orientation:landscape) and (max-height:560px){
+  .card{padding-block:6px}
+  .story-layout,.stage-layout{grid-template-columns:minmax(0,1fr) clamp(280px,38vw,360px);gap:6px 14px}
+  .story-layout>.frame{width:min(100%,calc((100dvh - 64px)*4/3))}
+  .stage-layout>.frame{width:min(100%,calc((100dvh - 64px)*360/236))}
+  .layout-side{gap:6px;padding-bottom:2px}
+  .layout-side>.btn:last-child,.layout-side>.row:last-child,.layout-side>.list.foot{margin-top:6px}
+  .story-layout .layout-side{padding-top:0;padding-bottom:4px}
+  /* 面の画面：棚と出航を先に見せる。説明は棚の下へ回し、出航は常に見える位置に固定する */
+  .stage-layout .layout-side>.stat{font-size:11.5px;white-space:nowrap}
+  .stage-layout .layout-side>.stat strong{font-size:18px}
+  .stage-layout .layout-side>.row .btn{min-height:42px;padding-block:4px}
+  .stage-layout .layout-side>.stat{order:1}
+  .stage-layout .layout-side>.formula{order:2;font-size:12.5px;line-height:1.35;padding:3px 8px}
+  .stage-layout .layout-side>.shelf{order:3}
+  .stage-layout .layout-side>.say{order:4;font-size:14px;line-height:1.5}
+  .stage-layout .layout-side>.row:last-child{order:5;position:sticky;bottom:-2px;margin-top:auto;padding-block:4px 2px;background:var(--paper);z-index:2}
+  .menu-layout{padding-block:8px;gap:8px}
+  .cover{padding-block:8px;gap:14px}
+  .title-hero{--w:min(42vw,calc((100dvh - 62px)/1.2))}
+  .title-hero .series{font-size:9px}.title-hero .series span{font-size:18px}
+  .title-hero .logo2{font-size:16px}
+  .title-hero .tag{font-size:13px;margin-top:2px}
+  .title-menu{gap:4px}
+  .title-menu>.list{gap:5px}
+  .title-menu .btn{min-height:42px;padding:4px;font-size:16px;white-space:nowrap}
 }
