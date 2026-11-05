@@ -114,7 +114,7 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
   .title-menu{display:flex;flex-direction:column;align-items:center;gap:14px;min-width:0}
   .title-menu>.list{max-width:430px}
   .title-menu .btn{min-height:54px}
-  .title-hero .logo{font-size:calc(var(--w)*.2)}
+  .title-hero .logo{font-size:min(108px,calc(var(--w)*.27))}
 }
 
 /* スマホの横置きなど、高さが低い画面（AQUAと同じ560px以下）。文字は保ち、余白とボタンを詰める。 */
@@ -135,12 +135,22 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
   .stage-layout .layout-side>.shelf{order:3}
   .stage-layout .layout-side>.say{order:4;font-size:14px;line-height:1.5}
   .stage-layout .layout-side>.row:last-child{order:5;position:sticky;bottom:-2px;margin-top:auto;padding-block:4px 2px;background:var(--paper);z-index:2}
+  /* 3択：3つ目まで1画面に収める。文字の改行が減るよう、札を小さくし左右の余白を詰める */
+  .story-layout .layout-side:has(.choice){gap:5px}
+  .layout-side>.say:has(+.list .choice){font-size:14px;line-height:1.45;padding:6px 10px}
+  .layout-side>.list:has(.choice){gap:5px!important;margin-top:0!important}
+  .choice{padding:4px 8px;gap:6px;font-size:15px;line-height:1.3;min-height:44px;box-shadow:0 3px 0 var(--ink);border-width:2px}
+  .choice .key{width:26px;height:26px;font-size:13px;border-width:2px}
+  .choice .go{font-size:13px}
+  .choice .txt{text-wrap:wrap}
   .menu-layout{padding-block:8px;gap:8px}
-  .cover{padding-block:8px;gap:14px}
-  .title-hero{--w:min(42vw,calc((100dvh - 62px)/1.2))}
-  .title-hero .series{font-size:9px}.title-hero .series span{font-size:18px}
-  .title-hero .logo2{font-size:16px}
-  .title-hero .tag{font-size:13px;margin-top:2px}
+  .cover{padding-block:8px;gap:14px;overflow:hidden}
+  /* ロゴの幅をAQUA・PRISM（約360px）に近づける。絵は画面の高さいっぱいに使う */
+  .title-hero{--w:min(44vw,calc((100dvh - 16px)/1.19))}
+  .title-hero .logo{font-size:calc(var(--w)*.3);margin-top:2px;-webkit-text-stroke-width:3px}
+  .title-hero .logo2{font-size:calc(var(--w)*.085)}
+  .title-hero .series{font-size:calc(var(--w)*.032)}.title-hero .series span{font-size:calc(var(--w)*.07)}
+  .title-hero .tag{font-size:calc(var(--w)*.048);margin-top:2px}
   .title-menu{gap:4px}
   .title-menu>.list{gap:5px}
   .title-menu .btn{min-height:42px;padding:4px;font-size:16px;white-space:nowrap}
