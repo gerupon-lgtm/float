@@ -18,7 +18,7 @@ body{background:var(--wood2);color:var(--ink);font-family:var(--body);font-size:
 .card.enter{transform:translateX(102%)}
 .card.leave{transform:translateX(-30%)}
 .top{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px;min-height:30px}
-.top b{font-family:var(--disp);font-weight:400;font-size:15px}
+.top b{font-family:var(--disp);font-weight:400;font-size:14px;min-width:0;line-height:1.25}.top span:not(#ng){flex:none;white-space:nowrap}
 .tiny{border:2px solid var(--ink);background:transparent;color:var(--ink);border-radius:6px;font:inherit;font-size:12px;padding:2px 8px;cursor:pointer}
 .frame{border:7px solid var(--wood);outline:2px solid var(--wood2);border-radius:4px;background:var(--sky);overflow:hidden;flex:none}
 .frame svg{display:block;width:100%;height:auto}
@@ -58,6 +58,6 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 .tag{margin:6px 0 0;font-family:var(--disp);font-size:18px}
 .list{display:grid;gap:8px;width:100%;max-width:360px}
 .fine{font-size:12px}
-.stamp{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) rotate(-8deg);font-family:var(--disp);color:var(--red);border:5px solid var(--red);
-  background:rgba(255,250,240,.9);padding:2px 16px;font-size:34px;border-radius:8px;pointer-events:none}
+.stamp{position:absolute;left:50%;top:22%;white-space:nowrap;transform:translate(-50%,-50%) rotate(-8deg);font-family:var(--disp);color:var(--red);border:5px solid var(--red);
+  background:rgba(255,250,240,.9);padding:0 14px;font-size:30px;border-radius:8px;pointer-events:none}
 @media (prefers-reduced-motion:reduce){.card{transition:none}}
