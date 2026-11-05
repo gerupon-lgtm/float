@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>*{box-sizing:border-box}body{margin:0}[hidden]{display:none!important}</style>
+</head><body>
+<title>FLOAT NOTES</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Montserrat:wght@500;700&family=Yusei+Magic&display=swap">
+<style>
+/* 紙芝居の舞台：木枠の中に1枚の絵、その下に語りと操作。単一の世界観なのでライト固定。 */
+:root{
+  --paper:#f7efdc; --ink:#23304a; --wood:#8a5a2e; --wood2:#5f3b1c;
+  --red:#d6452c; --yellow:#efb32a; --sky:#8fd0d4; --sand:#e8c98a;
+  --water:#3f97c0; --oil:#d9a324; --mercury:#aab3bd; --good:#2e7d5b;
+  --disp:"Yusei Magic","Klee One","Hiragino Maru Gothic ProN",sans-serif;
+  --body:"Klee One","Hiragino Sans","Yu Gothic",sans-serif;
+  --latin:"Montserrat","Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+html,body{height:100%}
+body{background:var(--wood2);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;overflow:hidden}
+#app{height:100%;max-width:520px;margin:0 auto;position:relative;overflow:hidden}
+.card{position:absolute;inset:0;display:flex;flex-direction:column;gap:8px;background:var(--paper);
+  padding-left:max(14px,env(safe-area-inset-left,0px));padding-right:max(14px,env(safe-area-inset-right,0px));padding-block:10px;
+  overflow-y:auto;transition:transform .42s cubic-bezier(.3,.8,.3,1)}
+.card.enter{transform:translateX(102%)}
+.card.leave{transform:translateX(-30%)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px;min-height:30px}
+.top b{font-family:var(--disp);font-weight:400;font-size:15px}
+.tiny{border:2px solid var(--ink);background:transparent;color:var(--ink);border-radius:6px;font:inherit;font-size:12px;padding:2px 8px;cursor:pointer}
+.frame{border:7px solid var(--wood);outline:2px solid var(--wood2);border-radius:4px;background:var(--sky);overflow:hidden;flex:none}
+.frame svg{display:block;width:100%;height:auto}
+.say{background:#fffaf0;border:2.5px solid var(--ink);border-radius:10px 14px 12px 8px;padding:8px 12px;min-height:74px;font-size:16px}
+.say .who{font-family:var(--disp);color:var(--red);font-size:14px;display:block}
+.say .nar{color:#4a5468}
+.btn{appearance:none;border:3px solid var(--ink);background:var(--yellow);color:var(--ink);font-family:var(--disp);font-size:18px;
+  border-radius:9px;padding:9px 12px;min-height:48px;cursor:pointer;box-shadow:0 3px 0 var(--ink);width:100%}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
+.btn.sub{background:#fffaf0;font-size:16px}
+.btn:disabled{opacity:.45}
+button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;font-size:13px;text-align:center}
+.stat div{background:#fffaf0;border:2px solid var(--ink);border-radius:7px;padding:2px 4px;min-width:0}
+.stat strong{display:block;font-family:var(--latin);font-size:20px;font-variant-numeric:tabular-nums;line-height:1.2}
+.formula{font-size:14px;background:#eadfc4;border-radius:6px;padding:4px 8px;text-align:center}
+.formula em{font-style:normal;font-family:var(--latin);font-weight:700}
+.goal{font-size:14px}
+.shelf{display:grid;grid-template-columns:repeat(auto-fit,minmax(46px,1fr));gap:6px}
+.chip{border:2.5px solid var(--ink);background:#fffaf0;color:var(--ink);border-radius:7px;font-family:var(--latin);font-weight:700;font-size:15px;
+  min-height:44px;padding:2px 4px;cursor:pointer;min-width:0}
+.chip small{display:block;font-family:var(--body);font-weight:400;font-size:11px;line-height:1.1}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fffaf0}
+.chip.lead{background:#59616e;color:#fff}
+.chip.lead[aria-pressed="true"]{background:var(--red)}
+.scale{font-size:12px;display:inline-block;border:2px solid var(--good);color:var(--good);border-radius:12px;padding:0 8px;margin-left:6px;font-weight:600}
+/* 表紙 */
+.cover{justify-content:center;align-items:center;text-align:center;gap:14px;background:var(--sky)}
+.series{display:flex;align-items:center;gap:10px;font-family:var(--latin);font-weight:700;color:var(--ink);letter-spacing:.14em;font-size:11px;line-height:1.2;text-align:left}
+.series span{border-left:2px solid var(--ink);padding-left:10px;font-size:22px;letter-spacing:0}
+.logo{font-family:var(--latin);font-weight:700;font-size:clamp(58px,19vw,92px);letter-spacing:.03em;line-height:1;color:var(--red);-webkit-text-stroke:2px var(--ink)}
+.logo2{font-family:var(--latin);font-weight:500;letter-spacing:.42em;font-size:26px;margin-right:-.42em}
+.tag{font-family:var(--disp);font-size:18px}
+.list{display:grid;gap:8px;width:100%;max-width:340px}
+.fine{font-size:12px}
+.stamp{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) rotate(-8deg);font-family:var(--disp);color:var(--red);border:5px solid var(--red);
+  background:rgba(255,250,240,.9);padding:2px 16px;font-size:34px;border-radius:8px;pointer-events:none}
+@media (prefers-reduced-motion:reduce){.card{transition:none}}
+</style>
+
+<div id="app"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <filter id="wob"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="3.5"/></filter>
+</defs></svg>
+
+<script>
+"use strict";
+/* ---------- 物理：このページの計算はすべてここだけ ---------- */
+const AREA=10, HULL=5, SHIP=10;
+const LIQ={water:{n:'水',s:1,c:'var(--water)'},oil:{n:'油',s:.8,c:'var(--oil)'},mercury:{n:'水銀',s:13.5,c:'var(--mercury)'}};
+const depthOf=(w,s)=>w/(s*AREA);
+const EPS=1e-9;
+
+/* ---------- 音：深さ→音の高さ。0.5ごとにCペンタトニックを下行。深いほど低い ---------- */
+const STEPS=[96,93,91,88,86,84,81,79,76,74,72];
+function midiOf(d){const p=Math.max(0,Math.min(d,HULL))*2,i=Math.min(Math.floor(p),9);return STEPS[i]+(STEPS[i+1]-STEPS[i])*(p-i)}
+const onScale=d=>d<=HULL+EPS&&Math.abs(d*2-Math.round(d*2))<1e-6;
+let ctx=null,muted=false;
+function unlock(){if(!ctx){const C=window.AudioContext||window.webkitAudioContext;if(C)ctx=new C()}if(ctx&&ctx.state==='suspended')ctx.resume()}
+function bell(m,g=.2,dur=1.1){if(!ctx||muted)return;const t=ctx.currentTime,f=440*2**((m-69)/12);
+  [[1,g,dur],[3.93,g*.28,.14],[2,g*.16,dur*.5]].forEach(([r,a,l])=>{const o=ctx.createOscillator(),v=ctx.createGain();o.frequency.value=f*r;
+    v.gain.setValueAtTime(a,t);v.gain.exponentialRampToValueAtTime(.0001,t+l);o.connect(v).connect(ctx.destination);o.start(t);o.stop(t+l+.02)})}
+function wood(at=0){if(!ctx||muted)return;const t=ctx.currentTime+at,o=ctx.createOscillator(),v=ctx.createGain();o.type='square';o.frequency.value=1700;
+  v.gain.setValueAtTime(.12,t);v.gain.exponentialRampToValueAtTime(.0001,t+.05);o.connect(v).connect(ctx.destination);o.start(t);o.stop(t+.06)}
+const clack=()=>{wood(0);wood(.16)};
+const tap=()=>{if(!ctx||muted)return;const t=ctx.currentTime,o=ctx.createOscillator(),v=ctx.createGain();o.type='triangle';o.frequency.value=420;
+  v.gain.setValueAtTime(.09,t);v.gain.exponentialRampToValueAtTime(.0001,t+.07);o.connect(v).connect(ctx.destination);o.start(t);o.stop(t+.08)};
+const jingle=()=>[84,88,91,96].forEach((m,i)=>setTimeout(()=>bell(m,.14,.7),i*130));
+
+/* ---------- 紙芝居の絵（すべて手作りの図形） ---------- */
+const INK='#23304a';
+const face=(x,y,r,skin='#f2c79b')=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}" stroke="${INK}" stroke-width="3"/>`;
+const eyes=(x,y,g=7)=>`<circle cx="${x-g}" cy="${y}" r="2.6" fill="${INK}"/><circle cx="${x+g}" cy="${y}" r="2.6" fill="${INK}"/>`;
+const apprentice=(x,y,s='<path d="M-6 10q6 6 12 0" fill="none" stroke="#23304a" stroke-width="2.6"/>')=>`<g transform="translate(${x} ${y})">
+  <path d="M-24 92 L-18 34 Q0 24 18 34 L24 92Z" fill="#e7dfc9" stroke="${INK}" stroke-width="3"/><path d="M-16 40 L16 62" stroke="#d6452c" stroke-width="7"/>
+  ${face(0,0,25)}<path d="M-25 -2Q-22 -30 2 -28Q24 -28 25 -4Q12 -18 -2 -14Q-14 -12 -25 -2Z" fill="#6b3f1d" stroke="${INK}" stroke-width="3"/>
+  ${eyes(0,1)}<g transform="translate(0 0)">${s}</g></g>`;
+const master=(x,y)=>`<g transform="translate(${x} ${y})">
+  <path d="M-36 110 L-26 38 Q0 24 26 38 L36 110Z" fill="#fffaf0" stroke="${INK}" stroke-width="3"/><path d="M-22 44L24 104" stroke="#3f97c0" stroke-width="9"/>
+  ${face(0,0,29)}<path d="M-26 4Q-30 52 0 60Q30 52 26 4Q14 18 0 15Q-14 18 -26 4Z" fill="#f0f0ea" stroke="${INK}" stroke-width="3"/>
+  <path d="M-29 -4Q-40 -14 -30 -24M29 -4Q40 -14 30 -24" fill="none" stroke="${INK}" stroke-width="5"/>${eyes(0,-5,10)}</g>`;
+const king=(x,y)=>`<g transform="translate(${x} ${y})">
+  <path d="M-48 120 L-38 40 Q0 22 38 40 L48 120Z" fill="#7a3a8c" stroke="${INK}" stroke-width="3"/>
+  ${face(0,0,32)}<path d="M-30 12Q-20 44 0 42Q20 44 30 12Q14 22 0 20Q-14 22 -30 12Z" fill="#3a2a22" stroke="${INK}" stroke-width="3"/>
+  <path d="M-26 -22 L-30 -52 L-13 -36 L0 -56 L13 -36 L30 -52 L26 -22Z" fill="#efb32a" stroke="${INK}" stroke-width="3"/>${eyes(0,-4,11)}</g>`;
+const crown=(x,y,s=1)=>`<path transform="translate(${x} ${y}) scale(${s})" d="M-22 12 L-27 -14 L-11 0 L0 -18 L11 0 L27 -14 L22 12Z" fill="#efb32a" stroke="${INK}" stroke-width="3"/>`;
+const smith=(x,y)=>`<g transform="translate(${x} ${y})"><path d="M-26 80 L-22 30 Q0 22 22 30 L26 80Z" fill="#5a4a3a" stroke="${INK}" stroke-width="3"/>
+  ${face(0,0,23)}${eyes(4,-2,6)}<path d="M-6 9q8 -5 14 2" fill="none" stroke="${INK}" stroke-width="2.6"/><path d="M30 -24q7 10 0 14q-7 -4 0 -14z" fill="#8fd0d4" stroke="${INK}" stroke-width="2"/></g>`;
+const wrap=(bg,inner)=>`<svg viewBox="0 0 360 230" role="img"><rect width="360" height="230" fill="${bg}"/><g filter="url(#wob)">${inner}</g></svg>`;
+const ART={
+  palace:()=>wrap('#f3c86a',`<rect y="178" width="360" height="52" fill="#b9793c"/><rect x="24" y="40" width="26" height="140" fill="#fffaf0" stroke="${INK}" stroke-width="3"/><rect x="310" y="40" width="26" height="140" fill="#fffaf0" stroke="${INK}" stroke-width="3"/>${king(120,78)}${crown(208,120,1.1)}${smith(280,108)}`),
+  order:()=>wrap('#a6d8c5',`<rect y="178" width="360" height="52" fill="#c9a06a"/><rect x="250" y="66" width="86" height="112" fill="#fffaf0" stroke="${INK}" stroke-width="3"/>${master(96,72)}${apprentice(218,92)}`),
+  bath:()=>wrap('#f1a95e',`<rect y="176" width="360" height="54" fill="#8f5f33"/><path d="M42 132H318L296 196H64Z" fill="#fffaf0" stroke="${INK}" stroke-width="4"/><path d="M50 134H310" stroke="#3f97c0" stroke-width="13"/><path d="M36 126q10 26 -2 54M326 126q-10 26 2 54" stroke="#3f97c0" stroke-width="6" fill="none"/>${face(180,96,32)}<path d="M150 104Q148 142 180 148Q212 142 210 104Q196 118 180 116Q164 118 150 104Z" fill="#f0f0ea" stroke="${INK}" stroke-width="3"/>${eyes(180,92,11)}<path d="M100 42q14 -18 32 -4q10 -18 30 -4M220 34q16 -16 30 -2q12 -14 28 0" stroke="#fffaf0" stroke-width="7" fill="none"/>`),
+  eureka:()=>wrap('#e3573f',`<rect y="182" width="360" height="48" fill="#d9c08b"/>${[40,100,290,330].map(x=>`<rect x="${x}" y="60" width="34" height="122" fill="#f3c86a" stroke="${INK}" stroke-width="3"/>`).join('')}<g transform="translate(180 96)">${face(0,0,29)}<path d="M-26 4Q-30 50 0 58Q30 50 26 4Q14 18 0 15Q-14 18 -26 4Z" fill="#f0f0ea" stroke="${INK}" stroke-width="3"/>${eyes(0,-5,10)}<path d="M-30 58H30L24 96H-24Z" fill="#f2c79b" stroke="${INK}" stroke-width="3"/><path d="M-46 46 L-30 20M46 46L30 20" stroke="${INK}" stroke-width="7"/></g><rect x="134" y="146" width="92" height="42" fill="#fffaf0" stroke="${INK}" stroke-width="4" transform="rotate(-4 180 166)"/><text x="180" y="176" text-anchor="middle" font-family="Yusei Magic,sans-serif" font-size="25" fill="#d6452c" transform="rotate(-4 180 166)">自主規制</text>`),
+  harbor:()=>wrap('#8fd0d4',`<rect y="140" width="360" height="90" fill="#3f97c0"/><path d="M0 140Q90 118 170 140" fill="#d9c08b" stroke="${INK}" stroke-width="3"/><g transform="translate(260 140)"><path d="M-64 -30H64L46 12H-46Z" fill="#b9793c" stroke="${INK}" stroke-width="3"/></g>${apprentice(92,50)}${master(170,34)}`),
+  surprise:()=>wrap('#d7dde2',`<rect y="150" width="360" height="80" fill="#aab3bd"/><path d="M40 182q40 -14 80 0t80 0t80 0t60 -4" stroke="#fffaf0" stroke-width="5" fill="none"/><g transform="translate(250 150)"><path d="M-64 -56H64L46 -8H-46Z" fill="#b9793c" stroke="${INK}" stroke-width="3"/>${[-30,0,30,-16,14,-2].map((x,i)=>`<rect x="${x-14}" y="${-78-Math.floor(i/3)*22-(i>4?22:0)}" width="28" height="22" fill="#e7b76a" stroke="${INK}" stroke-width="3"/>`).join('')}</g>${apprentice(82,58,'<ellipse cx="0" cy="12" rx="6" ry="8" fill="#23304a"/>')}`)
+};
+const SCENES={
+  s1:{art:'palace',nar:'むかし、シラクサの国。王は金細工師に、純金の王冠を作らせました。',who:'ヒエロン王',say:'重さは合っておる。だが、銀が混ぜられたという噂だ！'},
+  s2:{art:'order',nar:'相談を受けたのは、学者のアルキメデス。工房には、見習いがひとりいました。',who:'アルキメデス',say:'見習いよ、重さを比べてごらん。王冠は、壊してはならんぞ。'},
+  s3:{art:'bath',nar:'見習いが悩むある日。師匠が湯に入ると、湯があふれ、体がふわりと軽くなりました。',who:'アルキメデス',say:'む……！ 押しのけた湯の分だけ、軽くなっておるぞ！'},
+  s4:{art:'eureka',nar:'伝えられる話では、師匠はそのまま町へ走り出したそうです。',who:'アルキメデス',say:'エウレカ！（分かったぞ！）'},
+  s5:{art:'harbor',nar:'王冠の謎が解けると、王は言いました。「では、港の荷を船で運べ」。',who:'アルキメデス',say:'液体が変われば、沈み方も変わる。見習いよ、測ってごらん。'},
+  s6:{art:'surprise',nar:'水の入れ替え室の先は、銀色に光る湖。これは架空の湖です。本物の水銀は毒性が強く、触れません。',who:'見習い',say:'えっ？ 水ならとっくに沈む荷なのに……！'}
+};
+
+/* ---------- 画面の土台 ---------- */
+const app=document.getElementById('app');
+const $=(s,r=document)=>r.querySelector(s);
+let cur=null;
+function show(html,cls=''){const c=document.createElement('section');c.className='card enter '+cls;c.innerHTML=html;app.append(c);
+  const old=cur;cur=c;requestAnimationFrame(()=>requestAnimationFrame(()=>{c.classList.remove('enter');if(old){old.classList.add('leave');setTimeout(()=>old.remove(),460)}}));return c}
+const topbar=t=>`<div class="top"><b>${t}</b><span><button class="tiny" id="mute">${muted?'音なし':'音あり'}</button> <button class="tiny" id="home">表紙</button></span></div>`;
+function wire(c){const m=$('#mute',c),h=$('#home',c);if(m)m.onclick=()=>{muted=!muted;m.textContent=muted?'音なし':'音あり'};if(h)h.onclick=()=>{stopRun();title()}}
+
+function title(){const c=show(`<div class="series">SIKUMI<br>NOTES<span>03</span></div><div><div class="logo">FLOAT</div><div class="logo2">NOTES</div></div>
+  <div class="tag">積んで、浮かべて、確かめる。</div><div class="list"><button class="btn" id="go">はじめる</button>
+  <div class="row"><button class="btn sub" id="j1">水の面</button><button class="btn sub" id="j2">油の面</button></div><button class="btn sub" id="j3">水銀の面</button></div>
+  <div class="fine">© SIKUMI LAB　試作 0.1　音が鳴ります</div>`,'cover');
+  $('#go',c).onclick=()=>{unlock();clack();flow(0)};
+  [1,2,3].forEach(n=>$('#j'+n,c).onclick=()=>{unlock();clack();stage(n-1)})}
+
+function scene(k,next){const s=SCENES[k];const c=show(`${topbar('紙芝居')}<div class="frame">${ART[s.art]()}</div>
+  <div class="say"><span class="nar">${s.nar}</span><span class="who" style="margin-top:4px">${s.who}</span>${s.say}</div><button class="btn" id="n">つづき</button>`);
+  wire(c);$('#n',c).onclick=()=>{wood();next()}}
+
+/* ---------- 序章：天秤 ---------- */
+function balanceArt(tilt,water){const L=180-96,R=180+96,dy=Math.sin(tilt*Math.PI/180)*96;
+  const pan=(x,y,o)=>`<path d="M${x} 62 L${x-28} ${y} M${x} 62 L${x+28} ${y}" transform="translate(0 ${0})" stroke="${INK}" stroke-width="2"/>`;
+  const ly=120-dy,ry=120+dy;
+  return `<svg viewBox="0 0 360 230" role="img" aria-label="天秤"><rect width="360" height="230" fill="#f3c86a"/>
+  <rect y="${water?150:230}" width="360" height="80" fill="#3f97c0" opacity=".85"/>
+  <path d="M180 200V60" stroke="${INK}" stroke-width="7"/><rect x="146" y="196" width="68" height="14" fill="#8a5a2e" stroke="${INK}" stroke-width="3"/>
+  <g transform="rotate(${tilt} 180 60)"><path d="M${L} 60H${R}" stroke="${INK}" stroke-width="7"/></g>
+  <path d="M${L} ${60-dy} V${ly}" stroke="${INK}" stroke-width="2.5"/><path d="M${R} ${60+dy} V${ry}" stroke="${INK}" stroke-width="2.5"/>
+  ${crown(L,ly+26,1)}<rect x="${R-14}" y="${ry+18}" width="28" height="20" fill="#efb32a" stroke="${INK}" stroke-width="3"/>
+  <path d="M${L-30} ${ly+40}H${L+30}" stroke="${INK}" stroke-width="4"/><path d="M${R-30} ${ry+40}H${R+30}" stroke="${INK}" stroke-width="4"/>
+  <text x="${L}" y="${ly+58}" text-anchor="middle" font-size="14" fill="#fff">王冠</text><text x="${R}" y="${ry+58}" text-anchor="middle" font-size="14" fill="#fff">純金</text></svg>`}
+function bal1(next){const c=show(`${topbar('序章 1　天秤')}<div class="frame" id="f">${balanceArt(0,false)}</div>
+  <div class="say" id="t"><span class="nar">王冠と、同じ重さの純金。天秤にかけて比べてみましょう。</span></div><button class="btn" id="a">空気の中で量る</button>`);
+  wire(c);$('#a',c).onclick=function(){wood();this.textContent='つづき';$('#t',c).innerHTML='<span class="who">見習い</span>つり合った。重さでは、見分けられない……。';this.onclick=()=>{wood();next()}}}
+function bal2(next){const c=show(`${topbar('序章 2　水の中の天秤')}<div class="frame" id="f">${balanceArt(0,false)}</div>
+  <div class="say" id="t"><span class="who">アルキメデス</span>師匠の風呂を思い出すのだ。では、水に沈めて測ってごらん。</div><button class="btn" id="a">水に沈める</button>`);
+  wire(c);$('#a',c).onclick=function(){bell(84);let i=0;const f=$('#f',c);const tick=()=>{i++;f.innerHTML=balanceArt(Math.min(i,12),true);if(i<12)requestAnimationFrame(tick)};tick();
+    this.textContent='つづき';$('#t',c).innerHTML='<span class="who">見習い</span>えっ？ 王冠の側が、上がった！';this.onclick=()=>{wood();next()}}}
+function quiz(next){const O=[['王冠のほうが、もともと軽いから',0],['王冠のほうが体積が大きく、水を多く押しのけたから',1],['水の中では、金だけが重くなるから',0]];
+  const c=show(`${topbar('序章 3　なぜ？')}<div class="frame">${balanceArt(12,true)}</div><div class="say" id="t"><span class="who">アルキメデス</span>空気の中ではつり合ったな。なぜ、水の中で王冠が上がった？</div>
+  <div class="list" style="max-width:none">${O.map((o,i)=>`<button class="btn sub" data-i="${i}" style="font-size:15px">${o[0]}</button>`).join('')}</div>`);
+  wire(c);c.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{const ok=O[+b.dataset.i][1];if(ok){jingle();
+    $('#t',c).innerHTML='<span class="who">アルキメデス</span>そのとおり。押しのけた液体の重さが、浮く力になる。銀が混ざると体積が増えるのだ。';
+    $('.list',c).innerHTML='<button class="btn" id="n">つづき</button>';$('#n',c).onclick=()=>{wood();next()}}
+    else{tap();$('#t',c).innerHTML='<span class="who">アルキメデス</span>ふむ。空気の中ではつり合っていたぞ。もう一度考えてごらん。'}})}
+
+/* ---------- 航路の盤面 ---------- */
+const U=12, SURF=128, W=360, H=236;
+const STAGES=[
+ {name:'水の面',start:'water',cradle:true,on:[],items:[[5,'木箱'],[10,'壺'],[15,'麦袋'],[20,'石'],[25,'鉄']],gates:[{k:'shoal',x:300,d:4},{k:'bridge',x:560,d:3}],end:800,
+  goal:'浅瀬は深さ4以下、低い橋は深さ3以上で通れます。船だけの重さは10です。',
+  winner:'計算どおりだな。全部積むとどうなるか、試すのも学びだぞ。'},
+ {name:'油の面',start:'water',on:[0,1,2,3],items:[[12,'鉄'],[10,'壺'],[8,'麦袋'],[5,'木箱']],gates:[{k:'chamber',x:300,to:'oil'},{k:'bridge',x:620,d:4.5}],end:860,
+  goal:'入れ替え室の先は油です。油の先の低い橋は、深さ4.5以上で通れます。荷物を調整してから進みましょう。',
+  winner:'水より軽い液体では、同じ荷でも深く沈むのだ。'},
+ {name:'水銀の面',start:'water',pre:'mercury',on:[],items:[[10,'木箱'],[10,'木箱'],[10,'木箱'],[10,'木箱'],[10,'木箱'],[10,'木箱'],[20,'鉄箱'],[20,'鉄箱'],[20,'鉄箱'],[20,'鉄箱'],[100,'鉛'],[100,'鉛'],[100,'鉛'],[100,'鉛']],gates:[{k:'lever',x:320,d:3},{k:'shoal',x:580,d:3.5}],end:800,
+  goal:'水中のレバーは深さ3以上で届き、門が開きます。その先の浅瀬は深さ3.5以下です。',
+  winner:'沈まぬことが、困りごとになることもあるのだ。さて、次は何を測る？'}
+];
+let G=null, run=0;
+function stopRun(){run++}
+function wait(ms){return new Promise(r=>setTimeout(r,matchMedia('(prefers-reduced-motion:reduce)').matches?Math.min(ms,80):ms))}
+function tween(ms,fn){const id=run;if(matchMedia('(prefers-reduced-motion:reduce)').matches)ms=Math.min(ms,80);return new Promise(res=>{const t0=performance.now();
+  const f=now=>{if(id!==run)return;const p=Math.min(1,(now-t0)/ms),e=p*p*(3-2*p);fn(e);if(p<1)requestAnimationFrame(f);else res()};requestAnimationFrame(f)})}
+
+function stage(n){stopRun();const S=STAGES[n];
+  G={n,S,on:new Set(S.on),liq:S.pre?S.start:S.start,x:0,d:0,lift:S.cradle?20:0,busy:false,floating:!S.cradle,room:null,opened:false,bottomExtra:0};
+  G.d=G.floating?depthOf(weight(),LIQ[G.liq].s):0;
+  const c=show(`${topbar(S.name)}<div class="frame"><svg id="b" viewBox="0 0 ${W} ${H}" role="img" aria-label="航路の断面図"></svg></div>
+    <div class="stat"><div>液体の比重<strong id="sg"></strong></div><div>船全体の重さ<strong id="wt"></strong></div><div>沈む深さ<strong id="dp"></strong></div></div>
+    <div class="formula" id="fm"></div><div class="say" id="t" style="min-height:60px"></div>
+    <div class="shelf" id="sh"></div><div class="row"><button class="btn sub" id="ring">深さの音</button><button class="btn" id="dep">出航</button></div>`);
+  wire(c);G.c=c;drawWorld();$('#t',c).innerHTML=S.goal;renderShelf();syncUI();loop(run);
+  $('#dep',c).onclick=()=>depart();$('#ring',c).onclick=()=>{unlock();if(G.floating)bell(midiOf(G.d));else{tap();say('船が水に入ると、沈んだ深さの音が鳴ります。')}};
+  if(S.pre)intoMercury()}
+
+const weight=()=>SHIP+[...G.on].reduce((a,i)=>a+G.S.items[i][0],0);
+const say=h=>{$('#t',G.c).innerHTML=h};
+function liqSect(){const g=G.S.gates.find(x=>x.k==='chamber');return g?g.x:null}
+
+function drawWorld(){const S=G.S,sp=liqSect();const b=$('#b',G.c);
+  const gates=S.gates.map((g,i)=>gateSVG(g,i)).join('');
+  b.innerHTML=`<rect width="${W}" height="${H}" fill="var(--sky)"/>
+  <path d="M0 40q30 -20 60 0t60 0M240 56q30 -20 60 0t50 0" fill="none" stroke="#fffaf0" stroke-width="7"/>
+  <g id="cam"><rect id="l1" x="-500" y="${SURF}" width="${(sp??2000)+500}" height="${H-SURF}" fill="${LIQ[G.liq].c}"/>
+  ${sp!=null?`<rect id="l2" x="${sp}" y="${SURF}" width="2000" height="${H-SURF}" fill="${LIQ.oil.c}"/>`:''}
+  <rect id="room" x="-70" y="${SURF}" width="0" height="${H-SURF}" fill="var(--mercury)"/>
+  ${G.S.cradle?`<path d="M-500 ${SURF+1}H70L120 ${H}H-500Z" fill="var(--sand)" stroke="${INK}" stroke-width="3"/>`:''}
+  ${gates}<path d="M${S.end} ${SURF+2}V${SURF-58}" stroke="${INK}" stroke-width="5"/><path d="M${S.end} ${SURF-58}l36 11l-36 11z" fill="var(--red)" stroke="${INK}" stroke-width="3"/><text x="${S.end+6}" y="${SURF-64}" font-size="13" fill="${INK}">港</text>
+  <g id="ship"></g><g id="fx"></g></g>
+  <g id="scale"></g>`;
+  const sc=$('#scale',b);let s='';for(let i=0;i<=5;i++){const y=SURF+i*U;s+=`<path d="M8 ${y}h${i%5?7:12}" stroke="${INK}" stroke-width="2"/><text x="23" y="${y+4}" font-size="10" fill="${INK}">${i}</text>`}sc.innerHTML=s+`<text x="6" y="${SURF-9}" font-size="10" fill="${INK}">深さ</text>`;
+  shipSVG()}
+function gateSVG(g,i){const x=g.x;
+  if(g.k==='shoal'){const y=SURF+g.d*U;return `<path d="M${x-52} ${H}Q${x-30} ${y+2} ${x} ${y}Q${x+30} ${y+2} ${x+52} ${H}Z" fill="#8c7a63" stroke="${INK}" stroke-width="3"/><text x="${x}" y="${H-5}" text-anchor="middle" font-size="12" fill="#fff">深さ${g.d}以下</text>`}
+  if(g.k==='bridge'){const y=SURF-(HULL-g.d)*U;return `<rect x="${x-42}" y="${y-22}" width="84" height="22" fill="#b9793c" stroke="${INK}" stroke-width="3"/><path d="M${x-42} ${y-22}V0M${x+42} ${y-22}V0" stroke="${INK}" stroke-width="5"/><text x="${x}" y="${y-6}" text-anchor="middle" font-size="12" fill="#fff">深さ${g.d}以上</text>`}
+  if(g.k==='lever'){const y=SURF+g.d*U;return `<g id="gate${i}"><path d="M${x+74} ${SURF-60}V${H}" stroke="var(--red)" stroke-width="10"/></g><path d="M${x-30} ${y}H${x+30}" stroke="var(--red)" stroke-width="7"/><path d="M${x} ${y}V${H}" stroke="${INK}" stroke-width="5"/><text x="${x}" y="${H-5}" text-anchor="middle" font-size="12" fill="#fff">深さ${g.d}で届く</text>`}
+  if(g.k==='chamber'){return `<rect x="${x-3}" y="${SURF-74}" width="6" height="${H-SURF+74}" fill="#59616e"/><text x="${x}" y="${SURF-80}" text-anchor="middle" font-size="12" fill="${INK}">入れ替え室</text><rect id="door" x="${x-3}" y="0" width="0" height="0" fill="none"/>`}
+  return ''}
+function shipSVG(){const items=[...G.on].sort((a,b)=>G.S.items[a][0]-G.S.items[b][0]);let r='';
+  items.forEach((id,i)=>{const [w]=G.S.items[id],col=i%3,row=Math.floor(i/3),x=-30+col*20,y=-10-14-row*14;
+    r+=`<rect x="${x-9}" y="${y}" width="18" height="14" fill="${w>=100?'#59616e':w>=20?'#a9744a':'#e7b76a'}" stroke="${INK}" stroke-width="2"/>`});
+  $('#ship',G.c).innerHTML=`<path d="M-58 -60H58L46 0H-46Z" fill="#b9793c" stroke="${INK}" stroke-width="3.5"/><path d="M-53 -38H53" stroke="#fffaf0" stroke-width="2.5" stroke-dasharray="7 5"/>${r}`}
+function loop(id){if(id!==run)return;if(G&&G.c.isConnected){const t=performance.now()/1000,bob=G.sinking?0:Math.sin(t*1.7)*.8;
+  const cam=Math.max(0,G.x-180+0)*1;const c=$('#cam',G.c);if(c)c.setAttribute('transform',`translate(${180-G.x} 0)`);
+  const s=$('#ship',G.c);if(s)s.setAttribute('transform',`translate(${G.x} ${SURF+G.d*U-G.lift+bob})`)}requestAnimationFrame(()=>loop(id))}
+
+function syncUI(){const c=G.c,s=LIQ[G.liq].s,w=weight();$('#sg',c).textContent=s;$('#wt',c).textContent=w;
+  const known=G.floating;$('#dp',c).innerHTML=known?G.d.toFixed(2):'？';
+  const target=G.next||G.liq,ts=LIQ[target].s;
+  const chamber=G.S.gates.find(g=>g.k==='chamber');const useS=(chamber&&!G.passed)?LIQ[chamber.to].s:ts;const nm=(chamber&&!G.passed)?LIQ[chamber.to].n:LIQ[target].n;
+  $('#fm',c).innerHTML=`${nm}での深さ ＝ 重さ <em>${w}</em> ÷（比重 <em>${useS}</em> × 底面積 <em>${AREA}</em>）＝ ？`+(known&&onScale(G.d)?'<span class="scale">音階に乗った</span>':'')}
+function renderShelf(){const S=G.S,sh=$('#sh',G.c);sh.innerHTML=S.items.map(([w,n],i)=>`<button class="chip${w>=100?' lead':''}" data-i="${i}" aria-pressed="${G.on.has(i)}">${w}<small>${n}</small></button>`).join('');
+  sh.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{if(G.busy)return;unlock();const i=+b.dataset.i;G.on.has(i)?G.on.delete(i):G.on.add(i);b.setAttribute('aria-pressed',G.on.has(i));tap();shipSVG();
+    if(G.floating)settle();syncUI()})}
+function settle(){const to=depthOf(weight(),LIQ[G.liq].s),from=G.d;const id=run;
+  tween(380,e=>{if(id===run)G.d=from+(to-from)*e;syncUI()}).then(()=>{bell(midiOf(to),.17,.9);if(to>HULL+EPS)sink(`重さ${weight()}では、${LIQ[G.liq].n}に沈みきってしまいます。`)})}
+
+async function intoMercury(){G.busy=true;lock(true);say('入れ替え室で、水を水銀に入れ替えます。');await wait(500);
+  const room=$('#room',G.c);room.setAttribute('width',140);const f=[];await tween(1200,e=>{room.setAttribute('opacity',e);G.d=1+(0.074-1)*e;});
+  $('#l1',G.c).setAttribute('fill',LIQ.mercury.c);G.liq='mercury';G.d=depthOf(weight(),13.5);bell(midiOf(G.d));syncUI();G.busy=false;lock(false);
+  await wait(300);scene2Return()}
+function scene2Return(){say(G.S.goal+'　まず、木箱と鉄箱を全部積んでみましょう。')}
+function lock(v){$('#dep',G.c).disabled=v;$('#ring',G.c).disabled=false}
+
+async function depart(){if(G.busy)return;unlock();G.busy=true;lock(true);const id=run;const S=G.S;
+  if(!G.floating){const to=depthOf(weight(),LIQ[G.liq].s);await tween(700,e=>{G.lift=20*(1-e);G.x=120*e;G.d=Math.min(to,HULL+1)*e;syncUI()});G.floating=true;G.d=to;bell(midiOf(to));syncUI();
+    if(to>HULL+EPS)return sink(`重さ${weight()}は上限50を超えて、沈みました。水に沈みきる重さは、比重1 × 底面積10 × 高さ5 ＝ 50です。`)}
+  for(const g of S.gates){if(id!==run)return;
+    if(g.k==='chamber'){await moveTo(g.x+70);const r=await chamber(g);if(!r)return;continue}
+    const stop=g.k==='lever'?g.x+18:g.x;
+    if(g.k==='shoal'){if(G.d>g.d+EPS){await moveTo(g.x-90);return fail(`深さ${G.d.toFixed(2)}では、浅瀬につかえました（深さ${g.d}以下）。`)}await moveTo(g.x+60)}
+    if(g.k==='bridge'){if(G.d<g.d-EPS){await moveTo(g.x-96);return fail(`深さ${G.d.toFixed(2)}では、橋に船の縁が当たります（深さ${g.d}以上）。`)}await moveTo(g.x+60)}
+    if(g.k==='lever'){await moveTo(g.x);if(G.d<g.d-EPS){return fail(`深さ${G.d.toFixed(2)}では、レバーに届きません（深さ${g.d}以上）。`)}bell(72,.14,.7);const el=$('#gate'+S.gates.indexOf(g),G.c);if(el)await tween(500,e=>el.setAttribute('transform',`translate(0 ${-120*e})`))}
+  }
+  await moveTo(S.end-30);if(id!==run)return;win()}
+async function moveTo(x){const from=G.x;await tween(Math.max(450,Math.abs(x-from)*7),e=>{G.x=from+(x-from)*e})}
+async function chamber(g){say('入れ替え室：水を油に入れ替えます。');const id=run;const l2=$('#l2',G.c);const room=$('#room',G.c);room.setAttribute('x',g.x);room.setAttribute('width',140);room.setAttribute('fill',LIQ[g.to].c);
+  const wait0=await tween(600,e=>room.setAttribute('opacity',e));G.liq=g.to;G.passed=true;
+  const to=depthOf(weight(),LIQ[g.to].s),from=G.d;await tween(900,e=>{G.d=from+(Math.min(to,HULL+1.2)-from)*e;syncUI()});G.d=to;bell(midiOf(to));syncUI();
+  if(to>HULL+EPS){sink(`油に入ると深さ${to.toFixed(2)}。船の高さ5を超えて沈みました。油に沈みきる重さは 0.8 × 10 × 5 ＝ 40です。`);return false}return true}
+async function sink(msg){G.busy=true;G.sinking=true;lock(true);const from=G.d;tween(900,e=>{G.d=from+6*e});bell(62,.2,1.2);say(`<span class="who">アルキメデス</span>${msg}`);await wait(950);failButton()}
+function fail(msg){say(`<span class="who">アルキメデス</span>${msg}`);bell(66,.14,.5);failButton()}
+function failButton(){const dep=$('#dep',G.c);dep.textContent='積み直す';dep.disabled=false;G.busy=false;dep.onclick=()=>restart()}
+function restart(){stopRun();const keep=new Set(G.on);const n=G.n;const S=G.S;const pre=S.pre;
+  G.x=0;G.lift=S.cradle?20:0;G.floating=!S.cradle;G.sinking=false;G.passed=false;G.busy=false;G.liq=pre||S.start;
+  G.d=G.floating?depthOf(weight(),LIQ[G.liq].s):0;if(G.d>HULL)G.d=HULL;
+  drawWorld();if(pre)$('#l1',G.c).setAttribute('fill',LIQ[pre].c);renderShelf();syncUI();say(S.goal);const dep=$('#dep',G.c);dep.textContent='出航';dep.disabled=false;dep.onclick=()=>depart();loop(run)}
+function win(){jingle();const S=G.S,n=G.n;const f=$('.frame',G.c);f.style.position='relative';f.insertAdjacentHTML('beforeend','<div class="stamp">エウレカ！</div>');
+  say(`<span class="who">アルキメデス</span>${S.winner}<br><span class="nar">重さ${weight()}、深さ${G.d.toFixed(2)}で到着。</span>`);
+  $('#sh',G.c).innerHTML='';const dep=$('#dep',G.c);dep.disabled=false;dep.textContent=n<2?'次の面へ':'試作の終わりへ';dep.onclick=()=>{wood();if(n===0)stage(1);else if(n===1)scene('s6',()=>stage(2));else ending()}}
+function ending(){stopRun();const c=show(`${topbar('試作の終わり')}<div class="frame">${ART.harbor()}</div><div class="say"><span class="nar">ここまでが試作です。ひとつ分かると、次の「まだ分からない」が見えてきます。</span></div>
+  <div class="goal">確かめたいこと：<br>・水銀で積んでも沈まない驚きはあったか<br>・音の変化で、液体の違いを感じたか<br>・序章の長さはちょうどよいか</div><button class="btn" id="n">表紙へ</button>`);wire(c);$('#n',c).onclick=()=>{wood();title()}}
+
+function flow(){scene('s1',()=>scene('s2',()=>bal1(()=>scene('s3',()=>scene('s4',()=>bal2(()=>quiz(()=>scene('s5',()=>stage(0)))))))))}
+window.__float={depthOf,midiOf,onScale,STAGES};
+title();
+</script>
+
+</body></html>
