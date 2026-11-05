@@ -32,6 +32,11 @@ body{background:var(--wood2);color:var(--ink);font-family:var(--body);font-weigh
 .btn:disabled{opacity:.45}
 button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 .card>.list.foot,.card:not(.cover)>.btn:last-child,.card:not(.cover)>.row:last-child{margin-top:auto;position:sticky;bottom:0}
+.choice{appearance:none;display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:3px solid var(--ink);border-radius:12px;background:#fffaf0;color:var(--ink);
+  font-family:var(--body);font-weight:700;font-size:17px;line-height:1.35;padding:9px 10px;min-height:62px;cursor:pointer;box-shadow:0 5px 0 var(--ink);transition:transform .08s,box-shadow .08s}
+.choice:active{transform:translateY(4px);box-shadow:0 1px 0 var(--ink)}
+.choice .key{flex:none;width:36px;height:36px;display:grid;place-items:center;border:3px solid var(--ink);border-radius:50%;background:var(--yellow);font-family:var(--latin);font-weight:700;font-size:17px}
+.choice .txt{flex:1;min-width:0;text-wrap:balance}.choice .go{flex:none;color:var(--red);font-size:18px}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .stat{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;font-size:13px;text-align:center}
 .stat div{background:#fffaf0;border:2px solid var(--ink);border-radius:7px;padding:2px 4px;min-width:0}

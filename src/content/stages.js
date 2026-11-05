@@ -30,5 +30,5 @@ export const STAGES=[
  {id:'m4',name:'水銀 4　小さな金',start:'mercury',grid:true,heavy:true,showDepth:true,generated:true,count:5,gap:1,gates:[{k:'bridge',x:320}],end:640,
   lead:'積み方も大事な面です。金は小さくても、とても重い荷です。',winner:'大きさと重さは別のものだ。金が教えてくれたな。'},
  {id:'m5',name:'水銀 5　最後の航路',start:'mercury',grid:true,heavy:true,showDepth:true,generated:true,count:5,gap:0.5,gates:[{k:'lever',x:320},{k:'bridge',x:580}],end:800,
-  lead:'積み方も大事な面です。レバーに届く重さと、橋を通る積み方を両方考えましょう。',winner:'見事だ。だが、まだ分からないことは次々に見つかるぞ。'}
+  lead:'積み方も大事な面です。レバーに届く重さと、橋を通る積み方を両方考えましょう。',winner:'見事だ。王の荷は、すべて届いたぞ。だが、まだ分からないことがある。だから面白いのだ。'}
 ];
