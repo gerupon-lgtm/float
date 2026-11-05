@@ -1,0 +1,8656 @@
+{
+  "version": "0.8.16",
+  "baseline_commit": "6ab14016ff78f9944f0380903d1a966bae2ba539",
+  "final_states": 120,
+  "screens": [
+    {
+      "name": "title",
+      "label": "1366x768",
+      "title": "cover",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": null,
+        "overlaps": [],
+        "primary": []
+      },
+      "reach": [
+        {
+          "text": "おはなし",
+          "hit": true
+        },
+        {
+          "text": "連続プレイ",
+          "hit": true
+        },
+        {
+          "text": "選択プレイ",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stories",
+      "label": "1366x768",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": null,
+        "overlaps": [],
+        "primary": []
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "序章を遊ぶ",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "pick",
+      "label": "1366x768",
+      "title": "選択プレイ",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": null,
+        "overlaps": [],
+        "primary": []
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "水 1　はじめの航路",
+          "hit": true
+        },
+        {
+          "text": "水 2　細い水路",
+          "hit": true
+        },
+        {
+          "text": "水 3　別の船",
+          "hit": true
+        },
+        {
+          "text": "水 4　積み方",
+          "hit": true
+        },
+        {
+          "text": "水 5　山積みの港",
+          "hit": true
+        },
+        {
+          "text": "油 1　軽い液体",
+          "hit": true
+        },
+        {
+          "text": "油 2　水へ戻る",
+          "hit": true
+        },
+        {
+          "text": "油 3　両方の水路",
+          "hit": true
+        },
+        {
+          "text": "油 4　油の港",
+          "hit": true
+        },
+        {
+          "text": "油 5　荷と液体",
+          "hit": true
+        },
+        {
+          "text": "水銀 1　銀色の湖",
+          "hit": true
+        },
+        {
+          "text": "水銀 2　重い荷を探す",
+          "hit": true
+        },
+        {
+          "text": "水銀 3　水へ出る",
+          "hit": true
+        },
+        {
+          "text": "水銀 4　小さな金",
+          "hit": true
+        },
+        {
+          "text": "水銀 5　最後の航路",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "levels",
+      "label": "1366x768",
+      "title": "連続プレイ",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": null,
+        "overlaps": [],
+        "primary": []
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "フリー\n上限なし　最高 0面",
+          "hit": true
+        },
+        {
+          "text": "ノーマル\nNG 10回まで　最高 0面",
+          "hit": true
+        },
+        {
+          "text": "エキスパート\nNG 5回まで　最高 0面",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s1",
+      "label": "1366x768",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 928.203125,
+            "y": 476.390625,
+            "w": 390.796875,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s2",
+      "label": "1366x768",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 928.203125,
+            "y": 463.984375,
+            "w": 390.796875,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s3",
+      "label": "1366x768",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 928.203125,
+            "y": 476.390625,
+            "w": 390.796875,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s4",
+      "label": "1366x768",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 928.203125,
+            "y": 451.59375,
+            "w": 390.796875,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s9",
+      "label": "1366x768",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 928.203125,
+            "y": 476.390625,
+            "w": 390.796875,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s10",
+      "label": "1366x768",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 928.203125,
+            "y": 463.984375,
+            "w": 390.796875,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s5",
+      "label": "1366x768",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 928.203125,
+            "y": 463.984375,
+            "w": 390.796875,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s7",
+      "label": "1366x768",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 928.203125,
+            "y": 476.390625,
+            "w": 390.796875,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s8",
+      "label": "1366x768",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 928.203125,
+            "y": 476.390625,
+            "w": 390.796875,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s6",
+      "label": "1366x768",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 928.203125,
+            "y": 463.984375,
+            "w": 390.796875,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "bal1-before",
+      "label": "1366x768",
+      "title": "序章 1　天秤",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "a",
+            "text": "空気の中で量る",
+            "x": 928.203125,
+            "y": 427,
+            "w": 390.796875,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "空気の中で量る",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "bal1-after",
+      "label": "1366x768",
+      "title": "序章 1　天秤",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "a",
+            "text": "つづき",
+            "x": 928.203125,
+            "y": 437.1875,
+            "w": 390.796875,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "bal2-before",
+      "label": "1366x768",
+      "title": "序章 2　水の中の天秤",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "a",
+            "text": "水に沈める",
+            "x": 928.203125,
+            "y": 437.1875,
+            "w": 390.796875,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "水に沈める",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "bal2-after",
+      "label": "1366x768",
+      "title": "序章 2　水の中の天秤",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "a",
+            "text": "つづき",
+            "x": 928.203125,
+            "y": 427,
+            "w": 390.796875,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "quiz",
+      "label": "1366x768",
+      "title": "序章 3　なぜ？",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": []
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "A\n王冠のほうが、もともと軽いから\n▶",
+          "hit": true
+        },
+        {
+          "text": "B\n王冠のほうが体積が大きく、水を多く押しのけたから\n▶",
+          "hit": true
+        },
+        {
+          "text": "C\n水の中では、金だけが重くなるから\n▶",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "quiz-wrong",
+      "label": "1366x768",
+      "title": "序章 3　なぜ？",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": []
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "A\n王冠のほうが、もともと軽いから\n▶",
+          "hit": true
+        },
+        {
+          "text": "B\n王冠のほうが体積が大きく、水を多く押しのけたから\n▶",
+          "hit": true
+        },
+        {
+          "text": "C\n水の中では、金だけが重くなるから\n▶",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "quiz-right",
+      "label": "1366x768",
+      "title": "序章 3　なぜ？",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 928.203125,
+            "y": 449.59375,
+            "w": 390.796875,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-w1",
+      "label": "1366x768",
+      "title": "水 1　はじめの航路",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1127.59375,
+            "y": 684,
+            "w": 191.40625,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "7\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "15\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "25\n鉄",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-w2",
+      "label": "1366x768",
+      "title": "水 2　細い水路",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1127.59375,
+            "y": 684,
+            "w": 191.40625,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "7\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "8\n壺",
+          "hit": true
+        },
+        {
+          "text": "20\n石",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-w3",
+      "label": "1366x768",
+      "title": "水 3　別の船",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1127.59375,
+            "y": 684,
+            "w": 191.40625,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "10\n石",
+          "hit": true
+        },
+        {
+          "text": "12\n鉄",
+          "hit": true
+        },
+        {
+          "text": "15\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "25\n鉄",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-w4",
+      "label": "1366x768",
+      "title": "水 4　積み方",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1127.59375,
+            "y": 684,
+            "w": 191.40625,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "石 10\n1×1マス",
+          "hit": true
+        },
+        {
+          "text": "木箱 8\n2×2マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 6\n3×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 6\n3×1マス",
+          "hit": true
+        },
+        {
+          "text": "ひとつ戻す",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-w5",
+      "label": "1366x768",
+      "title": "水 5　山積みの港",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1127.59375,
+            "y": 684,
+            "w": 191.40625,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "木の板 6\n3×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 4\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 4\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "壺 8\n1×2マス",
+          "hit": true
+        },
+        {
+          "text": "石 10\n1×1マス",
+          "hit": true
+        },
+        {
+          "text": "ひとつ戻す",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-o1",
+      "label": "1366x768",
+      "title": "油 1　軽い液体",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1127.59375,
+            "y": 684,
+            "w": 191.40625,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "7\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "8\n壺",
+          "hit": true
+        },
+        {
+          "text": "10\n石",
+          "hit": true
+        },
+        {
+          "text": "12\n鉄",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-o2",
+      "label": "1366x768",
+      "title": "油 2　水へ戻る",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1127.59375,
+            "y": 684,
+            "w": 191.40625,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "7\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "8\n壺",
+          "hit": true
+        },
+        {
+          "text": "10\n石",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-o3",
+      "label": "1366x768",
+      "title": "油 3　両方の水路",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1127.59375,
+            "y": 684,
+            "w": 191.40625,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "7\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "10\n石",
+          "hit": true
+        },
+        {
+          "text": "12\n鉄",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-o4",
+      "label": "1366x768",
+      "title": "油 4　油の港",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1127.59375,
+            "y": 684,
+            "w": 191.40625,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "壺 8\n1×2マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 6\n3×1マス",
+          "hit": true
+        },
+        {
+          "text": "壺 8\n1×2マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 4\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "ひとつ戻す",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-o5",
+      "label": "1366x768",
+      "title": "油 5　荷と液体",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1127.59375,
+            "y": 684,
+            "w": 191.40625,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "木の板 4\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 4\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 6\n3×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 6\n3×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 4\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "ひとつ戻す",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-m1",
+      "label": "1366x768",
+      "title": "水銀 1　銀色の湖",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1127.59375,
+            "y": 684,
+            "w": 191.40625,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "10\n木箱",
+          "hit": true
+        },
+        {
+          "text": "10\n木箱",
+          "hit": true
+        },
+        {
+          "text": "20\n鉄箱",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-m2",
+      "label": "1366x768",
+      "title": "水銀 2　重い荷を探す",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1127.59375,
+            "y": 684,
+            "w": 191.40625,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "10\n木箱",
+          "hit": true
+        },
+        {
+          "text": "10\n木箱",
+          "hit": true
+        },
+        {
+          "text": "10\n木箱",
+          "hit": true
+        },
+        {
+          "text": "50\n鉛",
+          "hit": true
+        },
+        {
+          "text": "100\n金塊",
+          "hit": true
+        },
+        {
+          "text": "100\n金塊",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-m3",
+      "label": "1366x768",
+      "title": "水銀 3　水へ出る",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1127.59375,
+            "y": 684,
+            "w": 191.40625,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "7\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "8\n壺",
+          "hit": true
+        },
+        {
+          "text": "10\n石",
+          "hit": true
+        },
+        {
+          "text": "15\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-m4",
+      "label": "1366x768",
+      "title": "水銀 4　小さな金",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1127.59375,
+            "y": 684,
+            "w": 191.40625,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "金 76\n1×1マス",
+          "hit": true
+        },
+        {
+          "text": "金の棒 152\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "鉄箱 128\n2×2マス",
+          "hit": true
+        },
+        {
+          "text": "金 76\n1×1マス",
+          "hit": true
+        },
+        {
+          "text": "金の棒 152\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "ひとつ戻す",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-m5",
+      "label": "1366x768",
+      "title": "水銀 5　最後の航路",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1127.59375,
+            "y": 684,
+            "w": 191.40625,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "金 76\n1×1マス",
+          "hit": true
+        },
+        {
+          "text": "金の棒 152\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "鉄 32\n1×1マス",
+          "hit": true
+        },
+        {
+          "text": "金の棒 152\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "鉄箱 128\n2×2マス",
+          "hit": true
+        },
+        {
+          "text": "ひとつ戻す",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "failure",
+      "label": "1366x768",
+      "title": "水 1　はじめの航路",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "積み直す",
+            "x": 1127.59375,
+            "y": 684,
+            "w": 191.40625,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "12\n鉄",
+          "hit": true
+        },
+        {
+          "text": "20\n石",
+          "hit": true
+        },
+        {
+          "text": "25\n鉄",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "積み直す",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "win",
+      "label": "1366x768",
+      "title": "水 1　はじめの航路",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "面を選ぶ",
+            "x": 1127.59375,
+            "y": 684,
+            "w": 191.40625,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "面を選ぶ",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "finish-clear",
+      "label": "1366x768",
+      "title": "ALL CLEAR",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "表紙へ",
+            "x": 928.203125,
+            "y": 437.1875,
+            "w": 390.796875,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "表紙へ",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "finish-over",
+      "label": "1366x768",
+      "title": "GAME OVER",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 1366,
+        "h": 768,
+        "scrollWidth": 1366,
+        "clientWidth": 1366,
+        "scrollHeight": 768,
+        "clientHeight": 768
+      },
+      "documentWidth": 1366,
+      "viewport": 1366,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 928.203125,
+          "y": 70,
+          "w": 409.796875,
+          "h": 678,
+          "scrollWidth": 395,
+          "clientWidth": 395,
+          "scrollHeight": 678,
+          "clientHeight": 678
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "表紙へ",
+            "x": 928.203125,
+            "y": 449.59375,
+            "w": 390.796875,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "表紙へ",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "title",
+      "label": "1920x1080",
+      "title": "cover",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": null,
+        "overlaps": [],
+        "primary": []
+      },
+      "reach": [
+        {
+          "text": "おはなし",
+          "hit": true
+        },
+        {
+          "text": "連続プレイ",
+          "hit": true
+        },
+        {
+          "text": "選択プレイ",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stories",
+      "label": "1920x1080",
+      "title": "おはなし",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": null,
+        "overlaps": [],
+        "primary": []
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "序章を遊ぶ",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "pick",
+      "label": "1920x1080",
+      "title": "選択プレイ",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": null,
+        "overlaps": [],
+        "primary": []
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "水 1　はじめの航路",
+          "hit": true
+        },
+        {
+          "text": "水 2　細い水路",
+          "hit": true
+        },
+        {
+          "text": "水 3　別の船",
+          "hit": true
+        },
+        {
+          "text": "水 4　積み方",
+          "hit": true
+        },
+        {
+          "text": "水 5　山積みの港",
+          "hit": true
+        },
+        {
+          "text": "油 1　軽い液体",
+          "hit": true
+        },
+        {
+          "text": "油 2　水へ戻る",
+          "hit": true
+        },
+        {
+          "text": "油 3　両方の水路",
+          "hit": true
+        },
+        {
+          "text": "油 4　油の港",
+          "hit": true
+        },
+        {
+          "text": "油 5　荷と液体",
+          "hit": true
+        },
+        {
+          "text": "水銀 1　銀色の湖",
+          "hit": true
+        },
+        {
+          "text": "水銀 2　重い荷を探す",
+          "hit": true
+        },
+        {
+          "text": "水銀 3　水へ出る",
+          "hit": true
+        },
+        {
+          "text": "水銀 4　小さな金",
+          "hit": true
+        },
+        {
+          "text": "水銀 5　最後の航路",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "levels",
+      "label": "1920x1080",
+      "title": "連続プレイ",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": null,
+        "overlaps": [],
+        "primary": []
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "フリー\n上限なし　最高 0面",
+          "hit": true
+        },
+        {
+          "text": "ノーマル\nNG 10回まで　最高 0面",
+          "hit": true
+        },
+        {
+          "text": "エキスパート\nNG 5回まで　最高 0面",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s1",
+      "label": "1920x1080",
+      "title": "おはなし",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 1312,
+            "y": 632.390625,
+            "w": 401,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s2",
+      "label": "1920x1080",
+      "title": "おはなし",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 1312,
+            "y": 619.984375,
+            "w": 401,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s3",
+      "label": "1920x1080",
+      "title": "おはなし",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 1312,
+            "y": 632.390625,
+            "w": 401,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s4",
+      "label": "1920x1080",
+      "title": "おはなし",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 1312,
+            "y": 607.59375,
+            "w": 401,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s9",
+      "label": "1920x1080",
+      "title": "おはなし",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 1312,
+            "y": 632.390625,
+            "w": 401,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s10",
+      "label": "1920x1080",
+      "title": "おはなし",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 1312,
+            "y": 619.984375,
+            "w": 401,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s5",
+      "label": "1920x1080",
+      "title": "おはなし",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 1312,
+            "y": 619.984375,
+            "w": 401,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s7",
+      "label": "1920x1080",
+      "title": "おはなし",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 1312,
+            "y": 632.390625,
+            "w": 401,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s8",
+      "label": "1920x1080",
+      "title": "おはなし",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 1312,
+            "y": 632.390625,
+            "w": 401,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s6",
+      "label": "1920x1080",
+      "title": "おはなし",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 1312,
+            "y": 619.984375,
+            "w": 401,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "bal1-before",
+      "label": "1920x1080",
+      "title": "序章 1　天秤",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "a",
+            "text": "空気の中で量る",
+            "x": 1312,
+            "y": 583,
+            "w": 401,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "空気の中で量る",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "bal1-after",
+      "label": "1920x1080",
+      "title": "序章 1　天秤",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "a",
+            "text": "つづき",
+            "x": 1312,
+            "y": 583,
+            "w": 401,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "bal2-before",
+      "label": "1920x1080",
+      "title": "序章 2　水の中の天秤",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "a",
+            "text": "水に沈める",
+            "x": 1312,
+            "y": 593.1875,
+            "w": 401,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "水に沈める",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "bal2-after",
+      "label": "1920x1080",
+      "title": "序章 2　水の中の天秤",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "a",
+            "text": "つづき",
+            "x": 1312,
+            "y": 583,
+            "w": 401,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "quiz",
+      "label": "1920x1080",
+      "title": "序章 3　なぜ？",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": []
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "A\n王冠のほうが、もともと軽いから\n▶",
+          "hit": true
+        },
+        {
+          "text": "B\n王冠のほうが体積が大きく、水を多く押しのけたから\n▶",
+          "hit": true
+        },
+        {
+          "text": "C\n水の中では、金だけが重くなるから\n▶",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "quiz-wrong",
+      "label": "1920x1080",
+      "title": "序章 3　なぜ？",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": []
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "A\n王冠のほうが、もともと軽いから\n▶",
+          "hit": true
+        },
+        {
+          "text": "B\n王冠のほうが体積が大きく、水を多く押しのけたから\n▶",
+          "hit": true
+        },
+        {
+          "text": "C\n水の中では、金だけが重くなるから\n▶",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "quiz-right",
+      "label": "1920x1080",
+      "title": "序章 3　なぜ？",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 1312,
+            "y": 605.59375,
+            "w": 401,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-w1",
+      "label": "1920x1080",
+      "title": "水 1　はじめの航路",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1516.5,
+            "y": 996,
+            "w": 196.5,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "7\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "15\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "25\n鉄",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-w2",
+      "label": "1920x1080",
+      "title": "水 2　細い水路",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1516.5,
+            "y": 996,
+            "w": 196.5,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "7\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "8\n壺",
+          "hit": true
+        },
+        {
+          "text": "20\n石",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-w3",
+      "label": "1920x1080",
+      "title": "水 3　別の船",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1516.5,
+            "y": 996,
+            "w": 196.5,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "10\n石",
+          "hit": true
+        },
+        {
+          "text": "12\n鉄",
+          "hit": true
+        },
+        {
+          "text": "15\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "25\n鉄",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-w4",
+      "label": "1920x1080",
+      "title": "水 4　積み方",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1516.5,
+            "y": 996,
+            "w": 196.5,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "石 10\n1×1マス",
+          "hit": true
+        },
+        {
+          "text": "木箱 8\n2×2マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 6\n3×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 6\n3×1マス",
+          "hit": true
+        },
+        {
+          "text": "ひとつ戻す",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-w5",
+      "label": "1920x1080",
+      "title": "水 5　山積みの港",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1516.5,
+            "y": 996,
+            "w": 196.5,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "木の板 6\n3×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 4\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 4\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "壺 8\n1×2マス",
+          "hit": true
+        },
+        {
+          "text": "石 10\n1×1マス",
+          "hit": true
+        },
+        {
+          "text": "ひとつ戻す",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-o1",
+      "label": "1920x1080",
+      "title": "油 1　軽い液体",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1516.5,
+            "y": 996,
+            "w": 196.5,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "7\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "8\n壺",
+          "hit": true
+        },
+        {
+          "text": "10\n石",
+          "hit": true
+        },
+        {
+          "text": "12\n鉄",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-o2",
+      "label": "1920x1080",
+      "title": "油 2　水へ戻る",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1516.5,
+            "y": 996,
+            "w": 196.5,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "7\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "8\n壺",
+          "hit": true
+        },
+        {
+          "text": "10\n石",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-o3",
+      "label": "1920x1080",
+      "title": "油 3　両方の水路",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1516.5,
+            "y": 996,
+            "w": 196.5,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "7\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "10\n石",
+          "hit": true
+        },
+        {
+          "text": "12\n鉄",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-o4",
+      "label": "1920x1080",
+      "title": "油 4　油の港",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1516.5,
+            "y": 996,
+            "w": 196.5,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "壺 8\n1×2マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 6\n3×1マス",
+          "hit": true
+        },
+        {
+          "text": "壺 8\n1×2マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 4\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "ひとつ戻す",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-o5",
+      "label": "1920x1080",
+      "title": "油 5　荷と液体",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1516.5,
+            "y": 996,
+            "w": 196.5,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "木の板 4\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 4\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 6\n3×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 6\n3×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 4\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "ひとつ戻す",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-m1",
+      "label": "1920x1080",
+      "title": "水銀 1　銀色の湖",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1516.5,
+            "y": 996,
+            "w": 196.5,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "10\n木箱",
+          "hit": true
+        },
+        {
+          "text": "10\n木箱",
+          "hit": true
+        },
+        {
+          "text": "20\n鉄箱",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-m2",
+      "label": "1920x1080",
+      "title": "水銀 2　重い荷を探す",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1516.5,
+            "y": 996,
+            "w": 196.5,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "10\n木箱",
+          "hit": true
+        },
+        {
+          "text": "10\n木箱",
+          "hit": true
+        },
+        {
+          "text": "10\n木箱",
+          "hit": true
+        },
+        {
+          "text": "50\n鉛",
+          "hit": true
+        },
+        {
+          "text": "100\n金塊",
+          "hit": true
+        },
+        {
+          "text": "100\n金塊",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-m3",
+      "label": "1920x1080",
+      "title": "水銀 3　水へ出る",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1516.5,
+            "y": 996,
+            "w": 196.5,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "7\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "8\n壺",
+          "hit": true
+        },
+        {
+          "text": "10\n石",
+          "hit": true
+        },
+        {
+          "text": "15\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-m4",
+      "label": "1920x1080",
+      "title": "水銀 4　小さな金",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1516.5,
+            "y": 996,
+            "w": 196.5,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "金 76\n1×1マス",
+          "hit": true
+        },
+        {
+          "text": "金の棒 152\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "鉄箱 128\n2×2マス",
+          "hit": true
+        },
+        {
+          "text": "金 76\n1×1マス",
+          "hit": true
+        },
+        {
+          "text": "金の棒 152\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "ひとつ戻す",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-m5",
+      "label": "1920x1080",
+      "title": "水銀 5　最後の航路",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 1516.5,
+            "y": 996,
+            "w": 196.5,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "金 76\n1×1マス",
+          "hit": true
+        },
+        {
+          "text": "金の棒 152\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "鉄 32\n1×1マス",
+          "hit": true
+        },
+        {
+          "text": "金の棒 152\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "鉄箱 128\n2×2マス",
+          "hit": true
+        },
+        {
+          "text": "ひとつ戻す",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "failure",
+      "label": "1920x1080",
+      "title": "水 1　はじめの航路",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "積み直す",
+            "x": 1516.5,
+            "y": 996,
+            "w": 196.5,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "12\n鉄",
+          "hit": true
+        },
+        {
+          "text": "20\n石",
+          "hit": true
+        },
+        {
+          "text": "25\n鉄",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "積み直す",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "win",
+      "label": "1920x1080",
+      "title": "水 1　はじめの航路",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "面を選ぶ",
+            "x": 1516.5,
+            "y": 996,
+            "w": 196.5,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "面を選ぶ",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "finish-clear",
+      "label": "1920x1080",
+      "title": "ALL CLEAR",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "表紙へ",
+            "x": 1312,
+            "y": 593.1875,
+            "w": 401,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "表紙へ",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "finish-over",
+      "label": "1920x1080",
+      "title": "GAME OVER",
+      "card": {
+        "x": 160,
+        "y": 0,
+        "w": 1600,
+        "h": 1080,
+        "scrollWidth": 1600,
+        "clientWidth": 1600,
+        "scrollHeight": 1080,
+        "clientHeight": 1080
+      },
+      "documentWidth": 1920,
+      "viewport": 1920,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 1312,
+          "y": 70,
+          "w": 420,
+          "h": 990,
+          "scrollWidth": 405,
+          "clientWidth": 405,
+          "scrollHeight": 990,
+          "clientHeight": 990
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "表紙へ",
+            "x": 1312,
+            "y": 605.59375,
+            "w": 401,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "表紙へ",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "title",
+      "label": "390x844",
+      "title": "cover",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": null,
+        "overlaps": [],
+        "primary": []
+      },
+      "reach": [
+        {
+          "text": "おはなし",
+          "hit": true
+        },
+        {
+          "text": "連続プレイ",
+          "hit": true
+        },
+        {
+          "text": "選択プレイ",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stories",
+      "label": "390x844",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": null,
+        "overlaps": [],
+        "primary": []
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "序章を遊ぶ",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "pick",
+      "label": "390x844",
+      "title": "選択プレイ",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 980,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": null,
+        "overlaps": [],
+        "primary": []
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "水 1　はじめの航路",
+          "hit": true
+        },
+        {
+          "text": "水 2　細い水路",
+          "hit": true
+        },
+        {
+          "text": "水 3　別の船",
+          "hit": true
+        },
+        {
+          "text": "水 4　積み方",
+          "hit": true
+        },
+        {
+          "text": "水 5　山積みの港",
+          "hit": true
+        },
+        {
+          "text": "油 1　軽い液体",
+          "hit": true
+        },
+        {
+          "text": "油 2　水へ戻る",
+          "hit": true
+        },
+        {
+          "text": "油 3　両方の水路",
+          "hit": true
+        },
+        {
+          "text": "油 4　油の港",
+          "hit": true
+        },
+        {
+          "text": "油 5　荷と液体",
+          "hit": true
+        },
+        {
+          "text": "水銀 1　銀色の湖",
+          "hit": true
+        },
+        {
+          "text": "水銀 2　重い荷を探す",
+          "hit": true
+        },
+        {
+          "text": "水銀 3　水へ出る",
+          "hit": true
+        },
+        {
+          "text": "水銀 4　小さな金",
+          "hit": true
+        },
+        {
+          "text": "水銀 5　最後の航路",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "levels",
+      "label": "390x844",
+      "title": "連続プレイ",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": null,
+        "overlaps": [],
+        "primary": []
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "フリー\n上限なし　最高 0面",
+          "hit": true
+        },
+        {
+          "text": "ノーマル\nNG 10回まで　最高 0面",
+          "hit": true
+        },
+        {
+          "text": "エキスパート\nNG 5回まで　最高 0面",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s1",
+      "label": "390x844",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 14,
+            "y": 778,
+            "w": 362,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s2",
+      "label": "390x844",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 14,
+            "y": 778,
+            "w": 362,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s3",
+      "label": "390x844",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 14,
+            "y": 778,
+            "w": 362,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s4",
+      "label": "390x844",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 14,
+            "y": 778,
+            "w": 362,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s9",
+      "label": "390x844",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 14,
+            "y": 778,
+            "w": 362,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s10",
+      "label": "390x844",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 14,
+            "y": 778,
+            "w": 362,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s5",
+      "label": "390x844",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 14,
+            "y": 778,
+            "w": 362,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s7",
+      "label": "390x844",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 14,
+            "y": 778,
+            "w": 362,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s8",
+      "label": "390x844",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 14,
+            "y": 778,
+            "w": 362,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "story-s6",
+      "label": "390x844",
+      "title": "おはなし",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 14,
+            "y": 778,
+            "w": 362,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "bal1-before",
+      "label": "390x844",
+      "title": "序章 1　天秤",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "a",
+            "text": "空気の中で量る",
+            "x": 14,
+            "y": 778,
+            "w": 362,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "空気の中で量る",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "bal1-after",
+      "label": "390x844",
+      "title": "序章 1　天秤",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "a",
+            "text": "つづき",
+            "x": 14,
+            "y": 778,
+            "w": 362,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "bal2-before",
+      "label": "390x844",
+      "title": "序章 2　水の中の天秤",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "a",
+            "text": "水に沈める",
+            "x": 14,
+            "y": 778,
+            "w": 362,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "水に沈める",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "bal2-after",
+      "label": "390x844",
+      "title": "序章 2　水の中の天秤",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "a",
+            "text": "つづき",
+            "x": 14,
+            "y": 778,
+            "w": 362,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "quiz",
+      "label": "390x844",
+      "title": "序章 3　なぜ？",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": []
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "A\n王冠のほうが、もともと軽いから\n▶",
+          "hit": true
+        },
+        {
+          "text": "B\n王冠のほうが体積が大きく、水を多く押しのけたから\n▶",
+          "hit": true
+        },
+        {
+          "text": "C\n水の中では、金だけが重くなるから\n▶",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "quiz-wrong",
+      "label": "390x844",
+      "title": "序章 3　なぜ？",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": []
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "A\n王冠のほうが、もともと軽いから\n▶",
+          "hit": true
+        },
+        {
+          "text": "B\n王冠のほうが体積が大きく、水を多く押しのけたから\n▶",
+          "hit": true
+        },
+        {
+          "text": "C\n水の中では、金だけが重くなるから\n▶",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "quiz-right",
+      "label": "390x844",
+      "title": "序章 3　なぜ？",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "つづき",
+            "x": 14,
+            "y": 778,
+            "w": 362,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "つづき",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-w1",
+      "label": "390x844",
+      "title": "水 1　はじめの航路",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 199,
+            "y": 778,
+            "w": 177,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "7\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "15\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "25\n鉄",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-w2",
+      "label": "390x844",
+      "title": "水 2　細い水路",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 199,
+            "y": 778,
+            "w": 177,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "7\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "8\n壺",
+          "hit": true
+        },
+        {
+          "text": "20\n石",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-w3",
+      "label": "390x844",
+      "title": "水 3　別の船",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 199,
+            "y": 778,
+            "w": 177,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "10\n石",
+          "hit": true
+        },
+        {
+          "text": "12\n鉄",
+          "hit": true
+        },
+        {
+          "text": "15\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "25\n鉄",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-w4",
+      "label": "390x844",
+      "title": "水 4　積み方",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 199,
+            "y": 778,
+            "w": 177,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "石 10\n1×1マス",
+          "hit": true
+        },
+        {
+          "text": "木箱 8\n2×2マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 6\n3×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 6\n3×1マス",
+          "hit": true
+        },
+        {
+          "text": "ひとつ戻す",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-w5",
+      "label": "390x844",
+      "title": "水 5　山積みの港",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 199,
+            "y": 778,
+            "w": 177,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "木の板 6\n3×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 4\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 4\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "壺 8\n1×2マス",
+          "hit": true
+        },
+        {
+          "text": "石 10\n1×1マス",
+          "hit": true
+        },
+        {
+          "text": "ひとつ戻す",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-o1",
+      "label": "390x844",
+      "title": "油 1　軽い液体",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 199,
+            "y": 778,
+            "w": 177,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "7\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "8\n壺",
+          "hit": true
+        },
+        {
+          "text": "10\n石",
+          "hit": true
+        },
+        {
+          "text": "12\n鉄",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-o2",
+      "label": "390x844",
+      "title": "油 2　水へ戻る",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 199,
+            "y": 778,
+            "w": 177,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "7\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "8\n壺",
+          "hit": true
+        },
+        {
+          "text": "10\n石",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-o3",
+      "label": "390x844",
+      "title": "油 3　両方の水路",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 199,
+            "y": 778,
+            "w": 177,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "7\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "10\n石",
+          "hit": true
+        },
+        {
+          "text": "12\n鉄",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-o4",
+      "label": "390x844",
+      "title": "油 4　油の港",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 199,
+            "y": 778,
+            "w": 177,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "壺 8\n1×2マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 6\n3×1マス",
+          "hit": true
+        },
+        {
+          "text": "壺 8\n1×2マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 4\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "ひとつ戻す",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-o5",
+      "label": "390x844",
+      "title": "油 5　荷と液体",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 866,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 199,
+            "y": 778,
+            "w": 177,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "木の板 4\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 4\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 6\n3×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 6\n3×1マス",
+          "hit": true
+        },
+        {
+          "text": "木の板 4\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "ひとつ戻す",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-m1",
+      "label": "390x844",
+      "title": "水銀 1　銀色の湖",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 199,
+            "y": 778,
+            "w": 177,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "10\n木箱",
+          "hit": true
+        },
+        {
+          "text": "10\n木箱",
+          "hit": true
+        },
+        {
+          "text": "20\n鉄箱",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-m2",
+      "label": "390x844",
+      "title": "水銀 2　重い荷を探す",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 199,
+            "y": 778,
+            "w": 177,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "10\n木箱",
+          "hit": true
+        },
+        {
+          "text": "10\n木箱",
+          "hit": true
+        },
+        {
+          "text": "10\n木箱",
+          "hit": true
+        },
+        {
+          "text": "50\n鉛",
+          "hit": true
+        },
+        {
+          "text": "100\n金塊",
+          "hit": true
+        },
+        {
+          "text": "100\n金塊",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "200\n大きな金塊",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-m3",
+      "label": "390x844",
+      "title": "水銀 3　水へ出る",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 199,
+            "y": 778,
+            "w": 177,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "7\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "8\n壺",
+          "hit": true
+        },
+        {
+          "text": "10\n石",
+          "hit": true
+        },
+        {
+          "text": "15\n麦袋",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-m4",
+      "label": "390x844",
+      "title": "水銀 4　小さな金",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 866,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 199,
+            "y": 778,
+            "w": 177,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "金 76\n1×1マス",
+          "hit": true
+        },
+        {
+          "text": "金の棒 152\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "鉄箱 128\n2×2マス",
+          "hit": true
+        },
+        {
+          "text": "金 76\n1×1マス",
+          "hit": true
+        },
+        {
+          "text": "金の棒 152\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "ひとつ戻す",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "stage-m5",
+      "label": "390x844",
+      "title": "水銀 5　最後の航路",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 866,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "出航",
+            "x": 199,
+            "y": 778,
+            "w": 177,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "金 76\n1×1マス",
+          "hit": true
+        },
+        {
+          "text": "金の棒 152\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "鉄 32\n1×1マス",
+          "hit": true
+        },
+        {
+          "text": "金の棒 152\n2×1マス",
+          "hit": true
+        },
+        {
+          "text": "鉄箱 128\n2×2マス",
+          "hit": true
+        },
+        {
+          "text": "ひとつ戻す",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "出航",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "failure",
+      "label": "390x844",
+      "title": "水 1　はじめの航路",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "積み直す",
+            "x": 199,
+            "y": 778,
+            "w": 177,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "5\n木箱",
+          "hit": true
+        },
+        {
+          "text": "12\n鉄",
+          "hit": true
+        },
+        {
+          "text": "20\n石",
+          "hit": true
+        },
+        {
+          "text": "25\n鉄",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "積み直す",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "win",
+      "label": "390x844",
+      "title": "水 1　はじめの航路",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "dep",
+            "text": "面を選ぶ",
+            "x": 199,
+            "y": 778,
+            "w": 177,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "深さの音",
+          "hit": true
+        },
+        {
+          "text": "面を選ぶ",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "finish-clear",
+      "label": "390x844",
+      "title": "ALL CLEAR",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "表紙へ",
+            "x": 14,
+            "y": 778,
+            "w": 362,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "表紙へ",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    },
+    {
+      "name": "finish-over",
+      "label": "390x844",
+      "title": "GAME OVER",
+      "card": {
+        "x": 0,
+        "y": 0,
+        "w": 390,
+        "h": 844,
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "scrollHeight": 844,
+        "clientHeight": 844
+      },
+      "documentWidth": 390,
+      "viewport": 390,
+      "controlOverflow": [],
+      "overlaps": [],
+      "sideAudit": {
+        "side": {
+          "x": 0,
+          "y": 0,
+          "w": 0,
+          "h": 0,
+          "scrollWidth": 0,
+          "clientWidth": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overlaps": [],
+        "primary": [
+          {
+            "id": "n",
+            "text": "表紙へ",
+            "x": 14,
+            "y": 778,
+            "w": 362,
+            "h": 56
+          }
+        ]
+      },
+      "reach": [
+        {
+          "text": "音あり",
+          "hit": true
+        },
+        {
+          "text": "表紙",
+          "hit": true
+        },
+        {
+          "text": "表紙へ",
+          "hit": true
+        }
+      ],
+      "errors": [],
+      "htmlImages": []
+    }
+  ],
+  "mobile_comparison": {
+    "baselineStates": 40,
+    "finalStates": 120,
+    "mobileComparisons": [
+      {
+        "name": "title",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": [
+          {
+            "index": 9,
+            "selector": "fine",
+            "coordinates": {
+              "x": [
+                117.34375,
+                117.109375
+              ],
+              "w": [
+                155.296875,
+                155.765625
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "stories",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "pick",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "levels",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "story-s1",
+        "differentPixels": 82531,
+        "bbox": [
+          21,
+          55,
+          369,
+          316
+        ],
+        "geometryDifferences": []
+      },
+      {
+        "name": "story-s2",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "story-s3",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "story-s4",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "story-s9",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "story-s10",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "story-s5",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "story-s7",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "story-s8",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "story-s6",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "bal1-before",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "bal1-after",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "bal2-before",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "bal2-after",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "quiz",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "quiz-wrong",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "quiz-right",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "stage-w1",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "stage-w2",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "stage-w3",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "stage-w4",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "stage-w5",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "stage-o1",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "stage-o2",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "stage-o3",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "stage-o4",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "stage-o5",
+        "differentPixels": 3,
+        "bbox": [
+          325,
+          202,
+          369,
+          241
+        ],
+        "geometryDifferences": []
+      },
+      {
+        "name": "stage-m1",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "stage-m2",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "stage-m3",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "stage-m4",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "stage-m5",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "failure",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "win",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      },
+      {
+        "name": "finish-clear",
+        "differentPixels": 83756,
+        "bbox": [
+          21,
+          55,
+          369,
+          316
+        ],
+        "geometryDifferences": []
+      },
+      {
+        "name": "finish-over",
+        "differentPixels": 0,
+        "bbox": null,
+        "geometryDifferences": []
+      }
+    ],
+    "issues": []
+  },
+  "operations": [
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "checks": [
+        "title-to-stories",
+        "prologue-seven-scenes-two-balances-wrong-right-to-levels",
+        "normal-hides-initial-depth",
+        "title-pick-fifteen-stage-buttons-enter",
+        "mute-toggle-roundtrip",
+        "cargo-toggle-roundtrip",
+        "real-depart-failure-and-retry",
+        "real-solved-depart-win-to-pick",
+        "grid-select-drop-undo",
+        "no-js-errors"
+      ],
+      "errors": []
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "checks": [
+        "title-to-stories",
+        "prologue-seven-scenes-two-balances-wrong-right-to-levels",
+        "normal-hides-initial-depth",
+        "title-pick-fifteen-stage-buttons-enter",
+        "mute-toggle-roundtrip",
+        "cargo-toggle-roundtrip",
+        "real-depart-failure-and-retry",
+        "real-solved-depart-win-to-pick",
+        "grid-select-drop-undo",
+        "no-js-errors"
+      ],
+      "errors": []
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "checks": [
+        "title-to-stories",
+        "prologue-seven-scenes-two-balances-wrong-right-to-levels",
+        "normal-hides-initial-depth",
+        "title-pick-fifteen-stage-buttons-enter",
+        "mute-toggle-roundtrip",
+        "cargo-toggle-roundtrip",
+        "real-depart-failure-and-retry",
+        "real-solved-depart-win-to-pick",
+        "grid-select-drop-undo",
+        "no-js-errors"
+      ],
+      "errors": []
+    }
+  ],
+  "limited_rechecks": {
+    "mobileRechecks": [
+      {
+        "name": "story-s1",
+        "bbox": null,
+        "maxPerChannel": [
+          0,
+          0,
+          0
+        ],
+        "meanPerChannel": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "differentPixels": 0
+      },
+      {
+        "name": "finish-clear",
+        "bbox": null,
+        "maxPerChannel": [
+          0,
+          0,
+          0
+        ],
+        "meanPerChannel": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "differentPixels": 0
+      },
+      {
+        "name": "stage-o5",
+        "bbox": null,
+        "maxPerChannel": [
+          0,
+          0,
+          0
+        ],
+        "meanPerChannel": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "differentPixels": 0,
+        "source": "boundary isolated recheck"
+      }
+    ],
+    "decodedAssetChecks": [
+      {
+        "mode": "baseline",
+        "name": "story-s1",
+        "currentSrc": "http://127.0.0.1:5187/public/graphics/prologue-request.webp",
+        "src": "http://127.0.0.1:5187/public/graphics/prologue-request.webp",
+        "naturalWidth": 960,
+        "naturalHeight": 720,
+        "complete": true,
+        "rect": {
+          "x": 21,
+          "y": 55,
+          "w": 348,
+          "h": 261
+        },
+        "http": 200,
+        "responseHash": "39e9471a712cad5dfc976fa54c4fab42055b7efe1a1aa87950385bb8c71eb758",
+        "gitHash": "39e9471a712cad5dfc976fa54c4fab42055b7efe1a1aa87950385bb8c71eb758",
+        "currentFileHash": "39e9471a712cad5dfc976fa54c4fab42055b7efe1a1aa87950385bb8c71eb758",
+        "sameBytes": true
+      },
+      {
+        "mode": "baseline",
+        "name": "finish-clear",
+        "currentSrc": "http://127.0.0.1:5187/public/graphics/prologue-harbor.webp",
+        "src": "http://127.0.0.1:5187/public/graphics/prologue-harbor.webp",
+        "naturalWidth": 960,
+        "naturalHeight": 720,
+        "complete": true,
+        "rect": {
+          "x": 21,
+          "y": 55,
+          "w": 348,
+          "h": 261
+        },
+        "http": 200,
+        "responseHash": "db90aa2560d017afc76b147c26fd5950d47ab46df58a5629aea9bacbade63ce1",
+        "gitHash": "db90aa2560d017afc76b147c26fd5950d47ab46df58a5629aea9bacbade63ce1",
+        "currentFileHash": "db90aa2560d017afc76b147c26fd5950d47ab46df58a5629aea9bacbade63ce1",
+        "sameBytes": true
+      },
+      {
+        "mode": "final",
+        "name": "story-s1",
+        "currentSrc": "http://127.0.0.1:5187/public/graphics/prologue-request.webp",
+        "src": "http://127.0.0.1:5187/public/graphics/prologue-request.webp",
+        "naturalWidth": 960,
+        "naturalHeight": 720,
+        "complete": true,
+        "rect": {
+          "x": 21,
+          "y": 55,
+          "w": 348,
+          "h": 261
+        },
+        "http": 200,
+        "responseHash": "39e9471a712cad5dfc976fa54c4fab42055b7efe1a1aa87950385bb8c71eb758",
+        "gitHash": "39e9471a712cad5dfc976fa54c4fab42055b7efe1a1aa87950385bb8c71eb758",
+        "currentFileHash": "39e9471a712cad5dfc976fa54c4fab42055b7efe1a1aa87950385bb8c71eb758",
+        "sameBytes": true
+      },
+      {
+        "mode": "final",
+        "name": "finish-clear",
+        "currentSrc": "http://127.0.0.1:5187/public/graphics/prologue-harbor.webp",
+        "src": "http://127.0.0.1:5187/public/graphics/prologue-harbor.webp",
+        "naturalWidth": 960,
+        "naturalHeight": 720,
+        "complete": true,
+        "rect": {
+          "x": 21,
+          "y": 55,
+          "w": 348,
+          "h": 261
+        },
+        "http": 200,
+        "responseHash": "db90aa2560d017afc76b147c26fd5950d47ab46df58a5629aea9bacbade63ce1",
+        "gitHash": "db90aa2560d017afc76b147c26fd5950d47ab46df58a5629aea9bacbade63ce1",
+        "currentFileHash": "db90aa2560d017afc76b147c26fd5950d47ab46df58a5629aea9bacbade63ce1",
+        "sameBytes": true
+      }
+    ],
+    "boundaryFinalStates": 8,
+    "boundaryBaselineStates": 3,
+    "unchanged1023ExistingIssue": [
+      "木の板6",
+      "ひとつ戻す"
+    ]
+  },
+  "image_metrics": [
+    {
+      "name": "story-s1",
+      "bbox": null,
+      "maxPerChannel": [
+        0,
+        0,
+        0
+      ],
+      "meanPerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "differentPixels": 0
+    },
+    {
+      "name": "finish-clear",
+      "bbox": null,
+      "maxPerChannel": [
+        0,
+        0,
+        0
+      ],
+      "meanPerChannel": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "differentPixels": 0
+    }
+  ],
+  "physical_devices_tested": false
+}

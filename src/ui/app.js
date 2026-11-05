@@ -11,7 +11,7 @@ import { GRAPHICS, cargoArt } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.8.15';
+const APP_VERSION = '0.8.16';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -23,30 +23,34 @@ const jingle = () => audio.jingle();
 const app=document.getElementById('app');
 const $=(s,r=document)=>r.querySelector(s);
 let cur=null, muted=false;
-function show(html,cls=''){const c=document.createElement('section');c.className='card enter '+cls;c.innerHTML=html;app.append(c);
+function show(html,cls=''){const c=document.createElement('section');c.className='card enter '+cls;c.innerHTML=html;
+  // スマホでは display:contents で元の並びを保ち、PCだけ操作欄を独立してスクロールする。
+  if(c.matches('.story-layout,.stage-layout')){const side=document.createElement('div');side.className='layout-side';const frame=$('.frame',c);
+    while(frame.nextSibling)side.append(frame.nextSibling);c.append(side)}
+  app.append(c);
   const old=cur;cur=c;requestAnimationFrame(()=>requestAnimationFrame(()=>{c.classList.remove('enter');if(old){old.classList.add('leave');setTimeout(()=>old.remove(),460)}}));return c}
 const topbar=t=>`<div class="top"><b>${t}</b><span><button class="tiny" id="mute">${muted?'音なし':'音あり'}</button> <button class="tiny" id="home">表紙</button></span></div>`;
 function wire(c){const m=$('#mute',c),h=$('#home',c);if(m)m.onclick=()=>{muted=!muted;audio.setMuted(muted);m.textContent=muted?'音なし':'音あり'};if(h)h.onclick=()=>{stopRun();title()}}
 
-function title(){const c=show(`<div class="hero"><div class="series">SIKUMI<br>NOTES<span>03</span></div><h1 class="logo">FLOAT</h1><div class="logo2">NOTES</div>
-  <p class="tag">積んで、浮かべて、確かめる。</p></div><div class="symbols" role="img" aria-label="見習い、天秤、荷物の船"></div>
-  <div class="list"><button class="btn sub" id="go">おはなし</button><button class="btn" id="cont">連続プレイ</button><button class="btn sub" id="pick">選択プレイ</button>
+function title(){const c=show(`<div class="title-hero"><div class="hero"><div class="series">SIKUMI<br>NOTES<span>03</span></div><h1 class="logo">FLOAT</h1><div class="logo2">NOTES</div>
+  <p class="tag">積んで、浮かべて、確かめる。</p></div><div class="symbols" role="img" aria-label="見習い、天秤、荷物の船"></div></div>
+  <div class="title-menu"><div class="list"><button class="btn sub" id="go">おはなし</button><button class="btn" id="cont">連続プレイ</button><button class="btn sub" id="pick">選択プレイ</button>
   <div class="row"><button class="btn sub" disabled>パーツの説明</button><button class="btn sub" disabled>遊び方と概要</button></div></div>
-  <div class="fine">© SIKUMI LAB　v${APP_VERSION} 試作</div>`,'cover');
-  c.style.backgroundImage=`url("${GRAPHICS.title}")`;
+  <div class="fine">© SIKUMI LAB　v${APP_VERSION} 試作</div></div>`,'cover');
+  c.style.setProperty('--title-art',`url("${GRAPHICS.title}")`);
   $('#go',c).onclick=()=>{unlock();clack();stories()};
   $('#cont',c).onclick=()=>{unlock();clack();levels()};
   $('#pick',c).onclick=()=>{unlock();clack();pick()}}
 // おはなし：序章を遊ぶ入口と、見た紙芝居の読み返し。何度でも見直せる
 const STORIES=[['王冠の謎',['s1','s2','s3','s4','s9','s10','s5']],['積み方',['s7']],['油の湖',['s8']],['銀色の湖',['s6']]];
 function stories(){const c=show(`${topbar('おはなし')}<div class="list" style="max-width:none"><button class="btn" id="play">序章を遊ぶ</button>
-  ${STORIES.map(([n,keys],i)=>{const open=keys.every(k=>book.seen(k));return `<button class="btn sub" data-r="${i}" ${open?'':'disabled'}>${open?n:'まだ読めません'}</button>`}).join('')}</div>`);
+  ${STORIES.map(([n,keys],i)=>{const open=keys.every(k=>book.seen(k));return `<button class="btn sub" data-r="${i}" ${open?'':'disabled'}>${open?n:'まだ読めません'}</button>`}).join('')}</div>`,'menu-layout stories-menu');
   wire(c);$('#play',c).onclick=()=>{wood();flow(0)};
   c.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{wood();const keys=STORIES[+b.dataset.r][1];const read=i=>i>=keys.length?stories():scene(keys[i],()=>read(i+1));read(0)})}
-function pick(){const c=show(`${topbar('選択プレイ')}<div class="list" style="max-width:none">${STAGES.map((s,i)=>`<button class="btn sub" data-s="${i}">${s.name}</button>`).join('')}</div>`);
+function pick(){const c=show(`${topbar('選択プレイ')}<div class="list" style="max-width:none">${STAGES.map((s,i)=>`<button class="btn sub" data-s="${i}">${s.name}</button>`).join('')}</div>`,'menu-layout stage-menu');
   wire(c);c.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{wood();R=null;enter(+b.dataset.s)})}
 function levels(){const c=show(`${topbar('連続プレイ')}<div class="say"><span class="nar">全${STAGES.length}面を順に進みます。沈んだり関門に当たったりするとNGです。ノーマルとエキスパートでは、出航するまで深さが見えません。</span></div>
-  <div class="list" style="max-width:none">${LEVELS.map(l=>`<button class="btn sub" data-l="${l.id}">${l.name}<small style="display:block;font-size:14px">${l.note}　最高 ${book.best(l.id)}面</small></button>`).join('')}</div>`);
+  <div class="list" style="max-width:none">${LEVELS.map(l=>`<button class="btn sub" data-l="${l.id}">${l.name}<small style="display:block;font-size:14px">${l.note}　最高 ${book.best(l.id)}面</small></button>`).join('')}</div>`,'menu-layout levels-menu');
   wire(c);c.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{unlock();clack();R=new ContinuousRun(b.dataset.l,STAGES.length);enter(0)})}
 // 面に入る。新しい要素の紙芝居は初回だけ流す
 function enter(n){const list=(STAGES[n].intro??[]).filter(k=>!book.seen(k));
@@ -60,21 +64,21 @@ function goalText(S){let liq=S.pre??S.start;const mix=S.gates.some(g=>g.k==='cha
 function ngText(){if(!R)return'';return R.level.limit===null?`失敗 ${R.ng}回`:`やり直し あと${R.left}回`}
 
 function scene(k,next){const s=SCENES[k];book.markSeen(k);const c=show(`${topbar('おはなし')}<div class="frame">${ART[s.art]()}</div>
-  <div class="say"><span class="nar">${s.nar}</span><span class="who" style="margin-top:4px">${s.who}</span>${s.say}</div><button class="btn" id="n">つづき</button>`);
+  <div class="say"><span class="nar">${s.nar}</span><span class="who" style="margin-top:4px">${s.who}</span>${s.say}</div><button class="btn" id="n">つづき</button>`,'story-layout');
   wire(c);$('#n',c).onclick=()=>{wood();next()}}
 
 /* ---------- 序章：天秤 ---------- */
 const balanceArt=(tilt,water)=>ART[water?'balance-water':'balance-air']();
 function bal1(next){const c=show(`${topbar('序章 1　天秤')}<div class="frame" id="f">${balanceArt(0,false)}</div>
-  <div class="say" id="t"><span class="nar">見習いは、王冠と同じ重さの純金を用意しました。天秤で比べてみましょう。</span></div><button class="btn" id="a">空気の中で量る</button>`);
+  <div class="say" id="t"><span class="nar">見習いは、王冠と同じ重さの純金を用意しました。天秤で比べてみましょう。</span></div><button class="btn" id="a">空気の中で量る</button>`,'story-layout');
   wire(c);$('#a',c).onclick=function(){wood();this.textContent='つづき';$('#t',c).innerHTML='<span class="who">見習い</span>つり合いました。重さでは見分けられません……。';this.onclick=()=>{wood();next()}}}
 function bal2(next){const c=show(`${topbar('序章 2　水の中の天秤')}<div class="frame" id="f">${balanceArt(0,false)}</div>
-  <div class="say" id="t"><span class="who">アルキメデス</span>見習いよ、分かったぞ。王冠と純金を水の中で、もう一度比べてごらん。</div><button class="btn" id="a">水に沈める</button>`);
+  <div class="say" id="t"><span class="who">アルキメデス</span>見習いよ、分かったぞ。王冠と純金を水の中で、もう一度比べてごらん。</div><button class="btn" id="a">水に沈める</button>`,'story-layout');
   wire(c);$('#a',c).onclick=function(){bell(84);$('#f',c).innerHTML=balanceArt(12,true);
     this.textContent='つづき';$('#t',c).innerHTML='<span class="who">見習い</span>えっ？ 王冠の側が上がりました！';this.onclick=()=>{wood();next()}}}
 function quiz(next){const O=[['王冠のほうが、もともと軽いから',0],['王冠のほうが体積が大きく、水を多く押しのけたから',1],['水の中では、金だけが重くなるから',0]];
   const c=show(`${topbar('序章 3　なぜ？')}<div class="frame">${balanceArt(12,true)}</div><div class="say" id="t"><span class="who">アルキメデス</span>空気の中ではつり合ったのに、水の中では王冠が上がった。なぜだと思う？</div>
-  <div class="list" style="max-width:none;gap:12px;margin-top:6px">${O.map((o,i)=>`<button class="choice" data-i="${i}"><span class="key">${'ABC'[i]}</span><span class="txt">${o[0]}</span><span class="go" aria-hidden="true">▶</span></button>`).join('')}</div>`);
+  <div class="list" style="max-width:none;gap:12px;margin-top:6px">${O.map((o,i)=>`<button class="choice" data-i="${i}"><span class="key">${'ABC'[i]}</span><span class="txt">${o[0]}</span><span class="go" aria-hidden="true">▶</span></button>`).join('')}</div>`,'story-layout');
   wire(c);c.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{const ok=O[+b.dataset.i][1];if(ok){jingle();
     $('#t',c).innerHTML='<span class="who">アルキメデス</span>そのとおり。押しのけた液体の重さが、浮く力になる。王冠は体積が大きいので、純金より強く浮いたのだ。';
     $('.list',c).classList.add('foot');$('.list',c).style.marginTop='';$('.list',c).innerHTML='<button class="btn" id="n">つづき</button>';$('#n',c).onclick=()=>{wood();next()}}
@@ -101,7 +105,7 @@ function stage(n){stopRun();const base=STAGES[n],S={area:AREA,...base,...questio
   const c=show(`${topbar(`${S.name}${R?`<small class="sub">${R.position+1}/${R.stageCount}面　<span id="ng">${ngText()}</span></small>`:''}`)}<div class="frame"><svg id="b" viewBox="0 0 ${W} ${H}" role="img" aria-label="航路の断面図"></svg></div>
     <div class="stat"><div>液体の比重<strong id="sg"></strong></div><div>船全体の重さ<strong id="wt"></strong></div><div>沈む深さ<strong id="dp"></strong></div></div>
     <div class="formula" id="fm"></div><div class="say" id="t" style="min-height:60px"></div>
-    <div class="shelf" id="sh"></div><div class="row"><button class="btn sub" id="ring">深さの音</button><button class="btn" id="dep">出航</button></div>`);
+    <div class="shelf" id="sh"></div><div class="row"><button class="btn sub" id="ring">深さの音</button><button class="btn" id="dep">出航</button></div>`,'stage-layout');
   wire(c);G.c=c;drawWorld();$('#t',c).innerHTML=goalText(S);renderShelf();syncUI();loop(run);
   $('#dep',c).onclick=()=>depart();$('#ring',c).onclick=()=>{unlock();if(G.floating&&!(G.hide&&!G.sailing))bell(midiOf(G.d));else{tap();say('船が出ると、沈んだ深さの音が鳴ります。')}};
   if(S.pre)intoMercury()}
@@ -211,7 +215,7 @@ function win(){jingle();const S=G.S,n=G.n;const f=$('.frame',G.c);f.style.positi
     dep.textContent=r==='complete'?'結果へ':'次の面へ';dep.onclick=()=>{wood();r==='complete'?finish():enter(R.position)}}
   else{dep.textContent='面を選ぶ';dep.onclick=()=>{wood();pick()}}}
 function finish(){stopRun();const run0=R,clear=run0.complete;const c=show(`${topbar(clear?'ALL CLEAR':'GAME OVER')}<div class="frame">${ART.harbor()}</div>
-  <div class="say"><span class="who">${clear?'エウレカ！':'見習い'}</span>${clear?'全部の面をクリアしました。':'今回はここまで。まだ分からないことが、見つかりました。'}<br><span class="nar">${run0.level.name}　クリア ${run0.cleared}/${run0.stageCount}面　NG ${run0.ng}回　最高 ${book.best(run0.level.id)}面</span></div><button class="btn" id="n">表紙へ</button>`);
+  <div class="say"><span class="who">${clear?'エウレカ！':'見習い'}</span>${clear?'全部の面をクリアしました。':'今回はここまで。まだ分からないことが、見つかりました。'}<br><span class="nar">${run0.level.name}　クリア ${run0.cleared}/${run0.stageCount}面　NG ${run0.ng}回　最高 ${book.best(run0.level.id)}面</span></div><button class="btn" id="n">表紙へ</button>`,'story-layout');
   wire(c);$('#n',c).onclick=()=>{wood();R=null;title()}}
 
 function flow(){scene('s1',()=>scene('s2',()=>bal1(()=>scene('s3',()=>scene('s4',()=>bal2(()=>quiz(()=>scene('s9',()=>scene('s10',()=>scene('s5',()=>levels()))))))))))}
