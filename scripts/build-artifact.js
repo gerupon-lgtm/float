@@ -31,6 +31,10 @@ const js = order.map(file => {
 const shown = /^const APP_VERSION = '([^']+)';$/m.exec(read('src/ui/app.js'))?.[1];
 if (shown !== pkg.version) throw new Error(`版がそろっていません：package.json ${pkg.version}、画面 ${shown}`);
 
+// 絵は1ページに入るよう、データとして埋め込む
+const inlined = js.replace(/new URL\('\.\.\/\.\.\/(public\/graphics\/[^']+\.webp)', import\.meta\.url\)\.href/g,
+  (_, path) => JSON.stringify(`data:image/webp;base64,${readFileSync(join(root, path)).toString('base64')}`));
+
 const html = read('index.html');
 const part = name => {
   const m = new RegExp(`<!-- app:${name}:start -->\\r?\\n([\\s\\S]*?)<!-- app:${name}:end -->`).exec(html);
@@ -39,7 +43,7 @@ const part = name => {
 };
 const css = read('src/ui/style.css');
 // 公開時に文書の外枠が付くので、中身だけを書き出す（Artifact の決まり）
-const page = `${part('head')}<style>\n${css}</style>\n${part('body')}<script type="module">\n// FLOAT NOTES 試作 v${pkg.version}（ビルドで1つにまとめたもの。元は src/）\n${js}</script>\n`;
+const page = `${part('head')}<style>\n${css}</style>\n${part('body')}<script type="module">\n// FLOAT NOTES 試作 v${pkg.version}（ビルドで1つにまとめたもの。元は src/）\n${inlined}</script>\n`;
 mkdirSync(join(root, 'artifact'), { recursive: true });
 writeFileSync(join(root, 'artifact/float-notes.html'), page);
 console.log(`artifact/float-notes.html を作りました（${order.length} モジュール、${(page.length / 1024).toFixed(1)} KB、v${pkg.version}）`);

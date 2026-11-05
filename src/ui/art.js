@@ -1,4 +1,6 @@
-// 紙芝居の仮の絵（すべて手作りの図形）。正式な絵は Codex が担当する（docs/request-codex-visual.md）。
+// 紙芝居の絵。工房は Codex の絵、そのほかは仮の図形（docs/request-codex-visual.md）。
+import { GRAPHICS } from './graphics.js';
+
 export const INK='#23304a';
 const face=(x,y,r,skin='#f2c79b')=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${skin}" stroke="${INK}" stroke-width="3"/>`;
 const eyes=(x,y,g=7)=>`<circle cx="${x-g}" cy="${y}" r="2.6" fill="${INK}"/><circle cx="${x+g}" cy="${y}" r="2.6" fill="${INK}"/>`;
@@ -19,6 +21,7 @@ const smith=(x,y)=>`<g transform="translate(${x} ${y})"><path d="M-26 80 L-22 30
   ${face(0,0,23)}${eyes(4,-2,6)}<path d="M-6 9q8 -5 14 2" fill="none" stroke="${INK}" stroke-width="2.6"/><path d="M30 -24q7 10 0 14q-7 -4 0 -14z" fill="#8fd0d4" stroke="${INK}" stroke-width="2"/></g>`;
 const wrap=(bg,inner)=>`<svg viewBox="0 0 360 230" role="img"><rect width="360" height="230" fill="${bg}"/><g filter="url(#wob)">${inner}</g></svg>`;
 export const ART={
+  workshop:()=>`<img src="${GRAPHICS.workshop}" alt="工房で、師匠が見習いに天秤を示す絵" width="960" height="720" style="display:block;width:100%;height:auto">`,
   palace:()=>wrap('#f3c86a',`<rect y="178" width="360" height="52" fill="#b9793c"/><rect x="24" y="40" width="26" height="140" fill="#fffaf0" stroke="${INK}" stroke-width="3"/><rect x="310" y="40" width="26" height="140" fill="#fffaf0" stroke="${INK}" stroke-width="3"/>${king(120,78)}${crown(208,120,1.1)}${smith(280,108)}`),
   order:()=>wrap('#a6d8c5',`<rect y="178" width="360" height="52" fill="#c9a06a"/><rect x="250" y="66" width="86" height="112" fill="#fffaf0" stroke="${INK}" stroke-width="3"/>${master(96,72)}${apprentice(218,92)}`),
   bath:()=>wrap('#f1a95e',`<rect y="176" width="360" height="54" fill="#8f5f33"/><path d="M42 132H318L296 196H64Z" fill="#fffaf0" stroke="${INK}" stroke-width="4"/><path d="M50 134H310" stroke="#3f97c0" stroke-width="13"/><path d="M36 126q10 26 -2 54M326 126q-10 26 2 54" stroke="#3f97c0" stroke-width="6" fill="none"/>${face(180,96,32)}<path d="M150 104Q148 142 180 148Q212 142 210 104Q196 118 180 116Q164 118 150 104Z" fill="#f0f0ea" stroke="${INK}" stroke-width="3"/>${eyes(180,92,11)}<path d="M100 42q14 -18 32 -4q10 -18 30 -4M220 34q16 -16 30 -2q12 -14 28 0" stroke="#fffaf0" stroke-width="7" fill="none"/>`),

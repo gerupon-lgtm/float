@@ -5,10 +5,11 @@ import { CELLS, ROWMAX, ROWH, dropCargo, stackRows, pileClearsBridge } from '../
 import { STAGES } from '../content/stages.js';
 import { SCENES } from '../content/story.js';
 import { ART, INK, crown } from './art.js';
+import { GRAPHICS } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.2.0';
+const APP_VERSION = '0.3.0';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -25,12 +26,17 @@ function show(html,cls=''){const c=document.createElement('section');c.className
 const topbar=t=>`<div class="top"><b>${t}</b><span><button class="tiny" id="mute">${muted?'音なし':'音あり'}</button> <button class="tiny" id="home">表紙</button></span></div>`;
 function wire(c){const m=$('#mute',c),h=$('#home',c);if(m)m.onclick=()=>{muted=!muted;audio.setMuted(muted);m.textContent=muted?'音なし':'音あり'};if(h)h.onclick=()=>{stopRun();title()}}
 
-function title(){const c=show(`<div class="series">SIKUMI<br>NOTES<span>03</span></div><div><div class="logo">FLOAT</div><div class="logo2">NOTES</div></div>
-  <div class="tag">積んで、浮かべて、確かめる。</div><div class="list"><button class="btn" id="go">はじめる</button>
-  <div class="row"><button class="btn sub" id="j1">水の面</button><button class="btn sub" id="j2">積み方の面</button><button class="btn sub" id="j3">油の面</button><button class="btn sub" id="j4">水銀の面</button></div></div>
-  <div class="fine">© SIKUMI LAB　v${APP_VERSION} 試作　音が鳴ります</div>`,'cover');
+function title(){const c=show(`<div class="hero"><div class="series">SIKUMI<br>NOTES<span>03</span></div><h1 class="logo">FLOAT</h1><div class="logo2">NOTES</div>
+  <p class="tag">積んで、浮かべて、確かめる。</p></div><div class="symbols" role="img" aria-label="見習い、天秤、荷物の船"></div>
+  <div class="list"><button class="btn sub" id="go">紙芝居</button><button class="btn" id="cont">連続プレイ</button><button class="btn sub" id="pick">選択プレイ</button>
+  <div class="row"><button class="btn sub" disabled>パーツの説明</button><button class="btn sub" disabled>遊び方と概要</button></div></div>
+  <div class="fine">© SIKUMI LAB　v${APP_VERSION} 試作</div>`,'cover');
+  c.style.backgroundImage=`url("${GRAPHICS.title}")`;
   $('#go',c).onclick=()=>{unlock();clack();flow(0)};
-  [1,2,3,4].forEach(n=>$('#j'+n,c).onclick=()=>{unlock();clack();stage(n-1)})}
+  $('#cont',c).onclick=()=>{unlock();clack();stage(0)};
+  $('#pick',c).onclick=()=>{unlock();clack();pick()}}
+function pick(){const c=show(`${topbar('選択プレイ')}<div class="list" style="max-width:none">${STAGES.map((s,i)=>`<button class="btn sub" data-s="${i}">${s.name}</button>`).join('')}</div>`);
+  wire(c);c.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{wood();stage(+b.dataset.s)})}
 
 function scene(k,next){const s=SCENES[k];const c=show(`${topbar('紙芝居')}<div class="frame">${ART[s.art]()}</div>
   <div class="say"><span class="nar">${s.nar}</span><span class="who" style="margin-top:4px">${s.who}</span>${s.say}</div><button class="btn" id="n">つづき</button>`);

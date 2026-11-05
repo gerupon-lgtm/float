@@ -48,13 +48,15 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 .chip.lead[aria-pressed="true"]{background:var(--red)}
 .scale{font-size:12px;display:inline-block;border:2px solid var(--good);color:var(--good);border-radius:12px;padding:0 8px;margin-left:6px;font-weight:600}
 /* 表紙 */
-.cover{justify-content:center;align-items:center;text-align:center;gap:14px;background:var(--sky)}
-.series{display:flex;align-items:center;gap:10px;font-family:var(--latin);font-weight:700;color:var(--ink);letter-spacing:.14em;font-size:11px;line-height:1.2;text-align:left}
-.series span{border-left:2px solid var(--ink);padding-left:10px;font-size:22px;letter-spacing:0}
-.logo{font-family:var(--latin);font-weight:700;font-size:clamp(58px,19vw,92px);letter-spacing:.03em;line-height:1;color:var(--red);-webkit-text-stroke:2px var(--ink)}
+.cover{--w:min(100vw,520px);align-items:center;text-align:center;gap:10px;padding-block:0 12px;background-color:#fff1db;background-size:100% auto;background-repeat:no-repeat;background-position:top center}
+.hero{height:calc(var(--w)*.79);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:2px;flex:none;width:100%}
+.symbols{height:calc(var(--w)*.40);flex:none;width:100%}
+.series{display:flex;align-items:center;gap:10px;font-family:var(--latin);font-weight:700;color:var(--ink);letter-spacing:.12em;font-size:12px;line-height:1.2;text-align:left}
+.series span{border-left:2px solid var(--ink);padding-left:10px;font-size:26px;letter-spacing:0}
+.logo{margin:6px 0 0;font-family:var(--latin);font-weight:700;font-size:clamp(64px,22vw,110px);letter-spacing:.03em;line-height:1;color:var(--red);-webkit-text-stroke:2px var(--ink)}
 .logo2{font-family:var(--latin);font-weight:500;letter-spacing:.42em;font-size:26px;margin-right:-.42em}
-.tag{font-family:var(--disp);font-size:18px}
-.list{display:grid;gap:8px;width:100%;max-width:340px}
+.tag{margin:6px 0 0;font-family:var(--disp);font-size:18px}
+.list{display:grid;gap:8px;width:100%;max-width:360px}
 .fine{font-size:12px}
 .stamp{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) rotate(-8deg);font-family:var(--disp);color:var(--red);border:5px solid var(--red);
   background:rgba(255,250,240,.9);padding:2px 16px;font-size:34px;border-radius:8px;pointer-events:none}
