@@ -11,7 +11,7 @@ import { GRAPHICS } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.5.1';
+const APP_VERSION = '0.5.2';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -96,8 +96,10 @@ let R=null;
 const book=(()=>{try{return new ModeBook(window.localStorage)}catch{return new ModeBook(null)}})();
 const lastQuestion={};
 function stopRun(){run++}
-function wait(ms){return new Promise(r=>setTimeout(r,matchMedia('(prefers-reduced-motion:reduce)').matches?Math.min(ms,80):ms))}
-function tween(ms,fn){const id=run;if(matchMedia('(prefers-reduced-motion:reduce)').matches)ms=Math.min(ms,80);return new Promise(res=>{const t0=performance.now();
+// 動きを減らす設定の端末でも、船の動きは内容の一部なので、一瞬にせず短くするだけにする
+const calm=()=>matchMedia('(prefers-reduced-motion:reduce)').matches?0.6:1;
+function wait(ms){return new Promise(r=>setTimeout(r,ms*calm()))}
+function tween(ms,fn){const id=run;ms*=calm();return new Promise(res=>{const t0=performance.now();
   const f=now=>{if(id!==run)return;const p=Math.min(1,(now-t0)/ms),e=p*p*(3-2*p);fn(e);if(p<1)requestAnimationFrame(f);else res()};requestAnimationFrame(f)})}
 
 function stage(n){stopRun();const base=STAGES[n],S={area:AREA,...base,...question(base)};
