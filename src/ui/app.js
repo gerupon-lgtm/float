@@ -11,7 +11,7 @@ import { GRAPHICS, cargoArt } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.8.0';
+const APP_VERSION = '0.8.1';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -38,7 +38,7 @@ function title(){const c=show(`<div class="hero"><div class="series">SIKUMI<br>N
   $('#cont',c).onclick=()=>{unlock();clack();levels()};
   $('#pick',c).onclick=()=>{unlock();clack();pick()}}
 // おはなし：序章を遊ぶ入口と、見た紙芝居の読み返し。何度でも見直せる
-const STORIES=[['王冠の謎',['s1','s2','s3','s4','s5']],['積み方',['s7']],['油の湖',['s8']],['銀色の湖',['s6']]];
+const STORIES=[['王冠の謎',['s1','s2','s3','s4','s9','s10','s5']],['積み方',['s7']],['油の湖',['s8']],['銀色の湖',['s6']]];
 function stories(){const c=show(`${topbar('おはなし')}<div class="list" style="max-width:none"><button class="btn" id="play">序章を遊ぶ</button>
   ${STORIES.map(([n,keys],i)=>{const open=keys.every(k=>book.seen(k));return `<button class="btn sub" data-r="${i}" ${open?'':'disabled'}>${open?n:'まだ読めません'}</button>`}).join('')}</div>`);
   wire(c);$('#play',c).onclick=()=>{wood();flow(0)};
@@ -63,19 +63,19 @@ function scene(k,next){const s=SCENES[k];book.markSeen(k);const c=show(`${topbar
 /* ---------- 序章：天秤 ---------- */
 const balanceArt=(tilt,water)=>ART[water?'balance-water':'balance-air']();
 function bal1(next){const c=show(`${topbar('序章 1　天秤')}<div class="frame" id="f">${balanceArt(0,false)}</div>
-  <div class="say" id="t"><span class="nar">王冠と、同じ重さの純金。天秤にかけて比べてみましょう。</span></div><button class="btn" id="a">空気の中で量る</button>`);
-  wire(c);$('#a',c).onclick=function(){wood();this.textContent='つづき';$('#t',c).innerHTML='<span class="who">見習い</span>つり合った。重さでは、見分けられない……。';this.onclick=()=>{wood();next()}}}
+  <div class="say" id="t"><span class="nar">見習いは、王冠と同じ重さの純金を用意しました。天秤で比べてみましょう。</span></div><button class="btn" id="a">空気の中で量る</button>`);
+  wire(c);$('#a',c).onclick=function(){wood();this.textContent='つづき';$('#t',c).innerHTML='<span class="who">見習い</span>つり合いました。重さでは見分けられません……。';this.onclick=()=>{wood();next()}}}
 function bal2(next){const c=show(`${topbar('序章 2　水の中の天秤')}<div class="frame" id="f">${balanceArt(0,false)}</div>
-  <div class="say" id="t"><span class="who">アルキメデス</span>師匠の風呂を思い出すのだ。では、水に沈めて測ってごらん。</div><button class="btn" id="a">水に沈める</button>`);
+  <div class="say" id="t"><span class="who">アルキメデス</span>見習いよ、分かったぞ。王冠と純金を水に沈めて、もう一度比べてごらん。</div><button class="btn" id="a">水に沈める</button>`);
   wire(c);$('#a',c).onclick=function(){bell(84);$('#f',c).innerHTML=balanceArt(12,true);
-    this.textContent='つづき';$('#t',c).innerHTML='<span class="who">見習い</span>えっ？ 王冠の側が、上がった！';this.onclick=()=>{wood();next()}}}
+    this.textContent='つづき';$('#t',c).innerHTML='<span class="who">見習い</span>えっ？ 王冠の側が上がりました！';this.onclick=()=>{wood();next()}}}
 function quiz(next){const O=[['王冠のほうが、もともと軽いから',0],['王冠のほうが体積が大きく、水を多く押しのけたから',1],['水の中では、金だけが重くなるから',0]];
-  const c=show(`${topbar('序章 3　なぜ？')}<div class="frame">${balanceArt(12,true)}</div><div class="say" id="t"><span class="who">アルキメデス</span>空気の中ではつり合ったな。なぜ、水の中で王冠が上がった？</div>
+  const c=show(`${topbar('序章 3　なぜ？')}<div class="frame">${balanceArt(12,true)}</div><div class="say" id="t"><span class="who">アルキメデス</span>空気の中ではつり合ったのに、水の中では王冠が上がった。なぜだと思う？</div>
   <div class="list" style="max-width:none">${O.map((o,i)=>`<button class="btn sub" data-i="${i}" style="font-size:18px">${o[0]}</button>`).join('')}</div>`);
   wire(c);c.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{const ok=O[+b.dataset.i][1];if(ok){jingle();
-    $('#t',c).innerHTML='<span class="who">アルキメデス</span>そのとおり。押しのけた液体の重さが、浮く力になる。銀が混ざると体積が増えるのだ。';
+    $('#t',c).innerHTML='<span class="who">アルキメデス</span>そのとおり。押しのけた液体の重さが、浮く力になる。王冠は体積が大きいので、純金より強く浮いたのだ。';
     $('.list',c).innerHTML='<button class="btn" id="n">つづき</button>';$('#n',c).onclick=()=>{wood();next()}}
-    else{tap();$('#t',c).innerHTML='<span class="who">アルキメデス</span>ふむ。空気の中ではつり合っていたぞ。もう一度考えてごらん。'}})}
+    else{tap();$('#t',c).innerHTML='<span class="who">アルキメデス</span>ふむ。空気の中では、重さはつり合っていたぞ。もう一度考えてごらん。'}})}
 
 /* ---------- 航路の盤面 ---------- */
 const U=12, SURF=128, W=360, H=236;
@@ -208,7 +208,7 @@ function finish(){stopRun();const run0=R,clear=run0.complete;const c=show(`${top
   <div class="say"><span class="who">${clear?'エウレカ！':'見習い'}</span>${clear?'全部の面をクリアしました。':'今回はここまで。まだ分からないことが、見つかりました。'}<br><span class="nar">${run0.level.name}　クリア ${run0.cleared}/${run0.stageCount}面　NG ${run0.ng}回　最高 ${book.best(run0.level.id)}面</span></div><button class="btn" id="n">表紙へ</button>`);
   wire(c);$('#n',c).onclick=()=>{wood();R=null;title()}}
 
-function flow(){scene('s1',()=>scene('s2',()=>bal1(()=>scene('s3',()=>scene('s4',()=>bal2(()=>quiz(()=>scene('s5',()=>levels()))))))))}
+function flow(){scene('s1',()=>scene('s2',()=>bal1(()=>scene('s3',()=>scene('s4',()=>bal2(()=>quiz(()=>scene('s9',()=>scene('s10',()=>scene('s5',()=>levels()))))))))))}
 // ---- 通信なしで使う仕組みと、新しい版の案内（F-012） ----
 function setupOffline(){if(!document.querySelector('meta[name="float-offline"]')||!('serviceWorker' in navigator))return;
   const updates=createUpdateManager({serviceWorker:navigator.serviceWorker,currentVersion:APP_VERSION,canApply:()=>!G?.busy,reload:()=>location.reload(),
