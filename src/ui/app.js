@@ -11,7 +11,7 @@ import { GRAPHICS } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.6.1';
+const APP_VERSION = '0.6.2';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -65,7 +65,7 @@ function balanceArt(tilt,water){const L=180-96,R=180+96,dy=Math.sin(tilt*Math.PI
   const pan=(x,y,o)=>`<path d="M${x} 62 L${x-28} ${y} M${x} 62 L${x+28} ${y}" transform="translate(0 ${0})" stroke="${INK}" stroke-width="2"/>`;
   const ly=120-dy,ry=120+dy;
   return `<svg viewBox="0 0 360 230" role="img" aria-label="天秤"><rect width="360" height="230" fill="#f3c86a"/>
-  <rect y="${water?150:230}" width="360" height="80" fill="#3f97c0" opacity=".85"/>
+  <rect y="${water?90:230}" width="360" height="140" fill="#3f97c0" opacity=".8"/>
   <path d="M180 200V60" stroke="${INK}" stroke-width="7"/><rect x="146" y="196" width="68" height="14" fill="#8a5a2e" stroke="${INK}" stroke-width="3"/>
   <g transform="rotate(${tilt} 180 60)"><path d="M${L} 60H${R}" stroke="${INK}" stroke-width="7"/></g>
   <path d="M${L} ${60-dy} V${ly}" stroke="${INK}" stroke-width="2.5"/><path d="M${R} ${60+dy} V${ry}" stroke="${INK}" stroke-width="2.5"/>
