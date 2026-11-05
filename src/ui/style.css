@@ -18,7 +18,7 @@ body{background:var(--wood2);color:var(--ink);font-family:var(--body);font-weigh
 .card.enter{transform:translateX(102%)}
 .card.leave{transform:translateX(-30%)}
 .top{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px;min-height:30px}
-.top b{font-family:var(--disp);font-weight:400;font-size:14px;min-width:0;line-height:1.25}.top span:not(#ng){flex:none;white-space:nowrap}
+.top b{font-family:var(--disp);font-weight:400;font-size:18px;min-width:0;line-height:1.25}.top span:not(#ng){flex:none;white-space:nowrap}
 .tiny{border:2px solid var(--ink);background:transparent;color:var(--ink);border-radius:6px;font:inherit;font-size:12px;padding:2px 8px;cursor:pointer}
 .frame{border:7px solid var(--wood);outline:2px solid var(--wood2);border-radius:4px;background:var(--sky);overflow:hidden;flex:none}
 .frame svg{display:block;width:100%;height:auto}
