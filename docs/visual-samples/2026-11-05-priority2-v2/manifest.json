@@ -1,0 +1,88 @@
+{
+  "title": "FLOAT NOTES boat and low bridge revisions",
+  "date": "2026-11-05",
+  "sample_version": "v2",
+  "base": "docs/visual-samples/2026-11-05-priority2-v1",
+  "generation_mode": "built-in image_gen",
+  "images": 2,
+  "transparent_images": 2,
+  "code_modified": false,
+  "existing_images_modified": false,
+  "checks": {
+    "all_pngs_open": true,
+    "copies_match_original_bytes": true,
+    "boat_ratio_within_5_percent_of_two": true,
+    "bridge_no_visible_obstruction_in_lower_horizontal_corridor": true,
+    "game_integration_tested": false
+  },
+  "assets": [
+    {
+      "id": "08-boat-empty",
+      "file": "08-boat-empty.png",
+      "label": "箱形の船：幅と高さ約2:1・広い側面",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "transparent_background": true,
+      "bytes": 2193814,
+      "sha256": "d18e540c875f1366e0162e52c4aaefbb64e070b36c99a2b87d22309dc848b2f9",
+      "git_blob_sha": "d54f20312cbf56216181c59f29deabbba70977be",
+      "opaque_bbox_alpha128": [
+        103,
+        194,
+        1433,
+        833
+      ],
+      "opaque_width": 1330,
+      "opaque_height": 639,
+      "opaque_aspect_ratio": 2.081377151799687,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "fully_transparent_pixels": 672073,
+      "requested_width_height_ratio": 2,
+      "depth_scale_baked_in": false,
+      "cargo_area_visible": true
+    },
+    {
+      "id": "22-obstacle-low-bridge",
+      "file": "22-obstacle-low-bridge.png",
+      "label": "低い橋：上から吊るす形・左右に抜ける通路",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "transparent_background": true,
+      "bytes": 1355873,
+      "sha256": "a08e106ee81ed5b6c5c7d8b048da8dd58a2788fb9d13c78154db3454ca876667",
+      "git_blob_sha": "c2738d435b229f0567a496be65b37ed000e0d3ed",
+      "opaque_bbox_alpha128": [
+        36,
+        0,
+        1500,
+        513
+      ],
+      "opaque_width": 1464,
+      "opaque_height": 513,
+      "opaque_aspect_ratio": 2.853801169590643,
+      "alpha_extrema": [
+        0,
+        254
+      ],
+      "fully_transparent_pixels": 1262919,
+      "bridge_structure": "suspended from above; no supports below the deck",
+      "horizontal_passage_check": {
+        "rect_px": [
+          0,
+          550,
+          1536,
+          1024
+        ],
+        "max_alpha": 1,
+        "fully_transparent_pixels": 726505,
+        "alpha1_pixels": 1559,
+        "alpha2plus_pixels": 0
+      }
+    }
+  ]
+}
