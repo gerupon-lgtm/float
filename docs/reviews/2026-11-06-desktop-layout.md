@@ -54,5 +54,11 @@ Chromiumで次の40状態を1366×768、1920×1080、390×844の各サイズで�
 
 ### 公開確認
 
-main反映後に、自動公開の完了と公開資材・画面を確認して追記します。
+- 配信元：[bb4a802e2fe539c4ac7e98671e39140a79edc6ee](https://github.com/gerupon-lgtm/float/commit/bb4a802e2fe539c4ac7e98671e39140a79edc6ee)。[GitHub Actions 42099671279](https://github.com/gerupon-lgtm/float/actions/runs/42099671279) はビルド・公開とも成功。
+- 公開先：[float.sikumilab.com](https://float.sikumilab.com/)。表示版と配信元を `build-info.json` で確認し、0.8.16で一致。
+- 通信なし用59資材と `sw.js` の計60資材が、ローカルの最終ビルドとSHA-256で一致。
+- 公開HTMLを加工せず、1366×768、1920×1080、390×844で表紙・おはなし一覧・紙芝居・面選択・航路の計15表示を確認。横スクロール・PCの左右配置崩れ・JS例外・読込失敗は0。
+- [公開資材照合](2026-11-06-desktop-layout/public-assets.json)、[公開画面確認](2026-11-06-desktop-layout/public-ui.json)。
+
+この公開結果の追記だけのコミットには `[skip ci]` を付け、同じアプリを再配信しません。
 

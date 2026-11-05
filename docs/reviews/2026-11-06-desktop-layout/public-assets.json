@@ -1,0 +1,307 @@
+{
+  "version": "0.8.16",
+  "commit": "bb4a802e2fe539c4ac7e98671e39140a79edc6ee",
+  "checked": 60,
+  "assets": [
+    {
+      "path": "./index.html",
+      "sha256": "9ca7c2e07d07f5cfa5bfca25d04932e1d974d4030281065fa1f81b6601dfcf39",
+      "bytes": 1559
+    },
+    {
+      "path": "./icon-512.png",
+      "sha256": "80380cfd015dcb6c47bb940160828e35709c42ae0211900df686843e32203ed1",
+      "bytes": 10176
+    },
+    {
+      "path": "./icon-192.png",
+      "sha256": "7946a314185670b779014c8302f237efeab5d37df0f4494af4177b0130c069ef",
+      "bytes": 3911
+    },
+    {
+      "path": "./manifest.webmanifest",
+      "sha256": "78b8ba6cc4affcf83b44d06625a6853bbef84b4ad728f0366005529c647b607d",
+      "bytes": 484
+    },
+    {
+      "path": "./apple-touch-icon.png",
+      "sha256": "729ea47a6f1660f7e16d93a162d6c6599143e4415f5b1cebfbe9f2785e6f27ea",
+      "bytes": 3692
+    },
+    {
+      "path": "./v0.8.16/src/content/story.js",
+      "sha256": "f2c500085bb870fa48a7e98afff49d3eed5705699eac7e4b4a2ead8a52d28802",
+      "bytes": 2773
+    },
+    {
+      "path": "./v0.8.16/src/content/stages.js",
+      "sha256": "fd970c04e661660eb565dfd6a655ccc65050e46170ce3fcc5bebf6158b973727",
+      "bytes": 5584
+    },
+    {
+      "path": "./v0.8.16/src/content/challenges.js",
+      "sha256": "0e0869c34b31ff50b987856c7ab8abd8b8f3c1fdaf36a0bbe7e2da69752a4d4a",
+      "bytes": 23001
+    },
+    {
+      "path": "./v0.8.16/src/logic/modes.js",
+      "sha256": "ba818b88f609059092fc4b4c2f775d90ae9200a16f372028d4c97894dd6f51da",
+      "bytes": 2859
+    },
+    {
+      "path": "./v0.8.16/src/logic/generate.js",
+      "sha256": "2b43d6b3ea8099eaecf113e9e425ce1ab5ede0d197daae51e9a7ae329ca66a12",
+      "bytes": 4166
+    },
+    {
+      "path": "./v0.8.16/src/logic/physics.js",
+      "sha256": "951b5ff76863e4fabaf732755b5f8ced6f93d0bfd024dae5e76e72087761719b",
+      "bytes": 2095
+    },
+    {
+      "path": "./v0.8.16/src/logic/fraction.js",
+      "sha256": "fb06c8842d93ce76108e4feb8acc4dac43b4b6fac25aee4a3e1f7b31e6390b27",
+      "bytes": 2853
+    },
+    {
+      "path": "./v0.8.16/src/logic/stacking.js",
+      "sha256": "3a35e274d6db0352a4f6967e638647a0c68f3de92beb068247e06aea0f3d382a",
+      "bytes": 1404
+    },
+    {
+      "path": "./v0.8.16/src/logic/stage-check.js",
+      "sha256": "4398cb7e7a76149194f7356226698c49aab994bb761a6721e74af5311d93ca16",
+      "bytes": 3195
+    },
+    {
+      "path": "./v0.8.16/src/logic/pitch.js",
+      "sha256": "c2f96357d48e4f2400400adda23ec94df0da9b2dc2ae18347058f799a4f23e3b",
+      "bytes": 575
+    },
+    {
+      "path": "./v0.8.16/src/sound/psg-drums.js",
+      "sha256": "76e31b8a9dc67808a1290868e107788cf4cf2cd2bf540654b912d41fa8838f45",
+      "bytes": 10339
+    },
+    {
+      "path": "./v0.8.16/src/ui/art.js",
+      "sha256": "d0f194fa7425526987c7e78ccf65013a9d1894758a45486f3d85a2046b4d56dc",
+      "bytes": 1612
+    },
+    {
+      "path": "./v0.8.16/src/sound/psg-render.js",
+      "sha256": "037062198a2dced09e70df79166a1320ecdb2727a929e58fa20abba0be533f5d",
+      "bytes": 1621
+    },
+    {
+      "path": "./v0.8.16/src/ui/app.js",
+      "sha256": "e53b707fe2f6caeb1e3835e7e2fdd0ca7cd2117be586cb2685bc01fd1fb4363d",
+      "bytes": 26994
+    },
+    {
+      "path": "./v0.8.16/src/sound/psg-ref.js",
+      "sha256": "846ba15a1b905abfe09af4c16ed46d9b57581090baa8fa13b8616f8e6e19b06f",
+      "bytes": 8017
+    },
+    {
+      "path": "./v0.8.16/src/ui/graphics.js",
+      "sha256": "c78ae4a4edfb812c3e61534d3a1aaa1bc609e6377bcc76f2ef06c589984c0a2a",
+      "bytes": 3127
+    },
+    {
+      "path": "./v0.8.16/src/ui/audio.js",
+      "sha256": "9ceaaf964b07767b8eb50257d42177b335bed97f13d99028a7e907a0dfed5a2f",
+      "bytes": 4555
+    },
+    {
+      "path": "./v0.8.16/src/ui/update-manager.js",
+      "sha256": "286f128d28d8048230de312c55c32d4b5dfba40adc97cc54b07e656e85e6f724",
+      "bytes": 4232
+    },
+    {
+      "path": "./v0.8.16/src/ui/style.css",
+      "sha256": "ab6f1e6c8a32d731772d04fdd9bd07a63ac10467744f3defadc7355c6fcb6fa4",
+      "bytes": 9473
+    },
+    {
+      "path": "./v0.8.16/public/fonts/montserrat-600.ttf",
+      "sha256": "c535bb158e8cfc3c27654f73aa68a87732899e7d9b10d8496b68605a56d947a7",
+      "bytes": 180584
+    },
+    {
+      "path": "./v0.8.16/public/fonts/montserrat-500.ttf",
+      "sha256": "637639da93fdd9178e52662cce4bd5a59a544eb60677bb6ef9f89bc472607e5d",
+      "bytes": 180036
+    },
+    {
+      "path": "./v0.8.16/public/apple-touch-icon.png",
+      "sha256": "729ea47a6f1660f7e16d93a162d6c6599143e4415f5b1cebfbe9f2785e6f27ea",
+      "bytes": 3692
+    },
+    {
+      "path": "./v0.8.16/public/graphics/balance-air.webp",
+      "sha256": "d5b136d35fff17328f41a6e27cf9e4fd82d6628168572515af22799fda93a2a5",
+      "bytes": 141782
+    },
+    {
+      "path": "./v0.8.16/public/graphics/bridge.webp",
+      "sha256": "0eb2a13687a5067c3611c817694f79e5921975253fd68d64939af7943242d0a0",
+      "bytes": 8312
+    },
+    {
+      "path": "./v0.8.16/public/graphics/boat.webp",
+      "sha256": "535be6c6a8cf3859e4cbb1a56bc0c383695113e13d618e101c852363302b928b",
+      "bytes": 14324
+    },
+    {
+      "path": "./v0.8.16/public/graphics/cargo-crate.webp",
+      "sha256": "1bccfe3defa3a5bc3f670d4b3d05d3b3c2aec267179efa171efbdc4cfc6c7347",
+      "bytes": 9064
+    },
+    {
+      "path": "./v0.8.16/public/graphics/balance-water.webp",
+      "sha256": "0e7de46812e30801d0c6942fda1c3be07ba7a34ffdad133dff824e0ecd3604d1",
+      "bytes": 129658
+    },
+    {
+      "path": "./v0.8.16/public/graphics/cargo-iron.webp",
+      "sha256": "673ea28d965f7e9b8b4c2f440260d31bbd01361e7ebc9e542ed100008b21670d",
+      "bytes": 3696
+    },
+    {
+      "path": "./v0.8.16/public/graphics/cargo-jar.webp",
+      "sha256": "f4b6e04c567d185fc50de02f3af5b216992c4178b55beb507080ef7a14a1eec8",
+      "bytes": 8818
+    },
+    {
+      "path": "./v0.8.16/public/graphics/cargo-lead.webp",
+      "sha256": "b70ebc5f1b70d99836ef25b07e2ad659ce0ab7be9c6891b5cef10196ffe14fa2",
+      "bytes": 4482
+    },
+    {
+      "path": "./v0.8.16/public/graphics/cargo-gold.webp",
+      "sha256": "e577dae21ab2d83670c5d3356367aaa9ca8f1eed7481d7f4d2c791a7fb821cec",
+      "bytes": 3896
+    },
+    {
+      "path": "./v0.8.16/public/graphics/cargo-sack.webp",
+      "sha256": "897e9359fe06f6e130a19c96ee4f7828c1c2387e8f15bb4999ba8b07c391deac",
+      "bytes": 7256
+    },
+    {
+      "path": "./v0.8.16/public/graphics/chamber.webp",
+      "sha256": "7e0c12830ce4728625aa4c5bcdfd7732bf55e07ad45e0009aedc21cd3b84d562",
+      "bytes": 17888
+    },
+    {
+      "path": "./v0.8.16/public/graphics/cargo-plank.webp",
+      "sha256": "163a012d12ee3d2fc9189aa903fcaaf146b50f4025a5ddeb0833efe499030f6c",
+      "bytes": 2754
+    },
+    {
+      "path": "./v0.8.16/public/graphics/cargo-stone.webp",
+      "sha256": "c1c5ef2062e09f5acc5edeaf9f0b2713147abca3a4beb773fe1677da1b760fa2",
+      "bytes": 4312
+    },
+    {
+      "path": "./v0.8.16/public/graphics/chapter-silver.webp",
+      "sha256": "333bff9986ea5433762c55c400f4b2bf8ecb0155d5f272248236f27475d43aa9",
+      "bytes": 190726
+    },
+    {
+      "path": "./v0.8.16/public/graphics/gate-door.webp",
+      "sha256": "8f8e55f2d138527e4c58067f577bbaa76dcc1eee4abd3d569e76bf43607a4593",
+      "bytes": 22048
+    },
+    {
+      "path": "./v0.8.16/public/graphics/chapter-cargo.webp",
+      "sha256": "0edb4a64024f1483360e53b6c583bac91d5e8ddea72d5521760ea6e8c3b3e062",
+      "bytes": 219082
+    },
+    {
+      "path": "./v0.8.16/public/graphics/chapter-oil.webp",
+      "sha256": "398b24448dc33116c1322431bd5a0254986578ae138bdc2e3b4e0068c95e3a8f",
+      "bytes": 188122
+    },
+    {
+      "path": "./v0.8.16/public/graphics/lever-arm.webp",
+      "sha256": "4e53c23cafcd559ba14687ee13ede6e2b38230a40ee2072240124962d9d65663",
+      "bytes": 8984
+    },
+    {
+      "path": "./v0.8.16/public/graphics/liquid-water.webp",
+      "sha256": "e0023c539447b19a9f08a4e2dbd95ddc00bb40f2ce8b3570f2dc68d5a55c7a3b",
+      "bytes": 12836
+    },
+    {
+      "path": "./v0.8.16/public/graphics/liquid-oil.webp",
+      "sha256": "37ca741b108bc888f65c1592d9616b29d832958830da57e79f8c5a5be8864b8d",
+      "bytes": 9128
+    },
+    {
+      "path": "./v0.8.16/public/graphics/liquid-mercury.webp",
+      "sha256": "309677da0f5528300fca34980f83239d34b4e0715ad44d5b0472af3ddddf3d5b",
+      "bytes": 12134
+    },
+    {
+      "path": "./v0.8.16/public/graphics/prologue-command.webp",
+      "sha256": "02b9287a3b22ea3fbaea7bbc35f316e2cbe5bff83d97c936d20e12832257bc56",
+      "bytes": 188416
+    },
+    {
+      "path": "./v0.8.16/public/graphics/prologue-arrest.webp",
+      "sha256": "7ee63cbabe856988b408453a0b981402a5c718894650adf7b0f7f38c0814d9b3",
+      "bytes": 176524
+    },
+    {
+      "path": "./v0.8.16/public/graphics/prologue-eureka-sign.webp",
+      "sha256": "76e88df3cc59d27c5ef9481be400489d41913ab9e036f95982b828749d7452ca",
+      "bytes": 182250
+    },
+    {
+      "path": "./v0.8.16/public/graphics/prologue-bath.webp",
+      "sha256": "7346c41cf44fd9d0643bc2214006c53ab9aa65bb35c9735b73aec7d996f6f8de",
+      "bytes": 140818
+    },
+    {
+      "path": "./v0.8.16/public/graphics/prologue-request.webp",
+      "sha256": "39e9471a712cad5dfc976fa54c4fab42055b7efe1a1aa87950385bb8c71eb758",
+      "bytes": 180902
+    },
+    {
+      "path": "./v0.8.16/public/graphics/shoal.webp",
+      "sha256": "2716f20636b29a88b769f88c35703ce4c8183ffbd11b8222234744d0d24f71ba",
+      "bytes": 7328
+    },
+    {
+      "path": "./v0.8.16/public/graphics/prologue-workshop.webp",
+      "sha256": "b0a9c5a97b3082d7e890a4d4a7426b3f7ffbe71761cd614678a95555da82e303",
+      "bytes": 162548
+    },
+    {
+      "path": "./v0.8.16/public/graphics/prologue-harbor.webp",
+      "sha256": "db90aa2560d017afc76b147c26fd5950d47ab46df58a5629aea9bacbade63ce1",
+      "bytes": 190276
+    },
+    {
+      "path": "./v0.8.16/public/graphics/title-artwork.webp",
+      "sha256": "8ac0551c70578e15717d0345890e8825e2ed1785aabb5091d4c83dae4e59edab",
+      "bytes": 56542
+    },
+    {
+      "path": "./v0.8.16/public/icon-192.png",
+      "sha256": "7946a314185670b779014c8302f237efeab5d37df0f4494af4177b0130c069ef",
+      "bytes": 3911
+    },
+    {
+      "path": "./sw.js",
+      "sha256": "4f9795910697444a602ae6c0f56a1f396620d6526e4dc8798fc43145383b759a",
+      "bytes": 16771
+    },
+    {
+      "path": "./v0.8.16/public/icon-512.png",
+      "sha256": "80380cfd015dcb6c47bb940160828e35709c42ae0211900df686843e32203ed1",
+      "bytes": 10176
+    }
+  ]
+}

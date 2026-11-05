@@ -1,0 +1,235 @@
+{
+  "version": "0.8.16",
+  "commit": "bb4a802e2fe539c4ac7e98671e39140a79edc6ee",
+  "assets": 60,
+  "screens": 15,
+  "errors": [],
+  "failed": [],
+  "checks": [
+    {
+      "name": "title",
+      "viewport": 1366,
+      "file": "1366x768-title.png",
+      "bodyWidth": 1366,
+      "cardWidth": 1366,
+      "cardScroll": 1366,
+      "classes": "card cover",
+      "frame": null,
+      "side": null
+    },
+    {
+      "name": "stories",
+      "viewport": 1366,
+      "file": "1366x768-stories.png",
+      "bodyWidth": 1366,
+      "cardWidth": 1366,
+      "cardScroll": 1366,
+      "classes": "card menu-layout stories-menu",
+      "frame": null,
+      "side": null
+    },
+    {
+      "name": "story",
+      "viewport": 1366,
+      "file": "1366x768-story.png",
+      "bodyWidth": 1366,
+      "cardWidth": 1366,
+      "cardScroll": 1366,
+      "classes": "card story-layout",
+      "frame": {
+        "x": 28,
+        "y": 78.671875,
+        "width": 876.203125,
+        "height": 660.640625
+      },
+      "side": {
+        "x": 928.203125,
+        "y": 70,
+        "width": 409.796875,
+        "height": 678
+      }
+    },
+    {
+      "name": "pick",
+      "viewport": 1366,
+      "file": "1366x768-pick.png",
+      "bodyWidth": 1366,
+      "cardWidth": 1366,
+      "cardScroll": 1366,
+      "classes": "card menu-layout stage-menu",
+      "frame": null,
+      "side": null
+    },
+    {
+      "name": "stage",
+      "viewport": 1366,
+      "file": "1366x768-stage.png",
+      "bodyWidth": 1366,
+      "cardWidth": 1366,
+      "cardScroll": 1366,
+      "classes": "card stage-layout",
+      "frame": {
+        "x": 28,
+        "y": 119.390625,
+        "width": 876.203125,
+        "height": 579.21875
+      },
+      "side": {
+        "x": 928.203125,
+        "y": 70,
+        "width": 409.796875,
+        "height": 678
+      }
+    },
+    {
+      "name": "title",
+      "viewport": 1920,
+      "file": "1920x1080-title.png",
+      "bodyWidth": 1920,
+      "cardWidth": 1600,
+      "cardScroll": 1600,
+      "classes": "card cover",
+      "frame": null,
+      "side": null
+    },
+    {
+      "name": "stories",
+      "viewport": 1920,
+      "file": "1920x1080-stories.png",
+      "bodyWidth": 1920,
+      "cardWidth": 1600,
+      "cardScroll": 1600,
+      "classes": "card menu-layout stories-menu",
+      "frame": null,
+      "side": null
+    },
+    {
+      "name": "story",
+      "viewport": 1920,
+      "file": "1920x1080-story.png",
+      "bodyWidth": 1920,
+      "cardWidth": 1600,
+      "cardScroll": 1600,
+      "classes": "card story-layout",
+      "frame": {
+        "x": 188,
+        "y": 150.75,
+        "width": 1100,
+        "height": 828.5
+      },
+      "side": {
+        "x": 1312,
+        "y": 70,
+        "width": 420,
+        "height": 990
+      }
+    },
+    {
+      "name": "pick",
+      "viewport": 1920,
+      "file": "1920x1080-pick.png",
+      "bodyWidth": 1920,
+      "cardWidth": 1600,
+      "cardScroll": 1600,
+      "classes": "card menu-layout stage-menu",
+      "frame": null,
+      "side": null
+    },
+    {
+      "name": "stage",
+      "viewport": 1920,
+      "file": "1920x1080-stage.png",
+      "bodyWidth": 1920,
+      "cardWidth": 1600,
+      "cardScroll": 1600,
+      "classes": "card stage-layout",
+      "frame": {
+        "x": 188,
+        "y": 202.03125,
+        "width": 1100,
+        "height": 725.921875
+      },
+      "side": {
+        "x": 1312,
+        "y": 70,
+        "width": 420,
+        "height": 990
+      }
+    },
+    {
+      "name": "title",
+      "viewport": 390,
+      "file": "390x844-title.png",
+      "bodyWidth": 390,
+      "cardWidth": 390,
+      "cardScroll": 390,
+      "classes": "card cover",
+      "frame": null,
+      "side": null
+    },
+    {
+      "name": "stories",
+      "viewport": 390,
+      "file": "390x844-stories.png",
+      "bodyWidth": 390,
+      "cardWidth": 390,
+      "cardScroll": 390,
+      "classes": "card menu-layout stories-menu",
+      "frame": null,
+      "side": null
+    },
+    {
+      "name": "story",
+      "viewport": 390,
+      "file": "390x844-story.png",
+      "bodyWidth": 390,
+      "cardWidth": 390,
+      "cardScroll": 390,
+      "classes": "card story-layout",
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "width": 362,
+        "height": 275
+      },
+      "side": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "name": "pick",
+      "viewport": 390,
+      "file": "390x844-pick.png",
+      "bodyWidth": 390,
+      "cardWidth": 390,
+      "cardScroll": 390,
+      "classes": "card menu-layout stage-menu",
+      "frame": null,
+      "side": null
+    },
+    {
+      "name": "stage",
+      "viewport": 390,
+      "file": "390x844-stage.png",
+      "bodyWidth": 390,
+      "cardWidth": 390,
+      "cardScroll": 390,
+      "classes": "card stage-layout",
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "width": 362,
+        "height": 242.125
+      },
+      "side": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0
+      }
+    }
+  ]
+}
