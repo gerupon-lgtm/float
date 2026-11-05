@@ -11,7 +11,7 @@ import { GRAPHICS } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.4.1';
+const APP_VERSION = '0.4.2';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -46,7 +46,7 @@ function stories(){const c=show(`${topbar('おはなし')}<div class="list" styl
 function pick(){const c=show(`${topbar('選択プレイ')}<div class="list" style="max-width:none">${STAGES.map((s,i)=>`<button class="btn sub" data-s="${i}">${s.name}</button>`).join('')}</div>`);
   wire(c);c.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{wood();R=null;enter(+b.dataset.s)})}
 function levels(){const c=show(`${topbar('連続プレイ')}<div class="say"><span class="nar">全${STAGES.length}面を順に進みます。沈んだり関門に当たったりするとNGです。ノーマルとエキスパートでは、出航するまで深さが見えません。</span></div>
-  <div class="list" style="max-width:none">${LEVELS.map(l=>`<button class="btn sub" data-l="${l.id}">${l.name}<small style="display:block;font-size:12px">${l.note}　最高 ${book.best(l.id)}面</small></button>`).join('')}</div>`);
+  <div class="list" style="max-width:none">${LEVELS.map(l=>`<button class="btn sub" data-l="${l.id}">${l.name}<small style="display:block;font-size:14px">${l.note}　最高 ${book.best(l.id)}面</small></button>`).join('')}</div>`);
   wire(c);c.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{unlock();clack();R=new ContinuousRun(b.dataset.l,STAGES.length);enter(0)})}
 // 面に入る。新しい要素の紙芝居は初回だけ流す
 function enter(n){const list=(STAGES[n].intro??[]).filter(k=>!book.seen(k));
@@ -81,7 +81,7 @@ function bal2(next){const c=show(`${topbar('序章 2　水の中の天秤')}<div
     this.textContent='つづき';$('#t',c).innerHTML='<span class="who">見習い</span>えっ？ 王冠の側が、上がった！';this.onclick=()=>{wood();next()}}}
 function quiz(next){const O=[['王冠のほうが、もともと軽いから',0],['王冠のほうが体積が大きく、水を多く押しのけたから',1],['水の中では、金だけが重くなるから',0]];
   const c=show(`${topbar('序章 3　なぜ？')}<div class="frame">${balanceArt(12,true)}</div><div class="say" id="t"><span class="who">アルキメデス</span>空気の中ではつり合ったな。なぜ、水の中で王冠が上がった？</div>
-  <div class="list" style="max-width:none">${O.map((o,i)=>`<button class="btn sub" data-i="${i}" style="font-size:15px">${o[0]}</button>`).join('')}</div>`);
+  <div class="list" style="max-width:none">${O.map((o,i)=>`<button class="btn sub" data-i="${i}" style="font-size:18px">${o[0]}</button>`).join('')}</div>`);
   wire(c);c.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{const ok=O[+b.dataset.i][1];if(ok){jingle();
     $('#t',c).innerHTML='<span class="who">アルキメデス</span>そのとおり。押しのけた液体の重さが、浮く力になる。銀が混ざると体積が増えるのだ。';
     $('.list',c).innerHTML='<button class="btn" id="n">つづき</button>';$('#n',c).onclick=()=>{wood();next()}}

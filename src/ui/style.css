@@ -25,10 +25,10 @@ body{background:var(--wood2);color:var(--ink);font-family:var(--body);font-size:
 .say{background:#fffaf0;border:2.5px solid var(--ink);border-radius:10px 14px 12px 8px;padding:8px 12px;min-height:74px;font-size:16px}
 .say .who{font-family:var(--disp);color:var(--red);font-size:14px;display:block}
 .say .nar{color:#4a5468}
-.btn{appearance:none;border:3px solid var(--ink);background:var(--yellow);color:var(--ink);font-family:var(--disp);font-size:18px;
-  border-radius:9px;padding:9px 12px;min-height:48px;cursor:pointer;box-shadow:0 3px 0 var(--ink);width:100%}
+.btn{appearance:none;border:3px solid var(--ink);background:var(--yellow);color:var(--ink);font-family:var(--disp);font-size:22px;
+  border-radius:9px;padding:9px 12px;min-height:54px;cursor:pointer;box-shadow:0 3px 0 var(--ink);width:100%}
 .btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
-.btn.sub{background:#fffaf0;font-size:16px}
+.btn.sub{background:#fffaf0;font-size:20px}
 .btn:disabled{opacity:.45}
 button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -39,9 +39,9 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 .formula em{font-style:normal;font-family:var(--latin);font-weight:700}
 .goal{font-size:14px}
 .shelf{display:grid;grid-template-columns:repeat(auto-fit,minmax(46px,1fr));gap:6px}
-.chip{border:2.5px solid var(--ink);background:#fffaf0;color:var(--ink);border-radius:7px;font-family:var(--latin);font-weight:700;font-size:15px;
-  min-height:44px;padding:2px 4px;cursor:pointer;min-width:0}
-.pack{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;align-items:start}.pack svg{width:100%;height:auto;display:block;border:2.5px solid var(--ink);background:#fffaf0;touch-action:manipulation}.side{display:grid;gap:5px}.side .chip{min-height:38px;font-size:13px}.chip:disabled{opacity:.35}
+.chip{border:2.5px solid var(--ink);background:#fffaf0;color:var(--ink);border-radius:7px;font-family:var(--latin);font-weight:700;font-size:17px;
+  min-height:46px;padding:2px 4px;cursor:pointer;min-width:0}
+.pack{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;align-items:start}.pack svg{width:100%;height:auto;display:block;border:2.5px solid var(--ink);background:#fffaf0;touch-action:manipulation}.side{display:grid;gap:5px}.side .chip{min-height:42px;font-size:15px}.chip:disabled{opacity:.35}
 .chip small{display:block;font-family:var(--body);font-weight:400;font-size:11px;line-height:1.1}
 .chip[aria-pressed="true"]{background:var(--ink);color:#fffaf0}
 .chip.lead{background:#efb32a;color:var(--ink)}
