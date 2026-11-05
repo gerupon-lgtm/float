@@ -90,7 +90,9 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
   }
   .layout-side>.say,.layout-side>.stat,.layout-side>.formula,.layout-side>.shelf,.layout-side>.row,.layout-side>.list,.layout-side>.btn{flex:none}
   .layout-side>.btn:last-child,.layout-side>.row:last-child,.layout-side>.list.foot{position:static;margin-top:12px}
-  .story-layout .layout-side{justify-content:safe center}
+  /* 文章の長さで動かないよう、進めるボタンを下から一定の高さに固定する（下に寄せすぎない） */
+  .story-layout .layout-side{justify-content:flex-start;padding-top:clamp(16px,6vh,56px);padding-bottom:clamp(56px,16vh,150px)}
+  .story-layout .layout-side>.btn:last-child,.story-layout .layout-side>.list.foot{margin-top:auto}
   .stage-layout .layout-side>.row:last-child{margin-top:auto}
   .layout-side>.list{max-width:none}
   .menu-layout{padding:28px max(28px,calc((100% - 1040px)/2));gap:24px}
