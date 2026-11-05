@@ -4,6 +4,8 @@ import { GRAPHICS } from './graphics.js';
 export const INK='#23304a';
 const picture=(key,alt)=>`<img src="${GRAPHICS[key]}" alt="${alt}" width="960" height="720" style="display:block;width:100%;height:auto">`;
 export const ART={
+  arrest:()=>picture('arrest','王の前で、兵士が金細工師を出口へ連れて行く絵'),
+  command:()=>picture('command','王がアルキメデスと見習いに命じる絵'),
   'balance-air':()=>picture('balance-air','王冠と純金が空気中でつり合う天秤'),
   'balance-water':()=>picture('balance-water','水槽の中で王冠の側が上がった天秤。両方とも水の中'),
   cargo:()=>picture('chapter-cargo','港に届いた木箱と板の山を見上げる師匠と見習い'),

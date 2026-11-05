@@ -11,7 +11,7 @@ import { GRAPHICS, cargoArt } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.8.1';
+const APP_VERSION = '0.8.2';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -66,7 +66,7 @@ function bal1(next){const c=show(`${topbar('序章 1　天秤')}<div class="fram
   <div class="say" id="t"><span class="nar">見習いは、王冠と同じ重さの純金を用意しました。天秤で比べてみましょう。</span></div><button class="btn" id="a">空気の中で量る</button>`);
   wire(c);$('#a',c).onclick=function(){wood();this.textContent='つづき';$('#t',c).innerHTML='<span class="who">見習い</span>つり合いました。重さでは見分けられません……。';this.onclick=()=>{wood();next()}}}
 function bal2(next){const c=show(`${topbar('序章 2　水の中の天秤')}<div class="frame" id="f">${balanceArt(0,false)}</div>
-  <div class="say" id="t"><span class="who">アルキメデス</span>見習いよ、分かったぞ。王冠と純金を水に沈めて、もう一度比べてごらん。</div><button class="btn" id="a">水に沈める</button>`);
+  <div class="say" id="t"><span class="who">アルキメデス</span>見習いよ、分かったぞ。王冠と純金を水の中でもう一度比べてごらん。</div><button class="btn" id="a">水に沈める</button>`);
   wire(c);$('#a',c).onclick=function(){bell(84);$('#f',c).innerHTML=balanceArt(12,true);
     this.textContent='つづき';$('#t',c).innerHTML='<span class="who">見習い</span>えっ？ 王冠の側が上がりました！';this.onclick=()=>{wood();next()}}}
 function quiz(next){const O=[['王冠のほうが、もともと軽いから',0],['王冠のほうが体積が大きく、水を多く押しのけたから',1],['水の中では、金だけが重くなるから',0]];

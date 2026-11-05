@@ -6,6 +6,8 @@ export const GRAPHICS = {
   bath: new URL('../../public/graphics/prologue-bath.webp', import.meta.url).href,
   eureka: new URL('../../public/graphics/prologue-eureka-sign.webp', import.meta.url).href,
   harbor: new URL('../../public/graphics/prologue-harbor.webp', import.meta.url).href,
+  arrest: new URL('../../public/graphics/prologue-arrest.webp', import.meta.url).href,
+  command: new URL('../../public/graphics/prologue-command.webp', import.meta.url).href,
   'balance-air': new URL('../../public/graphics/balance-air.webp', import.meta.url).href,
   'balance-water': new URL('../../public/graphics/balance-water.webp', import.meta.url).href,
   'chapter-cargo': new URL('../../public/graphics/chapter-cargo.webp', import.meta.url).href,
