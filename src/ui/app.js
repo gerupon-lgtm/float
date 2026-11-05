@@ -11,7 +11,7 @@ import { GRAPHICS, cargoArt } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.8.12';
+const APP_VERSION = '0.8.13';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -166,7 +166,7 @@ function renderShelf(){if(G.S.grid)return renderPack();const S=G.S,sh=$('#sh',G.
   sh.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{if(G.busy)return;unlock();const i=+b.dataset.i;const adding=!G.on.has(i);adding?G.on.add(i):G.on.delete(i);b.setAttribute('aria-pressed',G.on.has(i));adding?audio.land(S.items[i][0]):tap();shipSVG();
     if(G.floating)settle();syncUI()})}
 function settle(){if(G.hide&&!G.sailing)return;const to=dp(weight(),G.liq),from=G.d;const id=run;
-  tween(380,e=>{if(id===run)G.d=from+(to-from)*e;syncUI()}).then(()=>{bell(midiOf(to),.17,.9);if(isSunk(weight(),G.liq,G.S.area))sink(`重さ${weight()}では、${LIQUIDS[G.liq].n}に沈みきってしまいます。`)})}
+  tween(380,e=>{if(id===run)G.d=from+(to-from)*e;syncUI()}).then(()=>{bell(midiOf(to),.17,.9);if(isSunk(weight(),G.liq,G.S.area))sink(sinkText())})}
 
 async function intoMercury(){G.busy=true;lock(true);say('入れ替え室で、水を水銀に入れ替えます。');await wait(500);
   const room=$('#room',G.c);room.setAttribute('width',140);const f=[];await tween(1200,e=>{room.setAttribute('opacity',e);G.d=1+(0.074-1)*e;});
@@ -176,22 +176,23 @@ function scene2Return(){say(goalText(G.S))}
 function lock(v){$('#dep',G.c).disabled=v;$('#ring',G.c).disabled=false}
 
 async function depart(){if(G.busy)return;unlock();if(G.S.grid&&G.placed.length<G.S.items.length){say('荷はすべて積みましょう。');return}G.busy=true;lock(true);const id=run;const S=G.S;G.sailing=true;
-  if(G.floating&&G.hide){const to=dp(weight(),G.liq),from=G.d;await tween(600,e=>{G.d=from+(Math.min(to,HULL+1)-from)*e;syncUI()});G.d=to;bell(midiOf(to));syncUI();if(isSunk(weight(),G.liq,G.S.area))return sink(`重さ${weight()}では、${LIQUIDS[G.liq].n}に沈みきってしまいます。`)}
+  if(G.floating&&G.hide){const to=dp(weight(),G.liq),from=G.d;await tween(600,e=>{G.d=from+(Math.min(to,HULL+1)-from)*e;syncUI()});G.d=to;bell(midiOf(to));syncUI();if(isSunk(weight(),G.liq,G.S.area))return sink(sinkText())}
   if(!G.floating){const to=dp(weight(),G.liq);await tween(700,e=>{G.lift=20*(1-e);G.x=120*e;G.d=Math.min(to,HULL+1)*e;syncUI()});G.floating=true;G.d=to;bell(midiOf(to));syncUI();
-    if(isSunk(weight(),G.liq,G.S.area))return sink(`重さ${weight()}は上限${sinkingWeight(G.liq,G.S.area)}を超えて、沈みました。沈みきる重さは、比重 × 底面積${G.S.area} × 高さ${HULL}で決まります。`)}
+    if(isSunk(weight(),G.liq,G.S.area))return sink(sinkText())}
   for(const g of S.gates){if(id!==run)return;
     if(g.k==='chamber'){await moveTo(g.x+70);const r=await chamber(g);if(!r)return;continue}
     const stop=g.k==='lever'?g.x+18:g.x;
-    if(g.k==='shoal'){if(!clearsShoal(deep(),g.d)){await moveTo(g.x-90);return fail(`沈む深さ${G.d.toFixed(2)}では、浅瀬につかえました（${g.d}まで）。`)}await moveTo(g.x+60)}
-    if(g.k==='bridge'){if(!reachesDepth(deep(),g.d)){await moveTo(g.x-96);return fail(`沈む深さ${G.d.toFixed(2)}では、橋に船の縁が当たります（${g.d}以上）。`)}if(G.S.grid&&!pileClearsBridge(deep(),g.d,pileRows())){await moveTo(g.x-96);return fail(`沈み方は足りていますが、荷の山が橋に当たりました。荷が${pileRows()}段になっています。積み方を変えましょう。`)}await moveTo(g.x+60)}
-    if(g.k==='lever'){await moveTo(g.x);if(!reachesDepth(deep(),g.d)){return fail(`沈む深さ${G.d.toFixed(2)}では、レバーに届きません（${g.d}以上）。`)}bell(72,.14,.7);const el=$('#gate'+S.gates.indexOf(g),G.c);if(el)await tween(500,e=>el.setAttribute('transform',`translate(0 ${-120*e})`))}
+    if(g.k==='shoal'){if(!clearsShoal(deep(),g.d)){await moveTo(g.x-90);return fail(`沈みすぎて、浅瀬につかえたな。<br>深さ${G.d.toFixed(2)}では通れぬ。${g.d}までにするのだ。`)}await moveTo(g.x+60)}
+    if(g.k==='bridge'){if(!reachesDepth(deep(),g.d)){await moveTo(g.x-96);return fail(`浅すぎて、船の縁が橋に当たったな。<br>深さ${G.d.toFixed(2)}では通れぬ。${g.d}以上にするのだ。`)}if(G.S.grid&&!pileClearsBridge(deep(),g.d,pileRows())){await moveTo(g.x-96);return fail(`沈み方はよいが、荷の山が橋に当たったな。<br>積み方を変えてごらん。`)}await moveTo(g.x+60)}
+    if(g.k==='lever'){await moveTo(g.x);if(!reachesDepth(deep(),g.d)){return fail(`浅すぎて、レバーに届かぬな。<br>深さ${G.d.toFixed(2)}では足りぬ。${g.d}以上にするのだ。`)}bell(72,.14,.7);const el=$('#gate'+S.gates.indexOf(g),G.c);if(el)await tween(500,e=>el.setAttribute('transform',`translate(0 ${-120*e})`))}
   }
   await moveTo(S.end-30);if(id!==run)return;win()}
 async function moveTo(x){const from=G.x;await tween(Math.max(450,Math.abs(x-from)*7),e=>{G.x=from+(x-from)*e})}
 async function chamber(g){say(`入れ替え室：${LIQUIDS[G.liq].n}を${LIQUIDS[g.to].n}に入れ替えます。`);const id=run;const l2=$('#l2',G.c);const room=$('#room',G.c);room.setAttribute('x',g.x);room.setAttribute('width',140);room.setAttribute('fill',liquidFill(g.to));
   const wait0=await tween(600,e=>room.setAttribute('opacity',e));G.liq=g.to;G.passed=true;
   const to=dp(weight(),g.to),from=G.d;await tween(900,e=>{G.d=from+(Math.min(to,HULL+1.2)-from)*e;syncUI()});G.d=to;bell(midiOf(to));syncUI();
-  if(isSunk(weight(),g.to,G.S.area)){sink(`${LIQUIDS[g.to].n}に入ると深さ${to.toFixed(2)}。船の高さ5を超えて沈みました。沈みきる重さは ${sinkingWeight(g.to,G.S.area)}です。`);return false}return true}
+  if(isSunk(weight(),g.to,G.S.area)){sink(sinkText());return false}return true}
+const sinkText=()=>`重さ${weight()}は重すぎたな。船が沈んでしまった。<br>${LIQUIDS[G.liq].n}でこの船が運べるのは、重さ${sinkingWeight(G.liq,G.S.area)}までだ。`;
 async function sink(msg){G.busy=true;G.sinking=true;lock(true);const from=G.d;tween(900,e=>{G.d=from+6*e});audio.sink();say(`<span class="who">アルキメデス</span>${msg}`);await wait(950);failButton()}
 function fail(msg){say(`<span class="who">アルキメデス</span>${msg}`);audio.miss();failButton()}
 // 止まったあとは「積み直す」で港へ戻るまで、荷物を変えられない（busy のままにする）

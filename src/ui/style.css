@@ -23,7 +23,7 @@ body{background:var(--wood2);color:var(--ink);font-family:var(--body);font-weigh
 .tiny{border:2px solid var(--ink);background:transparent;color:var(--ink);border-radius:6px;font:inherit;font-size:12px;padding:2px 8px;cursor:pointer}
 .frame{border:7px solid var(--wood);outline:2px solid var(--wood2);border-radius:4px;background:var(--sky);overflow:hidden;flex:none}
 .frame svg{display:block;width:100%;height:auto}
-.say{background:#fffaf0;border:2.5px solid var(--ink);border-radius:10px 14px 12px 8px;padding:8px 12px;min-height:74px;font-size:16px}
+.say{word-break:auto-phrase;text-wrap:pretty;background:#fffaf0;border:2.5px solid var(--ink);border-radius:10px 14px 12px 8px;padding:8px 12px;min-height:74px;font-size:16px}
 .say .who{font-family:var(--disp);color:var(--red);font-size:16px;display:block}
 .say .nar{color:#333d52}
 .btn{appearance:none;border:3px solid var(--ink);background:var(--yellow);color:var(--ink);font-family:var(--disp);font-size:22px;
