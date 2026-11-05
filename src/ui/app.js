@@ -11,7 +11,7 @@ import { GRAPHICS, cargoArt } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.8.8';
+const APP_VERSION = '0.8.9';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -52,8 +52,11 @@ function levels(){const c=show(`${topbar('連続プレイ')}<div class="say"><sp
 function enter(n){const list=(STAGES[n].intro??[]).filter(k=>!book.seen(k));
   const play=i=>{if(i>=list.length)return stage(n);book.markSeen(list[i]);scene(list[i],()=>play(i+1))};play(0)}
 function question(base){const list=CHALLENGES[base.id];if(!list?.length)return{};let i=Math.floor(Math.random()*list.length);if(list.length>1&&i===lastQuestion[base.id])i=(i+1)%list.length;lastQuestion[base.id]=i;return list[i]}
-function goalText(S){const c=S.gates.filter(g=>g.d!=null&&g.k!=='chamber').map(g=>g.k==='shoal'?`浅瀬は深さ${g.d}以下`:g.k==='bridge'?`低い橋は深さ${g.d}以上`:`レバーは深さ${g.d}以上`).join('、');
-  return `${S.lead}${c}で通れます。船の底面積は${S.area}、船だけの重さは${SHIP}です。`}
+function goalText(S){let liq=S.pre??S.start;const mix=S.gates.some(g=>g.k==='chamber');
+  const line=g=>{if(g.k==='chamber'){liq=g.to;return ''}const at=mix?`${LIQUIDS[liq].n}の`:'';
+    return g.k==='shoal'?`・${at}浅瀬：${g.d}まで（深いと底につかえる）`:g.k==='bridge'?`・${at}低い橋：${g.d}以上（浅いと船の縁が当たる）`:`・${at}レバー：${g.d}以上（浅いと届かない）`};
+  const rows=S.gates.map(line).filter(Boolean).join('<br>');
+  return `${S.lead}<br>船の沈む深さに注意しましょう。<br>${rows}`}
 function ngText(){if(!R)return'';return R.level.limit===null?`　NG ${R.ng}`:`　あとNG ${R.left}回`}
 
 function scene(k,next){const s=SCENES[k];book.markSeen(k);const c=show(`${topbar('おはなし')}<div class="frame">${ART[s.art]()}</div>
@@ -126,9 +129,9 @@ const liquidFill=l=>`url(#liq-${l})`;
 const img=(key,x,y,w,h,fit='none')=>`<image href="${GRAPHICS[key]}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="${fit}"/>`;
 const tag=(x,y,t)=>`<text x="${x}" y="${y}" text-anchor="middle" font-size="12" fill="${INK}" stroke="#fffaf0" stroke-width="3" paint-order="stroke">${t}</text>`;
 function gateSVG(g,i){const x=g.x;
-  if(g.k==='shoal'){const y=SURF+g.d*U;return img('shoal',x-58,y-2,116,H-y+2)+tag(x,H-5,`深さ${g.d}以下`)}
-  if(g.k==='bridge'){const y=SURF-(HULL-g.d)*U,h=44;return `<path d="M${x-52} ${y-h+2}V0M${x+52} ${y-h+2}V0" stroke="#8a5a2e" stroke-width="4"/>`+img('bridge',x-62,y-h,124,h)+tag(x,y+14,`深さ${g.d}以上`)}
-  if(g.k==='lever'){const y=SURF+g.d*U;return `<g id="gate${i}">${img('gate-door',x+52,SURF-62,46,H-SURF+62)}</g><path d="M${x} ${y+8}V${H}" stroke="${INK}" stroke-width="5"/>`+img('lever-arm',x-34,y-8,68,26)+tag(x,H-5,`深さ${g.d}で届く`)}
+  if(g.k==='shoal'){const y=SURF+g.d*U;return img('shoal',x-58,y-2,116,H-y+2)+tag(x,H-5,`${g.d}まで`)}
+  if(g.k==='bridge'){const y=SURF-(HULL-g.d)*U,h=44;return `<path d="M${x-52} ${y-h+2}V0M${x+52} ${y-h+2}V0" stroke="#8a5a2e" stroke-width="4"/>`+img('bridge',x-62,y-h,124,h)+tag(x,y+14,`${g.d}以上`)}
+  if(g.k==='lever'){const y=SURF+g.d*U;return `<g id="gate${i}">${img('gate-door',x+52,SURF-62,46,H-SURF+62)}</g><path d="M${x} ${y+8}V${H}" stroke="${INK}" stroke-width="5"/>`+img('lever-arm',x-34,y-8,68,26)+tag(x,H-5,`${g.d}以上`)}
   if(g.k==='chamber'){return img('chamber',x-6,SURF-34,152,H-SURF+34)+tag(x+70,SURF-40,'入れ替え室')}
   return ''}
 const WET=`<rect id="wet" x="-60" y="0" width="120" height="0" opacity=".32"/>`;
@@ -148,7 +151,7 @@ function syncUI(){const c=G.c,s=LIQUIDS[G.liq].s,w=weight();$('#sg',c).textConte
   const known=G.floating&&!(G.hide&&!G.sailing);$('#dp',c).innerHTML=known?G.d.toFixed(2):'？';
   const target=G.next||G.liq,ts=LIQUIDS[target].s;
   const chamber=G.S.gates.find(g=>g.k==='chamber');const useS=(chamber&&!G.passed)?LIQUIDS[chamber.to].s:ts;const nm=(chamber&&!G.passed)?LIQUIDS[chamber.to].n:LIQUIDS[target].n;
-  $('#fm',c).innerHTML=`${nm}での深さ ＝ 重さ <em>${w}</em> ÷（比重 <em>${useS}</em> × 底面積 <em>${G.S.area}</em>）＝ ？`+(known&&onScale(deep())?'<span class="scale">音階に乗った</span>':'')}
+  $('#fm',c).innerHTML=`${nm}での深さ ＝ 重さ <em>${w}</em> ÷（比重 <em>${useS}</em> × 底面積 <em>${G.S.area}</em>）＝ ？<br>船だけの重さ <em>${SHIP}</em>`+(known&&onScale(deep())?'<span class="scale">音階に乗った</span>':'')}
 function renderPack(){const S=G.S,sh=$('#sh',G.c);sh.style.display='block';const c=30,used=new Set(G.placed.map(p=>p.id));
   const cells=G.placed.map(p=>{const it=S.items[p.id];return `<image href="${cargoArt(it[1])}" x="${p.c*c+1}" y="${(ROWMAX-p.r-it[3])*c+1}" width="${it[2]*c-2}" height="${it[3]*c-2}" preserveAspectRatio="none"/>`}).join('');
   let g='';for(let i=0;i<=CELLS;i++)g+=`<path d="M${i*c} 0V180M0 ${i*c}H180" stroke="#cdbf9f"/>`;
@@ -177,9 +180,9 @@ async function depart(){if(G.busy)return;unlock();if(G.S.grid&&G.placed.length<G
   for(const g of S.gates){if(id!==run)return;
     if(g.k==='chamber'){await moveTo(g.x+70);const r=await chamber(g);if(!r)return;continue}
     const stop=g.k==='lever'?g.x+18:g.x;
-    if(g.k==='shoal'){if(!clearsShoal(deep(),g.d)){await moveTo(g.x-90);return fail(`深さ${G.d.toFixed(2)}では、浅瀬につかえました（深さ${g.d}以下）。`)}await moveTo(g.x+60)}
-    if(g.k==='bridge'){if(!reachesDepth(deep(),g.d)){await moveTo(g.x-96);return fail(`深さ${G.d.toFixed(2)}では、橋に船の縁が当たります（深さ${g.d}以上）。`)}if(G.S.grid&&!pileClearsBridge(deep(),g.d,pileRows())){await moveTo(g.x-96);return fail(`沈み方は足りていますが、荷の山が橋に当たりました。荷が${pileRows()}段になっています。積み方を変えましょう。`)}await moveTo(g.x+60)}
-    if(g.k==='lever'){await moveTo(g.x);if(!reachesDepth(deep(),g.d)){return fail(`深さ${G.d.toFixed(2)}では、レバーに届きません（深さ${g.d}以上）。`)}bell(72,.14,.7);const el=$('#gate'+S.gates.indexOf(g),G.c);if(el)await tween(500,e=>el.setAttribute('transform',`translate(0 ${-120*e})`))}
+    if(g.k==='shoal'){if(!clearsShoal(deep(),g.d)){await moveTo(g.x-90);return fail(`沈む深さ${G.d.toFixed(2)}では、浅瀬につかえました（${g.d}まで）。`)}await moveTo(g.x+60)}
+    if(g.k==='bridge'){if(!reachesDepth(deep(),g.d)){await moveTo(g.x-96);return fail(`沈む深さ${G.d.toFixed(2)}では、橋に船の縁が当たります（${g.d}以上）。`)}if(G.S.grid&&!pileClearsBridge(deep(),g.d,pileRows())){await moveTo(g.x-96);return fail(`沈み方は足りていますが、荷の山が橋に当たりました。荷が${pileRows()}段になっています。積み方を変えましょう。`)}await moveTo(g.x+60)}
+    if(g.k==='lever'){await moveTo(g.x);if(!reachesDepth(deep(),g.d)){return fail(`沈む深さ${G.d.toFixed(2)}では、レバーに届きません（${g.d}以上）。`)}bell(72,.14,.7);const el=$('#gate'+S.gates.indexOf(g),G.c);if(el)await tween(500,e=>el.setAttribute('transform',`translate(0 ${-120*e})`))}
   }
   await moveTo(S.end-30);if(id!==run)return;win()}
 async function moveTo(x){const from=G.x;await tween(Math.max(450,Math.abs(x-from)*7),e=>{G.x=from+(x-from)*e})}
