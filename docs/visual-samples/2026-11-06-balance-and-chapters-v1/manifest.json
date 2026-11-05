@@ -1,0 +1,101 @@
+{
+  "title": "FLOAT NOTES prologue balance and chapter story illustrations",
+  "date": "2026-11-06",
+  "sample_version": "v1",
+  "generation_mode": "built-in image_gen",
+  "images": 5,
+  "total_image_bytes": 16008365,
+  "code_modified": false,
+  "existing_images_modified": false,
+  "checks": {
+    "all_pngs_open": true,
+    "all_sizes_1448x1086": true,
+    "copies_match_original_bytes": true,
+    "visual_review": {
+      "air_balance_level": true,
+      "underwater_crown_side_higher": true,
+      "underwater_both_objects_and_pans_fully_below_surface": true,
+      "underwater_pan_cords_attached_to_rims": true,
+      "cargo_has_crates_and_planks_mountain": true,
+      "oil_and_water_separated_by_chamber_gates": true,
+      "silver_lake_loaded_boat_shallowly_submerged": true,
+      "silver_lake_characters_on_dry_shore_no_contact": true,
+      "no_narration_or_labels": true
+    },
+    "game_integration_tested": false,
+    "physical_device_tested": false
+  },
+  "assets": [
+    {
+      "id": "01-balance-air",
+      "file": "01-balance-air.png",
+      "label": "序章：空気中の天秤",
+      "description": "王冠と純金がつり合う。左右の皿は同じ高さ。",
+      "width": 1448,
+      "height": 1086,
+      "mode": "RGB",
+      "transparent_background": false,
+      "bytes": 3076003,
+      "sha256": "bffc9177ad8f01ce2fb1d45a69e6a01040e12c0494138aa46292db5315bf0416",
+      "git_blob_sha": "e51e5a0ea4563713ed714c7d6a96f5aa96a39b70",
+      "narration_baked_in": false
+    },
+    {
+      "id": "02-balance-underwater",
+      "file": "02-balance-underwater.png",
+      "label": "序章：水中の天秤",
+      "description": "王冠側が上がる。王冠・純金・両方の皿の全体が水面より下。",
+      "width": 1448,
+      "height": 1086,
+      "mode": "RGB",
+      "transparent_background": false,
+      "bytes": 2687584,
+      "sha256": "2c6e44059d4d0e583bdc83f7cda8416638854822d67259fbc0cfb95443ef8910",
+      "git_blob_sha": "00b720c298a8837684dce399a856e6ddc9d03119",
+      "narration_baked_in": false
+    },
+    {
+      "id": "03-chapter-cargo-size",
+      "file": "03-chapter-cargo-size.png",
+      "label": "面の紙芝居：荷物の大きさ",
+      "description": "木箱と板が、人物の背丈を大きく超える山になって港に届く。",
+      "width": 1448,
+      "height": 1086,
+      "mode": "RGB",
+      "transparent_background": false,
+      "bytes": 3457295,
+      "sha256": "acc4dd7530bdb93246b997ae042fecaee7297bfde75f6a4b7fa66bf0ae2dd52c",
+      "git_blob_sha": "f75f90d8bd4a6be90364b5767abb3e4db6c71696",
+      "narration_baked_in": false
+    },
+    {
+      "id": "04-chapter-oil-exchange",
+      "file": "04-chapter-oil-exchange.png",
+      "label": "面の紙芝居：油の湖と入れ替え室",
+      "description": "青い水と黄色い油を閉じた扉で仕切る、架空の入れ替え室。",
+      "width": 1448,
+      "height": 1086,
+      "mode": "RGB",
+      "transparent_background": false,
+      "bytes": 3322855,
+      "sha256": "aa9e5c461d0911d80af74f6cfda390e11aed270b4770b51a83cdb6053558496e",
+      "git_blob_sha": "45c552196bd979727f4de1970f192ca7550cf71c",
+      "narration_baked_in": false
+    },
+    {
+      "id": "05-chapter-silver-lake",
+      "file": "05-chapter-silver-lake.png",
+      "label": "面の紙芝居：銀色の湖",
+      "description": "荷を山積みした船が浅く浮き、乾いた岸の見習いが驚く。灰銀色と注意の印で警戒を示す。",
+      "width": 1448,
+      "height": 1086,
+      "mode": "RGB",
+      "transparent_background": false,
+      "bytes": 3464628,
+      "sha256": "9e92bf22b6ae56e156c6a38d9123323ea05453c99877d349ff9094c9026c4eca",
+      "git_blob_sha": "b4a90fe425a70f8413bff84998368c231292ad3c",
+      "narration_baked_in": false,
+      "required_caption": "水銀の湖は架空の設定です。本物の水銀は毒性が強いため、触れないでください。"
+    }
+  ]
+}

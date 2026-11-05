@@ -49,9 +49,29 @@
 
 ## 2026-11-05：船・低い橋の形状修正 v2
 
+**採用済み（2026-11-06、発案者）。以後はこの船と低い橋を形状の基準とします。**
+
 [修正版2枚と確認内容](visual-samples/2026-11-05-priority2-v2/README.md)
 
 - [船08](visual-samples/2026-11-05-priority2-v2/08-boat-empty.png)：外形の幅:高さは約2.08:1。目盛り用の広い側面と、空の積載場所が見える形。
 - [低い橋22](visual-samples/2026-11-05-priority2-v2/22-obstacle-low-bridge.png)：上から吊るす形。橋脚を下に出さず、船が左から右へ通る空間を確保。
 
 両方とも透過PNG。原本と生成指示・寸法・透過の照合情報は同フォルダーへ保存しました。v1の画像は残しています。この回は絵と素材資料のみの追加で、アプリのコードは変更していません。
+
+## 2026-11-06：序章の天秤・面に付く紙芝居 v1
+
+[追加5枚の見本一覧](visual-samples/2026-11-06-balance-and-chapters-v1/README.md)
+
+| 順 | 絵 | 保存先 |
+|---|---|---|
+| 1 | 序章：空気中の天秤 | [PNG](visual-samples/2026-11-06-balance-and-chapters-v1/01-balance-air.png) |
+| 2 | 序章：水中の天秤 | [PNG](visual-samples/2026-11-06-balance-and-chapters-v1/02-balance-underwater.png) |
+| 3 | 面の紙芝居：荷物の大きさ | [PNG](visual-samples/2026-11-06-balance-and-chapters-v1/03-chapter-cargo-size.png) |
+| 4 | 面の紙芝居：油の湖と入れ替え室 | [PNG](visual-samples/2026-11-06-balance-and-chapters-v1/04-chapter-oil-exchange.png) |
+| 5 | 面の紙芝居：銀色の湖 | [PNG](visual-samples/2026-11-06-balance-and-chapters-v1/05-chapter-silver-lake.png) |
+
+背景付きのPNG5枚（各1448×1086px）です。語りや説明文は画像へ焼き込まず、生成指示・寸法・照合情報を同フォルダーへ保存しました。水中の天秤は王冠側が高く、王冠・純金・両方の皿がすべて水面より下にあることを目視確認しています。
+
+**水銀の湖は架空の設定です。本物の水銀は毒性が強いため、触れないでください。** この注意文は絵の外へ表示するための文として記録しました。銀色の湖は、人物が液体に触れない構図と、灰銀色・警戒する表情・注意の印で描いています。
+
+今回の変更は見本の追加と素材資料のみです。コード、アプリの版、計算・判定、既存の画像は変更していません。アプリへの組み込みと実機確認は行っていません。
