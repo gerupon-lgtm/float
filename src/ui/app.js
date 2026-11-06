@@ -12,7 +12,7 @@ import { GRAPHICS, cargoArt } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 
-const APP_VERSION = '0.8.23';
+const APP_VERSION = '0.8.24';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -212,7 +212,8 @@ function restart(){stopRun();const keep=new Set(G.on);const n=G.n;const S=G.S;co
   drawWorld();if(pre)$('#l1',G.c).setAttribute('fill',liquidFill(pre));renderShelf();syncUI();say(goalText(S));const dep=$('#dep',G.c);dep.textContent='出航';dep.disabled=false;dep.onclick=()=>depart();loop(run)}
 function win(){jingle();const S=G.S,n=G.n;const f=$('.frame',G.c);f.style.position='relative';f.insertAdjacentHTML('beforeend','<div class="stamp">エウレカ！</div>');
   say(`<span class="who">アルキメデス</span>${S.winner}<br><span class="nar">重さ${weight()}、深さ${G.d.toFixed(2)}で到着。</span>`);
-  $('#sh',G.c).innerHTML='';const dep=$('#dep',G.c);dep.disabled=false;
+  // 積み方の面は棚を消さず、絵の大きさを変えない。操作だけ止めて、静かに薄くする
+  const pack=$('.pack',G.c);if(pack)pack.classList.add('done');else $('#sh',G.c).innerHTML='';const dep=$('#dep',G.c);dep.disabled=false;
   if(R){const r=R.record('clear');book.recordBest(R.level.id,R.cleared);
     dep.textContent=r==='complete'?'結果へ':'次の面へ';dep.onclick=()=>{wood();r==='complete'?finish():enter(R.position)}}
   else{dep.textContent='面を選ぶ';dep.onclick=()=>{wood();pick()}}}

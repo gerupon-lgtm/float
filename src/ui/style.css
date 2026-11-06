@@ -53,6 +53,7 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 .pack{display:grid;grid-template-columns:minmax(0,46%) minmax(0,1fr);gap:6px;align-items:stretch}.pack svg{width:100%;height:auto;display:block;border:2.5px solid var(--ink);background:#fffaf0;touch-action:manipulation}.side{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(0,1fr);gap:4px}.side .chip{min-height:0;padding:2px;font-size:13px;line-height:1.2;white-space:nowrap}.side .chip small{font-size:10.5px}.side #undo:nth-child(odd){grid-column:1/-1}
 /* 積み方の面：課題文を縮ませず全文を見せ、少しだけ小さくする */
 .stage-layout>.say,.layout-side>.say{flex:none}
+.pack{transition:opacity .5s ease}.pack.done{opacity:.45;pointer-events:none}
 .stage-layout:has(.pack) .say{font-size:14px;line-height:1.45;padding:5px 10px}
 /* 縦画面の高さが足りないときは、航路の絵を小さくして課題文と荷を画面に収める */
 @media (orientation:portrait){.stage-layout:has(.pack)>.frame{align-self:center;width:min(100%,max(197px,calc((100dvh - 570px)*1.525 + 14px)))}}
