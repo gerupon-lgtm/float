@@ -148,6 +148,15 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
   .choice .key{width:26px;height:26px;font-size:13px;border-width:2px}
   .choice .go{font-size:13px}
   .choice .txt{text-wrap:pretty}
+  /* 積み方の面：式は省き（比重と全体の重さは上の札に残す）、課題文まで1画面に収める */
+  .stage-layout:has(.pack){grid-template-columns:minmax(0,1fr) clamp(300px,44vw,380px)}
+  .stage-layout:has(.pack) .layout-side>.formula{display:none}
+  .stage-layout:has(.pack) .layout-side{gap:4px}
+  .stage-layout:has(.pack) .layout-side>.stat div{display:flex;justify-content:center;align-items:baseline;gap:4px;padding-block:0}
+  .stage-layout:has(.pack) .layout-side>.stat strong{display:inline}
+  .stage-layout:has(.pack) .layout-side>.row:last-child{padding-block:2px 0}
+  .stage-layout:has(.pack) .layout-side>.say{font-size:13px;line-height:1.35;padding:3px 8px;min-height:0!important}
+  .stage-layout:has(.pack) .pack{grid-template-columns:minmax(0,30%) minmax(0,1fr)}
   .menu-layout{padding-block:8px;gap:8px}
   .cover{padding-block:8px;gap:14px;overflow:hidden}
   /* ロゴの幅をAQUA・PRISM（約360px）に近づける。絵は画面の高さいっぱいに使う */
