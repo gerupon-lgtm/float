@@ -53,18 +53,11 @@ export function melodyStage(n, base, route, ctx) {
       <rect width="${VW}" height="230" fill="var(--sky)"/><path d="M110 22q20 -14 40 0t40 0" fill="none" stroke="#fffaf0" stroke-width="5"/>
       <rect x="0" y="${WATER}" width="${VW}" height="100" fill="url(#mw)"/>`;
     // 関門は幅 GW の絵で描き、航海中は右から左へ流して、船がその上・下を通る様子にする。当たったら船の前で止まる
-    const GW = 74, gpos = S.hit === 'shoal' || S.hit === 'bridge' ? ' transform="translate(-16 0)"' : '';
+    const GW = 74, gpos = S.hit === 'shoal' ? ' transform="translate(-16 0)"' : S.hit === 'bridge' ? ' transform="translate(54 0)"' : '';  // 橋は橋桁の左端が船首に当たる位置
     if (gate?.k === 'shoal') {
       const ys = WATER + gate.d * U;
       g += `<g id="gate"${gpos}><path d="M${GX - 8} 230L${GX + 8} ${ys}H${GX + GW - 8}L${GX + GW + 8} 230Z" fill="url(#ship-sand)" stroke="#8a5a2e" stroke-width="1.6"/>
         <g font-size="10" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke"><text x="${GX + GW / 2}" y="${ys - 19}">浅瀬</text><text x="${GX + GW / 2}" y="${ys - 7}">${gate.d}まで</text></g></g>`;
-    }
-    if (gate?.k === 'bridge') {
-      const yb = WATER + gate.d * U - HULL * U;   // 橋の下面：深さがちょうど橋の値のときの船の縁の高さ
-      g += `<g id="gate"${gpos}><rect x="${GX - 70}" y="${yb - 16}" width="${GW + 140}" height="16" fill="url(#ship-timber)" stroke="#5f3b1c" stroke-width="2"/>
-        <rect x="${GX - 70}" y="0" width="14" height="${yb}" fill="#8a5a2e"/><rect x="${GX + GW + 56}" y="0" width="14" height="${yb}" fill="#8a5a2e"/>
-        <path d="M${GX - 70} ${yb}H${GX + GW + 70}" stroke="#5f3b1c" stroke-width="3"/>
-        <g font-size="10" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke"><text x="${GX + GW / 2}" y="${yb - 22}">橋 ${gate.d}以上</text></g></g>`;
     }
     // 港に寄っている間は、右に岸壁を見せる
     const qn = S.port ?? S.portOut;   // 出航しても岸壁はすぐ消さず、後ろへ流れていく
@@ -88,7 +81,15 @@ export function melodyStage(n, base, route, ctx) {
     // 船の前を水面が横切る（喫水線）。外側から見た水の高さで、船が浮いていることを示す
     g += `</g><line x1="0" x2="${VW}" y1="${WATER}" y2="${WATER}" stroke="#fffaf0" stroke-width="1.5" opacity=".85"/>
       <path d="M${HX - 4} ${WATER}q6 -3 12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0" fill="none" stroke="#3f97c0" stroke-width="2.4" opacity=".9"/>`;
-    if (S.hit) g += `<text x="${GX - 14}" y=""${S.hit === 'bridge' ? 58 : bottom + 20}" font-size="13" font-weight="700" text-anchor="middle" fill="#d6452c" stroke="#fffaf0" stroke-width="3.5" paint-order="stroke">ゴツン！</text>`;
+    // 橋は船の手前に描く（船の絵の奥の面が橋桁に重なって、当たったように見えないように）
+    if (gate?.k === 'bridge') {
+      const yb = WATER + gate.d * U - HULL * U - (S.hit ? 0 : 3);  // 通れるときは、ちょうどでも少しすき間を見せる   // 橋の下面：深さがちょうど橋の値のときの船の縁の高さ
+      g += `<g id="gate"${gpos}><rect x="${GX - 70}" y="${yb - 16}" width="${GW + 140}" height="16" fill="url(#ship-timber)" stroke="#5f3b1c" stroke-width="2"/>
+        <rect x="${GX - 70}" y="0" width="14" height="${yb}" fill="#8a5a2e"/><rect x="${GX + GW + 56}" y="0" width="14" height="${yb}" fill="#8a5a2e"/>
+        <path d="M${GX - 70} ${yb}H${GX + GW + 70}" stroke="#5f3b1c" stroke-width="3"/>
+        <g font-size="10" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke"><text x="${GX + GW / 2}" y="${yb - 22}">橋 ${gate.d}以上</text></g></g>`;
+    }
+    if (S.hit) g += `<text x="${HX + HW + 4}" y=""${S.hit === 'bridge' ? 58 : bottom + 20}" font-size="13" font-weight="700" text-anchor="middle" fill="#d6452c" stroke="#fffaf0" stroke-width="3.5" paint-order="stroke">ゴツン！</text>`;
     let sc = `<rect x="3" y="${WATER - 20}" width="52" height="${HULL * U + 30}" rx="6" fill="#fffaf0" stroke="#23304a" stroke-width="2"/><text x="29" y="${WATER - 7}" text-anchor="middle" font-size="10" font-weight="700" fill="#23304a">深さ・音</text>`;
     for (let i = 0; i <= 10; i++) {
       const y = WATER + i * U / 2;
@@ -224,7 +225,7 @@ export function melodyStage(n, base, route, ctx) {
     const gateEl = $('#gate'), VWn = S.phase === 'prep' ? 240 : 330, GXn = HX + HW + 16;
     if (f.gatePass && gateEl) { gateEl.animate([{ transform: `translate(${VWn - GXn + 80}px,0px)` }, { transform: `translate(${-(GXn + 160)}px,0px)` }], { duration: f.gatePass, easing: 'linear', fill: 'forwards' }); return; }
     if (f.gateHit && gateEl) {
-      gateEl.animate([{ transform: `translate(${VWn - GXn + 80}px,0px)` }, { transform: 'translate(-16px,0px)' }], { duration: f.gateHit, easing: 'ease-out', composite: 'replace' });
+      gateEl.animate([{ transform: `translate(${VWn - GXn + 150}px,0px)` }, { transform: `translate(${f.bridge ? 54 : -16}px,0px)` }], { duration: f.gateHit, easing: 'ease-out', composite: 'replace' });
       return;
     }
     if (f.quay) { $('#quay')?.animate([{ transform: 'translate(80px,0px)' }, { transform: 'translate(0px,0px)' }], { duration: 450, easing: 'ease-out' }); return; }
@@ -289,7 +290,7 @@ export function melodyStage(n, base, route, ctx) {
     S.gate = route.cond?.[i] ? i : null;
     if (fault === 'shoal' || fault === 'bridge') {
       // 関門が近づいてきて、船の前でぶつかる
-      S.fx = { gateHit: 900 }; draw(); await ctx.wait(900); if (!alive()) return;
+      S.fx = { gateHit: 900, bridge: fault === 'bridge' }; draw(); await ctx.wait(900); if (!alive()) return;
       S.hit = fault; S.fx = { bump: true };
     }
     if (fault) return lose(FAULT[fault](i), fault === 'sink');
