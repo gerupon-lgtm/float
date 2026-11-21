@@ -1,0 +1,25 @@
+:root{--paper:#f7efdc;--ink:#23304a;--wood:#8a5a2e;--wood2:#5f3b1c;--red:#d6452c;--yellow:#efb32a;--good:#2e7d5b;color-scheme:light}
+*{box-sizing:border-box}html,body{margin:0;height:100%}
+body{background:var(--wood2);color:var(--ink);font-family:"Zen Maru Gothic","Hiragino Sans","Yu Gothic",sans-serif;font-weight:700;font-size:15px;line-height:1.5}
+#app{max-width:520px;min-height:100%;margin:0 auto;background:var(--paper);padding:10px max(12px,env(safe-area-inset-left)) 16px max(12px,env(safe-area-inset-right));display:flex;flex-direction:column;gap:8px}
+button{font:inherit;color:var(--ink);background:#fffaf0;border:2px solid var(--ink);border-radius:8px;padding:6px 8px;cursor:pointer}
+button:disabled{opacity:.4;cursor:default}
+.top{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap}
+.tab,.opt{padding:3px 8px;font-size:13px}.opt{padding:2px 6px;font-size:12px}.tab.on,.opt.on{background:var(--ink);color:#fffaf0}
+.opts{display:flex;align-items:center;gap:4px;flex-wrap:wrap;font-size:13px}.sp{flex:1}
+.chart,.ship{width:100%;height:auto;display:block;border-radius:6px}
+.ship{background:#8fd0d4}
+.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:4px}
+.stat div{border:2px solid var(--ink);border-radius:8px;background:#fffaf0;text-align:center;font-size:12px;padding:2px}
+.stat b{display:block;font-size:20px;font-family:Montserrat,Arial,sans-serif}
+.cols{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;padding:0 18% 0 23%}
+.cols button{padding:2px 0;font-size:12px}
+.say{border:2px solid var(--ink);border-radius:10px;background:#fffaf0;padding:6px 10px;min-height:3.2em}
+.say .eu{color:var(--red);font-size:18px}
+.shelf{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px}
+.chip{display:flex;flex-direction:column;align-items:center;padding:3px 2px;font-size:13px;line-height:1.2}
+.chip small{font-size:10.5px;font-weight:500}.chip.on{background:var(--yellow)}
+.row{display:flex;gap:6px}.row button{flex:1;min-height:44px}.row .main{background:var(--yellow)}
+@media (orientation:landscape) and (min-width:700px){#app{max-width:900px;display:grid;grid-template-columns:1fr 1fr;align-content:start}
+  .top,.opts,.chart{grid-column:1/-1}}
+.col{cursor:pointer}.col:hover rect{opacity:.25}
