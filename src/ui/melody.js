@@ -168,8 +168,8 @@ export function melodyStage(n, base, route, ctx) {
       if (i > 0 && i < cnt) g += `<path d="M${x} ${T}V${y(HULL)}" stroke="#8a5a2e" stroke-width="1" stroke-dasharray="3 3"/>
         <g class="port"><rect x="${x - 14}" y="${B + 17}" width="28" height="16" rx="3" fill="#d6452c" stroke="#5f3b1c" stroke-width="1.2"/>
         <text x="${x}" y="${B + 29}" font-size="10.5" font-weight="700" text-anchor="middle" fill="#fffaf0">港${i}</text></g>
-        <text x="${x}" y="${B + 46}" font-size="9.5" font-weight="700" text-anchor="middle" fill="#23304a">${p.k === 'down' ? '↑下ろす' : '↓' + p.item[1] + p.item[0]}</text>`;
-      else g += `<text x="${x}" y="${B + 29}" font-size="10" text-anchor="${i ? 'end' : 'start'}" fill="#23304a">${i ? '終着' : '出航'}</text>`;
+        <text x="${x}" y="${B + 46}" font-size="9.5" font-weight="700" text-anchor="middle" fill="#23304a">${p.k === 'down' ? '↑下ろす' : '↓' + p.item[1] + p.item[0]}</text>${i === cnt - 1 ? `<text x="${x}" y="${B + 59}" font-size="9.5" font-weight="700" text-anchor="middle" fill="#d6452c">終着</text>` : ''}`;
+      else g += `<text x="${x}" y="${B + 29}" font-size="10" text-anchor="${i ? 'end' : 'start'}" fill="#23304a">${i ? '停泊' : '出航'}</text>`;
     }
     if (S.phase !== 'prep') {
       const k = Math.min(S.seg, cnt - 1), dd = S.played[k]?.d ?? S.log[k]?.toNumber() ?? depth().toNumber();
@@ -291,7 +291,7 @@ export function melodyStage(n, base, route, ctx) {
       S.hit = fault; S.fx = { bump: true };
     }
     if (fault) return lose(FAULT[fault](i), fault === 'sink');
-    S.log.push(d); ring(d); say(`${i + 1}番目の海路。深さ${d.toNumber()}、「${noteName(d)}」。`, '航海の記録');
+    S.log.push(d); ring(d); say(S.docked ? `港${S.port}が終着。荷をすべて下ろした。空の船は深さ${d.toNumber()}、「${noteName(d)}」。` : `${i + 1}番目の海路。深さ${d.toNumber()}、「${noteName(d)}」。`, '航海の記録');
     if (S.gate != null) {
       // 関門が右から左へ流れ、船がその上（浅瀬）や下（橋）を通り抜ける
       S.fx = { gatePass: 1700 }; draw(); await ctx.wait(1700); if (!alive()) return;
@@ -305,7 +305,9 @@ export function melodyStage(n, base, route, ctx) {
       const k = S.placed.length, it = S.items[S.placed[k - 1].id];
       say(`港に着きました。荷札${k}の${it[1]}（${it[0]}）を下ろします。`, '航海の記録');
       S.sign = '荷下ろし中'; draw(); au.wood(); await ctx.wait(600); if (!alive()) return;
-      await liftLast(); draw(); await ctx.wait(500); S.sign = null; S.portOut = S.port; S.port = null; S.quayOut = true;
+      await liftLast(); draw(); await ctx.wait(500); S.sign = null;
+      // 最後の港は終着：荷を下ろし終えたら、そこに泊まったまま最後の音（空荷）を鳴らす。それ以外は出航して岸壁を隠す
+      if (i < route.ports.length - 1) S.port = null; else { S.docked = true; draw(); }
       return sailSegment();
     }
     // 積む港：荷は空いている中で一番低い位置へ自動で置く。上から落ちてきて、船が沈む
@@ -313,7 +315,7 @@ export function melodyStage(n, base, route, ctx) {
     say(`港に着きました。${port.item[1]}（${port.item[0]}）を積み込みます。${base.tutorial ? '港で積んだ荷は、次の港で最初に下ります。' : ''}`, '航海の記録');
     S.sign = '積載中'; draw(); au.clack(); await ctx.wait(800); if (!alive()) return;
     if (!p) return lose('積む場所がなかったな。');
-    placeWithFx(p, 130); draw(); await ctx.wait(1200); S.sign = null; S.portOut = S.port; S.port = null; S.quayOut = true;
+    placeWithFx(p, 130); draw(); await ctx.wait(1200); S.sign = null; S.port = null;
     return sailSegment();
   }
 
@@ -342,7 +344,7 @@ export function melodyStage(n, base, route, ctx) {
   }
 
   function lose(msg, sunk = false) {
-    S.phase = 'end'; S.sign = null; S.port = null; S.portOut = null; S.quayOut = false;
+    S.phase = 'end'; S.sign = null; S.port = null; S.portOut = null; S.quayOut = false; S.docked = false;
     if (sunk) au.sink(); else au.miss();
     const r = R ? R.record('ng') : 'retry';
     say(msg);
@@ -351,7 +353,7 @@ export function melodyStage(n, base, route, ctx) {
   }
   function restart() {
     au.wood(); ended = null;
-    Object.assign(S, { items: route.items.map(x => [...x]), placed: [], sel: null, phase: 'prep', seg: 0, played: [], log: [], sign: null, fx: null, gate: null, hit: null, port: null, portOut: null, quayOut: false });
+    Object.assign(S, { items: route.items.map(x => [...x]), placed: [], sel: null, phase: 'prep', seg: 0, played: [], log: [], sign: null, fx: null, gate: null, hit: null, port: null, portOut: null, quayOut: false, docked: false });
     if (base.tutorial) say(tutorialHint()); else say(`<span class="nar">${base.lead}</span>`, null);
     draw();
   }
