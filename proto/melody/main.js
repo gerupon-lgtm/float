@@ -26,7 +26,7 @@ import { FloatAudio } from '../../src/ui/audio.js';
   };
   const LEVELS = { free: 'フリー', normal: 'ノーマル', expert: 'エキスパート' };
 
-  const S = { mode: 'route', level: 'free', home: 84, items: [], placed: [], sel: null, phase: 'prep', seg: 0, played: [], ng: 0, loadIdx: null, history: [] };
+  const S = { mode: 'route', level: 'free', home: 84, items: [], placed: [], sel: null, phase: 'prep', seg: 0, played: [], ng: 0, muted: false, loadIdx: null, history: [] };
 
   const weight = () => SHIP + S.placed.reduce((a, p) => a + S.items[p.id][0], 0);
   const depth = () => depthFraction(weight(), 'water');
@@ -41,7 +41,7 @@ import { FloatAudio } from '../../src/ui/audio.js';
     S.items = (S.mode === 'free' ? FREE_ITEMS : ROUTE.items).map(x => [...x]); S.placed = [];
     say(S.mode === 'free'
       ? '荷を選んで、船の上の列を押すと積みます。「下ろす」は最後に積んだ荷から下ろします。動かすたびに深さの音が鳴ります。'
-      : 'お題を聴いて、同じメロディになるよう荷を積みましょう。港では最後に積んだ荷から下ろします。');
+      : 'お題と同じメロディ（図の点の高さ）になるよう荷を積みましょう。港では最後に積んだ荷から下ろします。音なしでは、すべての点が見えます。');
     draw();
   }
 
@@ -73,28 +73,39 @@ import { FloatAudio } from '../../src/ui/audio.js';
     return `<svg viewBox="0 0 320 250" class="ship">${g}</svg>`;
   }
 
+  // 航海図＝深さの図。縦は深さ（上ほど浅く、音は高い）。お題の点、浅瀬の海底、橋桁を同じ目盛りに描く（要件7.2）
+  const showDot = i => S.muted || S.level === 'free' || (S.level === 'normal' && i === 0);
+  const rowsUnderBridge = limit => { let r = 0; while (r < ROWMAX && pileClearsBridge(exact(limit), limit, r + 1)) r++; return r; };
   function chartSvg() {
-    const n = ROUTE.target.length, W = 320, x0 = 20, step = (W - 40) / n;
-    let g = `<rect width="${W}" height="96" rx="6" fill="#efe0bd"/>`;
+    const n = ROUTE.target.length, x0 = 44, step = (312 - x0) / n, T = 30, DY = 22, y = d => T + d * DY;
+    let g = `<rect width="320" height="196" rx="6" fill="#efe0bd"/><rect x="${x0}" y="${T}" width="${312 - x0}" height="${HULL * DY}" fill="#9fd3e6"/>`;
+    for (let i = 0; i <= 10; i++) {
+      const yy = y(i / 2);
+      g += `<line x1="${x0}" x2="312" y1="${yy}" y2="${yy}" stroke="#23304a" stroke-opacity="${i % 2 ? .12 : .25}"/><text x="6" y="${yy + 3.5}" font-size="9" fill="#23304a">${i % 2 ? '' : i / 2}</text><text x="20" y="${yy + 3.5}" font-size="9" fill="#23304a">${NOTE[midiOf(i / 2)]}</text>`;
+    }
     for (let i = 0; i < n; i++) {
-      const xa = x0 + i * step, xb = xa + step, res = S.played[i];
-      const color = res == null ? '#3f97c0' : res.ok ? '#2e7d5b' : '#d6452c';
-      g += `<line x1="${xa}" x2="${xb}" y1="42" y2="42" stroke="${color}" stroke-width="${res ? 6 : 4}" stroke-dasharray="${res ? '' : '6 4'}"/>`;
-      const known = S.level === 'free' || (S.level === 'normal' && i === 0);
+      const xa = x0 + i * step, xc = xa + step / 2, c = ROUTE.cond[i];
+      if (c?.k === 'shoal') g += `<rect x="${xa + 2}" y="${y(c.d)}" width="${step - 4}" height="${y(HULL) - y(c.d) + 3}" fill="#e8c98a" stroke="#5f3b1c" stroke-width="1.5"/><text x="${xc}" y="${y(HULL) + 16}" font-size="8.5" text-anchor="middle" fill="#5f3b1c">浅瀬 ${c.d}まで</text>`;
+      if (c?.k === 'bridge') g += `<rect x="${xa + 2}" y="${T - 4}" width="${step - 4}" height="${y(c.d) - T + 4}" fill="#b07a40" stroke="#5f3b1c" stroke-width="1.5"/><text x="${xc}" y="${T + 12}" font-size="9" text-anchor="middle" fill="#fffaf0">橋</text><text x="${xc}" y="11" font-size="8.5" text-anchor="middle" fill="#5f3b1c">橋 ${c.d}以上</text><text x="${xc}" y="23" font-size="8.5" text-anchor="middle" fill="#5f3b1c">荷${rowsUnderBridge(c.d)}段まで</text>`;
+      // お題の点
       const t = Fractionless(ROUTE.target[i]);
-      g += `<text x="${(xa + xb) / 2}" y="28" font-size="13" text-anchor="middle" fill="#23304a">${known ? NOTE[Math.round(midiOf(t))] : '？'}</text>`;
-      if (res && !res.ok) g += `<text x="${(xa + xb) / 2}" y="12" font-size="10" text-anchor="middle" fill="#d6452c">×${res.name}</text>`;
-      const c = ROUTE.cond[i];
-      if (c) g += `<text x="${(xa + xb) / 2}" y="91" font-size="9" text-anchor="middle" fill="#5f3b1c">${c.k === 'shoal' ? `浅瀬 ${c.d}まで` : `橋 ${c.d}以上`}</text>`;
+      g += showDot(i) ? `<line x1="${xa + 6}" x2="${xa + step - 6}" y1="${y(t)}" y2="${y(t)}" stroke="#23304a" stroke-width="3" stroke-linecap="round"/><circle cx="${xc}" cy="${y(t)}" r="5" fill="#fffaf0" stroke="#23304a" stroke-width="2"/>` : `<text x="${xc}" y="${y(0.4)}" font-size="12" text-anchor="middle" fill="#23304a">？</text>`;
+      // 実際に通った深さ
+      const r = S.played[i];
+      if (r) g += `<line x1="${xa + 6}" x2="${xa + step - 6}" y1="${y(r.d)}" y2="${y(r.d)}" stroke="${r.ok ? '#2e7d5b' : '#d6452c'}" stroke-width="4" stroke-linecap="round" opacity=".85"/>${r.ok ? '' : `<text x="${xc}" y="${y(r.d) - 5}" font-size="9" text-anchor="middle" fill="#d6452c">×${r.name}</text>`}`;
     }
     for (let i = 0; i <= n; i++) {
       const x = x0 + i * step, p = ROUTE.ports[i - 1];
-      const label = i === 0 ? '出航' : i === n ? '終着' : p.k === 'down' ? '下ろす' : `積む ${p.item[1]}${p.item[0]}`;
-      g += `<circle cx="${x}" cy="42" r="6" fill="#fffaf0" stroke="#23304a" stroke-width="2"/><text x="${x}" y="${i % 2 ? 72 : 60}" font-size="8.5" text-anchor="middle" fill="#23304a">${label}</text>`;
+      const label = i === 0 ? '出航' : i === n ? '終着' : p.k === 'down' ? '↑下ろす' : `↓積む${p.item[1]}${p.item[0]}`;
+      if (i > 0 && i < n) g += `<line x1="${x}" x2="${x}" y1="${T}" y2="${y(HULL)}" stroke="#5f3b1c" stroke-dasharray="3 3"/>`;
+      g += `<text x="${x}" y="${i % 2 ? 190 : 178}" font-size="8.5" text-anchor="middle" fill="#23304a">${label}</text>`;
     }
-    const sx = x0 + Math.min(S.seg, n - 1) * step + (S.phase === 'prep' ? 0 : step / 2);
-    g += `<g id="boat" transform="translate(${sx} 42)"><path d="M-9 -3h18l-4 7h-10z" fill="#d2692e" stroke="#23304a" stroke-width="1.5"/></g>`;
-    return `<svg viewBox="0 0 320 96" class="chart">${g}</svg>`;
+    // 船：航海中は今の深さの高さに置く
+    if (S.phase !== 'prep') {
+      const k = Math.min(S.seg, n - 1), dd = S.played[k]?.d ?? (S.log?.[k] ? S.log[k].toNumber() : depth().toNumber());
+      g += `<path transform="translate(${x0 + k * step + step / 2} ${y(Math.min(dd, HULL))})" d="M-10 -9h20l-3 9h-14z" fill="#d2692e" stroke="#23304a" stroke-width="1.5"/>`;
+    }
+    return `<svg viewBox="0 0 320 196" class="chart">${g}</svg>`;
   }
   const Fractionless = s => s.split('/').reduce((a, b) => a / b);
 
@@ -106,7 +117,7 @@ import { FloatAudio } from '../../src/ui/audio.js';
       <div class="top"><b>航路のメロディ　試作</b><span>
         <button class="tab ${!route ? 'on' : ''}" data-mode="free">1 自由に試す</button><button class="tab ${route ? 'on' : ''}" data-mode="route">2 お題</button></span></div>
       ${route ? `<div class="opts">難しさ ${Object.entries(LEVELS).map(([k, v]) => `<button class="opt ${S.level === k ? 'on' : ''}" data-lv="${k}" ${S.phase !== 'prep' ? 'disabled' : ''}>${v}</button>`).join('')}
-        <span class="sp"></span>帰着 <button class="opt ${S.home === 84 ? 'on' : ''}" data-home="84">下</button><button class="opt ${S.home === 96 ? 'on' : ''}" data-home="96">上</button></div>
+        <span class="sp"></span><button class="opt ${S.muted ? 'on' : ''}" data-mute>${S.muted ? '音なし' : '音あり'}</button> 帰着 <button class="opt ${S.home === 84 ? 'on' : ''}" data-home="84">下</button><button class="opt ${S.home === 96 ? 'on' : ''}" data-home="96">上</button></div>
         ${chartSvg()}` : ''}
       <div class="stat"><div>重さ<b>${weight()}</b></div><div>深さ<b>${live ? (d.gt(HULL) ? '沈没' : d.toNumber()) : '？'}</b></div><div>音<b>${live && !d.gt(HULL) ? noteName(d) : '？'}</b></div>${route ? `<div>NG<b>${S.ng}</b></div>` : ''}</div>
       ${shipSvg()}
@@ -116,7 +127,7 @@ import { FloatAudio } from '../../src/ui/audio.js';
         : S.items.map((it, i) => (S.placed.some(p => p.id === i) || (route && i >= ROUTE.items.length)) ? '' : `<button class="chip ${S.sel === i ? 'on' : ''}" data-i="${i}" ${usable ? '' : 'disabled'}>${it[1]} ${it[0]}<small>${it[2]}×${it[3]}マス</small></button>`).join('')}</div>
       <div class="row">${route ? (loading
         ? `<button id="undo">ひとつ戻す</button><button id="go" class="main" ${S.placed.some(p => p.id === S.loadIdx) ? '' : 'disabled'}>続きへ</button>`
-        : `<button id="listen">お題を聴く</button><button id="undo" ${S.phase === 'prep' ? '' : 'disabled'}>ひとつ戻す</button><button id="go" class="main">${S.phase === 'end' ? 'もう一度' : S.phase === 'prep' ? '出航' : '航海中…'}</button>`)
+        : `<button id="listen" ${S.muted ? 'disabled' : ''}>お題を聴く</button><button id="undo" ${S.phase === 'prep' ? '' : 'disabled'}>ひとつ戻す</button><button id="go" class="main">${S.phase === 'end' ? 'もう一度' : S.phase === 'prep' ? '出航' : '航海中…'}</button>`)
         : `<button id="down">下ろす</button><button id="replay">ここまでを聴く</button><button id="clear">空にする</button>`}</div>`;
     bind();
   }
@@ -124,6 +135,7 @@ import { FloatAudio } from '../../src/ui/audio.js';
   function bind() {
     $('#say').innerHTML = lastSay;
     document.querySelectorAll('[data-mode]').forEach(b => b.onclick = () => { au.unlock(); reset(b.dataset.mode); keepSay(); });
+    document.querySelectorAll('[data-mute]').forEach(b => b.onclick = () => { S.muted = !S.muted; au.unlock(); au.setMuted(S.muted); draw(); });
     document.querySelectorAll('[data-lv]').forEach(b => b.onclick = () => { S.level = b.dataset.lv; draw(); });
     document.querySelectorAll('[data-home]').forEach(b => b.onclick = () => { S.home = +b.dataset.home; au.unlock(); au.bell(91, 0.2, 0.5); setTimeout(() => au.bell(S.home, 0.2, 1.2), 420); draw(); });
     document.querySelectorAll('[data-i]').forEach(b => b.onclick = () => { au.unlock(); au.tap(); S.sel = +b.dataset.i; draw(); });
@@ -196,7 +208,7 @@ import { FloatAudio } from '../../src/ui/audio.js';
     let all = true;
     for (let i = 0; i < S.log.length; i++) {
       const d = S.log[i], ok = d.cmp(depthFromTarget(i)) === 0; all &&= ok;
-      S.seg = i; S.played[i] = { ok, name: noteName(d) }; draw();
+      S.seg = i; S.played[i] = { ok, name: noteName(d), d: d.toNumber() }; draw();
       au.bell(midiOf(d.toNumber()), 0.2, 0.7); await wait(520);
     }
     S.seg = S.log.length; S.phase = 'end';
