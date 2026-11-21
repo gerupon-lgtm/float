@@ -176,6 +176,7 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 
 /* 航路のメロディ（F-020）。Codex の見本0.1.4の配置をこの画面の中だけに当てる */
 .card.melody-layout{display:grid;grid-template-rows:auto minmax(170px,1fr) auto minmax(222px,1.08fr) auto auto;gap:6px;overflow:hidden;padding-bottom:max(8px,env(safe-area-inset-bottom,0px))}
+.melody-plan,.melody-work{display:contents}
 .melody-layout .chartf{border-width:4px;background:#fff5df;position:relative}.melody-layout .chartf .stamp{top:40%}
 .melody-layout .chart{display:block;width:100%;height:100%;font-family:var(--body)}
 .melody-layout .frame{min-height:0;min-width:0}
@@ -201,16 +202,31 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
   .card.melody-layout{gap:5px;padding-block:5px;grid-template-rows:auto minmax(160px,1fr) auto minmax(206px,1.05fr) auto auto}
   .mshelf .chip{min-height:40px}.melody-layout .say{font-size:12px;min-height:56px;padding-block:4px}.melody-layout .row3 .btn{min-height:42px}
 }
-/* 横置き・PC：左に航海図、右に船と操作 */
-@media (orientation:landscape){
-  .card.melody-layout{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr) auto auto;column-gap:14px}
-  .melody-layout>.top{grid-column:1/-1}
-  .melody-layout>.chartf{grid-column:1;grid-row:2/6}
-  .melody-layout>.mstat{grid-column:2;grid-row:2}.melody-layout>.mid{grid-column:2;grid-row:3}
-  .melody-layout>.say{grid-column:2;grid-row:4}.melody-layout>.row3{grid-column:2;grid-row:5}
+/* 縦画面の見た目は保持し、横置きだけ計画と船の領域を独立させる。 */
+@media (orientation:portrait){
+  .melody-layout>.top{grid-row:1}.melody-layout .chartf{grid-row:2}.melody-layout .mstat{grid-row:3}
+  .melody-layout .mid{grid-row:4}.melody-layout .say{grid-row:5}.melody-layout .row3{grid-row:6}
 }
-@media (orientation:landscape) and (min-width:1024px){.card.melody-layout{max-width:1200px;margin-inline:auto}}
+/* 横置き・PC：左に航海図・数値・説明、右に大きな船・棚・操作。 */
+@media (orientation:landscape){
+  .card.melody-layout{grid-template-columns:minmax(250px,1fr) minmax(0,1.25fr);grid-template-rows:auto minmax(0,1fr);gap:10px 14px}
+  .melody-layout>.top{grid-column:1/-1}
+  .melody-plan{grid-column:1;grid-row:2;display:grid;grid-template-rows:minmax(0,1fr) auto auto;gap:6px;min-width:0;min-height:0}
+  .melody-work{grid-column:2;grid-row:2;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:8px;min-width:0;min-height:0}
+  .melody-work>.row3{align-self:end}
+}
+@media (orientation:landscape) and (min-width:1024px){
+  .card.melody-layout{max-width:1440px;margin-inline:auto}
+  .melody-layout .mid{grid-template-columns:minmax(0,1fr) 148px}
+  .mshelf{padding:14px 12px;gap:6px}.mshelf .chip{min-height:52px;font-size:14px;padding:4px 6px}
+  .mshelf .chip img{width:30px;height:30px}.mshelf .chip b{font-size:21px}.mshelf .chip small{font-size:11px}
+  .melody-layout .say{font-size:15px;line-height:1.5;padding:8px 12px;min-height:78px}.melody-layout .say .who{font-size:16px;line-height:1.25}
+  .melody-layout .mstat{font-size:13px}.melody-layout .mstat strong{font-size:22px}
+  .melody-layout .row3 .btn{min-height:52px;font-size:22px}.melody-layout .row3 .btn.sub{font-size:18px}
+  .melody-layout .vessel{grid-template-rows:minmax(0,1fr) 20px}.melody-layout .tag-key{font-size:12px;line-height:20px}
+}
 @media (orientation:landscape) and (max-height:560px){
-  .mshelf{padding:6px 7px;gap:3px}.mshelf .chip{min-height:30px;padding:1px 3px}.mshelf .chip small{display:none}.mshelf .chip img{height:20px}
+  .card.melody-layout{gap:6px 14px}.melody-plan,.melody-work{gap:6px}
+  .mshelf{padding:10px 8px;gap:3px}.mshelf .chip{min-height:38px;padding:1px 3px}.mshelf .chip small{display:block;font-size:9px}.mshelf .chip img{height:22px}
   .melody-layout .say{min-height:0;font-size:12px}.melody-layout .row3 .btn{min-height:38px}
 }

@@ -13,6 +13,8 @@ export const GRAPHICS = {
   'chapter-cargo': new URL('../../public/graphics/chapter-cargo.webp', import.meta.url).href,
   'chapter-oil': new URL('../../public/graphics/chapter-oil.webp', import.meta.url).href,
   'chapter-silver': new URL('../../public/graphics/chapter-silver.webp', import.meta.url).href,
+  'chapter-melody': new URL('../../public/graphics/chapter-melody.webp', import.meta.url).href,
+  'chapter-melody-chart': new URL('../../public/graphics/chapter-melody-chart.webp', import.meta.url).href,
   'boat': new URL('../../public/graphics/boat.webp', import.meta.url).href,
   'bridge': new URL('../../public/graphics/bridge.webp', import.meta.url).href,
   'shoal': new URL('../../public/graphics/shoal.webp', import.meta.url).href,

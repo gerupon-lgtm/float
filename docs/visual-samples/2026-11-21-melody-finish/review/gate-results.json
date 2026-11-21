@@ -1,0 +1,1574 @@
+[
+  {
+    "engine": "chromium",
+    "case": "shoal-equal-pass",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 141.79999999999998,
+    "plane": 173,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.2, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": 150.60000000000002,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "shoal-hit",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 141.79999999999998,
+    "plane": 165.2,
+    "gateTransform": "translate(-16 0)",
+    "computedGateTransform": "matrix(1, 0, 0, 1, -16, 0)",
+    "hit": "ゴツン！",
+    "hitY": "193",
+    "hitBottom": 196.3857765197754,
+    "outline": 0,
+    "highFront": 150.60000000000002,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "shoal-deep-hit",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 134,
+    "bottom": 212,
+    "cargoTop": 180.79999999999998,
+    "plane": 204.2,
+    "gateTransform": "translate(-16 0)",
+    "computedGateTransform": "matrix(1, 0, 0, 1, -16, 0)",
+    "hit": "ゴツン！",
+    "hitY": "218",
+    "hitBottom": 221.3857765197754,
+    "outline": 0,
+    "highFront": 174.00000000000003,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "shoal-deep-pass",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 126.19999999999999,
+    "bottom": 204.2,
+    "cargoTop": 152.2,
+    "plane": 204.2,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.2, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": 174.00000000000003,
+    "pile": "\n    \n    荷の山2段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "bridge-equal-pass",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 121,
+    "plane": 92,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.2, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山2段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "bridge-hull-hit",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 87.19999999999999,
+    "bottom": 165.2,
+    "cargoTop": 133.99999999999997,
+    "plane": 95,
+    "gateTransform": "translate(54 0)",
+    "computedGateTransform": "matrix(1, 0, 0, 1, 54, 0)",
+    "hit": "ゴツン！",
+    "hitY": "58",
+    "hitBottom": 61.385772705078125,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "bridge-low-pile-pass",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 100.19999999999999,
+    "plane": 92,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.2, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山3段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "bridge-high-pile-hit",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 102.80000000000001,
+    "bottom": 180.8,
+    "cargoTop": 87.2,
+    "plane": 95,
+    "gateTransform": "translate(-50 0)",
+    "computedGateTransform": "matrix(1, 0, 0, 1, -50, 0)",
+    "hit": "ゴツン！",
+    "hitY": "58",
+    "hitBottom": 61.385772705078125,
+    "outline": 1,
+    "highFront": 127.20000000000002,
+    "pile": "\n    \n    荷の山4段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "bridge-high-pile-right-hit",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 102.80000000000001,
+    "bottom": 180.8,
+    "cargoTop": 87.2,
+    "plane": 95,
+    "gateTransform": "translate(20.200000000000017 0)",
+    "computedGateTransform": "matrix(1, 0, 0, 1, 20.2, 0)",
+    "hit": "ゴツン！",
+    "hitY": "58",
+    "hitBottom": 61.385772705078125,
+    "outline": 1,
+    "highFront": 197.40000000000003,
+    "pile": "\n    \n    荷の山4段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "bridge-deep-pass",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 126.19999999999999,
+    "bottom": 204.2,
+    "cargoTop": 152.2,
+    "plane": 123.19999999999999,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.2, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山2段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "bridge-low-pass",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 79.4,
+    "bottom": 157.4,
+    "cargoTop": 126.2,
+    "plane": 76.4,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.2, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "quay",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 141.79999999999998,
+    "plane": null,
+    "computedGateTransform": null,
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山1段",
+    "quay": true,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "shoal-equal-pass",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 141.79999999999998,
+    "plane": 173,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.2, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": 150.60000000000002,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "shoal-hit",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 141.79999999999998,
+    "plane": 165.2,
+    "gateTransform": "translate(-16 0)",
+    "computedGateTransform": "matrix(1, 0, 0, 1, -16, 0)",
+    "hit": "ゴツン！",
+    "hitY": "193",
+    "hitBottom": 196.76067733764648,
+    "outline": 0,
+    "highFront": 150.60000000000002,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "shoal-deep-hit",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 134,
+    "bottom": 212,
+    "cargoTop": 180.79999999999998,
+    "plane": 204.2,
+    "gateTransform": "translate(-16 0)",
+    "computedGateTransform": "matrix(1, 0, 0, 1, -16, 0)",
+    "hit": "ゴツン！",
+    "hitY": "218",
+    "hitBottom": 221.76067733764648,
+    "outline": 0,
+    "highFront": 174.00000000000003,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "shoal-deep-pass",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 126.19999999999999,
+    "bottom": 204.2,
+    "cargoTop": 152.2,
+    "plane": 204.2,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.2, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": 174.00000000000003,
+    "pile": "\n    \n    荷の山2段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "bridge-equal-pass",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 121,
+    "plane": 92,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.2, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山2段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "bridge-hull-hit",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 87.19999999999999,
+    "bottom": 165.2,
+    "cargoTop": 133.99999999999997,
+    "plane": 95,
+    "gateTransform": "translate(54 0)",
+    "computedGateTransform": "matrix(1, 0, 0, 1, 54, 0)",
+    "hit": "ゴツン！",
+    "hitY": "58",
+    "hitBottom": 61.76068878173828,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "bridge-low-pile-pass",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 100.19999999999999,
+    "plane": 92,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.2, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山3段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "bridge-high-pile-hit",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 102.80000000000001,
+    "bottom": 180.8,
+    "cargoTop": 87.2,
+    "plane": 95,
+    "gateTransform": "translate(-50 0)",
+    "computedGateTransform": "matrix(1, 0, 0, 1, -50, 0)",
+    "hit": "ゴツン！",
+    "hitY": "58",
+    "hitBottom": 61.76068878173828,
+    "outline": 1,
+    "highFront": 127.20000000000002,
+    "pile": "\n    \n    荷の山4段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "bridge-high-pile-right-hit",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 102.80000000000001,
+    "bottom": 180.8,
+    "cargoTop": 87.2,
+    "plane": 95,
+    "gateTransform": "translate(20.200000000000017 0)",
+    "computedGateTransform": "matrix(1, 0, 0, 1, 20.2, 0)",
+    "hit": "ゴツン！",
+    "hitY": "58",
+    "hitBottom": 61.76068878173828,
+    "outline": 1,
+    "highFront": 197.40000000000003,
+    "pile": "\n    \n    荷の山4段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "bridge-deep-pass",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 126.19999999999999,
+    "bottom": 204.2,
+    "cargoTop": 152.2,
+    "plane": 123.19999999999999,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.2, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山2段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "bridge-low-pass",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 79.4,
+    "bottom": 157.4,
+    "cargoTop": 126.2,
+    "plane": 76.4,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.2, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "case": "quay",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 141.79999999999998,
+    "plane": null,
+    "computedGateTransform": null,
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山1段",
+    "quay": true,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "shoal-equal-pass",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 141.79999999999998,
+    "plane": 173,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.199997, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": 150.60000000000002,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "shoal-hit",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 141.79999999999998,
+    "plane": 165.2,
+    "gateTransform": "translate(-16 0)",
+    "computedGateTransform": "none",
+    "hit": "ゴツン！",
+    "hitY": "193",
+    "hitBottom": 196.390625,
+    "outline": 0,
+    "highFront": 150.60000000000002,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "shoal-deep-hit",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 134,
+    "bottom": 212,
+    "cargoTop": 180.79999999999998,
+    "plane": 204.2,
+    "gateTransform": "translate(-16 0)",
+    "computedGateTransform": "none",
+    "hit": "ゴツン！",
+    "hitY": "218",
+    "hitBottom": 221.390625,
+    "outline": 0,
+    "highFront": 174.00000000000003,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "shoal-deep-pass",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 126.19999999999999,
+    "bottom": 204.2,
+    "cargoTop": 152.2,
+    "plane": 204.2,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.199997, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": 174.00000000000003,
+    "pile": "\n    \n    荷の山2段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "bridge-equal-pass",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 121,
+    "plane": 92,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.199997, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山2段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "bridge-hull-hit",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 87.19999999999999,
+    "bottom": 165.2,
+    "cargoTop": 133.99999999999997,
+    "plane": 95,
+    "gateTransform": "translate(54 0)",
+    "computedGateTransform": "none",
+    "hit": "ゴツン！",
+    "hitY": "58",
+    "hitBottom": 61.390625,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "bridge-low-pile-pass",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 100.19999999999999,
+    "plane": 92,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.199997, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山3段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "bridge-high-pile-hit",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 102.80000000000001,
+    "bottom": 180.8,
+    "cargoTop": 87.2,
+    "plane": 95,
+    "gateTransform": "translate(-50 0)",
+    "computedGateTransform": "none",
+    "hit": "ゴツン！",
+    "hitY": "58",
+    "hitBottom": 61.390625,
+    "outline": 1,
+    "highFront": 127.20000000000002,
+    "pile": "\n    \n    荷の山4段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "bridge-high-pile-right-hit",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 102.80000000000001,
+    "bottom": 180.8,
+    "cargoTop": 87.2,
+    "plane": 95,
+    "gateTransform": "translate(20.200000000000017 0)",
+    "computedGateTransform": "none",
+    "hit": "ゴツン！",
+    "hitY": "58",
+    "hitBottom": 61.390625,
+    "outline": 1,
+    "highFront": 197.40000000000003,
+    "pile": "\n    \n    荷の山4段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "bridge-deep-pass",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 126.19999999999999,
+    "bottom": 204.2,
+    "cargoTop": 152.2,
+    "plane": 123.19999999999999,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.199997, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山2段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "bridge-low-pass",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 79.4,
+    "bottom": 157.4,
+    "cargoTop": 126.2,
+    "plane": 76.4,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.199997, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "quay",
+    "fixture": true,
+    "viewport": [
+      844,
+      390
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "card": [
+      844,
+      390,
+      844,
+      390
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 141.79999999999998,
+    "plane": null,
+    "computedGateTransform": null,
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山1段",
+    "quay": true,
+    "columnWidth": 27.64513274336283,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "shoal-equal-pass",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 141.79999999999998,
+    "plane": 173,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.199997, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": 150.60000000000002,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "shoal-hit",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 141.79999999999998,
+    "plane": 165.2,
+    "gateTransform": "translate(-16 0)",
+    "computedGateTransform": "none",
+    "hit": "ゴツン！",
+    "hitY": "193",
+    "hitBottom": 196.765625,
+    "outline": 0,
+    "highFront": 150.60000000000002,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "shoal-deep-hit",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 134,
+    "bottom": 212,
+    "cargoTop": 180.79999999999998,
+    "plane": 204.2,
+    "gateTransform": "translate(-16 0)",
+    "computedGateTransform": "none",
+    "hit": "ゴツン！",
+    "hitY": "218",
+    "hitBottom": 221.765625,
+    "outline": 0,
+    "highFront": 174.00000000000003,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "shoal-deep-pass",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 126.19999999999999,
+    "bottom": 204.2,
+    "cargoTop": 152.2,
+    "plane": 204.2,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.199997, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": 174.00000000000003,
+    "pile": "\n    \n    荷の山2段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "bridge-equal-pass",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 121,
+    "plane": 92,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.199997, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山2段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "bridge-hull-hit",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 87.19999999999999,
+    "bottom": 165.2,
+    "cargoTop": 133.99999999999997,
+    "plane": 95,
+    "gateTransform": "translate(54 0)",
+    "computedGateTransform": "none",
+    "hit": "ゴツン！",
+    "hitY": "58",
+    "hitBottom": 61.765625,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "bridge-low-pile-pass",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 100.19999999999999,
+    "plane": 92,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.199997, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山3段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "bridge-high-pile-hit",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 102.80000000000001,
+    "bottom": 180.8,
+    "cargoTop": 87.2,
+    "plane": 95,
+    "gateTransform": "translate(-50 0)",
+    "computedGateTransform": "none",
+    "hit": "ゴツン！",
+    "hitY": "58",
+    "hitBottom": 61.765625,
+    "outline": 1,
+    "highFront": 127.20000000000002,
+    "pile": "\n    \n    荷の山4段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "bridge-high-pile-right-hit",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 102.80000000000001,
+    "bottom": 180.8,
+    "cargoTop": 87.2,
+    "plane": 95,
+    "gateTransform": "translate(20.200000000000017 0)",
+    "computedGateTransform": "none",
+    "hit": "ゴツン！",
+    "hitY": "58",
+    "hitBottom": 61.765625,
+    "outline": 1,
+    "highFront": 197.40000000000003,
+    "pile": "\n    \n    荷の山4段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "bridge-deep-pass",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 126.19999999999999,
+    "bottom": 204.2,
+    "cargoTop": 152.2,
+    "plane": 123.19999999999999,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.199997, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山2段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "bridge-low-pass",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 79.4,
+    "bottom": 157.4,
+    "cargoTop": 126.2,
+    "plane": 76.4,
+    "gateTransform": null,
+    "computedGateTransform": "matrix(1, 0, 0, 1, -122.199997, 0)",
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山1段",
+    "quay": false,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "case": "quay",
+    "fixture": true,
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "card": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "rim": 95,
+    "bottom": 173,
+    "cargoTop": 141.79999999999998,
+    "plane": null,
+    "computedGateTransform": null,
+    "hitBottom": null,
+    "outline": 0,
+    "highFront": null,
+    "pile": "\n    \n    荷の山1段",
+    "quay": true,
+    "columnWidth": 24.88909090909091,
+    "errors": []
+  }
+]

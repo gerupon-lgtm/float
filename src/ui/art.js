@@ -16,6 +16,6 @@ export const ART={
   bath:()=>picture('bath','師匠が湯船で気づく絵。湯があふれている'),
   eureka:()=>`<div class="picture">${picture('eureka','師匠が札と湯気で体を隠して走る絵')}<span class="sign" style="left:49.5%;top:67%;transform:translate(-50%,-50%) rotate(4deg)">エウレカ！</span></div>`,
   harbor:()=>picture('harbor','見習いと師匠が港で船を見る絵'),
-  // 航路のメロディの導入。専用の絵（chapter-melody）が届くまでは港の絵を使う
-  melody:()=>picture(GRAPHICS['chapter-melody']?'chapter-melody':'harbor','港を巡る航路の図を広げる師匠と、耳を澄ます見習い'),
+  melody:()=>picture('chapter-melody','港で師匠が船から木箱を下ろし、見習いが耳を澄ませて音の変化に驚く'),
+  'melody-chart':()=>picture('chapter-melody-chart','港と音符を描いた航海図を広げる師匠と、のぞき込む見習い'),
 };

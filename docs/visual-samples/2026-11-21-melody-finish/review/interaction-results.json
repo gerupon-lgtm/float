@@ -1,0 +1,90 @@
+{
+  "cases": 10,
+  "records": [
+    {
+      "engine": "chromium",
+      "case": "six-column drag and selection retained",
+      "viewport": [
+        393,
+        851
+      ]
+    },
+    {
+      "engine": "chromium",
+      "case": "six-column drag and selection retained",
+      "viewport": [
+        844,
+        390
+      ]
+    },
+    {
+      "engine": "chromium",
+      "case": "six-column drag and selection retained",
+      "viewport": [
+        393,
+        851
+      ]
+    },
+    {
+      "engine": "chromium",
+      "case": "normal preparation hides depth",
+      "stats": [
+        "15",
+        "？",
+        "？"
+      ]
+    },
+    {
+      "engine": "chromium",
+      "case": "expert preparation hides depth",
+      "stats": [
+        "？",
+        "？",
+        "？"
+      ]
+    },
+    {
+      "engine": "webkit",
+      "case": "six-column drag and selection retained",
+      "viewport": [
+        393,
+        851
+      ]
+    },
+    {
+      "engine": "webkit",
+      "case": "six-column drag and selection retained",
+      "viewport": [
+        844,
+        390
+      ]
+    },
+    {
+      "engine": "webkit",
+      "case": "six-column drag and selection retained",
+      "viewport": [
+        393,
+        851
+      ]
+    },
+    {
+      "engine": "webkit",
+      "case": "normal preparation hides depth",
+      "stats": [
+        "20",
+        "？",
+        "？"
+      ]
+    },
+    {
+      "engine": "webkit",
+      "case": "expert preparation hides depth",
+      "stats": [
+        "？",
+        "？",
+        "？"
+      ]
+    }
+  ],
+  "passed": true
+}

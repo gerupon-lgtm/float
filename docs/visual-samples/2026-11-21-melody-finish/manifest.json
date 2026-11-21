@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-21",
+  "version": "0.9.16",
+  "method": "built-in image_gen; reference-image editing",
+  "distributionConversion": {
+    "width": 960,
+    "height": 720,
+    "quality": 90,
+    "method": 6
+  },
+  "files": [
+    {
+      "scene": "s11",
+      "path": "docs/visual-samples/2026-11-21-melody-finish/01-melody-unloading.png",
+      "role": "native-original",
+      "width": 1448,
+      "height": 1086,
+      "mode": "RGB",
+      "bytes": 3224244,
+      "sha256": "4c849b97164b646752ab5ec8e9ace22095f723ab52165ca3e6a912b107fc7783"
+    },
+    {
+      "scene": "s12",
+      "path": "docs/visual-samples/2026-11-21-melody-finish/02-melody-chart.png",
+      "role": "native-original",
+      "width": 1448,
+      "height": 1086,
+      "mode": "RGB",
+      "bytes": 3260809,
+      "sha256": "9421c4ab00e09ef6ce96dccd2a016364b0ec254061321e407b4039534d06ce51"
+    },
+    {
+      "scene": "s11",
+      "path": "public/graphics/chapter-melody.webp",
+      "role": "webp-distribution",
+      "width": 960,
+      "height": 720,
+      "mode": "RGB",
+      "bytes": 301332,
+      "sha256": "74640dcff0ff409b76451639c79b42da107984fd70c815f3d51358c4d57218b0"
+    },
+    {
+      "scene": "s12",
+      "path": "public/graphics/chapter-melody-chart.webp",
+      "role": "webp-distribution",
+      "width": 960,
+      "height": 720,
+      "mode": "RGB",
+      "bytes": 300416,
+      "sha256": "7d13d3d454dfb610617b1eeaf20de7a035b3c6f685c96cdd2999f307f6b091bc"
+    }
+  ],
+  "svgArtModule": "src/ui/melody-art.js",
+  "screenshots": "review/ (verification only, not app assets)"
+}

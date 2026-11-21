@@ -5,6 +5,7 @@ import { midiOf, onScale } from '../logic/pitch.js';
 import { CELLS, ROWMAX, dropCargo, stackRows } from '../logic/stacking.js';
 import { depthNow, weightOf, autoDrop, rowsUnderBridge, segmentFault, matchesTarget } from '../logic/melody.js';
 import { GRAPHICS, cargoArt } from './graphics.js';
+import { melodyArtDefs, melodyShoalArt, melodyBridgeArt, melodyQuayArt, melodyPileTag } from './melody-art.js';
 
 // 船の絵（144px）は、上の28pxが船の中の奥の面。船べりは上から28pxの位置なので、ここを船の高さ5に合わせる
 const BOAT_TOP = 28 / 116;
@@ -42,29 +43,36 @@ export function melodyStage(n, base, route, ctx) {
   const K = 1.3, U = 12 * K, ROW = 16 * K, DECK = 8 * K, CW = 18 * K, HW = 124 * K, HX = 70, WATER = 134;
   const shownDepth = () => (showLive() ? depth() : depthFraction(SHIP, 'water'));
   const bottomY = () => WATER + Math.min(shownDepth().toNumber(), HULL + 0.6) * U;
+  // 発案者了承（2026-11-21）：橋の高さに届く荷の先端まで進んで止める。
+  // 当たるかどうかは segmentFault の結果を使い、ここでは絵の接触位置だけを求める。
+  function bridgeContact() {
+    const gate = route.cond?.[S.gate], front = HX + HW;
+    if (gate?.k !== 'bridge') return { x: front, shift: 54 };
+    const bottom = bottomY(), ceiling = WATER + gate.d * U - HULL * U;
+    if (bottom - HULL * U < ceiling) return { x: front, shift: 54 };
+    const high = S.placed.filter(p => bottom - DECK - (p.r + S.items[p.id][3]) * ROW < ceiling);
+    const x = high.length ? Math.max(...high.map(p => HX + 8 * K + (p.c + S.items[p.id][2]) * CW)) : front;
+    return { x, shift: x - (front - 54) };
+  }
   function shipSvg() {
     const d = shownDepth(), live = showLive(), bottom = bottomY(), top = bottom - HULL * U;
     const pick = S.phase === 'prep' && S.sel != null, cx = HX + 8 * K;
     // 出航したら棚を隠し、右に今の海路の関門（浅瀬・橋）を描く
     const VW = S.phase === 'prep' ? 240 : 330, GX = HX + HW + 16, gate = S.gate != null ? route.cond?.[S.gate] : null;
     let g = `<defs><pattern id="mw" patternUnits="userSpaceOnUse" width="240" height="110" y="${WATER}"><image href="${GRAPHICS['liquid-water']}" width="240" height="110" preserveAspectRatio="none"/></pattern>
-      <pattern id="ship-sand" patternUnits="userSpaceOnUse" width="19" height="13"><rect width="19" height="13" fill="#e8c98a"/><path d="M1 4l7 -2m3 7l6 -1M2 12l4 -1" stroke="#b68a4d" stroke-width="1.2" opacity=".6"/></pattern>
-      <pattern id="ship-timber" patternUnits="userSpaceOnUse" width="17" height="11"><rect width="17" height="11" fill="#d89d50"/><path d="M0 10H17M3 3l9 -1" stroke="#8a5a2e" stroke-width="1.3"/><path d="M1 5l12 -1" stroke="#f2c771" stroke-width="1.4"/></pattern></defs>
+      ${melodyArtDefs()}</defs>
       <rect width="${VW}" height="230" fill="var(--sky)"/><path d="M110 22q20 -14 40 0t40 0" fill="none" stroke="#fffaf0" stroke-width="5"/>
       <rect x="0" y="${WATER}" width="${VW}" height="100" fill="url(#mw)"/>`;
     // 関門は幅 GW の絵で描き、航海中は右から左へ流して、船がその上・下を通る様子にする。当たったら船の前で止まる
-    const GW = 74, gpos = S.hit === 'shoal' ? ' transform="translate(-16 0)"' : S.hit === 'bridge' ? ' transform="translate(54 0)"' : '';  // 橋は橋桁の左端が船首に当たる位置
+    const GW = 74, gpos = S.hit === 'shoal' ? ' transform="translate(-16 0)"' : S.hit === 'bridge' ? ` transform="translate(${bridgeContact().shift} 0)"` : '';
     if (gate?.k === 'shoal') {
       const ys = WATER + gate.d * U;
-      g += `<g id="gate"${gpos}><path d="M${GX - 8} 230L${GX + 8} ${ys}H${GX + GW - 8}L${GX + GW + 8} 230Z" fill="url(#ship-sand)" stroke="#8a5a2e" stroke-width="1.6"/>
+      g += `<g id="gate"${gpos}>${melodyShoalArt(GX, GW, ys)}
         <g font-size="10" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke"><text x="${GX + GW / 2}" y="${ys - 19}">浅瀬</text><text x="${GX + GW / 2}" y="${ys - 7}">${gate.d}まで</text></g></g>`;
     }
     // 港に寄っている間は、右に岸壁を見せる
     const qn = S.port ?? S.portOut;   // 出航しても岸壁はすぐ消さず、後ろへ流れていく
-    if (qn) g += `<g id="quay"><path d="M${VW - 62} ${WATER - 30}H${VW}V230H${VW - 62}Z" fill="#b8ad9a" stroke="#5f3b1c" stroke-width="2"/>
-      <path d="M${VW - 62} ${WATER - 12}H${VW}M${VW - 62} ${WATER + 8}H${VW}M${VW - 62} ${WATER + 28}H${VW}M${VW - 40} ${WATER - 30}V${WATER - 12}M${VW - 18} ${WATER - 12}V${WATER + 8}M${VW - 46} ${WATER + 8}V${WATER + 28}" stroke="#7d7363" stroke-width="1.2"/>
-      <rect x="${VW - 62}" y="${WATER - 34}" width="62" height="6" fill="#8a5a2e"/><rect x="${VW - 54}" y="${WATER - 46}" width="8" height="12" rx="3" fill="#5f3b1c"/>
-      <rect x="${VW - 44}" y="${WATER - 74}" width="40" height="20" rx="3" fill="#d6452c" stroke="#5f3b1c" stroke-width="1.5"/><path d="M${VW - 24} ${WATER - 54}V${WATER - 34}" stroke="#5f3b1c" stroke-width="2.5"/>
+    if (qn) g += `<g id="quay">${melodyQuayArt(VW, WATER)}
       <text x="${VW - 24}" y="${WATER - 59.5}" font-size="11.5" font-weight="700" text-anchor="middle" fill="#fffaf0">港${qn}</text></g>`;
     g += `<g id="hullg"><image href="${GRAPHICS.boat}" x="${HX}" y="${top - HULL * U * BOAT_TOP}" width="${HW}" height="${HULL * U * (1 + BOAT_TOP)}" preserveAspectRatio="none"/>
 `;
@@ -72,7 +80,10 @@ export function melodyStage(n, base, route, ctx) {
     for (const [k, p] of S.placed.entries()) {
       const it = S.items[p.id], x = cx + p.c * CW, y = bottom - DECK - (p.r + it[3]) * ROW, w = it[2] * CW, h = it[3] * ROW;
       // 荷札（積んだ順の番号）と重さ。合計を伏せても、自分で足し算できるように重さは常に見せる
-      g += `<g data-n="${k}"><image href="${cargoArt(it[1])}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="none"/>
+      const ceiling = gate?.k === 'bridge' ? WATER + gate.d * U - HULL * U : null;
+      const hitOutline = S.hit === 'bridge' && top >= ceiling && y < ceiling
+        ? `<path class="hit-cargo-outline" d="M${x + .5} ${y + .5}H${x + w - .5}V${y + h - .5}H${x + .5}Z" fill="none" stroke="#d6452c" stroke-width="1.5" stroke-dasharray="3 1.5"/>` : '';
+      g += `<g data-n="${k}"><image href="${cargoArt(it[1])}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="none"/>${hitOutline}
         <g class="cargo-tag" aria-label="荷札${k + 1}、重さ${it[0]}"><path d="M${x + 4} ${y + .4}H${x + 20.5}V${y + 20}H${x + .5}V${y + 4}Z" fill="#fffaf0" stroke="#23304a" stroke-width=".8"/>
         <text x="${x + 10.5}" y="${y + 9.3}" font-size="10" font-weight="700" text-anchor="middle" fill="#d6452c">${k + 1}</text>
         <path d="M${x + 3} ${y + 10.8}H${x + 18}" stroke="#cdbf9f" stroke-width=".7"/>
@@ -84,12 +95,14 @@ export function melodyStage(n, base, route, ctx) {
     // 橋は船の手前に描く（船の絵の奥の面が橋桁に重なって、当たったように見えないように）
     if (gate?.k === 'bridge') {
       const yb = WATER + gate.d * U - HULL * U - (S.hit ? 0 : 3);  // 通れるときは、ちょうどでも少しすき間を見せる   // 橋の下面：深さがちょうど橋の値のときの船の縁の高さ
-      g += `<g id="gate"${gpos}><rect x="${GX - 70}" y="${yb - 16}" width="${GW + 140}" height="16" fill="url(#ship-timber)" stroke="#5f3b1c" stroke-width="2"/>
-        <rect x="${GX - 70}" y="0" width="14" height="${yb}" fill="#8a5a2e"/><rect x="${GX + GW + 56}" y="0" width="14" height="${yb}" fill="#8a5a2e"/>
-        <path d="M${GX - 70} ${yb}H${GX + GW + 70}" stroke="#5f3b1c" stroke-width="3"/>
-        <g font-size="10" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke"><text x="${GX + GW / 2}" y="${yb - 22}">橋 ${gate.d}以上</text></g></g>`;
+      g += `<g id="gate"${gpos}>${melodyBridgeArt(GX, GW, yb)}
+        <g font-size="10" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke"><text x="${S.hit ? Math.min(GX + GW / 2, VW - 44 - bridgeContact().shift) : GX + GW / 2}" y="${yb - 22}">橋 ${gate.d}以上</text></g></g>`;
     }
-    if (S.hit) g += `<text x="${HX + HW + 4}" y=""${S.hit === 'bridge' ? 58 : bottom + 20}" font-size="13" font-weight="700" text-anchor="middle" fill="#d6452c" stroke="#fffaf0" stroke-width="3.5" paint-order="stroke">ゴツン！</text>`;
+    if (S.hit) {
+      const x = S.hit === 'bridge' ? bridgeContact().x : HX + HW, y = S.hit === 'bridge' ? WATER + gate.d * U - HULL * U : WATER + gate.d * U;
+      g += `<path class="hit-mark" d="M${x - 6} ${y - 4}l-5-4m9 0l-1-7m7 10l5-2" fill="none" stroke="#d6452c" stroke-width="2.2" stroke-linecap="round"/>`;
+      g += `<text class="hit-label" x="${x + (S.hit === 'bridge' ? 8 : 4)}" y="${S.hit === 'bridge' ? 58 : Math.min(218, bottom + 20)}" font-size="13" font-weight="700" text-anchor="${S.hit === 'bridge' ? 'start' : 'middle'}" fill="#d6452c" stroke="#fffaf0" stroke-width="3.5" paint-order="stroke">ゴツン！</text>`;
+    }
     let sc = `<rect x="3" y="${WATER - 20}" width="52" height="${HULL * U + 30}" rx="6" fill="#fffaf0" stroke="#23304a" stroke-width="2"/><text x="29" y="${WATER - 7}" text-anchor="middle" font-size="10" font-weight="700" fill="#23304a">深さ・音</text>`;
     for (let i = 0; i <= 10; i++) {
       const y = WATER + i * U / 2;
@@ -101,7 +114,7 @@ export function melodyStage(n, base, route, ctx) {
     const sign = S.phase === 'prep' ? '積載中' : S.sign;
     if (sign) g += `<g class="mboard" aria-label="${sign}"><image href="${GRAPHICS['status-board']}" x="64" y="3" width="116" height="40" preserveAspectRatio="none"/><text x="122" y="29" font-size="14" text-anchor="middle" fill="#23304a" font-family="var(--disp)">${sign}</text></g>`;
     // 荷の山の段数。航海図の橋の「荷○段まで」と見比べる
-    g += `<g class="pile"><rect x="190" y="6" width="46" height="34" rx="5" fill="#fffaf0" stroke="#23304a" stroke-width="1.6"/><text x="213" y="19" font-size="9" font-weight="700" text-anchor="middle" fill="#23304a">荷の山</text><text x="213" y="35" font-size="13" font-weight="700" text-anchor="middle" fill="#23304a">${stackRows(S.placed, S.items)}段</text></g>`;
+    g += melodyPileTag(stackRows(S.placed, S.items));
     if (S.phase === 'prep' && S.sel == null && S.items.some((_, i) => i < items0 && !S.placed.some(p => p.id === i)))
       g += `<text x="${HX + HW / 2}" y="60" font-size="10.5" font-weight="700" text-anchor="middle" fill="#23304a" stroke="#fffaf0" stroke-width="3" paint-order="stroke">右の棚から荷を選ぶ →</text>`;
     // 荷を選んでいる間：積める範囲を光らせ、指を置いた列に落ちる位置の影を出す
@@ -132,7 +145,8 @@ export function melodyStage(n, base, route, ctx) {
   // 縦は深さ（上ほど浅く、音は高い）。お題の点、浅瀬の海底、橋桁を同じ目盛りに描く。難しさによらず同じ情報量
   function chartSvg() {
     const tg = route.target, cnt = tg.length, x0 = 48, right = 352, step = (right - x0) / cnt;
-    const box = $('.chartf'), CH = Math.max(200, Math.min(280, box ? Math.round(box.clientHeight * 360 / Math.max(1, box.clientWidth)) : 230));
+    const box = $('.chartf'), maxCH = innerWidth > innerHeight ? 420 : 280;
+    const CH = Math.max(200, Math.min(maxCH, box ? Math.round(box.clientHeight * 360 / Math.max(1, box.clientWidth)) : 230));
     const T = 22, DY = (CH - 92) / HULL, y = d => T + d * DY, B = y(HULL);
     let g = `<defs>
       <pattern id="map-sand" patternUnits="userSpaceOnUse" width="19" height="13"><rect width="19" height="13" fill="#e8c98a"/><path d="M1 4l7 -2m3 7l6 -1M2 12l4 -1" stroke="#b68a4d" stroke-width="1.2" opacity=".6"/></pattern>
@@ -189,11 +203,13 @@ export function melodyStage(n, base, route, ctx) {
       : `<button class="chip ${S.sel === i ? 'on' : ''}" data-i="${i}" ${prep ? '' : 'disabled'}><img src="${cargoArt(it[1])}" alt=""><span>${it[1]}<b>${it[0]}</b><small>${it[2]}×${it[3]}マス</small></span></button>`).join('');
     const sub = R ? `<small class="sub">${R.position + 1}/${R.stageCount}面　<span id="ng">${ctx.ngText()}</span></small>` : '';
     c.innerHTML = `${ctx.topbar(`${base.name}${sub}`)}
+      <div class="melody-plan">
       <section class="frame chartf" aria-label="航海図">${chartSvg()}</section>
       <section class="stat mstat" aria-label="船の手がかり"><div>船全体の重さ<strong>${showWeight() ? weightOf(S.items, S.placed) : '？'}</strong></div><div>沈む深さ<strong>${live ? (d.gt(HULL) ? '沈没' : d.toNumber()) : '？'}</strong></div><div>音<strong>${live && !d.gt(HULL) ? noteName(d) : '？'}</strong></div></section>
-      <section class="mid${prep ? '' : ' sailing'}" aria-label="船と荷の棚"><div class="frame vessel">${shipSvg()}<span class="tag-key">荷札：上が順番／下が重さ</span></div>${prep ? `<div class="mshelf" aria-label="荷を選ぶ"><img class="shelf-board" src="${GRAPHICS['cargo-board']}" alt="" aria-hidden="true" draggable="false">${chips || '<p class="empty">荷をすべて<br>積みました</p>'}</div>` : ''}</section>
       <div class="say" id="say" role="status" aria-live="polite">${S.said}</div>
-      <div class="row3"><button class="btn sub" id="listen">お題を聴く</button><button class="btn sub" id="undo" ${prep && S.placed.length ? '' : 'disabled'}>ひとつ戻す</button><button class="btn" id="go" ${ended || prep ? '' : 'disabled'}>${ended ? ended.label : prep ? '出航' : '航海中'}</button></div>`;
+      </div><div class="melody-work">
+      <section class="mid${prep ? '' : ' sailing'}" aria-label="船と荷の棚"><div class="frame vessel">${shipSvg()}<span class="tag-key">荷札：上が順番／下が重さ</span></div>${prep ? `<div class="mshelf" aria-label="荷を選ぶ"><img class="shelf-board" src="${GRAPHICS['cargo-board']}" alt="" aria-hidden="true" draggable="false">${chips || '<p class="empty">荷をすべて<br>積みました</p>'}</div>` : ''}</section>
+      <div class="row3"><button class="btn sub" id="listen">お題を聴く</button><button class="btn sub" id="undo" ${prep && S.placed.length ? '' : 'disabled'}>ひとつ戻す</button><button class="btn" id="go" ${ended || prep ? '' : 'disabled'}>${ended ? ended.label : prep ? '出航' : '航海中'}</button></div></div>`;
     ctx.wire(c); bind(); playFx();
   }
   function bind() {
@@ -225,7 +241,7 @@ export function melodyStage(n, base, route, ctx) {
     const gateEl = $('#gate'), VWn = S.phase === 'prep' ? 240 : 330, GXn = HX + HW + 16;
     if (f.gatePass && gateEl) { gateEl.animate([{ transform: `translate(${VWn - GXn + 80}px,0px)` }, { transform: `translate(${-(GXn + 160)}px,0px)` }], { duration: f.gatePass, easing: 'linear', fill: 'forwards' }); return; }
     if (f.gateHit && gateEl) {
-      gateEl.animate([{ transform: `translate(${VWn - GXn + 150}px,0px)` }, { transform: `translate(${f.bridge ? 54 : -16}px,0px)` }], { duration: f.gateHit, easing: 'ease-out', composite: 'replace' });
+      gateEl.animate([{ transform: `translate(${VWn - GXn + 150}px,0px)` }, { transform: `translate(${f.bridge ? bridgeContact().shift : -16}px,0px)` }], { duration: f.gateHit, easing: 'ease-out', composite: 'replace' });
       return;
     }
     if (f.quay) { $('#quay')?.animate([{ transform: 'translate(80px,0px)' }, { transform: 'translate(0px,0px)' }], { duration: 450, easing: 'ease-out' }); return; }

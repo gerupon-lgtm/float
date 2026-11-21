@@ -1,0 +1,361 @@
+[
+  {
+    "engine": "chromium",
+    "id": "n0",
+    "kind": "good",
+    "fixtures": "existing stage entry; real-time app progression",
+    "say": "アルキメデスエウレカ！ 荷を積む順が、そのままメロディになるのだ。",
+    "actual": [
+      "✓ド",
+      "✓レ",
+      "✓ド",
+      "✓レ",
+      "✓ソ"
+    ],
+    "stamp": true,
+    "quay": "\n    \n    \n    \n    \n    \n    \n    \n    \n      港4",
+    "ports": [
+      "港1",
+      "港2",
+      "港3",
+      "港4"
+    ],
+    "outline": 0,
+    "plane": null,
+    "cargo": [],
+    "page": [
+      844,
+      390
+    ],
+    "viewport": [
+      844,
+      390
+    ],
+    "hullBottom": 149.6,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "id": "n0",
+    "kind": "wrong",
+    "fixtures": "existing stage entry; real-time app progression",
+    "say": "アルキメデス港は回れたが、メロディがお題と違うな（赤い線）。積む順を逆にしてごらん。",
+    "actual": [
+      "✓ド",
+      "×ミ",
+      "×レ",
+      "×ミ",
+      "✓ソ"
+    ],
+    "stamp": false,
+    "ports": [
+      "港1",
+      "港2",
+      "港3",
+      "港4"
+    ],
+    "outline": 0,
+    "plane": null,
+    "cargo": [],
+    "page": [
+      393,
+      851
+    ],
+    "viewport": [
+      393,
+      851
+    ],
+    "hullBottom": 149.6,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "id": "n1",
+    "kind": "good",
+    "fixtures": "existing stage entry; real-time app progression",
+    "say": "アルキメデスエウレカ！ 下ろすたびに浮いて、音が高くなったな。",
+    "actual": [
+      "✓ラ",
+      "✓ド",
+      "✓レ",
+      "✓ソ"
+    ],
+    "stamp": true,
+    "quay": "\n    \n    \n    \n    \n    \n    \n    \n    \n      港3",
+    "ports": [
+      "港1",
+      "港2",
+      "港3"
+    ],
+    "outline": 0,
+    "plane": null,
+    "cargo": [],
+    "page": [
+      844,
+      390
+    ],
+    "viewport": [
+      844,
+      390
+    ],
+    "hullBottom": 149.6,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "id": "n2",
+    "kind": "good",
+    "fixtures": "existing stage entry; real-time app progression",
+    "say": "アルキメデスエウレカ！ 沈めば低く、浮けば高く。積む港で、メロディが上下するのだ。",
+    "actual": [
+      "✓レ",
+      "✓ラ",
+      "✓ミ",
+      "✓ラ",
+      "✓ソ"
+    ],
+    "stamp": true,
+    "quay": "\n    \n    \n    \n    \n    \n    \n    \n    \n      港4",
+    "ports": [
+      "港1",
+      "港2",
+      "港3",
+      "港4"
+    ],
+    "outline": 0,
+    "plane": null,
+    "cargo": [],
+    "page": [
+      844,
+      390
+    ],
+    "viewport": [
+      844,
+      390
+    ],
+    "hullBottom": 149.6,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "id": "n3",
+    "kind": "good",
+    "fixtures": "existing stage entry; real-time app progression",
+    "say": "アルキメデスエウレカ！ 深さも、荷の高さも、メロディも。全部そろえて通ったな。",
+    "actual": [
+      "✓レ",
+      "✓ソ",
+      "✓ラ",
+      "✓ミ",
+      "✓ソ"
+    ],
+    "stamp": true,
+    "quay": "\n    \n    \n    \n    \n    \n    \n    \n    \n      港4",
+    "ports": [
+      "港1",
+      "港2",
+      "港3",
+      "港4"
+    ],
+    "outline": 0,
+    "plane": null,
+    "cargo": [],
+    "page": [
+      844,
+      390
+    ],
+    "viewport": [
+      844,
+      390
+    ],
+    "hullBottom": 149.6,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "id": "n3",
+    "kind": "badBridge",
+    "fixtures": "existing stage entry; real-time app progression",
+    "say": "アルキメデス3番目の海路で、橋に当たったな。深さと、荷の山の高さを見直してごらん。",
+    "actual": [],
+    "stamp": false,
+    "ports": [
+      "港1",
+      "港2"
+    ],
+    "hit": "ゴツン！",
+    "outline": 1,
+    "plane": 102.80000000000001,
+    "gateTransform": "translate(-50 0)",
+    "cargo": [
+      {
+        "x": 80.4,
+        "y": 128.8,
+        "w": 23.400000000000002
+      },
+      {
+        "x": 80.4,
+        "y": 87.2,
+        "w": 46.800000000000004
+      }
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "viewport": [
+      844,
+      390
+    ],
+    "hullBottom": 180.8,
+    "errors": []
+  },
+  {
+    "engine": "chromium",
+    "id": "n4",
+    "kind": "good",
+    "fixtures": "existing stage entry; real-time app progression",
+    "say": "アルキメデスエウレカ！ 見事だ。重さが深さになり、深さが音になる。仕組みが分かれば、歌も作れるのだ。",
+    "actual": [
+      "✓ミ",
+      "✓ソ",
+      "✓ラ",
+      "✓レ",
+      "✓ラ",
+      "✓ミ",
+      "✓ソ"
+    ],
+    "stamp": true,
+    "quay": "\n    \n    \n    \n    \n    \n    \n    \n    \n      港6",
+    "ports": [
+      "港1",
+      "港2",
+      "港3",
+      "港4",
+      "港5",
+      "港6"
+    ],
+    "outline": 0,
+    "plane": null,
+    "cargo": [],
+    "page": [
+      1920,
+      1080
+    ],
+    "viewport": [
+      1920,
+      1080
+    ],
+    "hullBottom": 149.6,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "id": "n0",
+    "kind": "good",
+    "fixtures": "existing stage entry; real-time app progression",
+    "say": "アルキメデスエウレカ！ 荷を積む順が、そのままメロディになるのだ。",
+    "actual": [
+      "✓ド",
+      "✓レ",
+      "✓ド",
+      "✓レ",
+      "✓ソ"
+    ],
+    "stamp": true,
+    "quay": "\n    \n    \n    \n    \n    \n    \n    \n    \n      港4",
+    "ports": [
+      "港1",
+      "港2",
+      "港3",
+      "港4"
+    ],
+    "outline": 0,
+    "plane": null,
+    "cargo": [],
+    "page": [
+      393,
+      851
+    ],
+    "viewport": [
+      393,
+      851
+    ],
+    "hullBottom": 149.6,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "id": "n3",
+    "kind": "good",
+    "fixtures": "existing stage entry; real-time app progression",
+    "say": "アルキメデスエウレカ！ 深さも、荷の高さも、メロディも。全部そろえて通ったな。",
+    "actual": [
+      "✓レ",
+      "✓ソ",
+      "✓ラ",
+      "✓ミ",
+      "✓ソ"
+    ],
+    "stamp": true,
+    "quay": "\n    \n    \n    \n    \n    \n    \n    \n    \n      港4",
+    "ports": [
+      "港1",
+      "港2",
+      "港3",
+      "港4"
+    ],
+    "outline": 0,
+    "plane": null,
+    "cargo": [],
+    "page": [
+      844,
+      390
+    ],
+    "viewport": [
+      844,
+      390
+    ],
+    "hullBottom": 149.6,
+    "errors": []
+  },
+  {
+    "engine": "webkit",
+    "id": "n3",
+    "kind": "badBridge",
+    "fixtures": "existing stage entry; real-time app progression",
+    "say": "アルキメデス3番目の海路で、橋に当たったな。深さと、荷の山の高さを見直してごらん。",
+    "actual": [],
+    "stamp": false,
+    "ports": [
+      "港1",
+      "港2"
+    ],
+    "hit": "ゴツン！",
+    "outline": 1,
+    "plane": 102.80000000000001,
+    "gateTransform": "translate(-50 0)",
+    "cargo": [
+      {
+        "x": 80.4,
+        "y": 128.8,
+        "w": 23.400000000000002
+      },
+      {
+        "x": 80.4,
+        "y": 87.2,
+        "w": 46.800000000000004
+      }
+    ],
+    "page": [
+      844,
+      390
+    ],
+    "viewport": [
+      844,
+      390
+    ],
+    "hullBottom": 180.8,
+    "errors": []
+  }
+]

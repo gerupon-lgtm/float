@@ -1,0 +1,97 @@
+{
+  "base": "2d5c31efcdf509cb90a288a6c84030f09ac63d4b",
+  "version": "0.9.16",
+  "protectedFiles": [
+    {
+      "path": "src/content/challenges.js",
+      "sha256": "2f5fcd9d965b6f89d36f061d204d20e8bd2461a29e94dbb8d5b676bb5d672d2d"
+    },
+    {
+      "path": "src/content/fail-text.js",
+      "sha256": "2fb43d488574215116408b7174889ab6888c1e1811a55b189ed4e66754a1c2a8"
+    },
+    {
+      "path": "src/content/stages.js",
+      "sha256": "b6fa40d27389bbd4fb202e374ba39266d4eabb1c29c3944993d2bcaf7d7adf55"
+    },
+    {
+      "path": "src/logic/fraction.js",
+      "sha256": "fb06c8842d93ce76108e4feb8acc4dac43b4b6fac25aee4a3e1f7b31e6390b27"
+    },
+    {
+      "path": "src/logic/generate.js",
+      "sha256": "2b43d6b3ea8099eaecf113e9e425ce1ab5ede0d197daae51e9a7ae329ca66a12"
+    },
+    {
+      "path": "src/logic/melody.js",
+      "sha256": "c52e5c57f3b6729e75474cd3fe313b0cf1d602c904f0739da02cdabe27519197"
+    },
+    {
+      "path": "src/logic/modes.js",
+      "sha256": "ba818b88f609059092fc4b4c2f775d90ae9200a16f372028d4c97894dd6f51da"
+    },
+    {
+      "path": "src/logic/physics.js",
+      "sha256": "951b5ff76863e4fabaf732755b5f8ced6f93d0bfd024dae5e76e72087761719b"
+    },
+    {
+      "path": "src/logic/pitch.js",
+      "sha256": "c2f96357d48e4f2400400adda23ec94df0da9b2dc2ae18347058f799a4f23e3b"
+    },
+    {
+      "path": "src/logic/stacking.js",
+      "sha256": "3a35e274d6db0352a4f6967e638647a0c68f3de92beb068247e06aea0f3d382a"
+    },
+    {
+      "path": "src/logic/stage-check.js",
+      "sha256": "4398cb7e7a76149194f7356226698c49aab994bb761a6721e74af5311d93ca16"
+    },
+    {
+      "path": "src/pwa/worker.js",
+      "sha256": "ee5c6974ad8b2114090f3347b23908ce13f2573063959d66a248f1fced0c8928"
+    },
+    {
+      "path": "src/sound/psg-drums.js",
+      "sha256": "76e31b8a9dc67808a1290868e107788cf4cf2cd2bf540654b912d41fa8838f45"
+    },
+    {
+      "path": "src/sound/psg-ref.js",
+      "sha256": "846ba15a1b905abfe09af4c16ed46d9b57581090baa8fa13b8616f8e6e19b06f"
+    },
+    {
+      "path": "src/sound/psg-render.js",
+      "sha256": "037062198a2dced09e70df79166a1320ecdb2727a929e58fa20abba0be533f5d"
+    },
+    {
+      "path": "src/ui/audio.js",
+      "sha256": "9ceaaf964b07767b8eb50257d42177b335bed97f13d99028a7e907a0dfed5a2f"
+    },
+    {
+      "path": "src/ui/update-manager.js",
+      "sha256": "286f128d28d8048230de312c55c32d4b5dfba40adc97cc54b07e656e85e6f724"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "状態と手がかり",
+      "sha256": "7a263405b8b35acfb4cf5c250f16383f3b91eb9aadcb3916ae76a10989f01dd4"
+    },
+    {
+      "name": "船と深さの寸法",
+      "sha256": "4516d79031c8bc02feda30f2bcf8e09b7132c163735dffe1e3d773be5cfd02b9"
+    },
+    {
+      "name": "影と押下位置",
+      "sha256": "ac495c33f0dac796cbda7a00655eddd40685594ab6746dba81d363984638c4ff"
+    },
+    {
+      "name": "入力・音・時間・進行・判定・記録",
+      "sha256": "24a29c1bab70200cf3b736e5448c03264ffc504c708378d2a4f423d7a52c6557"
+    }
+  ],
+  "chart": "wide display height cap only",
+  "story": "s12 art key only",
+  "app": "version only",
+  "approvedStopChange": "Bridge hit animation endpoint follows the first high cargo. Durations, fault decisions and progression are unchanged; originator approved.",
+  "passed": true
+}
