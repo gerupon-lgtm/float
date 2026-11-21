@@ -66,7 +66,7 @@ export function melodyStage(n, base, route, ctx) {
     if (live && !d.gt(HULL)) g += `<path d="M${HX - 1} ${bottom}l-8 -5v10z" fill="var(--red)" stroke="#23304a" stroke-width="1.2"/>`;
     // 看板：出航前と港での積み込みは「積載中」、荷下ろしは「荷下ろし中」。板の絵に文字を重ねる
     const sign = S.phase === 'prep' ? '積載中' : S.sign;
-    if (sign) g += `<g class="sign" aria-label="${sign}"><image href="${GRAPHICS['status-board']}" x="64" y="3" width="116" height="40" preserveAspectRatio="none"/><text x="122" y="29" font-size="14" text-anchor="middle" fill="#23304a" font-family="var(--disp)">${sign}</text></g>`;
+    if (sign) g += `<g class="mboard" aria-label="${sign}"><image href="${GRAPHICS['status-board']}" x="64" y="3" width="116" height="40" preserveAspectRatio="none"/><text x="122" y="29" font-size="14" text-anchor="middle" fill="#23304a" font-family="var(--disp)">${sign}</text></g>`;
     for (let col = 0; col < CELLS && pick; col++) {
       const x = cx + col * CW;
       g += `<g class="col" data-col="${col}"><rect x="${x}" y="0" width="${CW}" height="${bottom - DECK}" fill="#efb32a" opacity=".001"/><path d="M${x + CW / 2 - 5} 32h10l-5 7z" fill="var(--red)" stroke="#23304a" stroke-width="1"/></g>`;

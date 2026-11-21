@@ -13,7 +13,7 @@ import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 import { melodyStage } from './melody.js';
 
-const APP_VERSION = '0.9.0';
+const APP_VERSION = '0.9.1';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
