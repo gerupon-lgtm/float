@@ -60,7 +60,9 @@ export function melodyStage(n, base, route, ctx) {
       g += `<g class="gate"><rect x="${GX}" y="0" width="${VW - GX}" height="${yb}" fill="url(#ship-timber)"/><path d="M${GX} ${yb}H${VW}" stroke="#5f3b1c" stroke-width="3"/>
         <g font-size="10" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke"><text x="${(GX + VW) / 2}" y="${yb - 18}">橋</text><text x="${(GX + VW) / 2}" y="${yb - 6}">${gate.d}以上</text></g></g>`;
     }
-    g += `<g id="hullg"${S.hit === 'shoal' || S.hit === 'bridge' ? ' transform="translate(15 0)"' : ''}><image href="${GRAPHICS.boat}" x="${HX}" y="${top}" width="${HW}" height="${HULL * U}" preserveAspectRatio="none"/>`;
+    g += `<g id="hullg"${S.hit === 'shoal' || S.hit === 'bridge' ? ' transform="translate(15 0)"' : ''}><image href="${GRAPHICS.boat}" x="${HX}" y="${top}" width="${HW}" height="${HULL * U}" preserveAspectRatio="none"/>
+      <rect x="${HX}" y="${WATER}" width="${HW}" height="${Math.max(0, bottom - WATER)}" fill="#3f97c0" opacity=".3"/>`;
+    // 船の中（荷）は断面で見せる。水の色を荷に重ねないので、沈んでいるように見えない
     for (const [k, p] of S.placed.entries()) {
       const it = S.items[p.id], x = cx + p.c * CW, y = bottom - DECK - (p.r + it[3]) * ROW, w = it[2] * CW, h = it[3] * ROW;
       // 荷札（積んだ順の番号）と重さ。合計を伏せても、自分で足し算できるように重さは常に見せる
@@ -70,7 +72,7 @@ export function melodyStage(n, base, route, ctx) {
         <path d="M${x + 3} ${y + 10.8}H${x + 18}" stroke="#cdbf9f" stroke-width=".7"/>
         <text x="${x + 10.5}" y="${y + 19.2}" font-size="11.5" font-weight="700" text-anchor="middle" fill="#23304a" font-family="Arial,sans-serif">${it[0]}</text></g></g>`;
     }
-    g += `</g><rect x="0" y="${WATER}" width="${VW}" height="100" fill="#3f97c0" opacity=".28"/><line x1="0" x2="${VW}" y1="${WATER}" y2="${WATER}" stroke="#fffaf0" stroke-width="1.5" opacity=".8"/>`;
+    g += `</g><line x1="0" x2="${HX}" y1="${WATER}" y2="${WATER}" stroke="#fffaf0" stroke-width="1.5" opacity=".8"/><line x1="${HX + HW}" x2="${VW}" y1="${WATER}" y2="${WATER}" stroke="#fffaf0" stroke-width="1.5" opacity=".8"/>`;
     if (S.hit) g += `<text x="${GX + 2}" y="${S.hit === 'bridge' ? 58 : bottom + 20}" font-size="13" font-weight="700" text-anchor="middle" fill="#d6452c" stroke="#fffaf0" stroke-width="3.5" paint-order="stroke">ゴツン！</text>`;
     let sc = `<rect x="3" y="${WATER - 20}" width="52" height="${HULL * U + 30}" rx="6" fill="#fffaf0" stroke="#23304a" stroke-width="2"/><text x="29" y="${WATER - 7}" text-anchor="middle" font-size="10" font-weight="700" fill="#23304a">深さ・音</text>`;
     for (let i = 0; i <= 10; i++) {
