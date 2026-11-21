@@ -27,6 +27,8 @@ export const GRAPHICS = {
   'cargo-iron': new URL('../../public/graphics/cargo-iron.webp', import.meta.url).href,
   'cargo-lead': new URL('../../public/graphics/cargo-lead.webp', import.meta.url).href,
   'cargo-gold': new URL('../../public/graphics/cargo-gold.webp', import.meta.url).href,
+  'status-board': new URL('../../public/graphics/status-board.webp', import.meta.url).href,
+  'cargo-board': new URL('../../public/graphics/cargo-board.webp', import.meta.url).href,
   'liquid-water': new URL('../../public/graphics/liquid-water.webp', import.meta.url).href,
   'liquid-oil': new URL('../../public/graphics/liquid-oil.webp', import.meta.url).href,
   'liquid-mercury': new URL('../../public/graphics/liquid-mercury.webp', import.meta.url).href

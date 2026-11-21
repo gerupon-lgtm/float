@@ -11,8 +11,9 @@ import { ART, INK } from './art.js';
 import { GRAPHICS, cargoArt } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
+import { melodyStage } from './melody.js';
 
-const APP_VERSION = '0.8.24';
+const APP_VERSION = '0.9.0';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -100,7 +101,10 @@ function wait(ms){return new Promise(r=>setTimeout(r,ms*calm()))}
 function tween(ms,fn){const id=run;ms*=calm();return new Promise(res=>{const t0=performance.now();
   const f=now=>{if(id!==run)return;const p=Math.min(1,(now-t0)/ms),e=p*p*(3-2*p);fn(e);if(p<1)requestAnimationFrame(f);else res()};requestAnimationFrame(f)})}
 
-function stage(n){stopRun();const base=STAGES[n],S={area:AREA,...base,...question(base)};
+// 航路のメロディの面は src/ui/melody.js が受け持つ。画面の道具をまとめて渡す
+const melodyCtx={show,topbar,wire,audio,book,ngText,finish,pick,enter:n=>enter(n),wait,run:()=>R,token:()=>run,alive:id=>id===run,muted:()=>muted};
+function stage(n){stopRun();const base=STAGES[n];if(base.kind==='melody'){G=null;return melodyStage(n,base,base.route??question(base),melodyCtx)}
+  const S={area:AREA,...base,...question(base)};
   G={n,S,hide:!!R?.hidesDepth&&!S.showDepth,placed:[],sel:null,on:new Set(S.on),liq:S.pre?S.start:S.start,x:0,d:0,lift:S.cradle?20:0,busy:false,floating:!S.cradle,room:null,opened:false,bottomExtra:0};
   G.d=G.floating?dp(weight(),G.liq):0;
   const c=show(`${topbar(`${S.name}${R?`<small class="sub">${R.position+1}/${R.stageCount}面　<span id="ng">${ngText()}</span></small>`:''}`)}<div class="frame"><svg id="b" viewBox="0 0 ${W} ${H}" role="img" aria-label="航路の断面図"></svg></div>

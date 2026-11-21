@@ -30,5 +30,17 @@ export const STAGES=[
  {id:'m4',name:'水銀 4　小さな金',start:'mercury',grid:true,heavy:true,showDepth:true,generated:true,count:5,gap:1,gates:[{k:'bridge',x:320}],end:640,
   lead:'積み方も大事な面です。金は小さくても、とても重い荷です。',winner:'大きさと重さは別のものだ。金が教えてくれたな。'},
  {id:'m5',name:'水銀 5　最後の航路',start:'mercury',grid:true,heavy:true,showDepth:true,generated:true,count:5,gap:0.5,gates:[{k:'lever',x:320},{k:'bridge',x:580}],end:800,
-  lead:'積み方も大事な面です。レバーに届く重さと、橋を通る積み方を両方考えましょう。',winner:'見事だ。王の荷は、すべて届いたぞ。だが、まだ分からないことがある。だから面白いのだ。'}
+  lead:'積み方も大事な面です。レバーに届く重さと、橋を通る積み方を両方考えましょう。',winner:'見事だ。王の荷は、すべて届いたぞ。だが、まだ分からないことがある。だから面白いのだ。'},
+ // 航路のメロディ（F-020）。港で積み下ろしして、海路ごとの深さの音をお題のメロディに合わせる。お題は深さ×2の整数で持つ
+ {id:'n0',name:'メロディ 0　はじめの航海',kind:'melody',tutorial:true,
+  route:{target:[5,4,5,4,2],ports:[{k:'down'},{k:'load',item:[5,'麦袋',2,1,'#c9a75c']},{k:'down'},{k:'down'}],cond:{},items:[[10,'石',1,1,'#9a9a92'],[5,'麦袋',2,1,'#d8b56a']]},
+  lead:'航海図の○がお題です。○と同じ深さ（音）で進めるように荷を積みましょう。',winner:'荷を積む順が、そのままメロディになるのだ。'},
+ {id:'n1',name:'メロディ 1　港めぐり',kind:'melody',generated:true,melody:{notes:[4,4],loads:[0,0]},
+  lead:'港では、最後に積んだ荷から下ろします。○のメロディになる荷と順番を考えましょう。',winner:'下ろすたびに浮いて、音が高くなったな。'},
+ {id:'n2',name:'メロディ 2　積む港',kind:'melody',generated:true,melody:{notes:[5,5],loads:[1,1]},
+  lead:'途中で荷を積む港があります。港で積んだ荷は、次の港で最初に下ります。',winner:'沈めば低く、浮けば高く。積む港で、メロディが上下するのだ。'},
+ {id:'n3',name:'メロディ 3　浅瀬と橋',kind:'melody',generated:true,melody:{notes:[5,6],loads:[0,1],gates:['shoal','bridge']},
+  lead:'浅瀬と低い橋がある航路です。橋の下では、荷の山の高さにも気をつけましょう。',winner:'深さも、荷の高さも、メロディも。全部そろえて通ったな。'},
+ {id:'n4',name:'メロディ 4　長い航路',kind:'melody',generated:true,melody:{notes:[6,7],loads:[2,2],gates:['shoal','bridge']},
+  lead:'長い航路です。積む港が2つあります。お題を聴いて、航海図をよく見て積みましょう。',winner:'見事だ。重さが深さになり、深さが音になる。仕組みが分かれば、歌も作れるのだ。'}
 ];

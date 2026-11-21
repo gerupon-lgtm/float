@@ -173,3 +173,44 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 @media (orientation:landscape) and (max-height:560px) and (max-width:700px){
   .layout-side>.list:has(.choice){gap:6px!important;margin-top:0!important}
 }
+
+/* 航路のメロディ（F-020）。Codex の見本0.1.4の配置をこの画面の中だけに当てる */
+.card.melody-layout{display:grid;grid-template-rows:auto minmax(170px,1fr) auto minmax(222px,1.08fr) auto auto;gap:6px;overflow:hidden;padding-bottom:max(8px,env(safe-area-inset-bottom,0px))}
+.melody-layout .chartf{border-width:4px;background:#fff5df;position:relative}
+.melody-layout .chart{display:block;width:100%;height:100%;font-family:var(--body)}
+.melody-layout .frame{min-height:0;min-width:0}
+.melody-layout .mstat{font-size:11px;line-height:1.2}
+.melody-layout .mstat strong{font-size:20px;line-height:1.15;margin-top:1px}
+.melody-layout .mid{display:grid;grid-template-columns:minmax(0,1fr) 106px;gap:8px;min-height:0}
+.melody-layout .vessel{display:grid;grid-template-rows:minmax(0,1fr) 16px}
+.melody-layout .ship{width:100%;height:100%;display:block;min-height:0}
+.melody-layout .tag-key{font-size:9.5px;line-height:16px;background:#fffaf0;text-align:center;white-space:nowrap}
+.mshelf{display:flex;flex-direction:column;gap:4px;min-height:0;padding:12px 10px;position:relative;isolation:isolate}
+.mshelf .shelf-board{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;user-select:none}
+.mshelf .chip{display:flex;align-items:center;gap:4px;width:100%;min-height:44px;border:2px solid var(--ink);border-radius:8px;background:#fffaf0;color:var(--ink);font:700 11px/1.1 var(--body);padding:2px 4px;cursor:pointer;text-align:left;box-shadow:0 2px 0 var(--ink)}
+.mshelf .chip img{width:23px;height:24px;object-fit:contain;flex:none}.mshelf .chip span{flex:1;min-width:0}
+.mshelf .chip b{display:inline-block;font:700 17px/1 Arial,sans-serif;margin-left:3px}.mshelf .chip small{display:block;font-size:9px;margin-top:2px;font-weight:500}
+.mshelf .chip.on{background:var(--yellow);box-shadow:0 0 0 1px var(--red)}.mshelf .chip:disabled{opacity:.45}
+.mshelf .empty{font-size:12px;line-height:1.6;text-align:center;margin:10px 0;color:#5b6070}
+.melody-layout .say{min-height:62px;font-size:13px;line-height:1.4;padding:5px 10px}
+.melody-layout .say .who{font-size:14px;line-height:1.2;margin-bottom:2px}.melody-layout .say .eu{font-family:var(--disp);font-size:18px;color:var(--red)}
+.melody-layout .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.melody-layout .row3 .btn{min-height:46px;padding:4px 2px;font-size:19px;white-space:nowrap}.melody-layout .row3 .btn.sub{font-size:14px}
+.melody-layout .col{cursor:pointer}.melody-layout .col:hover rect{opacity:.2}
+@media (max-height:800px){
+  .card.melody-layout{gap:5px;padding-block:5px;grid-template-rows:auto minmax(160px,1fr) auto minmax(206px,1.05fr) auto auto}
+  .mshelf .chip{min-height:40px}.melody-layout .say{font-size:12px;min-height:56px;padding-block:4px}.melody-layout .row3 .btn{min-height:42px}
+}
+/* 横置き・PC：左に航海図、右に船と操作 */
+@media (orientation:landscape){
+  .card.melody-layout{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr) auto auto;column-gap:14px}
+  .melody-layout>.top{grid-column:1/-1}
+  .melody-layout>.chartf{grid-column:1;grid-row:2/6}
+  .melody-layout>.mstat{grid-column:2;grid-row:2}.melody-layout>.mid{grid-column:2;grid-row:3}
+  .melody-layout>.say{grid-column:2;grid-row:4}.melody-layout>.row3{grid-column:2;grid-row:5}
+}
+@media (orientation:landscape) and (min-width:1024px){.card.melody-layout{max-width:1200px;margin-inline:auto}}
+@media (orientation:landscape) and (max-height:560px){
+  .mshelf{padding:6px 7px;gap:3px}.mshelf .chip{min-height:30px;padding:1px 3px}.mshelf .chip small{display:none}.mshelf .chip img{height:20px}
+  .melody-layout .say{min-height:0;font-size:12px}.melody-layout .row3 .btn{min-height:38px}
+}
