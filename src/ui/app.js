@@ -13,7 +13,7 @@ import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 import { melodyStage } from './melody.js';
 
-const APP_VERSION = '0.9.14';
+const APP_VERSION = '0.9.15';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -44,7 +44,7 @@ function title(){const c=show(`<div class="title-hero"><div class="hero"><div cl
   $('#cont',c).onclick=()=>{unlock();clack();levels()};
   $('#pick',c).onclick=()=>{unlock();clack();pick()}}
 // おはなし：序章を遊ぶ入口と、見た紙芝居の読み返し。何度でも見直せる
-const STORIES=[['王冠の謎',['s1','s2','s3','s4','s9','s10','s5']],['積み方',['s7']],['油の湖',['s8']],['銀色の湖',['s6']]];
+const STORIES=[['王冠の謎',['s1','s2','s3','s4','s9','s10','s5']],['積み方',['s7']],['油の湖',['s8']],['銀色の湖',['s6']],['航路のメロディ',['s11','s12']]];
 function stories(){const c=show(`${topbar('おはなし')}<div class="list" style="max-width:none"><button class="btn" id="play">序章を遊ぶ</button>
   ${STORIES.map(([n,keys],i)=>{const open=keys.every(k=>book.seen(k));return `<button class="btn sub" data-r="${i}" ${open?'':'disabled'}>${open?n:'まだ読めません'}</button>`}).join('')}</div>`,'menu-layout stories-menu');
   wire(c);$('#play',c).onclick=()=>{wood();flow(0)};

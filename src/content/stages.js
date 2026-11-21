@@ -32,7 +32,7 @@ export const STAGES=[
  {id:'m5',name:'水銀 5　最後の航路',start:'mercury',grid:true,heavy:true,showDepth:true,generated:true,count:5,gap:0.5,gates:[{k:'lever',x:320},{k:'bridge',x:580}],end:800,
   lead:'積み方も大事な面です。レバーに届く重さと、橋を通る積み方を両方考えましょう。',winner:'見事だ。王の荷は、すべて届いたぞ。だが、まだ分からないことがある。だから面白いのだ。'},
  // 航路のメロディ（F-020）。港で積み下ろしして、海路ごとの深さの音をお題のメロディに合わせる。お題は深さ×2の整数で持つ
- {id:'n0',name:'メロディ 0　はじめの航海',kind:'melody',tutorial:true,
+ {id:'n0',name:'メロディ 0　はじめの航海',kind:'melody',tutorial:true,intro:['s11','s12'],
   route:{target:[5,4,5,4,2],ports:[{k:'down'},{k:'load',item:[5,'麦袋',2,1,'#c9a75c']},{k:'down'},{k:'down'}],cond:{},items:[[10,'石',1,1,'#9a9a92'],[5,'麦袋',2,1,'#d8b56a']]},
   lead:'航海図の♪がお題です。1、2、3…は立ち寄る港です。',winner:'荷を積む順が、そのままメロディになるのだ。'},
  {id:'n1',name:'メロディ 1　港めぐり',kind:'melody',generated:true,melody:{notes:[4,4],loads:[0,0]},
