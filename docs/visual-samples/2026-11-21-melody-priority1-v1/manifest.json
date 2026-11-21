@@ -1,0 +1,197 @@
+{
+  "title": "FLOAT NOTES F-020 visual priority 1",
+  "date": "2026-11-21",
+  "sampleVersion": "0.1.1",
+  "status": "candidate; awaiting originator review; not integrated or deployed",
+  "repository": "gerupon-lgtm/float",
+  "baseCommit": "18472f1208a8b2f506dc3897f4931fe3bd8816dc",
+  "productionVersionUnchanged": "0.8.24",
+  "scope": "priority 1 only",
+  "files": [
+    {
+      "file": "blank-status-board.png",
+      "purpose": "blank reusable sign material",
+      "width": 2172,
+      "height": 724,
+      "bytes": 2768296,
+      "sha256": "2cf15378899dd10ab63fb113027029fad8418ffd13e31aea293ea469e902d18b",
+      "alpha": true,
+      "source": "built-in image_gen; byte-for-byte copy of generated PNG",
+      "generatedSource": "C:/Users/user/.codex/generated_images/01a1ab15-6bf8-77e2-84d8-64dcde91cd2d/exec-aca475d7-2907-456a-bc24-a53692bda99c.png",
+      "opaqueBBoxAlpha128": [
+        13,
+        56,
+        2159,
+        667
+      ]
+    },
+    {
+      "file": "correct-393x851.png",
+      "purpose": "review screenshot, not runtime artwork",
+      "width": 393,
+      "height": 851,
+      "bytes": 180850,
+      "sha256": "a36bb34981b1e8104cc8ec012d8ca4f98bab6a983b92eb2eae1b336a4c4785c2",
+      "text": "HTML/SVG rendered UI text; screenshot only"
+    },
+    {
+      "file": "expert-393x851.png",
+      "purpose": "review screenshot, not runtime artwork",
+      "width": 393,
+      "height": 851,
+      "bytes": 202752,
+      "sha256": "3024131cd9150a66b64a2381982bf227ab6f12b847ac9ccb36f9120ba21d752a",
+      "text": "HTML/SVG rendered UI text; screenshot only"
+    },
+    {
+      "file": "mismatch-393x851.png",
+      "purpose": "review screenshot, not runtime artwork",
+      "width": 393,
+      "height": 851,
+      "bytes": 185836,
+      "sha256": "38a781c3c784cd21a94baa96424f11a5b13bbb7f66657ecd3bfe6713bef8c43e",
+      "text": "HTML/SVG rendered UI text; screenshot only"
+    },
+    {
+      "file": "one-cell-tag-393x851.png",
+      "purpose": "review screenshot, not runtime artwork",
+      "width": 393,
+      "height": 851,
+      "bytes": 184336,
+      "sha256": "b66590d66f5233ec5b4768193c6b2ac24354c73e47f82a955146b9cf21a08528",
+      "text": "HTML/SVG rendered UI text; screenshot only"
+    },
+    {
+      "file": "practice-ready-393x851.png",
+      "purpose": "review screenshot, not runtime artwork",
+      "width": 393,
+      "height": 851,
+      "bytes": 182672,
+      "sha256": "6bb15045e3f5047007bc00db2988a0cf1c9a6e01417dab475a3b2807bb338275",
+      "text": "HTML/SVG rendered UI text; screenshot only"
+    },
+    {
+      "file": "route-ready-414x896.png",
+      "purpose": "review screenshot, not runtime artwork",
+      "width": 414,
+      "height": 896,
+      "bytes": 202022,
+      "sha256": "72bcdd7ccae2a84e381161e14c332532272d30254cd097cf80c76133b440fead",
+      "text": "HTML/SVG rendered UI text; screenshot only"
+    }
+  ],
+  "reusedArtwork": [
+    "public/graphics/boat.webp",
+    "public/graphics/liquid-water.webp",
+    "public/graphics/cargo-*.webp"
+  ],
+  "editableDrawing": [
+    "proto/melody-visual/main.js: chartSvg / shipSvg / draw",
+    "proto/melody-visual/style.css"
+  ],
+  "verification": {
+    "layout": {
+      "record": "verification-layout.json",
+      "browser": "Chromium",
+      "viewports": [
+        [
+          393,
+          851
+        ],
+        [
+          414,
+          896
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          375,
+          812
+        ],
+        [
+          360,
+          740
+        ]
+      ],
+      "states": 20,
+      "passed": true
+    },
+    "chromium": {
+      "record": "verification-chromium.json",
+      "viewports": [
+        [
+          393,
+          851
+        ],
+        [
+          414,
+          896
+        ]
+      ],
+      "states": 20,
+      "pageErrors": 0,
+      "layoutOverflow": 0,
+      "panelOverlaps": 0,
+      "mutedCorrectAndMismatch": true,
+      "hiddenHintsAndInvariantTarget": true
+    },
+    "webkit": {
+      "record": "verification-webkit.json",
+      "viewports": [
+        [
+          393,
+          851
+        ],
+        [
+          414,
+          896
+        ]
+      ],
+      "states": 20,
+      "pageErrors": 0,
+      "layoutOverflow": 0,
+      "panelOverlaps": 0,
+      "mutedCorrectAndMismatch": true,
+      "hiddenHintsAndInvariantTarget": true
+    },
+    "npmTest": {
+      "passed": 40
+    },
+    "npmCheck": {
+      "passedFiles": 35
+    },
+    "npmBuild": {
+      "version": "0.8.24",
+      "assets": 60,
+      "passed": true
+    },
+    "sourceParity": {
+      "script": "scripts/check-melody-visual.js",
+      "blocks": 4,
+      "helpers": 7,
+      "passed": true
+    },
+    "unchanged": [
+      "src/",
+      "proto/melody/",
+      "public/",
+      "package.json"
+    ],
+    "physicalDevices": "not checked",
+    "auditoryAcceptance": "not checked"
+  },
+  "openDecisions": [
+    "upper or lower final Do",
+    "number of levels",
+    "maximum number of cargo items",
+    "when to introduce other liquids"
+  ],
+  "notes": [
+    "All labels and numbers are rendered by software. The new sign PNG has no text.",
+    "Existing prototype motions are retained; no priority-2 effects were added.",
+    "The prototype copy is a presentation sample, not a new source of game rules.",
+    "Google Fonts is requested as in the original prototype; local fallback fonts remain available."
+  ]
+}
