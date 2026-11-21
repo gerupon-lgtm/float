@@ -1,0 +1,2302 @@
+[
+  {
+    "name": "practice",
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "app": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "shelf": [
+      106,
+      308,
+      106,
+      308
+    ],
+    "chipText": [
+      {
+        "text": "石101×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 8,
+        "width": 369,
+        "height": 32
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 46,
+        "width": 369,
+        "height": 285.484375
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 337.484375,
+        "width": 369,
+        "height": 46
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 389.484375,
+        "width": 369,
+        "height": 308.34375
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 703.828125,
+        "width": 369,
+        "height": 69.171875
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 779,
+        "width": 369,
+        "height": 48
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 833,
+        "width": 369,
+        "height": 12
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n10\n沈む深さ\n1\n音\nソ",
+    "tags": [],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M55 116H101.8\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"78.4\" cy=\"116\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2\"><path d=\"M115.8 97.2H162.6\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"139.2\" cy=\"97.2\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M176.6 116H223.39999999999998\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"200\" cy=\"116\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2\"><path d=\"M237.39999999999998 97.2H284.2\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"260.79999999999995\" cy=\"97.2\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M298.2 59.6H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"321.59999999999997\" cy=\"59.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "route",
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "app": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "shelf": [
+      106,
+      308,
+      106,
+      308
+    ],
+    "chipText": [
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "石101×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "壺152×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木箱82×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木の板42×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 8,
+        "width": 369,
+        "height": 32
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 46,
+        "width": 369,
+        "height": 285.484375
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 337.484375,
+        "width": 369,
+        "height": 46
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 389.484375,
+        "width": 369,
+        "height": 308.34375
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 703.828125,
+        "width": 369,
+        "height": 69.171875
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 779,
+        "width": 369,
+        "height": 48
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 833,
+        "width": 369,
+        "height": 12
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n10\n沈む深さ\n1\n音\nソ",
+    "tags": [],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"4\"><path d=\"M55 172.4H91.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"73.33333333333333\" cy=\"172.4\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M105.66666666666666 153.6H142.33333333333331\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"123.99999999999999\" cy=\"153.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"4.5\"><path d=\"M156.33333333333331 191.20000000000002H192.99999999999997\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"174.66666666666666\" cy=\"191.20000000000002\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M207 153.6H243.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"225.33333333333334\" cy=\"153.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M257.66666666666663 116H294.3333333333333\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"276\" cy=\"116\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M308.3333333333333 59.6H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"326.66666666666663\" cy=\"59.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "normal",
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "app": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "shelf": [
+      106,
+      308,
+      106,
+      308
+    ],
+    "chipText": [
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "壺152×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木箱82×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木の板42×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 8,
+        "width": 369,
+        "height": 32
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 46,
+        "width": 369,
+        "height": 285.484375
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 337.484375,
+        "width": 369,
+        "height": 46
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 389.484375,
+        "width": 369,
+        "height": 308.34375
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 703.828125,
+        "width": 369,
+        "height": 69.171875
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 779,
+        "width": 369,
+        "height": 48
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 833,
+        "width": 369,
+        "height": 12
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n20\n沈む深さ\n？\n音\n？",
+    "tags": [
+      {
+        "value": "1",
+        "x": 106.70780944824219,
+        "y": 538.6624755859375,
+        "width": 5.171867370605469,
+        "height": 15
+      },
+      {
+        "value": "10",
+        "x": 103.26250457763672,
+        "y": 549.7687377929688,
+        "width": 13.523666381835938,
+        "height": 13
+      }
+    ],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"4\"><path d=\"M55 172.4H91.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"73.33333333333333\" cy=\"172.4\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M105.66666666666666 153.6H142.33333333333331\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"123.99999999999999\" cy=\"153.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"4.5\"><path d=\"M156.33333333333331 191.20000000000002H192.99999999999997\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"174.66666666666666\" cy=\"191.20000000000002\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M207 153.6H243.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"225.33333333333334\" cy=\"153.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M257.66666666666663 116H294.3333333333333\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"276\" cy=\"116\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M308.3333333333333 59.6H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"326.66666666666663\" cy=\"59.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "expert",
+    "viewport": [
+      393,
+      851
+    ],
+    "page": [
+      393,
+      851
+    ],
+    "app": [
+      393,
+      851,
+      393,
+      851
+    ],
+    "shelf": [
+      106,
+      308,
+      106,
+      308
+    ],
+    "chipText": [
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "壺152×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木箱82×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木の板42×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 8,
+        "width": 369,
+        "height": 32
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 46,
+        "width": 369,
+        "height": 285.484375
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 337.484375,
+        "width": 369,
+        "height": 46
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 389.484375,
+        "width": 369,
+        "height": 308.34375
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 703.828125,
+        "width": 369,
+        "height": 69.171875
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 779,
+        "width": 369,
+        "height": 48
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 833,
+        "width": 369,
+        "height": 12
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n？\n沈む深さ\n？\n音\n？",
+    "tags": [
+      {
+        "value": "1",
+        "x": 106.70780944824219,
+        "y": 538.6624755859375,
+        "width": 5.171867370605469,
+        "height": 15
+      },
+      {
+        "value": "10",
+        "x": 103.26250457763672,
+        "y": 549.7687377929688,
+        "width": 13.523666381835938,
+        "height": 13
+      }
+    ],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"4\"><path d=\"M55 172.4H91.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"73.33333333333333\" cy=\"172.4\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M105.66666666666666 153.6H142.33333333333331\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"123.99999999999999\" cy=\"153.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"4.5\"><path d=\"M156.33333333333331 191.20000000000002H192.99999999999997\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"174.66666666666666\" cy=\"191.20000000000002\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M207 153.6H243.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"225.33333333333334\" cy=\"153.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M257.66666666666663 116H294.3333333333333\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"276\" cy=\"116\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M308.3333333333333 59.6H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"326.66666666666663\" cy=\"59.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "practice",
+    "viewport": [
+      414,
+      896
+    ],
+    "page": [
+      414,
+      896
+    ],
+    "app": [
+      414,
+      896,
+      414,
+      896
+    ],
+    "shelf": [
+      106,
+      332,
+      106,
+      332
+    ],
+    "chipText": [
+      {
+        "text": "石101×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 8,
+        "width": 390,
+        "height": 32
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 46,
+        "width": 390,
+        "height": 307.125
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 359.125,
+        "width": 390,
+        "height": 46
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 411.125,
+        "width": 390,
+        "height": 331.703125
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 748.828125,
+        "width": 390,
+        "height": 69.171875
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 824,
+        "width": 390,
+        "height": 48
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 878,
+        "width": 390,
+        "height": 12
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n10\n沈む深さ\n1\n音\nソ",
+    "tags": [],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M55 116H101.8\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"78.4\" cy=\"116\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2\"><path d=\"M115.8 97.2H162.6\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"139.2\" cy=\"97.2\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M176.6 116H223.39999999999998\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"200\" cy=\"116\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2\"><path d=\"M237.39999999999998 97.2H284.2\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"260.79999999999995\" cy=\"97.2\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M298.2 59.6H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"321.59999999999997\" cy=\"59.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "route",
+    "viewport": [
+      414,
+      896
+    ],
+    "page": [
+      414,
+      896
+    ],
+    "app": [
+      414,
+      896,
+      414,
+      896
+    ],
+    "shelf": [
+      106,
+      332,
+      106,
+      332
+    ],
+    "chipText": [
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "石101×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "壺152×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木箱82×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木の板42×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 8,
+        "width": 390,
+        "height": 32
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 46,
+        "width": 390,
+        "height": 307.125
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 359.125,
+        "width": 390,
+        "height": 46
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 411.125,
+        "width": 390,
+        "height": 331.703125
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 748.828125,
+        "width": 390,
+        "height": 69.171875
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 824,
+        "width": 390,
+        "height": 48
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 878,
+        "width": 390,
+        "height": 12
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n10\n沈む深さ\n1\n音\nソ",
+    "tags": [],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"4\"><path d=\"M55 172.4H91.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"73.33333333333333\" cy=\"172.4\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M105.66666666666666 153.6H142.33333333333331\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"123.99999999999999\" cy=\"153.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"4.5\"><path d=\"M156.33333333333331 191.20000000000002H192.99999999999997\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"174.66666666666666\" cy=\"191.20000000000002\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M207 153.6H243.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"225.33333333333334\" cy=\"153.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M257.66666666666663 116H294.3333333333333\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"276\" cy=\"116\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M308.3333333333333 59.6H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"326.66666666666663\" cy=\"59.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "normal",
+    "viewport": [
+      414,
+      896
+    ],
+    "page": [
+      414,
+      896
+    ],
+    "app": [
+      414,
+      896,
+      414,
+      896
+    ],
+    "shelf": [
+      106,
+      332,
+      106,
+      332
+    ],
+    "chipText": [
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "壺152×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木箱82×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木の板42×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 8,
+        "width": 390,
+        "height": 32
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 46,
+        "width": 390,
+        "height": 307.125
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 359.125,
+        "width": 390,
+        "height": 46
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 411.125,
+        "width": 390,
+        "height": 331.703125
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 748.828125,
+        "width": 390,
+        "height": 69.171875
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 824,
+        "width": 390,
+        "height": 48
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 878,
+        "width": 390,
+        "height": 12
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n20\n沈む深さ\n？\n音\n？",
+    "tags": [
+      {
+        "value": "1",
+        "x": 114.47406768798828,
+        "y": 572.26904296875,
+        "width": 5.546875,
+        "height": 16
+      },
+      {
+        "value": "10",
+        "x": 110.66156768798828,
+        "y": 584.2415771484375,
+        "width": 14.171867370605469,
+        "height": 15
+      }
+    ],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"4\"><path d=\"M55 172.4H91.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"73.33333333333333\" cy=\"172.4\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M105.66666666666666 153.6H142.33333333333331\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"123.99999999999999\" cy=\"153.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"4.5\"><path d=\"M156.33333333333331 191.20000000000002H192.99999999999997\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"174.66666666666666\" cy=\"191.20000000000002\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M207 153.6H243.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"225.33333333333334\" cy=\"153.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M257.66666666666663 116H294.3333333333333\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"276\" cy=\"116\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M308.3333333333333 59.6H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"326.66666666666663\" cy=\"59.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "expert",
+    "viewport": [
+      414,
+      896
+    ],
+    "page": [
+      414,
+      896
+    ],
+    "app": [
+      414,
+      896,
+      414,
+      896
+    ],
+    "shelf": [
+      106,
+      332,
+      106,
+      332
+    ],
+    "chipText": [
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "壺152×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木箱82×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木の板42×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 8,
+        "width": 390,
+        "height": 32
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 46,
+        "width": 390,
+        "height": 307.125
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 359.125,
+        "width": 390,
+        "height": 46
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 411.125,
+        "width": 390,
+        "height": 331.703125
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 748.828125,
+        "width": 390,
+        "height": 69.171875
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 824,
+        "width": 390,
+        "height": 48
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 878,
+        "width": 390,
+        "height": 12
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n？\n沈む深さ\n？\n音\n？",
+    "tags": [
+      {
+        "value": "1",
+        "x": 114.47406768798828,
+        "y": 572.26904296875,
+        "width": 5.546875,
+        "height": 16
+      },
+      {
+        "value": "10",
+        "x": 110.66156768798828,
+        "y": 584.2415771484375,
+        "width": 14.171867370605469,
+        "height": 15
+      }
+    ],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"4\"><path d=\"M55 172.4H91.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"73.33333333333333\" cy=\"172.4\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M105.66666666666666 153.6H142.33333333333331\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"123.99999999999999\" cy=\"153.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"4.5\"><path d=\"M156.33333333333331 191.20000000000002H192.99999999999997\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"174.66666666666666\" cy=\"191.20000000000002\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M207 153.6H243.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"225.33333333333334\" cy=\"153.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M257.66666666666663 116H294.3333333333333\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"276\" cy=\"116\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M308.3333333333333 59.6H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"326.66666666666663\" cy=\"59.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "practice",
+    "viewport": [
+      390,
+      844
+    ],
+    "page": [
+      390,
+      844
+    ],
+    "app": [
+      390,
+      844,
+      390,
+      844
+    ],
+    "shelf": [
+      106,
+      305,
+      106,
+      305
+    ],
+    "chipText": [
+      {
+        "text": "石101×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 8,
+        "width": 366,
+        "height": 32
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 46,
+        "width": 366,
+        "height": 282.125
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 334.125,
+        "width": 366,
+        "height": 46
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 386.125,
+        "width": 366,
+        "height": 304.703125
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 696.828125,
+        "width": 366,
+        "height": 69.171875
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 772,
+        "width": 366,
+        "height": 48
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 826,
+        "width": 366,
+        "height": 12
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n10\n沈む深さ\n1\n音\nソ",
+    "tags": [],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M55 113H101.8\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"78.4\" cy=\"113\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2\"><path d=\"M115.8 94.8H162.6\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"139.2\" cy=\"94.8\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M176.6 113H223.39999999999998\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"200\" cy=\"113\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2\"><path d=\"M237.39999999999998 94.8H284.2\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"260.79999999999995\" cy=\"94.8\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M298.2 58.4H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"321.59999999999997\" cy=\"58.4\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "route",
+    "viewport": [
+      390,
+      844
+    ],
+    "page": [
+      390,
+      844
+    ],
+    "app": [
+      390,
+      844,
+      390,
+      844
+    ],
+    "shelf": [
+      106,
+      305,
+      106,
+      305
+    ],
+    "chipText": [
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "石101×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "壺152×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木箱82×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木の板42×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 8,
+        "width": 366,
+        "height": 32
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 46,
+        "width": 366,
+        "height": 282.125
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 334.125,
+        "width": 366,
+        "height": 46
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 386.125,
+        "width": 366,
+        "height": 304.703125
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 696.828125,
+        "width": 366,
+        "height": 69.171875
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 772,
+        "width": 366,
+        "height": 48
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 826,
+        "width": 366,
+        "height": 12
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n10\n沈む深さ\n1\n音\nソ",
+    "tags": [],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"4\"><path d=\"M55 167.6H91.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"73.33333333333333\" cy=\"167.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M105.66666666666666 149.39999999999998H142.33333333333331\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"123.99999999999999\" cy=\"149.39999999999998\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"4.5\"><path d=\"M156.33333333333331 185.79999999999998H192.99999999999997\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"174.66666666666666\" cy=\"185.79999999999998\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M207 149.39999999999998H243.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"225.33333333333334\" cy=\"149.39999999999998\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M257.66666666666663 113H294.3333333333333\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"276\" cy=\"113\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M308.3333333333333 58.4H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"326.66666666666663\" cy=\"58.4\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "normal",
+    "viewport": [
+      390,
+      844
+    ],
+    "page": [
+      390,
+      844
+    ],
+    "app": [
+      390,
+      844,
+      390,
+      844
+    ],
+    "shelf": [
+      106,
+      305,
+      106,
+      305
+    ],
+    "chipText": [
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "壺152×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木箱82×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木の板42×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 8,
+        "width": 366,
+        "height": 32
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 46,
+        "width": 366,
+        "height": 282.125
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 334.125,
+        "width": 366,
+        "height": 46
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 386.125,
+        "width": 366,
+        "height": 304.703125
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 696.828125,
+        "width": 366,
+        "height": 69.171875
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 772,
+        "width": 366,
+        "height": 48
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 826,
+        "width": 366,
+        "height": 12
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n20\n沈む深さ\n？\n音\n？",
+    "tags": [
+      {
+        "value": "1",
+        "x": 105.59500122070312,
+        "y": 533.299072265625,
+        "width": 5.124992370605469,
+        "height": 15
+      },
+      {
+        "value": "10",
+        "x": 102.20437622070312,
+        "y": 545.2815551757812,
+        "width": 13.44580078125,
+        "height": 12
+      }
+    ],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"4\"><path d=\"M55 167.6H91.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"73.33333333333333\" cy=\"167.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M105.66666666666666 149.39999999999998H142.33333333333331\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"123.99999999999999\" cy=\"149.39999999999998\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"4.5\"><path d=\"M156.33333333333331 185.79999999999998H192.99999999999997\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"174.66666666666666\" cy=\"185.79999999999998\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M207 149.39999999999998H243.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"225.33333333333334\" cy=\"149.39999999999998\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M257.66666666666663 113H294.3333333333333\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"276\" cy=\"113\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M308.3333333333333 58.4H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"326.66666666666663\" cy=\"58.4\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "expert",
+    "viewport": [
+      390,
+      844
+    ],
+    "page": [
+      390,
+      844
+    ],
+    "app": [
+      390,
+      844,
+      390,
+      844
+    ],
+    "shelf": [
+      106,
+      305,
+      106,
+      305
+    ],
+    "chipText": [
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "壺152×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木箱82×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木の板42×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 8,
+        "width": 366,
+        "height": 32
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 46,
+        "width": 366,
+        "height": 282.125
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 334.125,
+        "width": 366,
+        "height": 46
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 386.125,
+        "width": 366,
+        "height": 304.703125
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 696.828125,
+        "width": 366,
+        "height": 69.171875
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 772,
+        "width": 366,
+        "height": 48
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 826,
+        "width": 366,
+        "height": 12
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n？\n沈む深さ\n？\n音\n？",
+    "tags": [
+      {
+        "value": "1",
+        "x": 105.59500122070312,
+        "y": 533.299072265625,
+        "width": 5.124992370605469,
+        "height": 15
+      },
+      {
+        "value": "10",
+        "x": 102.20437622070312,
+        "y": 545.2815551757812,
+        "width": 13.44580078125,
+        "height": 12
+      }
+    ],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"4\"><path d=\"M55 167.6H91.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"73.33333333333333\" cy=\"167.6\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M105.66666666666666 149.39999999999998H142.33333333333331\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"123.99999999999999\" cy=\"149.39999999999998\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"4.5\"><path d=\"M156.33333333333331 185.79999999999998H192.99999999999997\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"174.66666666666666\" cy=\"185.79999999999998\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M207 149.39999999999998H243.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"225.33333333333334\" cy=\"149.39999999999998\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M257.66666666666663 113H294.3333333333333\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"276\" cy=\"113\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M308.3333333333333 58.4H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"326.66666666666663\" cy=\"58.4\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "practice",
+    "viewport": [
+      375,
+      812
+    ],
+    "page": [
+      375,
+      812
+    ],
+    "app": [
+      375,
+      812,
+      375,
+      812
+    ],
+    "shelf": [
+      106,
+      288,
+      106,
+      288
+    ],
+    "chipText": [
+      {
+        "text": "石101×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 8,
+        "width": 351,
+        "height": 32
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 46,
+        "width": 351,
+        "height": 266.734375
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 318.734375,
+        "width": 351,
+        "height": 46
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 370.734375,
+        "width": 351,
+        "height": 288.09375
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 664.828125,
+        "width": 351,
+        "height": 69.171875
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 740,
+        "width": 351,
+        "height": 48
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 794,
+        "width": 351,
+        "height": 12
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n10\n沈む深さ\n1\n音\nソ",
+    "tags": [],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M55 97H101.8\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"78.4\" cy=\"97\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2\"><path d=\"M115.8 82H162.6\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"139.2\" cy=\"82\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M176.6 97H223.39999999999998\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"200\" cy=\"97\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2\"><path d=\"M237.39999999999998 82H284.2\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"260.79999999999995\" cy=\"82\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M298.2 52H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"321.59999999999997\" cy=\"52\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "route",
+    "viewport": [
+      375,
+      812
+    ],
+    "page": [
+      375,
+      812
+    ],
+    "app": [
+      375,
+      812,
+      375,
+      812
+    ],
+    "shelf": [
+      106,
+      288,
+      106,
+      288
+    ],
+    "chipText": [
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "石101×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "壺152×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木箱82×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木の板42×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 8,
+        "width": 351,
+        "height": 32
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 46,
+        "width": 351,
+        "height": 266.734375
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 318.734375,
+        "width": 351,
+        "height": 46
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 370.734375,
+        "width": 351,
+        "height": 288.09375
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 664.828125,
+        "width": 351,
+        "height": 69.171875
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 740,
+        "width": 351,
+        "height": 48
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 794,
+        "width": 351,
+        "height": 12
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n10\n沈む深さ\n1\n音\nソ",
+    "tags": [],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"4\"><path d=\"M55 142H91.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"73.33333333333333\" cy=\"142\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M105.66666666666666 127H142.33333333333331\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"123.99999999999999\" cy=\"127\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"4.5\"><path d=\"M156.33333333333331 157H192.99999999999997\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"174.66666666666666\" cy=\"157\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M207 127H243.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"225.33333333333334\" cy=\"127\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M257.66666666666663 97H294.3333333333333\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"276\" cy=\"97\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M308.3333333333333 52H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"326.66666666666663\" cy=\"52\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "normal",
+    "viewport": [
+      375,
+      812
+    ],
+    "page": [
+      375,
+      812
+    ],
+    "app": [
+      375,
+      812,
+      375,
+      812
+    ],
+    "shelf": [
+      106,
+      288,
+      106,
+      288
+    ],
+    "chipText": [
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "壺152×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木箱82×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木の板42×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 8,
+        "width": 351,
+        "height": 32
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 46,
+        "width": 351,
+        "height": 266.734375
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 318.734375,
+        "width": 351,
+        "height": 46
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 370.734375,
+        "width": 351,
+        "height": 288.09375
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 664.828125,
+        "width": 351,
+        "height": 69.171875
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 740,
+        "width": 351,
+        "height": 48
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 794,
+        "width": 351,
+        "height": 12
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n20\n沈む深さ\n？\n音\n？",
+    "tags": [
+      {
+        "value": "1",
+        "x": 100.03874969482422,
+        "y": 509.68499755859375,
+        "width": 4.875,
+        "height": 14
+      },
+      {
+        "value": "10",
+        "x": 96.92937469482422,
+        "y": 520.0487670898438,
+        "width": 12.09375,
+        "height": 12
+      }
+    ],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"4\"><path d=\"M55 142H91.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"73.33333333333333\" cy=\"142\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M105.66666666666666 127H142.33333333333331\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"123.99999999999999\" cy=\"127\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"4.5\"><path d=\"M156.33333333333331 157H192.99999999999997\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"174.66666666666666\" cy=\"157\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M207 127H243.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"225.33333333333334\" cy=\"127\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M257.66666666666663 97H294.3333333333333\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"276\" cy=\"97\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M308.3333333333333 52H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"326.66666666666663\" cy=\"52\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "expert",
+    "viewport": [
+      375,
+      812
+    ],
+    "page": [
+      375,
+      812
+    ],
+    "app": [
+      375,
+      812,
+      375,
+      812
+    ],
+    "shelf": [
+      106,
+      288,
+      106,
+      288
+    ],
+    "chipText": [
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "壺152×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木箱82×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木の板42×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 8,
+        "width": 351,
+        "height": 32
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 46,
+        "width": 351,
+        "height": 266.734375
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 318.734375,
+        "width": 351,
+        "height": 46
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 370.734375,
+        "width": 351,
+        "height": 288.09375
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 664.828125,
+        "width": 351,
+        "height": 69.171875
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 740,
+        "width": 351,
+        "height": 48
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 794,
+        "width": 351,
+        "height": 12
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n？\n沈む深さ\n？\n音\n？",
+    "tags": [
+      {
+        "value": "1",
+        "x": 100.03874969482422,
+        "y": 509.68499755859375,
+        "width": 4.875,
+        "height": 14
+      },
+      {
+        "value": "10",
+        "x": 96.92937469482422,
+        "y": 520.0487670898438,
+        "width": 12.09375,
+        "height": 12
+      }
+    ],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"4\"><path d=\"M55 142H91.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"73.33333333333333\" cy=\"142\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M105.66666666666666 127H142.33333333333331\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"123.99999999999999\" cy=\"127\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"4.5\"><path d=\"M156.33333333333331 157H192.99999999999997\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"174.66666666666666\" cy=\"157\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M207 127H243.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"225.33333333333334\" cy=\"127\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M257.66666666666663 97H294.3333333333333\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"276\" cy=\"97\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M308.3333333333333 52H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"326.66666666666663\" cy=\"52\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "practice",
+    "viewport": [
+      360,
+      740
+    ],
+    "page": [
+      360,
+      740
+    ],
+    "app": [
+      360,
+      740,
+      360,
+      740
+    ],
+    "shelf": [
+      106,
+      260,
+      106,
+      260
+    ],
+    "chipText": [
+      {
+        "text": "石101×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 5,
+        "width": 336,
+        "height": 30
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 40,
+        "width": 336,
+        "height": 247.609375
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 292.609375,
+        "width": 336,
+        "height": 43
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 340.609375,
+        "width": 336,
+        "height": 260
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 605.609375,
+        "width": 336,
+        "height": 64.390625
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 675,
+        "width": 336,
+        "height": 44
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 724,
+        "width": 336,
+        "height": 11
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n10\n沈む深さ\n1\n音\nソ",
+    "tags": [],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M55 82H101.8\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"78.4\" cy=\"82\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2\"><path d=\"M115.8 70H162.6\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"139.2\" cy=\"70\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M176.6 82H223.39999999999998\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"200\" cy=\"82\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2\"><path d=\"M237.39999999999998 70H284.2\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"260.79999999999995\" cy=\"70\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M298.2 46H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"321.59999999999997\" cy=\"46\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "route",
+    "viewport": [
+      360,
+      740
+    ],
+    "page": [
+      360,
+      740
+    ],
+    "app": [
+      360,
+      740,
+      360,
+      740
+    ],
+    "shelf": [
+      106,
+      260,
+      106,
+      260
+    ],
+    "chipText": [
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "石101×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "壺152×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木箱82×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木の板42×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 5,
+        "width": 336,
+        "height": 30
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 40,
+        "width": 336,
+        "height": 247.609375
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 292.609375,
+        "width": 336,
+        "height": 43
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 340.609375,
+        "width": 336,
+        "height": 260
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 605.609375,
+        "width": 336,
+        "height": 64.390625
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 675,
+        "width": 336,
+        "height": 44
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 724,
+        "width": 336,
+        "height": 11
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n10\n沈む深さ\n1\n音\nソ",
+    "tags": [],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"4\"><path d=\"M55 118H91.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"73.33333333333333\" cy=\"118\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M105.66666666666666 106H142.33333333333331\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"123.99999999999999\" cy=\"106\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"4.5\"><path d=\"M156.33333333333331 130H192.99999999999997\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"174.66666666666666\" cy=\"130\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M207 106H243.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"225.33333333333334\" cy=\"106\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M257.66666666666663 82H294.3333333333333\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"276\" cy=\"82\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M308.3333333333333 46H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"326.66666666666663\" cy=\"46\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "normal",
+    "viewport": [
+      360,
+      740
+    ],
+    "page": [
+      360,
+      740
+    ],
+    "app": [
+      360,
+      740,
+      360,
+      740
+    ],
+    "shelf": [
+      106,
+      260,
+      106,
+      260
+    ],
+    "chipText": [
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "壺152×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木箱82×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木の板42×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 5,
+        "width": 336,
+        "height": 30
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 40,
+        "width": 336,
+        "height": 247.609375
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 292.609375,
+        "width": 336,
+        "height": 43
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 340.609375,
+        "width": 336,
+        "height": 260
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 605.609375,
+        "width": 336,
+        "height": 64.390625
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 675,
+        "width": 336,
+        "height": 44
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 724,
+        "width": 336,
+        "height": 11
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n20\n沈む深さ\n？\n音\n？",
+    "tags": [
+      {
+        "value": "1",
+        "x": 94.48249816894531,
+        "y": 465.5943603515625,
+        "width": 4.625,
+        "height": 13
+      },
+      {
+        "value": "10",
+        "x": 91.64656066894531,
+        "y": 475.33935546875,
+        "width": 11.644943237304688,
+        "height": 11
+      }
+    ],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"4\"><path d=\"M55 118H91.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"73.33333333333333\" cy=\"118\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M105.66666666666666 106H142.33333333333331\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"123.99999999999999\" cy=\"106\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"4.5\"><path d=\"M156.33333333333331 130H192.99999999999997\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"174.66666666666666\" cy=\"130\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M207 106H243.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"225.33333333333334\" cy=\"106\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M257.66666666666663 82H294.3333333333333\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"276\" cy=\"82\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M308.3333333333333 46H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"326.66666666666663\" cy=\"46\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  },
+  {
+    "name": "expert",
+    "viewport": [
+      360,
+      740
+    ],
+    "page": [
+      360,
+      740
+    ],
+    "app": [
+      360,
+      740,
+      360,
+      740
+    ],
+    "shelf": [
+      106,
+      260,
+      106,
+      260
+    ],
+    "chipText": [
+      {
+        "text": "麦袋52×1マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "壺152×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木箱82×2マス",
+        "client": 47,
+        "scroll": 47
+      },
+      {
+        "text": "木の板42×1マス",
+        "client": 47,
+        "scroll": 47
+      }
+    ],
+    "panels": [
+      {
+        "cls": "top",
+        "x": 12,
+        "y": 5,
+        "width": 336,
+        "height": 30
+      },
+      {
+        "cls": "frame chartf",
+        "x": 12,
+        "y": 40,
+        "width": 336,
+        "height": 247.609375
+      },
+      {
+        "cls": "stat",
+        "x": 12,
+        "y": 292.609375,
+        "width": 336,
+        "height": 43
+      },
+      {
+        "cls": "mid",
+        "x": 12,
+        "y": 340.609375,
+        "width": 336,
+        "height": 260
+      },
+      {
+        "cls": "say",
+        "x": 12,
+        "y": 605.609375,
+        "width": 336,
+        "height": 64.390625
+      },
+      {
+        "cls": "row",
+        "x": 12,
+        "y": 675,
+        "width": 336,
+        "height": 44
+      },
+      {
+        "cls": "sample-version",
+        "x": 12,
+        "y": 724,
+        "width": 336,
+        "height": 11
+      }
+    ],
+    "overlaps": [],
+    "stats": "船全体の重さ\n？\n沈む深さ\n？\n音\n？",
+    "tags": [
+      {
+        "value": "1",
+        "x": 94.48249816894531,
+        "y": 465.5943603515625,
+        "width": 4.625,
+        "height": 13
+      },
+      {
+        "value": "10",
+        "x": 91.64656066894531,
+        "y": 475.33935546875,
+        "width": 11.644943237304688,
+        "height": 11
+      }
+    ],
+    "target": [
+      "<g class=\"target-depth\" data-depth=\"4\"><path d=\"M55 118H91.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"73.33333333333333\" cy=\"118\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M105.66666666666666 106H142.33333333333331\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"123.99999999999999\" cy=\"106\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"4.5\"><path d=\"M156.33333333333331 130H192.99999999999997\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"174.66666666666666\" cy=\"130\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"3.5\"><path d=\"M207 106H243.66666666666666\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"225.33333333333334\" cy=\"106\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"2.5\"><path d=\"M257.66666666666663 82H294.3333333333333\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"276\" cy=\"82\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>",
+      "<g class=\"target-depth\" data-depth=\"1\"><path d=\"M308.3333333333333 46H345\" stroke=\"#23304a\" stroke-width=\"2\" stroke-linecap=\"round\"></path><circle cx=\"326.66666666666663\" cy=\"46\" r=\"4.5\" fill=\"#fffaf0\" stroke=\"#23304a\" stroke-width=\"2\"></circle></g>"
+    ],
+    "hiddenWidgets": 0,
+    "errors": []
+  }
+]

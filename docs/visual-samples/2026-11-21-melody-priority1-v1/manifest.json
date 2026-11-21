@@ -1,0 +1,244 @@
+{
+  "title": "FLOAT NOTES F-020 visual priority 1",
+  "date": "2026-11-21",
+  "sampleVersion": "0.1.4",
+  "status": "priority 1 artwork and layout adopted by originator; not integrated or deployed",
+  "acceptedDate": "2026-11-21",
+  "repository": "gerupon-lgtm/float",
+  "baseCommit": "18472f1208a8b2f506dc3897f4931fe3bd8816dc",
+  "productionVersionUnchanged": "0.8.24",
+  "scope": "priority 1 only",
+  "files": [
+    {
+      "file": "blank-status-board.png",
+      "purpose": "blank reusable sign material",
+      "width": 2172,
+      "height": 724,
+      "bytes": 2768296,
+      "sha256": "2cf15378899dd10ab63fb113027029fad8418ffd13e31aea293ea469e902d18b",
+      "alpha": true,
+      "source": "built-in image_gen; byte-for-byte copy of generated PNG",
+      "generatedSource": "C:/Users/user/.codex/generated_images/01a1ab15-6bf8-77e2-84d8-64dcde91cd2d/exec-aca475d7-2907-456a-bc24-a53692bda99c.png",
+      "opaqueBBoxAlpha128": [
+        13,
+        56,
+        2159,
+        667
+      ]
+    },
+    {
+      "file": "cargo-board-v2.png",
+      "purpose": "flat cargo shelf background material, without raised frame",
+      "width": 726,
+      "height": 2167,
+      "bytes": 3016402,
+      "sha256": "9639641f381cc9ad004ec7332cbf91709d822827feb0593ed462dd3486359676",
+      "alpha": true,
+      "alphaRange": [
+        0,
+        253
+      ],
+      "source": "built-in image_gen edit of blank-status-board.png; byte-for-byte copy of generated PNG",
+      "generatedSource": "C:/Users/user/.codex/generated_images/01a1ab15-6bf8-77e2-84d8-64dcde91cd2d/exec-7506ba58-ed6e-4e0e-ac2c-da262b964eb6.png",
+      "opaqueBBoxAlpha128": [
+        9,
+        12,
+        716,
+        2155
+      ]
+    },
+    {
+      "file": "correct-393x851.png",
+      "purpose": "review screenshot, not runtime artwork",
+      "width": 393,
+      "height": 851,
+      "bytes": 226798,
+      "sha256": "6dfa378ecc9b6989a5cdd556c51d2067799cab8f031a2e86561da2159ba2b867",
+      "text": "HTML/SVG rendered UI text; screenshot only"
+    },
+    {
+      "file": "expert-393x851.png",
+      "purpose": "review screenshot, not runtime artwork",
+      "width": 393,
+      "height": 851,
+      "bytes": 228035,
+      "sha256": "6e9e3098e13c2a2ed590ec4e5f2acf96d6da3e1415a93e57558b9542a94b1bce",
+      "text": "HTML/SVG rendered UI text; screenshot only"
+    },
+    {
+      "file": "mismatch-393x851.png",
+      "purpose": "review screenshot, not runtime artwork",
+      "width": 393,
+      "height": 851,
+      "bytes": 231432,
+      "sha256": "868c3ad69c33a1a9eac7fc6da8f9b04a94da6df6866acbebba32d211a92ec268",
+      "text": "HTML/SVG rendered UI text; screenshot only"
+    },
+    {
+      "file": "one-cell-tag-393x851.png",
+      "purpose": "review screenshot, not runtime artwork",
+      "width": 393,
+      "height": 851,
+      "bytes": 228292,
+      "sha256": "b61ce2d5afd1f6a2c36d288cdef7b79502cd851f1ea0ffc46a21ff0c1c21f28b",
+      "text": "HTML/SVG rendered UI text; screenshot only"
+    },
+    {
+      "file": "practice-ready-393x851.png",
+      "purpose": "review screenshot, not runtime artwork",
+      "width": 393,
+      "height": 851,
+      "bytes": 231424,
+      "sha256": "117eb79fc752924a637c4810293ad6b40d4b6f77f8101cfc3c5346d68f31412a",
+      "text": "HTML/SVG rendered UI text; screenshot only"
+    },
+    {
+      "file": "route-ready-414x896.png",
+      "purpose": "review screenshot, not runtime artwork",
+      "width": 414,
+      "height": 896,
+      "bytes": 244251,
+      "sha256": "5fca09df443f95a98cc2c3ce64433dfe03d8dd677b750454e0b835a82a151a90",
+      "text": "HTML/SVG rendered UI text; screenshot only"
+    },
+    {
+      "file": "shelf-board-393x851.png",
+      "purpose": "review screenshot, not runtime artwork",
+      "width": 393,
+      "height": 851,
+      "bytes": 224728,
+      "sha256": "d201568b2c24134b816cd21c62db86ea8216948ac890b1019a150f5e2c990c86",
+      "text": "HTML/SVG rendered UI text; screenshot only"
+    }
+  ],
+  "reusedArtwork": [
+    "public/graphics/boat.webp",
+    "public/graphics/liquid-water.webp",
+    "public/graphics/cargo-*.webp"
+  ],
+  "editableDrawing": [
+    "proto/melody-visual/main.js: chartSvg / shipSvg / draw",
+    "proto/melody-visual/style.css"
+  ],
+  "verification": {
+    "layout": {
+      "record": "verification-layout.json",
+      "browser": "Chromium",
+      "viewports": [
+        [
+          393,
+          851
+        ],
+        [
+          414,
+          896
+        ],
+        [
+          390,
+          844
+        ],
+        [
+          375,
+          812
+        ],
+        [
+          360,
+          740
+        ]
+      ],
+      "states": 20,
+      "passed": true
+    },
+    "shelfInsets": {
+      "record": "verification-shelf-insets.json",
+      "states": 28,
+      "engines": [
+        "Chromium",
+        "WebKit"
+      ],
+      "minimumInsetPx": {
+        "left": 10,
+        "right": 10,
+        "top": 12,
+        "bottom": 12
+      },
+      "passed": true
+    },
+    "chromium": {
+      "record": "verification-chromium.json",
+      "viewports": [
+        [
+          393,
+          851
+        ],
+        [
+          414,
+          896
+        ]
+      ],
+      "states": 20,
+      "pageErrors": 0,
+      "layoutOverflow": 0,
+      "panelOverlaps": 0,
+      "mutedCorrectAndMismatch": true,
+      "hiddenHintsAndInvariantTarget": true
+    },
+    "webkit": {
+      "record": "verification-webkit.json",
+      "viewports": [
+        [
+          393,
+          851
+        ],
+        [
+          414,
+          896
+        ]
+      ],
+      "states": 20,
+      "pageErrors": 0,
+      "layoutOverflow": 0,
+      "panelOverlaps": 0,
+      "mutedCorrectAndMismatch": true,
+      "hiddenHintsAndInvariantTarget": true
+    },
+    "npmTest": {
+      "passed": 40
+    },
+    "npmCheck": {
+      "passedFiles": 35
+    },
+    "npmBuild": {
+      "version": "0.8.24",
+      "assets": 60,
+      "passed": true
+    },
+    "sourceParity": {
+      "script": "scripts/check-melody-visual.js",
+      "blocks": 4,
+      "helpers": 7,
+      "passed": true
+    },
+    "unchanged": [
+      "src/",
+      "proto/melody/",
+      "public/",
+      "package.json"
+    ],
+    "physicalDevices": "not checked",
+    "auditoryAcceptance": "not checked"
+  },
+  "openDecisions": [
+    "upper or lower final Do",
+    "number of levels",
+    "maximum number of cargo items",
+    "when to introduce other liquids"
+  ],
+  "notes": [
+    "All labels and numbers are rendered by software. Both board PNGs have no text.",
+    "At the originator request, the entire shelf background is a single flat wooden plank, without a character. The cargo cards are inset from all four edges to avoid overlap with the outside contour.",
+    "Existing prototype motions are retained; no priority-2 effects were added.",
+    "The prototype copy is a presentation sample, not a new source of game rules.",
+    "Google Fonts is requested as in the original prototype; local fallback fonts remain available."
+  ]
+}
