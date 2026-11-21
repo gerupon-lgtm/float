@@ -1,0 +1,101 @@
+{
+  "base": "322df2f81621a7526843b78081566e34dc1da44d",
+  "version": "0.9.19",
+  "app": "version only",
+  "css": "guide section only",
+  "protectedFiles": [
+    {
+      "path": "src/content/challenges.js",
+      "sha256": "2489e1a7ba16554268917e2f0984d3a4811a0b4125a5376d8b9838e30b71bdd0"
+    },
+    {
+      "path": "src/content/fail-text.js",
+      "sha256": "2fb43d488574215116408b7174889ab6888c1e1811a55b189ed4e66754a1c2a8"
+    },
+    {
+      "path": "src/content/guide.js",
+      "sha256": "0a63fe05870a42e02db6077ae44456240a096c3a5d593ef5181bd262e33c01d3"
+    },
+    {
+      "path": "src/content/stages.js",
+      "sha256": "d27f24d8896742aebf4a9d1b0336422fb8c3b517114b0aa9e38b3c1cb01cf77e"
+    },
+    {
+      "path": "src/content/story.js",
+      "sha256": "bc3f3fd33462ad45349d3bdf687e1f18eb7eaebec9d76f8cd941d1f75d292938"
+    },
+    {
+      "path": "src/logic/fraction.js",
+      "sha256": "fb06c8842d93ce76108e4feb8acc4dac43b4b6fac25aee4a3e1f7b31e6390b27"
+    },
+    {
+      "path": "src/logic/generate.js",
+      "sha256": "2b43d6b3ea8099eaecf113e9e425ce1ab5ede0d197daae51e9a7ae329ca66a12"
+    },
+    {
+      "path": "src/logic/melody.js",
+      "sha256": "b73e8412cbe757a24007f3ff873e5452c794cab89d2eec6a0c78ea025800f2f6"
+    },
+    {
+      "path": "src/logic/modes.js",
+      "sha256": "ba818b88f609059092fc4b4c2f775d90ae9200a16f372028d4c97894dd6f51da"
+    },
+    {
+      "path": "src/logic/physics.js",
+      "sha256": "951b5ff76863e4fabaf732755b5f8ced6f93d0bfd024dae5e76e72087761719b"
+    },
+    {
+      "path": "src/logic/pitch.js",
+      "sha256": "c2f96357d48e4f2400400adda23ec94df0da9b2dc2ae18347058f799a4f23e3b"
+    },
+    {
+      "path": "src/logic/stacking.js",
+      "sha256": "3a35e274d6db0352a4f6967e638647a0c68f3de92beb068247e06aea0f3d382a"
+    },
+    {
+      "path": "src/logic/stage-check.js",
+      "sha256": "4398cb7e7a76149194f7356226698c49aab994bb761a6721e74af5311d93ca16"
+    },
+    {
+      "path": "src/pwa/worker.js",
+      "sha256": "ee5c6974ad8b2114090f3347b23908ce13f2573063959d66a248f1fced0c8928"
+    },
+    {
+      "path": "src/sound/psg-drums.js",
+      "sha256": "76e31b8a9dc67808a1290868e107788cf4cf2cd2bf540654b912d41fa8838f45"
+    },
+    {
+      "path": "src/sound/psg-ref.js",
+      "sha256": "846ba15a1b905abfe09af4c16ed46d9b57581090baa8fa13b8616f8e6e19b06f"
+    },
+    {
+      "path": "src/sound/psg-render.js",
+      "sha256": "037062198a2dced09e70df79166a1320ecdb2727a929e58fa20abba0be533f5d"
+    },
+    {
+      "path": "src/ui/art.js",
+      "sha256": "c4c46e1fc977451c8b1758b8efc26435f607baea762a07bd41a3f7931a2c24a8"
+    },
+    {
+      "path": "src/ui/audio.js",
+      "sha256": "9ceaaf964b07767b8eb50257d42177b335bed97f13d99028a7e907a0dfed5a2f"
+    },
+    {
+      "path": "src/ui/graphics.js",
+      "sha256": "1fce29bc2370c0f9f5c5c1117b1422da3e168afbcf3cb0b0eae1d5873e4e91e0"
+    },
+    {
+      "path": "src/ui/melody-art.js",
+      "sha256": "ce02727972ced7fe6c34cb077a07a8f43b7d41b65f12c4fb9111a48dc596f3c9"
+    },
+    {
+      "path": "src/ui/melody.js",
+      "sha256": "31e04def8bd8c3940d82808d201ac2c577eea1db295039d8440080352bdb1ba3"
+    },
+    {
+      "path": "src/ui/update-manager.js",
+      "sha256": "286f128d28d8048230de312c55c32d4b5dfba40adc97cc54b07e656e85e6f724"
+    }
+  ],
+  "passed": true
+}

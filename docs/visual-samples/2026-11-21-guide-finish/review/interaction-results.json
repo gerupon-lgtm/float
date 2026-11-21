@@ -1,0 +1,88 @@
+{
+  "cases": 10,
+  "records": [
+    {
+      "engine": "chromium",
+      "kind": "howto",
+      "case": "rotation with selected section retained",
+      "viewport": [
+        844,
+        390
+      ]
+    },
+    {
+      "engine": "chromium",
+      "kind": "howto",
+      "case": "rotation with selected section retained",
+      "viewport": [
+        390,
+        664
+      ]
+    },
+    {
+      "engine": "chromium",
+      "kind": "parts",
+      "case": "rotation with selected section retained",
+      "viewport": [
+        844,
+        390
+      ]
+    },
+    {
+      "engine": "chromium",
+      "kind": "parts",
+      "case": "rotation with selected section retained",
+      "viewport": [
+        390,
+        664
+      ]
+    },
+    {
+      "engine": "chromium",
+      "case": "keyboard navigation, reduced motion and saved record retained",
+      "passed": true
+    },
+    {
+      "engine": "webkit",
+      "kind": "howto",
+      "case": "rotation with selected section retained",
+      "viewport": [
+        844,
+        390
+      ]
+    },
+    {
+      "engine": "webkit",
+      "kind": "howto",
+      "case": "rotation with selected section retained",
+      "viewport": [
+        390,
+        664
+      ]
+    },
+    {
+      "engine": "webkit",
+      "kind": "parts",
+      "case": "rotation with selected section retained",
+      "viewport": [
+        844,
+        390
+      ]
+    },
+    {
+      "engine": "webkit",
+      "kind": "parts",
+      "case": "rotation with selected section retained",
+      "viewport": [
+        390,
+        664
+      ]
+    },
+    {
+      "engine": "webkit",
+      "case": "keyboard navigation, reduced motion and saved record retained",
+      "passed": true
+    }
+  ],
+  "passed": true
+}
