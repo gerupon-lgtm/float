@@ -30,9 +30,9 @@ export function melodyStage(n, base, route, ctx) {
 
   function tutorialHint() {
     const k = S.placed.length;
-    if (k === 0) return '航海図の1、2、3…は立ち寄る港。♪の高さが、港の間を進むときの深さと音です。最初の♪は深さ2.5＝重さ25。船10に、荷を15足してみよう。';
-    if (k === 1) return '港では、最後に積んだ荷から下ろします。港1で下ろす荷が、次の♪の深さを決めます。積む順を考えよう。';
-    return '荷を15積みました。港1で5を下ろすと深さ2。出航して、♪をたどれるか確かめよう。';
+    if (k === 0) return '1、2、3…は立ち寄る港、♪の高さは港の間の深さと音。積む順は、最後の港から逆にたどると分かります。港4で深さ2→1、重さ10が下りる。それが一番下の荷です。';
+    if (k === 1) return '次は最初の♪。深さ2.5＝重さ25で、港1で深さ2へ浮くには5を下ろす。港では最後に積んだ荷から下りるので、5は一番上に積もう。';
+    return '荷を15積みました。出航して、♪をたどれるか確かめよう。';
   }
 
   // ---- 船 ----
@@ -219,16 +219,16 @@ export function melodyStage(n, base, route, ctx) {
       if (!S.placed.length) return lose('下ろす荷がなかったな。');
       const k = S.placed.length, it = S.items[S.placed[k - 1].id];
       say(`港に着きました。荷札${k}の${it[1]}（${it[0]}）を下ろします。`, '航海の記録');
-      S.sign = '荷下ろし中'; draw(); au.wood(); await ctx.wait(250); if (!alive()) return;
-      await liftLast(); S.sign = null; draw(); await ctx.wait(500);
+      S.sign = '荷下ろし中'; draw(); au.wood(); await ctx.wait(600); if (!alive()) return;
+      await liftLast(); draw(); await ctx.wait(500); S.sign = null; draw(); await ctx.wait(250);
       return sailSegment();
     }
     // 積む港：荷は空いている中で一番低い位置へ自動で置く。上から落ちてきて、船が沈む
     S.items.push([...port.item]); const p = autoDrop(S.placed, S.items, S.items.length - 1);
     say(`港に着きました。${port.item[1]}（${port.item[0]}）を積み込みます。${base.tutorial ? '港で積んだ荷は、次の港で最初に下ります。' : ''}`, '航海の記録');
-    S.sign = '積載中'; draw(); au.clack(); await ctx.wait(500); if (!alive()) return;
+    S.sign = '積載中'; draw(); au.clack(); await ctx.wait(800); if (!alive()) return;
     if (!p) return lose('積む場所がなかったな。');
-    placeWithFx(p, 130); draw(); await ctx.wait(900); S.sign = null;
+    placeWithFx(p, 130); draw(); await ctx.wait(1200); S.sign = null;
     return sailSegment();
   }
 
@@ -245,7 +245,7 @@ export function melodyStage(n, base, route, ctx) {
     }
     S.seg = S.log.length;
     if (!all) return lose(`港は回れたが、メロディがお題と違うな（赤い線）。${base.tutorial ? '積む順を逆にしてごらん。' : ''}`);
-    au.bell(HOME, 0.22, 1.6); await ctx.wait(250); if (!alive()) return;
+    au.bell(HOME, 0.22, 1.6); await ctx.wait(900); if (!alive()) return;
     au.jingle(); S.phase = 'end';
     say(`<span class="eu">エウレカ！</span> ${base.winner}`);
     if (R) {
