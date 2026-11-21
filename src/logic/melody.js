@@ -119,18 +119,20 @@ function buildRoute(seq, spec, r) {
   // 同じ重さが2つあっても別の荷を指すように、答えの荷は配列そのもので探す
   const ids = answer.map(a => shelf.indexOf(a));
   const route = { target: seq, ports, cond: {}, items: shelf };
-  // 関門：浅瀬は一番深い海路、橋は浅い海路。どちらも最後の空荷の海路には置かない
   const inner = seq.slice(0, -1).map((h, i) => ({ h, i }));
-  if (spec.gates?.includes('shoal')) {
-    const deep = inner.reduce((a, b) => (b.h > a.h ? b : a));
-    if (deep.h >= 2 * HULL) return null;      // 深さ5の浅瀬は、沈まない限り必ず通れて意味がない
-    route.cond[deep.i] = { k: 'shoal', d: deep.h / 2 };
-  }
-  if (spec.gates?.includes('bridge')) {
-    // 橋は、置き方を考えないと当たる海路に置く：通れる置き方があり、当たる置き方も十分にあること
-    const cands = inner.filter(x => !route.cond[x.i]).sort((a, b) => a.h - b.h);
+  // 関門：浅瀬は一番深い海路、橋は浅い海路から順に。どちらも最後の空荷の海路には置かない。
+  // 橋は、置き方を考えないと当たる海路に置く：通れる置き方があり、当たる置き方も十分にあること
+  for (const kind of spec.gates ?? []) {
+    const free = inner.filter(x => !route.cond[x.i]);
+    if (kind === 'shoal') {
+      if (!free.length) return null;
+      const deep = free.reduce((a, b) => (b.h > a.h ? b : a));
+      if (deep.h >= 2 * HULL) return null;      // 深さ5の浅瀬は、沈まない限り必ず通れて意味がない
+      route.cond[deep.i] = { k: 'shoal', d: deep.h / 2 };
+      continue;
+    }
     let chosen = false;
-    for (const x of cands) {
+    for (const x of free.sort((a, b) => a.h - b.h)) {
       route.cond[x.i] = { k: 'bridge', d: x.h / 2 };
       const st2 = placementStats(route, shelf, ids);
       if (st2.ok > 0 && st2.bridge / st2.all >= (spec.mustPlace ?? 0.25)) { chosen = true; break; }
@@ -142,13 +144,43 @@ function buildRoute(seq, spec, r) {
   return route;
 }
 
+// 長い航路向け：出航時の荷と港の動きを先に決めてから、お題の並びを作る（でたらめに並べるより早く見つかる）
+function walkSeq(spec, r) {
+  const n = spec.notes[0] + Math.floor(r() * (spec.notes[1] - spec.notes[0] + 1)), ports = n - 1;
+  const loads = spec.loads[0] + Math.floor(r() * (spec.loads[1] - spec.loads[0] + 1));
+  const downs = ports - loads, init = downs - loads, maxStep = spec.maxStep ?? 4;
+  if (init < 1 || init > (spec.maxInit ?? 3)) return null;
+  const step = () => 1 + Math.floor(r() * maxStep);
+  const stack = Array.from({ length: init }, step);
+  let h = EMPTY_H + stack.reduce((a, b) => a + b, 0), left = loads;
+  if (h > 2 * HULL) return null;
+  const seq = [h];
+  for (let p = 0; p < ports; p++) {
+    const mustDown = left === 0, mustLoad = stack.length === 1 && p < ports - 1 && left > 0 && r() < 0.5;
+    const canLoad = left > 0 && stack.length + left <= ports - p - 1;
+    if (!mustDown && canLoad && (mustLoad || r() < left / (ports - p))) {
+      const w = step(); if (h + w > 2 * HULL) return null;
+      stack.push(w); h += w; left--;
+    } else {
+      if (!stack.length || (stack.length === 1 && p < ports - 1)) return null;   // 途中で空荷にしない
+      h -= stack.pop();
+    }
+    seq.push(h);
+  }
+  return stack.length === 0 && h === EMPTY_H ? seq : null;
+}
+
 // 面の条件 spec から、お題を count 個作る。同じメロディは出さない
 export function pickMelodies(spec, { count = 8, seed = 1, tries = 300000 } = {}) {
   const r = random(seed), out = [], seen = new Set();
   for (let t = 0; t < tries && out.length < count; t++) {
-    const n = spec.notes[0] + Math.floor(r() * (spec.notes[1] - spec.notes[0] + 1));
-    const seq = Array.from({ length: n - 1 }, () => 3 + Math.floor(r() * 8));
-    seq.push(EMPTY_H);
+    let seq;
+    if (spec.walk) { seq = walkSeq(spec, r); if (!seq) continue; }
+    else {
+      const n = spec.notes[0] + Math.floor(r() * (spec.notes[1] - spec.notes[0] + 1));
+      seq = Array.from({ length: n - 1 }, () => 3 + Math.floor(r() * 8));
+      seq.push(EMPTY_H);
+    }
     const key = seq.join(',');
     if (seen.has(key)) continue;
     const route = buildRoute(seq, spec, r);

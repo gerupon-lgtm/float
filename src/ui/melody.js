@@ -147,6 +147,7 @@ export function melodyStage(n, base, route, ctx) {
     const tg = route.target, cnt = tg.length, x0 = 48, right = 352, step = (right - x0) / cnt;
     const box = $('.chartf'), maxCH = innerWidth > innerHeight ? 420 : 280;
     const CH = Math.max(200, Math.min(maxCH, box ? Math.round(box.clientHeight * 360 / Math.max(1, box.clientWidth)) : 230));
+    const tight = cnt >= 7;   // 港が多い航路は、港の札を数字だけにし、下ろす／積むも短く書く
     const T = 22, DY = (CH - 92) / HULL, y = d => T + d * DY, B = y(HULL);
     let g = `<defs>
       <pattern id="map-sand" patternUnits="userSpaceOnUse" width="19" height="13"><rect width="19" height="13" fill="#e8c98a"/><path d="M1 4l7 -2m3 7l6 -1M2 12l4 -1" stroke="#b68a4d" stroke-width="1.2" opacity=".6"/></pattern>
@@ -183,10 +184,11 @@ export function melodyStage(n, base, route, ctx) {
     for (let i = 0; i <= cnt; i++) {
       const x = x0 + i * step, p = route.ports[i - 1];
       if (i > 0 && i < cnt) g += `<path d="M${x} ${T}V${y(HULL)}" stroke="#8a5a2e" stroke-width="1" stroke-dasharray="3 3"/>
-        <g class="port"><rect x="${x - 14}" y="${B + 17}" width="28" height="16" rx="3" fill="#d6452c" stroke="#5f3b1c" stroke-width="1.2"/>
-        <text x="${x}" y="${B + 29}" font-size="10.5" font-weight="700" text-anchor="middle" fill="#fffaf0">港${i}</text></g>
-        <text x="${x}" y="${B + 46}" font-size="9.5" font-weight="700" text-anchor="middle" fill="#23304a">${p.k === 'down' ? '↑下ろす' : '↓' + p.item[1] + p.item[0]}</text>${i === cnt - 1 ? `<text x="${x}" y="${B + 59}" font-size="9.5" font-weight="700" text-anchor="middle" fill="#d6452c">終着</text>` : ''}`;
-      else g += `<text x="${x}" y="${B + 29}" font-size="10" text-anchor="${i ? 'end' : 'start'}" fill="#23304a">${i ? '停泊' : '出航'}</text>`;
+        <g class="port"><rect x="${x - (tight ? 10 : 14)}" y="${B + 17}" width="${tight ? 20 : 28}" height="16" rx="3" fill="#d6452c" stroke="#5f3b1c" stroke-width="1.2"/>
+        <text x="${x}" y="${B + 29}" font-size="10.5" font-weight="700" text-anchor="middle" fill="#fffaf0">${tight ? i : '港' + i}</text></g>
+        ${tight ? `<text x="${x}" y="${B + 46}" font-size="10" font-weight="700" text-anchor="middle" fill="#23304a">${p.k === 'down' ? '↑' : '↓' + p.item[0]}</text>`
+          : `<text x="${x}" y="${B + 46}" font-size="9.5" font-weight="700" text-anchor="middle" fill="#23304a">${p.k === 'down' ? '↑下ろす' : '↓' + p.item[1] + p.item[0]}</text>`}${i === cnt - 1 ? `<text x="${x}" y="${B + 59}" font-size="9.5" font-weight="700" text-anchor="middle" fill="#d6452c">終着</text>` : ''}`;
+      else g += `<text x="${x}" y="${B + (tight ? 59 : 29)}" font-size="10" text-anchor="${i ? 'end' : 'start'}" fill="#23304a">${i ? '停泊' : '出航'}</text>`;
     }
     if (S.phase !== 'prep') {
       const k = Math.min(S.seg, cnt - 1), dd = S.played[k]?.d ?? S.log[k]?.toNumber() ?? depth().toNumber();

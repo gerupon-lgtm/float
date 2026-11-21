@@ -42,5 +42,15 @@ export const STAGES=[
  {id:'n3',name:'メロディ 3　浅瀬と橋',kind:'melody',generated:true,melody:{notes:[5,6],loads:[0,1],maxInit:4,gates:['shoal','bridge']},
   lead:'浅瀬と低い橋がある航路です。橋の下は、荷の山が高いと通れません。どの列に積むかも考えましょう。',winner:'深さも、荷の高さも、メロディも。全部そろえて通ったな。'},
  {id:'n4',name:'メロディ 4　長い航路',kind:'melody',generated:true,melody:{notes:[6,7],loads:[1,2],maxInit:4,gates:['shoal','bridge']},
-  lead:'長い航路です。積む港もあります。港で積む荷は、空いている中で一番低いところ（同じ高さなら左）に置かれます。',winner:'見事だ。重さが深さになり、深さが音になる。仕組みが分かれば、歌も作れるのだ。'}
+  lead:'長い航路です。積む港もあります。港で積む荷は、空いている中で一番低いところ（同じ高さなら左）に置かれます。',winner:'見事だ。重さが深さになり、深さが音になる。仕組みが分かれば、歌も作れるのだ。'},
+ {id:'n5',name:'メロディ 5　二つの橋',kind:'melody',generated:true,melody:{walk:true,notes:[6,7],loads:[1,2],maxInit:4,gates:['bridge','bridge']},
+  lead:'低い橋が二つある航路です。港で荷が減ったり増えたりすると、荷の山の高さも変わります。',winner:'荷の山は、港ごとに形を変える。先を読んで積んだな。'},
+ {id:'n6',name:'メロディ 6　八つの音',kind:'melody',generated:true,melody:{walk:true,notes:[8,8],loads:[1,2],maxInit:4,gates:['shoal']},
+  lead:'八つの音の長い航路です。最後の港から逆にたどると、積む順が見えてきます。',winner:'長い歌も、一つずつたどれば解けるのだ。'},
+ {id:'n7',name:'メロディ 7　積む港三つ',kind:'melody',generated:true,melody:{walk:true,notes:[8,9],loads:[3,3],maxInit:3,gates:['shoal']},
+  lead:'荷を積む港が三つあります。港で積んだ荷は、次の港で最初に下ります。',winner:'積んでは下ろし、下ろしては積む。メロディが波のように動いたな。'},
+ {id:'n8',name:'メロディ 8　近い音',kind:'melody',generated:true,melody:{walk:true,notes:[7,7],loads:[1,2],maxStep:2,distinct:4,maxInit:4,gates:['shoal','bridge']},
+  lead:'音の動きが小さい航路です。お題をよく聴き、♪の高さを一段ずつ見比べましょう。',winner:'小さな違いも、計算すれば聞き分けられるのだ。'},
+ {id:'n9',name:'メロディ 9　最後の航海',kind:'melody',generated:true,melody:{walk:true,notes:[8,9],loads:[2,3],maxInit:4,gates:['shoal','bridge','bridge']},
+  lead:'浅瀬と二つの橋、積む港もある最後の航路です。これまでのすべてを使いましょう。',winner:'見事だ。重さが深さになり、深さが歌になる。もう立派な船乗りだな。'}
 ];
