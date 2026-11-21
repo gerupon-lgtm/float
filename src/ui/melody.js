@@ -65,11 +65,12 @@ export function melodyStage(n, base, route, ctx) {
         <g font-size="10" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke"><text x="${GX + GW / 2}" y="${yb - 22}">橋 ${gate.d}以上</text></g></g>`;
     }
     // 港に寄っている間は、右に岸壁を見せる
-    if (S.port) g += `<g id="quay"><path d="M${VW - 62} ${WATER - 30}H${VW}V230H${VW - 62}Z" fill="#b8ad9a" stroke="#5f3b1c" stroke-width="2"/>
+    const qn = S.port ?? S.portOut;   // 出航しても岸壁はすぐ消さず、後ろへ流れていく
+    if (qn) g += `<g id="quay"><path d="M${VW - 62} ${WATER - 30}H${VW}V230H${VW - 62}Z" fill="#b8ad9a" stroke="#5f3b1c" stroke-width="2"/>
       <path d="M${VW - 62} ${WATER - 12}H${VW}M${VW - 62} ${WATER + 8}H${VW}M${VW - 62} ${WATER + 28}H${VW}M${VW - 40} ${WATER - 30}V${WATER - 12}M${VW - 18} ${WATER - 12}V${WATER + 8}M${VW - 46} ${WATER + 8}V${WATER + 28}" stroke="#7d7363" stroke-width="1.2"/>
       <rect x="${VW - 62}" y="${WATER - 34}" width="62" height="6" fill="#8a5a2e"/><rect x="${VW - 54}" y="${WATER - 46}" width="8" height="12" rx="3" fill="#5f3b1c"/>
       <rect x="${VW - 44}" y="${WATER - 74}" width="40" height="20" rx="3" fill="#d6452c" stroke="#5f3b1c" stroke-width="1.5"/><path d="M${VW - 24} ${WATER - 54}V${WATER - 34}" stroke="#5f3b1c" stroke-width="2.5"/>
-      <text x="${VW - 24}" y="${WATER - 59.5}" font-size="11.5" font-weight="700" text-anchor="middle" fill="#fffaf0">港${S.port}</text></g>`;
+      <text x="${VW - 24}" y="${WATER - 59.5}" font-size="11.5" font-weight="700" text-anchor="middle" fill="#fffaf0">港${qn}</text></g>`;
     g += `<g id="hullg"><image href="${GRAPHICS.boat}" x="${HX}" y="${top}" width="${HW}" height="${HULL * U}" preserveAspectRatio="none"/>
       <rect x="${HX}" y="${WATER}" width="${HW}" height="${Math.max(0, bottom - WATER)}" fill="#3f97c0" opacity=".3"/>`;
     // 船の中（荷）は断面で見せる。水の色を荷に重ねないので、沈んでいるように見えない
@@ -210,6 +211,10 @@ export function melodyStage(n, base, route, ctx) {
 
   // ---- 動き：荷が落ちる、持ち上がる、船が沈む・浮く ----
   function playFx() {
+    if (S.quayOut) {
+      $('#quay')?.animate([{ transform: 'translate(0px,0px)' }, { transform: 'translate(-420px,0px)' }], { duration: 1500, easing: 'ease-in', fill: 'forwards' });
+      S.quayOut = false; S.portOut = null;
+    }
     const f = S.fx; S.fx = null; if (!f) return;
     const hull = $('#hullg');
     const gateEl = $('#gate'), VWn = S.phase === 'prep' ? 240 : 330, GXn = HX + HW + 16;
@@ -298,7 +303,7 @@ export function melodyStage(n, base, route, ctx) {
       const k = S.placed.length, it = S.items[S.placed[k - 1].id];
       say(`港に着きました。荷札${k}の${it[1]}（${it[0]}）を下ろします。`, '航海の記録');
       S.sign = '荷下ろし中'; draw(); au.wood(); await ctx.wait(600); if (!alive()) return;
-      await liftLast(); draw(); await ctx.wait(500); S.sign = null; S.port = null; draw(); await ctx.wait(250);
+      await liftLast(); draw(); await ctx.wait(500); S.sign = null; S.portOut = S.port; S.port = null; S.quayOut = true;
       return sailSegment();
     }
     // 積む港：荷は空いている中で一番低い位置へ自動で置く。上から落ちてきて、船が沈む
@@ -306,7 +311,7 @@ export function melodyStage(n, base, route, ctx) {
     say(`港に着きました。${port.item[1]}（${port.item[0]}）を積み込みます。${base.tutorial ? '港で積んだ荷は、次の港で最初に下ります。' : ''}`, '航海の記録');
     S.sign = '積載中'; draw(); au.clack(); await ctx.wait(800); if (!alive()) return;
     if (!p) return lose('積む場所がなかったな。');
-    placeWithFx(p, 130); draw(); await ctx.wait(1200); S.sign = null; S.port = null;
+    placeWithFx(p, 130); draw(); await ctx.wait(1200); S.sign = null; S.portOut = S.port; S.port = null; S.quayOut = true;
     return sailSegment();
   }
 
@@ -335,7 +340,7 @@ export function melodyStage(n, base, route, ctx) {
   }
 
   function lose(msg, sunk = false) {
-    S.phase = 'end'; S.sign = null; S.port = null;
+    S.phase = 'end'; S.sign = null; S.port = null; S.portOut = null; S.quayOut = false;
     if (sunk) au.sink(); else au.miss();
     const r = R ? R.record('ng') : 'retry';
     say(msg);
@@ -344,7 +349,7 @@ export function melodyStage(n, base, route, ctx) {
   }
   function restart() {
     au.wood(); ended = null;
-    Object.assign(S, { items: route.items.map(x => [...x]), placed: [], sel: null, phase: 'prep', seg: 0, played: [], log: [], sign: null, fx: null, gate: null, hit: null, port: null });
+    Object.assign(S, { items: route.items.map(x => [...x]), placed: [], sel: null, phase: 'prep', seg: 0, played: [], log: [], sign: null, fx: null, gate: null, hit: null, port: null, portOut: null, quayOut: false });
     if (base.tutorial) say(tutorialHint()); else say(`<span class="nar">${base.lead}</span>`, null);
     draw();
   }
