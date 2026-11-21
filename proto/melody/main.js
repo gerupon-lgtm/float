@@ -18,32 +18,50 @@ import { FloatAudio } from '../../src/ui/audio.js';
     [5, '麦袋', 2, 1, '#d8b56a'], [5, '麦袋', 2, 1, '#d8b56a'], [10, '石', 1, 1, '#9a9a92'], [10, '石', 1, 1, '#9a9a92'],
     [15, '壺', 2, 2, '#d0743c'], [20, '壺', 1, 5, '#d0743c'], [4, '木の板', 2, 1, '#c9955a'], [8, '木箱', 2, 2, '#b07a40']
   ];
+  // 練習：荷2つ。積む順を逆にすると、港は回れてもメロディが違う（赤い線）になる
+  const TUTORIAL = {
+    name: '練習',
+    items: [[10, '石', 1, 1, '#9a9a92'], [5, '麦袋', 2, 1, '#d8b56a']],
+    ports: [{ k: 'down' }, { k: 'load', item: [5, '麦袋', 2, 1, '#c9a75c'] }, { k: 'down' }, { k: 'down' }],
+    target: ['5/2', '2', '5/2', '2', '1'],
+    cond: {}, tutorial: true
+  };
   // お題1：港で下ろす・積むを組み合わせ、お題のメロディから作った航路
-  const ROUTE = {
+  const ROUTE1 = {
+    name: 'お題1',
     items: [[5, '麦袋', 2, 1, '#d8b56a'], [10, '石', 1, 1, '#9a9a92'], [15, '壺', 2, 2, '#d0743c'], [8, '木箱', 2, 2, '#b07a40'], [4, '木の板', 2, 1, '#c9955a']],
     ports: [{ k: 'down' }, { k: 'load', item: [10, '石', 1, 1, '#7f8a96'] }, { k: 'down' }, { k: 'down' }, { k: 'down' }],
     target: ['4', '7/2', '9/2', '7/2', '5/2', '1'],
     cond: { 2: { k: 'shoal', d: 4.5 }, 4: { k: 'bridge', d: 2.5 } }
   };
+  const ROUTES = { tut: TUTORIAL, r1: ROUTE1 };
+  let ROUTE = TUTORIAL;
   const LEVELS = { free: 'フリー', normal: 'ノーマル', expert: 'エキスパート' };
 
-  const S = { mode: 'route', level: 'free', home: 84, muted: false, items: [], placed: [], sel: null, phase: 'prep', seg: 0, played: [], log: [], ng: 0, history: [], fx: null };
+  const S = { mode: 'route', route: 'tut', sign: null, level: 'free', home: 84, muted: false, items: [], placed: [], sel: null, phase: 'prep', seg: 0, played: [], log: [], ng: 0, history: [], fx: null };
 
   const weight = () => SHIP + S.placed.reduce((a, p) => a + S.items[p.id][0], 0);
   const depth = () => depthFraction(weight(), 'water');
   // 組み立て中の手がかり：フリーは重さ・深さ・音、ノーマルは重さだけ、エキスパートは伏せる。出航後は全部見せる
-  const showLive = () => S.mode === 'free' || S.level === 'free' || S.phase !== 'prep';
+  const showLive = () => S.mode === 'free' || S.level === 'free' || ROUTE.tutorial || S.phase !== 'prep';
   const showWeight = () => showLive() || S.level === 'normal';
   const ring = d => { au.unlock(); au.bell(midiOf(Math.min(d.toNumber(), HULL)), 0.2, 0.9); };
   let lastSay = '';
   const say = h => { lastSay = h; const e = $('#say'); if (e) e.innerHTML = h; };
 
-  function reset(mode) {
-    S.mode = mode ?? S.mode; S.phase = 'prep'; S.seg = 0; S.played = []; S.log = []; S.sel = null; S.history = []; S.fx = null;
+  // 練習面の案内：組み立ての進み具合に合わせて文を変える
+  function tutorialHint() {
+    const n = S.placed.length;
+    if (n === 0) return '航海図の点は、各海路で船が沈む深さ（音）です。最初の点は深さ2.5。水で底面積10なので、重さ25。船だけで10あるので、荷を合計15積みます。';
+    if (n === 1) return '港では、最後に積んだ荷から下ろします。最初の港で下ろす荷が、2番目の点（深さ2）を決めます。';
+    return '重さ25になりました。最初の港で5を下ろすと深さ2になります。準備ができたら出航しましょう。';
+  }
+  function reset(mode, route) {
+    S.mode = mode ?? S.mode; if (route) S.route = route; ROUTE = ROUTES[S.route]; S.sign = null; S.phase = 'prep'; S.seg = 0; S.played = []; S.log = []; S.sel = null; S.history = []; S.fx = null;
     S.items = (S.mode === 'free' ? FREE_ITEMS : ROUTE.items).map(x => [...x]); S.placed = [];
     say(S.mode === 'free'
       ? '荷を選んで、船の上の列を押すと積みます。「下ろす」は最後に積んだ荷から。'
-      : '図の点と同じ深さ（音）になるよう荷を積みます。港では最後に積んだ荷から下ろします。');
+      : ROUTE.tutorial ? tutorialHint() : '図の点と同じ深さ（音）になるよう荷を積みます。港では最後に積んだ荷から下ろします。');
     draw();
   }
 
@@ -70,6 +88,9 @@ import { FloatAudio } from '../../src/ui/audio.js';
     }
     if (live && !d.gt(HULL)) g += `<path d="M${BX - 2} ${bottom}l-7 -4.5v9z" fill="#d6452c"/>`;
     g += `</g><rect x="0" y="${WATER}" width="232" height="90" fill="#3f97c0" opacity=".3"/><line x1="${BX - 6}" x2="${BX + CELLS * CW + 18}" y1="${WATER}" y2="${WATER}" stroke="#fffaf0" stroke-width="2"/>`;
+    // 看板：出航前と港での積み込みは「積載中」、荷下ろしは「荷下ろし中」
+    const sign = S.mode === 'route' && S.phase === 'prep' ? '積載中' : S.sign;
+    if (sign) g += `<g class="sign"><rect x="4" y="6" width="${sign.length * 12 + 14}" height="22" rx="3" fill="#8a5a2e" stroke="#5f3b1c" stroke-width="2"/><line x1="16" x2="16" y1="28" y2="40" stroke="#5f3b1c" stroke-width="3"/><text x="${11 + sign.length * 6}" y="22" font-size="12" text-anchor="middle" fill="#fffaf0">${sign}</text></g>`;
     for (let c = 0; c < CELLS && pick; c++) {
       const x = BX + 6 + c * CW;
       g += `<g class="col" data-col="${c}"><rect x="${x}" y="0" width="${CW}" height="${bottom - DECK}" fill="#efb32a" opacity=".001"/><path d="M${x + CW / 2 - 5} 3h10l-5 7z" fill="#23304a"/></g>`;
@@ -116,8 +137,8 @@ import { FloatAudio } from '../../src/ui/audio.js';
       : `<button class="chip ${S.sel === i ? 'on' : ''}" data-i="${i}" ${prep ? '' : 'disabled'}>${it[1]} ${it[0]}<small>${it[2]}×${it[3]}マス</small></button>`).join('');
     $('#app').innerHTML = `
       <div class="top"><b>航路のメロディ 試作</b><span>
-        <button class="tab ${!route ? 'on' : ''}" data-mode="free">1 自由</button><button class="tab ${route ? 'on' : ''}" data-mode="route">2 お題</button></span></div>
-      ${route ? `<div class="opts"><select id="lv" ${prep ? '' : 'disabled'}>${Object.entries(LEVELS).map(([k, v]) => `<option value="${k}" ${S.level === k ? 'selected' : ''}>${v}</option>`).join('')}</select>
+        <button class="tab ${!route ? 'on' : ''}" data-mode="free">自由</button><button class="tab ${route && S.route === 'tut' ? 'on' : ''}" data-route="tut">練習</button><button class="tab ${route && S.route === 'r1' ? 'on' : ''}" data-route="r1">お題1</button></span></div>
+      ${route ? `<div class="opts"><select id="lv" ${prep && !ROUTE.tutorial ? '' : 'disabled'}>${Object.entries(LEVELS).map(([k, v]) => `<option value="${k}" ${(ROUTE.tutorial ? 'free' : S.level) === k ? 'selected' : ''}>${v}</option>`).join('')}</select>
         <button class="opt ${S.muted ? 'on' : ''}" data-mute>${S.muted ? '音なし' : '音あり'}</button><span class="sp"></span>帰着のド<button class="opt ${S.home === 84 ? 'on' : ''}" data-home="84">下</button><button class="opt ${S.home === 96 ? 'on' : ''}" data-home="96">上</button></div>
         ${chartSvg()}` : ''}
       <div class="stat">重さ<b>${showWeight() ? weight() : '？'}</b>深さ<b>${live ? (d.gt(HULL) ? '沈没' : d.toNumber()) : '？'}</b>音<b>${live && !d.gt(HULL) ? noteName(d) : '？'}</b>${route ? `NG<b>${S.ng}</b>` : ''}</div>
@@ -132,6 +153,7 @@ import { FloatAudio } from '../../src/ui/audio.js';
   function bind() {
     $('#say').innerHTML = lastSay;
     document.querySelectorAll('[data-mode]').forEach(b => b.onclick = () => { au.unlock(); reset(b.dataset.mode); });
+    document.querySelectorAll('[data-route]').forEach(b => b.onclick = () => { au.unlock(); reset('route', b.dataset.route); });
     const lv = $('#lv'); if (lv) lv.onchange = () => { S.level = lv.value; draw(); };
     document.querySelectorAll('[data-mute]').forEach(b => b.onclick = () => { S.muted = !S.muted; au.unlock(); au.setMuted(S.muted); draw(); });
     document.querySelectorAll('[data-home]').forEach(b => b.onclick = () => { S.home = +b.dataset.home; au.unlock(); au.bell(91, 0.2, 0.5); setTimeout(() => au.bell(S.home, 0.2, 1.2), 420); draw(); });
@@ -179,6 +201,7 @@ import { FloatAudio } from '../../src/ui/audio.js';
       if (d.gt(HULL)) { au.sink(); say('沈んでしまいました。荷を下ろしてください。'); }
       else setTimeout(() => ring(d), delay);
     } else if (showLive() && !d.gt(HULL)) setTimeout(() => ring(d), delay);
+    if (S.mode === 'route' && ROUTE.tutorial && S.phase === 'prep') say(tutorialHint());
     draw();
   }
 
@@ -224,14 +247,14 @@ import { FloatAudio } from '../../src/ui/audio.js';
       if (!S.placed.length) return fail('下ろす荷がありません。');
       const n = S.placed.length, it = S.items[S.placed[n - 1].id];
       say(`港に着きました。荷札${n}の${it[1]}（${it[0]}）を下ろします。`);
-      au.wood(); await wait(250); await liftLast(); draw(); await wait(500);
+      S.sign = '荷下ろし中'; draw(); au.wood(); await wait(250); await liftLast(); S.sign = null; draw(); await wait(500);
       return sailSegment();
     }
     // 積む港：荷が上から落ちてきて、船が沈む
     S.items.push([...port.item]); const id = S.items.length - 1, p = autoDrop(id);
-    say(`港に着きました。${port.item[1]}（${port.item[0]}）を積み込みます。`); au.clack(); await wait(500);
+    say(`港に着きました。${port.item[1]}（${port.item[0]}）を積み込みます。${ROUTE.tutorial ? '港で積んだ荷は、次の港で最初に下ります。' : ''}`); S.sign = '積載中'; draw(); au.clack(); await wait(500);
     if (!p) return fail('積む場所がありません。');
-    placeWithFx(p, 130); draw(); await wait(900);
+    placeWithFx(p, 130); draw(); await wait(900); S.sign = null;
     return sailSegment();
   }
   function fail(msg) { S.ng++; S.phase = 'end'; au.miss(); say(`${msg} NGです。「もう一度」で積み直します。`); draw(); }
@@ -248,9 +271,9 @@ import { FloatAudio } from '../../src/ui/audio.js';
     }
     S.seg = S.log.length; S.phase = 'end';
     if (all) { au.bell(S.home, 0.22, 1.6); await wait(250); au.jingle(); say('<span class="eu">エウレカ！</span> お題と同じメロディになりました。'); }
-    else { S.ng++; au.miss(); say('港は回れましたが、メロディがお題と違いました（赤い線）。NGです。'); }
+    else { S.ng++; au.miss(); say(`港は回れましたが、メロディがお題と違いました（赤い線）。NGです。${ROUTE.tutorial ? '積む順を逆にしてみましょう。' : ''}`); }
     draw();
   }
 
-  reset('route');
+  reset('route', 'tut');
 }
