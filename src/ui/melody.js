@@ -30,9 +30,9 @@ export function melodyStage(n, base, route, ctx) {
 
   function tutorialHint() {
     const k = S.placed.length;
-    if (k === 0) return '航海図の○がお題です。最初は深さ2.5、船と荷で重さ25。船の重さ10に、荷を15足してみよう。';
-    if (k === 1) return '港では、最後に積んだ荷から下ろします。最初の港で何を下ろすか、積む順を考えてみよう。';
-    return '荷を15積みました。最初の港で5を下ろすと深さ2。出航して、○の道をたどれるか確かめよう。';
+    if (k === 0) return '航海図の1、2、3…は立ち寄る港。♪の高さが、港の間を進むときの深さと音です。最初の♪は深さ2.5＝重さ25。船10に、荷を15足してみよう。';
+    if (k === 1) return '港では、最後に積んだ荷から下ろします。港1で下ろす荷が、次の♪の深さを決めます。積む順を考えよう。';
+    return '荷を15積みました。港1で5を下ろすと深さ2。出航して、♪をたどれるか確かめよう。';
   }
 
   // ---- 船 ----
@@ -94,12 +94,11 @@ export function melodyStage(n, base, route, ctx) {
     }
     for (let i = 0; i < cnt; i++) {
       const xa = x0 + i * step, xc = xa + step / 2, cd = route.cond?.[i], t = tg[i] / 2;
-      g += `<text x="${xa + 3}" y="12" font-size="9.5" fill="#23304a">${i + 1}</text>`;
       if (cd?.k === 'shoal') g += `<path d="M${xa} ${y(cd.d)}l${step / 4} -1l${step / 4} 1l${step / 4} -1l${step / 4} 1V${y(HULL)}H${xa}Z" fill="url(#map-sand)" stroke="#8a5a2e" stroke-width="1.4"/>
-          <text x="${xc}" y="${B + 14}" font-size="10" text-anchor="middle" fill="#5f3b1c">浅瀬${cd.d}まで</text>`;
+          <text x="${xc}" y="${B + 11}" font-size="9.5" text-anchor="middle" fill="#5f3b1c">浅瀬${cd.d}まで</text>`;
       if (cd?.k === 'bridge') g += `<path d="M${xa} ${T}H${xa + step}V${y(cd.d)}H${xa}Z" fill="url(#map-timber)" opacity=".85"/>
           <path d="M${xa} ${y(cd.d)}H${xa + step}" stroke="#5f3b1c" stroke-width="3"/>
-          <text x="${xc}" y="${B + 14}" font-size="10" text-anchor="middle" fill="#5f3b1c">橋${cd.d}以上</text><text x="${xc}" y="${B + 26}" font-size="10" text-anchor="middle" fill="#5f3b1c">荷${rowsUnderBridge(cd.d)}段まで</text>`;
+          <g font-size="9.5" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke"><text x="${xc}" y="${T + 12}">橋${cd.d}以上</text><text x="${xc}" y="${T + 24}">荷${rowsUnderBridge(cd.d)}段まで</text></g>`;
       const r = S.played[i];
       if (r) {
         const color = r.ok ? '#2e7d5b' : '#bd3424', ry = y(r.d);
@@ -107,21 +106,25 @@ export function melodyStage(n, base, route, ctx) {
         g += `<g class="actual-depth"><path d="M${xa + 6} ${ry}H${xa + step - 6}" stroke="${color}" stroke-width="4" stroke-linecap="round"/>
           <text x="${xc + 4}" y="12" font-size="10.5" font-weight="700" text-anchor="middle" fill="${color}" stroke="#fffaf0" stroke-width="3" paint-order="stroke">${r.ok ? '✓' : '×'}${r.name}</text></g>`;
       }
-      g += `<g class="target-depth"><path d="M${xa + 7} ${y(t)}H${xa + step - 7}" stroke="#23304a" stroke-width="2" stroke-linecap="round"/><circle cx="${xc}" cy="${y(t)}" r="4.5" fill="#fffaf0" stroke="#23304a" stroke-width="2"/></g>`;
+      // お題は音符で示す：線の高さ＝深さ＝音の高さ
+      const ty = y(t);
+      g += `<g class="target-depth"><path d="M${xa + 7} ${ty}H${xa + step - 7}" stroke="#23304a" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="${xc}" cy="${ty}" rx="5.6" ry="4" transform="rotate(-22 ${xc} ${ty})" fill="#23304a" stroke="#fffaf0" stroke-width="1.2"/>
+        <path d="M${xc + 4.6} ${ty - 1.5}V${ty - 17}q1 5 6.5 7.5" fill="none" stroke="#23304a" stroke-width="1.8" stroke-linecap="round"/></g>`;
     }
     for (let i = 0; i <= cnt; i++) {
       const x = x0 + i * step, p = route.ports[i - 1];
       if (i > 0 && i < cnt) g += `<path d="M${x} ${T}V${y(HULL)}" stroke="#8a5a2e" stroke-width="1" stroke-dasharray="3 3"/>
-        <circle cx="${x}" cy="${B + 43}" r="8" fill="#f7efdc" stroke="#8a5a2e" stroke-width="1.2"/>
-        <text x="${x}" y="${B + 48}" font-size="14" font-weight="700" text-anchor="middle" fill="#23304a">${p.k === 'down' ? '↑' : '↓'}</text>
-        <text x="${x}" y="${B + 63}" font-size="9.5" font-weight="700" text-anchor="middle" fill="#23304a">${p.k === 'down' ? '下ろす' : p.item[1] + p.item[0]}</text>`;
-      else g += `<text x="${x}" y="${B + 61}" font-size="10" text-anchor="${i ? 'end' : 'start'}" fill="#23304a">${i ? '終着' : '出航'}</text>`;
+        <g class="port"><rect x="${x - 14}" y="${B + 17}" width="28" height="16" rx="3" fill="#d6452c" stroke="#5f3b1c" stroke-width="1.2"/>
+        <text x="${x}" y="${B + 29}" font-size="10.5" font-weight="700" text-anchor="middle" fill="#fffaf0">港${i}</text></g>
+        <text x="${x}" y="${B + 46}" font-size="9.5" font-weight="700" text-anchor="middle" fill="#23304a">${p.k === 'down' ? '↑下ろす' : '↓' + p.item[1] + p.item[0]}</text>`;
+      else g += `<text x="${x}" y="${B + 29}" font-size="10" text-anchor="${i ? 'end' : 'start'}" fill="#23304a">${i ? '終着' : '出航'}</text>`;
     }
     if (S.phase !== 'prep') {
       const k = Math.min(S.seg, cnt - 1), dd = S.played[k]?.d ?? S.log[k]?.toNumber() ?? depth().toNumber();
       g += `<g class="chart-ship"><image href="${GRAPHICS.boat}" x="${x0 + k * step + step / 2 - 12}" y="${y(Math.min(dd, HULL)) - 11.6}" width="24" height="11.6" preserveAspectRatio="none"/></g>`;
     }
-    return `<svg viewBox="0 0 360 ${CH}" class="chart" role="img" aria-label="航海図。上ほど浅く高い音。白丸がお題、上向き矢印は荷下ろし、下向き矢印は積載。">${g}</svg>`;
+    return `<svg viewBox="0 0 360 ${CH}" class="chart" role="img" aria-label="航海図。上ほど浅く高い音。音符がお題。数字は立ち寄る港で、上向き矢印は荷下ろし、下向き矢印は積載。">${g}</svg>`;
   }
 
   // ---- 画面 ----
@@ -143,7 +146,7 @@ export function melodyStage(n, base, route, ctx) {
     c.querySelectorAll('[data-i]').forEach(b => b.onclick = () => { au.unlock(); au.tap(); S.sel = +b.dataset.i; draw(); });
     c.querySelectorAll('[data-col]').forEach(b => b.onclick = () => put(+b.dataset.col));
     $('#undo').onclick = undo;
-    $('#listen').onclick = () => { if (ctx.muted()) { say('音なしでは、航海図の○の高さを見て進めよう。'); return; } play(route.target.map(h => h / 2), true); };
+    $('#listen').onclick = () => { if (ctx.muted()) { say('音なしでは、航海図の♪の高さを見て進めよう。'); return; } play(route.target.map(h => h / 2), false); };
     $('#go').onclick = () => (ended ? ended.act() : S.phase === 'prep' ? depart() : null);
   }
 

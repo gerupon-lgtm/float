@@ -34,9 +34,9 @@ export const STAGES=[
  // 航路のメロディ（F-020）。港で積み下ろしして、海路ごとの深さの音をお題のメロディに合わせる。お題は深さ×2の整数で持つ
  {id:'n0',name:'メロディ 0　はじめの航海',kind:'melody',tutorial:true,
   route:{target:[5,4,5,4,2],ports:[{k:'down'},{k:'load',item:[5,'麦袋',2,1,'#c9a75c']},{k:'down'},{k:'down'}],cond:{},items:[[10,'石',1,1,'#9a9a92'],[5,'麦袋',2,1,'#d8b56a']]},
-  lead:'航海図の○がお題です。○と同じ深さ（音）で進めるように荷を積みましょう。',winner:'荷を積む順が、そのままメロディになるのだ。'},
+  lead:'航海図の♪がお題です。1、2、3…は立ち寄る港です。',winner:'荷を積む順が、そのままメロディになるのだ。'},
  {id:'n1',name:'メロディ 1　港めぐり',kind:'melody',generated:true,melody:{notes:[4,4],loads:[0,0]},
-  lead:'港では、最後に積んだ荷から下ろします。○のメロディになる荷と順番を考えましょう。',winner:'下ろすたびに浮いて、音が高くなったな。'},
+  lead:'港では、最後に積んだ荷から下ろします。航海図の♪（港の間を進むときの深さと音）を順にたどれるように、荷と積む順を考えましょう。',winner:'下ろすたびに浮いて、音が高くなったな。'},
  {id:'n2',name:'メロディ 2　積む港',kind:'melody',generated:true,melody:{notes:[5,5],loads:[1,1]},
   lead:'途中で荷を積む港があります。港で積んだ荷は、次の港で最初に下ります。',winner:'沈めば低く、浮けば高く。積む港で、メロディが上下するのだ。'},
  {id:'n3',name:'メロディ 3　浅瀬と橋',kind:'melody',generated:true,melody:{notes:[5,6],loads:[0,1],gates:['shoal','bridge']},
