@@ -30,7 +30,9 @@ import { FloatAudio } from '../../src/ui/audio.js';
 
   const weight = () => SHIP + S.placed.reduce((a, p) => a + S.items[p.id][0], 0);
   const depth = () => depthFraction(weight(), 'water');
+  // 組み立て中の手がかり：フリーは重さ・深さ・音すべて、ノーマルは重さだけ、エキスパートは何も見せない。出航後は全部見せる
   const showLive = () => S.mode === 'free' || S.level === 'free' || S.phase !== 'prep';
+  const showWeight = () => showLive() || S.level === 'normal';
   const ring = d => { au.unlock(); au.bell(midiOf(Math.min(d.toNumber(), HULL)), 0.2, 0.9); };
   let lastSay = '';
   const say = h => { lastSay = h; const e = $('#say'); if (e) e.innerHTML = h; };
@@ -41,7 +43,7 @@ import { FloatAudio } from '../../src/ui/audio.js';
     S.items = (S.mode === 'free' ? FREE_ITEMS : ROUTE.items).map(x => [...x]); S.placed = [];
     say(S.mode === 'free'
       ? '荷を選んで、船の上の列を押すと積みます。「下ろす」は最後に積んだ荷から下ろします。動かすたびに深さの音が鳴ります。'
-      : 'お題と同じメロディ（図の点の高さ）になるよう荷を積みましょう。港では最後に積んだ荷から下ろします。音なしでは、すべての点が見えます。');
+      : 'お題と同じメロディ（図の点の高さ）になるよう荷を積みましょう。港では最後に積んだ荷から下ろします。');
     draw();
   }
 
@@ -49,7 +51,7 @@ import { FloatAudio } from '../../src/ui/audio.js';
   // 本体の積み方と同じ比率（深さ1＝12、1段＝16、甲板8）を1.5倍で描く
   const K = 1.5, U = 12 * K, ROW = 16 * K, DECK = 8 * K, CW = 26, BX = 92, WATER = 150;
   function shipSvg() {
-    const d = depth(), dn = Math.min(d.toNumber(), HULL + 0.6), live = showLive();
+    const live = showLive(), d = live ? depth() : depthFraction(SHIP, 'water'), dn = Math.min(d.toNumber(), HULL + 0.6);
     const bottom = WATER + dn * U, top = bottom - HULL * U, pick = (S.phase === 'prep' || S.phase === 'load') && S.sel != null;
     let g = `<rect x="0" y="${WATER}" width="320" height="110" fill="#6fb6d6"/>`;
     // 深さの目盛りと音名（要件7.2：目盛りに音名を添える）
@@ -74,7 +76,7 @@ import { FloatAudio } from '../../src/ui/audio.js';
   }
 
   // 航海図＝深さの図。縦は深さ（上ほど浅く、音は高い）。お題の点、浅瀬の海底、橋桁を同じ目盛りに描く（要件7.2）
-  const showDot = i => S.muted || S.level === 'free' || (S.level === 'normal' && i === 0);
+  const showDot = () => true; // 航海図は難しさによらず同じ情報量（一番易しい形）
   const rowsUnderBridge = limit => { let r = 0; while (r < ROWMAX && pileClearsBridge(exact(limit), limit, r + 1)) r++; return r; };
   function chartSvg() {
     const n = ROUTE.target.length, x0 = 44, step = (312 - x0) / n, T = 30, DY = 22, y = d => T + d * DY;
@@ -119,7 +121,7 @@ import { FloatAudio } from '../../src/ui/audio.js';
       ${route ? `<div class="opts">難しさ ${Object.entries(LEVELS).map(([k, v]) => `<button class="opt ${S.level === k ? 'on' : ''}" data-lv="${k}" ${S.phase !== 'prep' ? 'disabled' : ''}>${v}</button>`).join('')}
         <span class="sp"></span><button class="opt ${S.muted ? 'on' : ''}" data-mute>${S.muted ? '音なし' : '音あり'}</button> 帰着 <button class="opt ${S.home === 84 ? 'on' : ''}" data-home="84">下</button><button class="opt ${S.home === 96 ? 'on' : ''}" data-home="96">上</button></div>
         ${chartSvg()}` : ''}
-      <div class="stat"><div>重さ<b>${weight()}</b></div><div>深さ<b>${live ? (d.gt(HULL) ? '沈没' : d.toNumber()) : '？'}</b></div><div>音<b>${live && !d.gt(HULL) ? noteName(d) : '？'}</b></div>${route ? `<div>NG<b>${S.ng}</b></div>` : ''}</div>
+      <div class="stat"><div>重さ<b>${showWeight() ? weight() : '？'}</b></div><div>深さ<b>${live ? (d.gt(HULL) ? '沈没' : d.toNumber()) : '？'}</b></div><div>音<b>${live && !d.gt(HULL) ? noteName(d) : '？'}</b></div>${route ? `<div>NG<b>${S.ng}</b></div>` : ''}</div>
       ${shipSvg()}
       <div class="say" id="say"></div>
       <div class="shelf">${loading
