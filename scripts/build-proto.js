@@ -18,9 +18,12 @@ const js = order.map(file => {
   if (/^\s*(import|export)\b/m.test(body)) throw new Error(`${relative(root, file)} にまとめられない import/export があります。`);
   return `// ---- ${relative(root, file).replace(/\\/g, '/')} ----\n${body}`;
 }).join('\n');
+// 絵は1ページに入るよう、データとして埋め込む（build-artifact.js と同じ）
+const inlined = js.replace(/new URL\('\.\.\/\.\.\/(public\/graphics\/[^']+\.webp)', import\.meta\.url\)\.href/g,
+  (_, path) => JSON.stringify(`data:image/webp;base64,${readFileSync(join(root, path)).toString('base64')}`));
 const html = readFileSync(join(dir, 'index.html'), 'utf8');
 const part = n => new RegExp(`<!-- proto:${n}:start -->\\r?\\n([\\s\\S]*?)<!-- proto:${n}:end -->`).exec(html)[1];
-const page = `${part('head')}<style>\n${readFileSync(join(dir, 'style.css'), 'utf8')}</style>\n${part('body')}<script type="module">\n${js}</script>\n`;
+const page = `${part('head')}<style>\n${readFileSync(join(dir, 'style.css'), 'utf8')}</style>\n${part('body')}<script type="module">\n${inlined}</script>\n`;
 mkdirSync(join(root, 'artifact'), { recursive: true });
 writeFileSync(join(root, 'artifact/melody-proto.html'), page);
 console.log(`artifact/melody-proto.html を作りました（${order.length} モジュール、${(page.length / 1024).toFixed(1)} KB）`);

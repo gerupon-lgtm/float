@@ -4,6 +4,7 @@ import { depthFraction, SHIP, HULL, exact } from '../../src/logic/physics.js';
 import { midiOf, onScale } from '../../src/logic/pitch.js';
 import { CELLS, ROWMAX, dropCargo, stackRows, pileClearsBridge } from '../../src/logic/stacking.js';
 import { FloatAudio } from '../../src/ui/audio.js';
+import { GRAPHICS, cargoArt } from '../../src/ui/graphics.js';
 
 {
   const au = new FloatAudio();
@@ -66,36 +67,41 @@ import { FloatAudio } from '../../src/ui/audio.js';
   }
 
   // ---- 船 ----
-  // 本体の積み方と同じ比率（深さ1＝12、1段＝16、甲板8）を1.3倍で描く
-  const K = 1.3, U = 12 * K, ROW = 16 * K, DECK = 8 * K, CW = 22, BX = 66, WATER = 134;
+  // 本番の船の絵と寸法（幅124・高さ60＝深さ5、1列18、1段16、甲板8）を1.3倍で描く
+  const K = 1.3, U = 12 * K, ROW = 16 * K, DECK = 8 * K, CW = 18 * K, HW = 124 * K, HX = 70, WATER = 134;
   const shownDepth = () => (showLive() ? depth() : depthFraction(SHIP, 'water'));
   const bottomY = () => WATER + Math.min(shownDepth().toNumber(), HULL + 0.6) * U;
   function shipSvg() {
     const d = shownDepth(), live = showLive(), bottom = bottomY(), top = bottom - HULL * U;
-    const pick = S.phase === 'prep' && S.sel != null;
-    let g = `<rect x="0" y="${WATER}" width="232" height="90" fill="#6fb6d6"/>`;
+    const pick = S.phase === 'prep' && S.sel != null, cx = HX + 8 * K;
+    let g = `<defs><pattern id="pw" patternUnits="userSpaceOnUse" width="240" height="110" y="${WATER}"><image href="${GRAPHICS['liquid-water']}" width="240" height="110" preserveAspectRatio="none"/></pattern></defs>
+      <rect width="240" height="230" fill="var(--sky)"/><path d="M110 22q20 -14 40 0t40 0" fill="none" stroke="#fffaf0" stroke-width="5"/>`;
+    g += `<rect x="0" y="${WATER}" width="240" height="100" fill="url(#pw)"/>`;
+    g += `<g id="hullg"><image href="${GRAPHICS.boat}" x="${HX}" y="${top}" width="${HW}" height="${HULL * U}" preserveAspectRatio="none"/>`;
+    for (const [n, p] of S.placed.entries()) {
+      const it = S.items[p.id], x = cx + p.c * CW, y = bottom - DECK - (p.r + it[3]) * ROW, w = it[2] * CW, h = it[3] * ROW;
+      // 荷札（積んだ順の番号）と重さ。合計を伏せても、自分で足し算できるように重さは常に見せる
+      g += `<g data-n="${n}"><image href="${cargoArt(it[1])}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="none"/>
+        <rect x="${x + 1.5}" y="${y + 1.5}" width="10" height="9" rx="2" fill="#fffaf0" stroke="#23304a" stroke-width=".9"/><text x="${x + 6.5}" y="${y + 8.6}" font-size="7.5" font-weight="700" text-anchor="middle" fill="#23304a">${n + 1}</text>
+        <text x="${x + w - 2.5}" y="${y + h - 3}" font-size="9" font-weight="700" text-anchor="end" fill="#23304a" stroke="#fffaf0" stroke-width="2.6" paint-order="stroke" font-family="Montserrat,Arial,sans-serif">${it[0]}</text></g>`;
+    }
+    g += `</g><rect x="0" y="${WATER}" width="240" height="100" fill="#3f97c0" opacity=".28"/><line x1="0" x2="240" y1="${WATER}" y2="${WATER}" stroke="#fffaf0" stroke-width="1.5" opacity=".8"/>`;
+    // 深さの目盛り（本番と同じ白い札）に音名を添える
+    let sc = `<rect x="3" y="${WATER - 20}" width="52" height="${HULL * U + 30}" rx="6" fill="#fffaf0" stroke="#23304a" stroke-width="2"/><text x="29" y="${WATER - 7}" text-anchor="middle" font-size="10" font-weight="700" fill="#23304a">深さ・音</text>`;
     for (let i = 0; i <= 10; i++) {
       const y = WATER + i * U / 2;
-      g += `<line x1="4" x2="${i % 2 ? 11 : 16}" y1="${y}" y2="${y}" stroke="#23304a" stroke-width="1.4"/><text x="19" y="${y + 3.3}" font-size="8.5" fill="#23304a">${i % 2 ? '' : i / 2}</text><text x="31" y="${y + 3.3}" font-size="8.5" fill="#23304a">${NOTE[midiOf(i / 2)]}</text>`;
+      sc += `<path d="M7 ${y}h${i % 2 ? 5 : 9}" stroke="#23304a" stroke-width="2"/><text x="19" y="${y + 3.5}" font-size="9.5" font-weight="700" fill="#23304a">${i % 2 ? '' : i / 2}</text><text x="${i % 2 ? 40 : 31}" y="${y + 3.5}" font-size="9" font-weight="700" fill="#23304a">${NOTE[midiOf(i / 2)]}</text>`;
     }
-    g += `<g id="hullg"><rect x="${BX}" y="${top}" width="${CELLS * CW + 12}" height="${HULL * U}" rx="3" fill="#d2692e" stroke="#23304a" stroke-width="2"/>`;
-    for (const [n, p] of S.placed.entries()) {
-      const it = S.items[p.id], x = BX + 6 + p.c * CW, y = bottom - DECK - (p.r + it[3]) * ROW, w = it[2] * CW, h = it[3] * ROW;
-      // 荷札（積んだ順の番号）と重さ。合計を伏せても、自分で足し算できるように重さは常に見せる
-      g += `<g data-n="${n}"><rect x="${x + 1}" y="${y + 1}" width="${w - 2}" height="${h - 2}" rx="3" fill="${it[4]}" stroke="#23304a" stroke-width="1.5"/>
-        <rect x="${x + 2.5}" y="${y + 2.5}" width="9" height="8.5" rx="1.5" fill="#fffaf0" stroke="#23304a" stroke-width=".7"/><text x="${x + 7}" y="${y + 9.3}" font-size="7" text-anchor="middle" fill="#23304a">${n + 1}</text>
-        <text x="${x + w - 3}" y="${y + h - 3}" font-size="8.5" text-anchor="end" fill="#23304a" font-family="Montserrat,Arial,sans-serif">${it[0]}</text></g>`;
-    }
-    if (live && !d.gt(HULL)) g += `<path d="M${BX - 2} ${bottom}l-7 -4.5v9z" fill="#d6452c"/>`;
-    g += `</g><rect x="0" y="${WATER}" width="232" height="90" fill="#3f97c0" opacity=".3"/><line x1="${BX - 6}" x2="${BX + CELLS * CW + 18}" y1="${WATER}" y2="${WATER}" stroke="#fffaf0" stroke-width="2"/>`;
+    g += sc;
+    if (live && !d.gt(HULL)) g += `<path d="M${HX - 1} ${bottom}l-8 -5v10z" fill="var(--red)" stroke="#23304a" stroke-width="1.2"/>`;
     // 看板：出航前と港での積み込みは「積載中」、荷下ろしは「荷下ろし中」
     const sign = S.mode === 'route' && S.phase === 'prep' ? '積載中' : S.sign;
-    if (sign) g += `<g class="sign"><rect x="4" y="6" width="${sign.length * 12 + 14}" height="22" rx="3" fill="#8a5a2e" stroke="#5f3b1c" stroke-width="2"/><line x1="16" x2="16" y1="28" y2="40" stroke="#5f3b1c" stroke-width="3"/><text x="${11 + sign.length * 6}" y="22" font-size="12" text-anchor="middle" fill="#fffaf0">${sign}</text></g>`;
+    if (sign) g += `<g class="sign"><line x1="76" x2="76" y1="26" y2="40" stroke="#5f3b1c" stroke-width="3"/><rect x="62" y="6" width="${sign.length * 13 + 16}" height="22" rx="3" fill="#8a5a2e" stroke="#5f3b1c" stroke-width="2"/><text x="${70 + sign.length * 6.5}" y="22.5" font-size="13" text-anchor="middle" fill="#fffaf0" font-family="var(--disp)">${sign}</text></g>`;
     for (let c = 0; c < CELLS && pick; c++) {
-      const x = BX + 6 + c * CW;
-      g += `<g class="col" data-col="${c}"><rect x="${x}" y="0" width="${CW}" height="${bottom - DECK}" fill="#efb32a" opacity=".001"/><path d="M${x + CW / 2 - 5} 3h10l-5 7z" fill="#23304a"/></g>`;
+      const x = cx + c * CW;
+      g += `<g class="col" data-col="${c}"><rect x="${x}" y="0" width="${CW}" height="${bottom - DECK}" fill="#efb32a" opacity=".001"/><path d="M${x + CW / 2 - 5} 32h10l-5 7z" fill="var(--red)" stroke="#23304a" stroke-width="1"/></g>`;
     }
-    return `<svg viewBox="0 0 232 220" class="ship">${g}</svg>`;
+    return `<svg viewBox="0 0 240 226" class="ship" role="img" aria-label="船と荷">${g}</svg>`;
   }
 
   // ---- 航海図＝深さの図 ----
@@ -103,15 +109,15 @@ import { FloatAudio } from '../../src/ui/audio.js';
   const rowsUnderBridge = limit => { let r = 0; while (r < ROWMAX && pileClearsBridge(exact(limit), limit, r + 1)) r++; return r; };
   function chartSvg() {
     const n = ROUTE.target.length, x0 = 40, step = (314 - x0) / n, T = 26, DY = 17, y = d => T + d * DY;
-    let g = `<rect width="320" height="150" rx="6" fill="#efe0bd"/><rect x="${x0}" y="${T}" width="${314 - x0}" height="${HULL * DY}" fill="#9fd3e6"/>`;
+    let g = `<rect width="320" height="150" fill="#f3e6c6"/><rect x="${x0}" y="${T}" width="${314 - x0}" height="${HULL * DY}" fill="#bfe3ea"/>`;
     for (let i = 0; i <= 10; i++) {
       const yy = y(i / 2);
       g += `<line x1="${x0}" x2="314" y1="${yy}" y2="${yy}" stroke="#23304a" stroke-opacity="${i % 2 ? .1 : .22}"/><text x="5" y="${yy + 3}" font-size="8" fill="#23304a">${i % 2 ? '' : i / 2}</text><text x="17" y="${yy + 3}" font-size="8" fill="#23304a">${NOTE[midiOf(i / 2)]}</text>`;
     }
     for (let i = 0; i < n; i++) {
       const xa = x0 + i * step, xc = xa + step / 2, c = ROUTE.cond[i];
-      if (c?.k === 'shoal') g += `<rect x="${xa + 2}" y="${y(c.d)}" width="${step - 4}" height="${y(HULL) - y(c.d) + 3}" fill="#e8c98a" stroke="#5f3b1c" stroke-width="1.4"/><text x="${xc}" y="${y(HULL) + 13}" font-size="8.5" text-anchor="middle" fill="#5f3b1c">浅瀬 ${c.d}まで</text>`;
-      if (c?.k === 'bridge') g += `<rect x="${xa + 2}" y="${T - 3}" width="${step - 4}" height="${y(c.d) - T + 3}" fill="#b07a40" stroke="#5f3b1c" stroke-width="1.4"/><text x="${xc}" y="${T + 11}" font-size="8.5" text-anchor="middle" fill="#fffaf0">橋</text><text x="${xc}" y="10" font-size="8" text-anchor="middle" fill="#5f3b1c">橋 ${c.d}以上</text><text x="${xc}" y="20" font-size="8" text-anchor="middle" fill="#5f3b1c">荷${rowsUnderBridge(c.d)}段まで</text>`;
+      if (c?.k === 'shoal') g += `<image href="${GRAPHICS.shoal}" x="${xa}" y="${y(c.d) - 2}" width="${step}" height="${y(HULL) - y(c.d) + 6}" preserveAspectRatio="none"/><text x="${xc}" y="${y(HULL) + 13}" font-size="8.5" text-anchor="middle" fill="#5f3b1c">浅瀬 ${c.d}まで</text>`;
+      if (c?.k === 'bridge') g += `<rect x="${xa + 6}" y="${T}" width="${step - 12}" height="${y(c.d) - T - 14}" fill="#8a5a2e" opacity=".55"/><image href="${GRAPHICS.bridge}" x="${xa - 2}" y="${y(c.d) - 18}" width="${step + 4}" height="18" preserveAspectRatio="none"/><text x="${xc}" y="10" font-size="8" text-anchor="middle" fill="#5f3b1c">橋 ${c.d}以上</text><text x="${xc}" y="20" font-size="8" text-anchor="middle" fill="#5f3b1c">荷${rowsUnderBridge(c.d)}段まで</text>`;
       const t = num(ROUTE.target[i]);
       g += `<line x1="${xa + 6}" x2="${xa + step - 6}" y1="${y(t)}" y2="${y(t)}" stroke="#23304a" stroke-width="3" stroke-linecap="round"/><circle cx="${xc}" cy="${y(t)}" r="4.5" fill="#fffaf0" stroke="#23304a" stroke-width="2"/>`;
       const r = S.played[i];
@@ -125,7 +131,7 @@ import { FloatAudio } from '../../src/ui/audio.js';
     }
     if (S.phase !== 'prep') {
       const k = Math.min(S.seg, n - 1), dd = S.played[k]?.d ?? S.log[k]?.toNumber() ?? depth().toNumber();
-      g += `<path transform="translate(${x0 + k * step + step / 2} ${y(Math.min(dd, HULL))})" d="M-9 -8h18l-3 8h-12z" fill="#d2692e" stroke="#23304a" stroke-width="1.4"/>`;
+      g += `<image href="${GRAPHICS.boat}" x="${x0 + k * step + step / 2 - 13}" y="${y(Math.min(dd, HULL)) - 12.6}" width="26" height="12.6" preserveAspectRatio="none"/>`;
     }
     return `<svg viewBox="0 0 320 150" class="chart">${g}</svg>`;
   }
@@ -134,19 +140,20 @@ import { FloatAudio } from '../../src/ui/audio.js';
   function draw() {
     const d = depth(), live = showLive(), route = S.mode === 'route', prep = S.phase === 'prep';
     const chips = S.items.map((it, i) => (S.placed.some(p => p.id === i) || (route && i >= ROUTE.items.length)) ? ''
-      : `<button class="chip ${S.sel === i ? 'on' : ''}" data-i="${i}" ${prep ? '' : 'disabled'}>${it[1]} ${it[0]}<small>${it[2]}×${it[3]}マス</small></button>`).join('');
+      : `<button class="chip ${S.sel === i ? 'on' : ''}" data-i="${i}" ${prep ? '' : 'disabled'}><img src="${cargoArt(it[1])}" alt=""><span>${it[1]} <b>${it[0]}</b><small>${it[2]}×${it[3]}マス</small></span></button>`).join('');
+    const ngInfo = route ? `<small class="sub">${ROUTE.name}　NG ${S.ng}回</small>` : '<small class="sub">自由に積み下ろし</small>';
     $('#app').innerHTML = `
-      <div class="top"><b>航路のメロディ 試作</b><span>
-        <button class="tab ${!route ? 'on' : ''}" data-mode="free">自由</button><button class="tab ${route && S.route === 'tut' ? 'on' : ''}" data-route="tut">練習</button><button class="tab ${route && S.route === 'r1' ? 'on' : ''}" data-route="r1">お題1</button></span></div>
-      ${route ? `<div class="opts"><select id="lv" ${prep && !ROUTE.tutorial ? '' : 'disabled'}>${Object.entries(LEVELS).map(([k, v]) => `<option value="${k}" ${(ROUTE.tutorial ? 'free' : S.level) === k ? 'selected' : ''}>${v}</option>`).join('')}</select>
-        <button class="opt ${S.muted ? 'on' : ''}" data-mute>${S.muted ? '音なし' : '音あり'}</button><span class="sp"></span>帰着のド<button class="opt ${S.home === 84 ? 'on' : ''}" data-home="84">下</button><button class="opt ${S.home === 96 ? 'on' : ''}" data-home="96">上</button></div>
-        ${chartSvg()}` : ''}
-      <div class="stat">重さ<b>${showWeight() ? weight() : '？'}</b>深さ<b>${live ? (d.gt(HULL) ? '沈没' : d.toNumber()) : '？'}</b>音<b>${live && !d.gt(HULL) ? noteName(d) : '？'}</b>${route ? `NG<b>${S.ng}</b>` : ''}</div>
-      <div class="mid">${shipSvg()}<div class="shelf">${chips || '<p class="empty">棚は空です</p>'}</div></div>
+      <div class="top"><b>航路のメロディ${ngInfo}</b><span>
+        <button class="tiny ${!route ? 'on' : ''}" data-mode="free">自由</button> <button class="tiny ${route && S.route === 'tut' ? 'on' : ''}" data-route="tut">練習</button> <button class="tiny ${route && S.route === 'r1' ? 'on' : ''}" data-route="r1">お題1</button></span></div>
+      ${route ? `<div class="opts"><select id="lv" class="tiny" ${prep && !ROUTE.tutorial ? '' : 'disabled'}>${Object.entries(LEVELS).map(([k, v]) => `<option value="${k}" ${(ROUTE.tutorial ? 'free' : S.level) === k ? 'selected' : ''}>${v}</option>`).join('')}</select>
+        <button class="tiny" data-mute>${S.muted ? '音なし' : '音あり'}</button><span class="sp"></span>帰着のド <button class="tiny ${S.home === 84 ? 'on' : ''}" data-home="84">下</button><button class="tiny ${S.home === 96 ? 'on' : ''}" data-home="96">上</button></div>
+        <div class="frame chartf">${chartSvg()}</div>` : ''}
+      <div class="stat"><div>船全体の重さ<strong>${showWeight() ? weight() : '？'}</strong></div><div>沈む深さ<strong>${live ? (d.gt(HULL) ? '沈没' : d.toNumber()) : '？'}</strong></div><div>音<strong>${live && !d.gt(HULL) ? noteName(d) : '？'}</strong></div></div>
+      <div class="mid"><div class="frame">${shipSvg()}</div><div class="shelf">${chips || '<p class="empty">棚は空です</p>'}</div></div>
       <div class="say" id="say"></div>
       <div class="row">${route
-        ? `<button id="listen" ${S.muted ? 'disabled' : ''}>お題を聴く</button><button id="undo" ${prep && S.placed.length ? '' : 'disabled'}>ひとつ戻す</button><button id="go" class="main" ${S.phase === 'sail' || S.phase === 'replay' ? 'disabled' : ''}>${S.phase === 'end' ? 'もう一度' : prep ? '出航' : '航海中…'}</button>`
-        : `<button id="down">下ろす</button><button id="replay">ここまでを聴く</button><button id="clear">空にする</button>`}</div>`;
+        ? `<button class="btn sub" id="listen" ${S.muted ? 'disabled' : ''}>お題を聴く</button><button class="btn sub" id="undo" ${prep && S.placed.length ? '' : 'disabled'}>ひとつ戻す</button><button class="btn" id="go" ${S.phase === 'sail' || S.phase === 'replay' ? 'disabled' : ''}>${S.phase === 'end' ? 'もう一度' : prep ? '出航' : '航海中'}</button>`
+        : `<button class="btn sub" id="down">下ろす</button><button class="btn sub" id="replay">聴く</button><button class="btn sub" id="clear">空にする</button>`}</div>`;
     bind(); playFx();
   }
 
@@ -257,7 +264,7 @@ import { FloatAudio } from '../../src/ui/audio.js';
     placeWithFx(p, 130); draw(); await wait(900); S.sign = null;
     return sailSegment();
   }
-  function fail(msg) { S.ng++; S.phase = 'end'; au.miss(); say(`${msg} NGです。「もう一度」で積み直します。`); draw(); }
+  function fail(msg) { S.ng++; S.phase = 'end'; au.miss(); say(`<span class="who">アルキメデス</span>${msg}「もう一度」で積み直してごらん。`); draw(); }
 
   // 最後の荷下ろしの後、航海図の上を船が進み、通しで聴かせる（要件7.2）
   async function arrive() {
@@ -270,8 +277,8 @@ import { FloatAudio } from '../../src/ui/audio.js';
       au.bell(midiOf(d.toNumber()), 0.2, 0.7); await wait(520);
     }
     S.seg = S.log.length; S.phase = 'end';
-    if (all) { au.bell(S.home, 0.22, 1.6); await wait(250); au.jingle(); say('<span class="eu">エウレカ！</span> お題と同じメロディになりました。'); }
-    else { S.ng++; au.miss(); say(`港は回れましたが、メロディがお題と違いました（赤い線）。NGです。${ROUTE.tutorial ? '積む順を逆にしてみましょう。' : ''}`); }
+    if (all) { au.bell(S.home, 0.22, 1.6); await wait(250); au.jingle(); say('<span class="who">アルキメデス</span><span class="eu">エウレカ！</span> お題と同じメロディになったな。'); }
+    else { S.ng++; au.miss(); say(`<span class="who">アルキメデス</span>港は回れたが、メロディがお題と違うな（赤い線）。${ROUTE.tutorial ? '積む順を逆にしてごらん。' : ''}`); }
     draw();
   }
 
