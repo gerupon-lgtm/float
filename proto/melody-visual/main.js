@@ -8,7 +8,7 @@ import { GRAPHICS, cargoArt } from '../../src/ui/graphics.js';
 
 {
   const au = new FloatAudio();
-  const VISUAL_SAMPLE_VERSION = '0.1.1';
+  const VISUAL_SAMPLE_VERSION = '0.1.3';
   const BLANK_SIGN = new URL('../../docs/visual-samples/2026-11-21-melody-priority1-v1/blank-status-board.png', import.meta.url).href;
   const $ = s => document.querySelector(s);
   const NOTE = { 96: 'ド', 93: 'ラ', 91: 'ソ', 88: 'ミ', 86: 'レ', 84: 'ド', 81: 'ラ', 79: 'ソ', 76: 'ミ', 74: 'レ', 72: 'ド' };
@@ -173,7 +173,7 @@ import { GRAPHICS, cargoArt } from '../../src/ui/graphics.js';
       <header class="top"><b>航路のメロディ${ngInfo}</b><button class="tiny" data-mute aria-pressed="${S.muted}">${S.muted?'音なし':'音あり'}</button></header>
       <section class="frame chartf" aria-label="航海図">${chartSvg()}</section>
       <section class="stat" aria-label="船の手がかり"><div>船全体の重さ<strong data-stat="weight">${showWeight()?weight():'？'}</strong></div><div>沈む深さ<strong data-stat="depth">${live?(d.gt(HULL)?'沈没':d.toNumber()):'？'}</strong></div><div>音<strong data-stat="note">${live&&!d.gt(HULL)?noteName(d):'？'}</strong></div></section>
-      <section class="mid" aria-label="船と荷の棚"><div class="frame vessel">${shipSvg()}<span class="tag-key">荷札：上が順番／下が重さ</span></div><div class="shelf" aria-label="荷を選ぶ">${chips||'<p class="empty">荷をすべて<br>積みました</p>'}</div></section>
+      <section class="mid" aria-label="船と荷の棚"><div class="frame vessel">${shipSvg()}<span class="tag-key">荷札：上が順番／下が重さ</span></div><div class="shelf" aria-label="荷を選ぶ"><svg class="shelf-board" viewBox="50 6 626 2160" preserveAspectRatio="none" aria-hidden="true" focusable="false"><image href="${BLANK_SIGN}" width="2172" height="724" transform="translate(724 0) rotate(90)"/></svg>${chips||'<p class="empty">荷をすべて<br>積みました</p>'}</div></section>
       <div class="say" id="say" role="status" aria-live="polite"></div>
       <div class="row"><button class="btn sub" id="listen" ${S.muted?'disabled':''}>お題を聴く</button><button class="btn sub" id="undo" ${prep&&S.placed.length?'':'disabled'}>ひとつ戻す</button><button class="btn" id="go" ${S.phase==='sail'||S.phase==='replay'?'disabled':''}>${S.phase==='end'?'もう一度':prep?'出航':'航海中'}</button></div>
       <footer class="sample-version">航路のメロディ 見本 ${VISUAL_SAMPLE_VERSION}</footer>`;

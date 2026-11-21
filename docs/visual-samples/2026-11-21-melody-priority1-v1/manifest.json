@@ -1,7 +1,7 @@
 {
   "title": "FLOAT NOTES F-020 visual priority 1",
   "date": "2026-11-21",
-  "sampleVersion": "0.1.1",
+  "sampleVersion": "0.1.3",
   "status": "candidate; awaiting originator review; not integrated or deployed",
   "repository": "gerupon-lgtm/float",
   "baseCommit": "18472f1208a8b2f506dc3897f4931fe3bd8816dc",
@@ -30,8 +30,8 @@
       "purpose": "review screenshot, not runtime artwork",
       "width": 393,
       "height": 851,
-      "bytes": 180850,
-      "sha256": "a36bb34981b1e8104cc8ec012d8ca4f98bab6a983b92eb2eae1b336a4c4785c2",
+      "bytes": 240825,
+      "sha256": "12d35ba28c5c479c447f8269727dd7b8932bd9e340bf6bf9ad7c16ad83354fc9",
       "text": "HTML/SVG rendered UI text; screenshot only"
     },
     {
@@ -39,8 +39,8 @@
       "purpose": "review screenshot, not runtime artwork",
       "width": 393,
       "height": 851,
-      "bytes": 202752,
-      "sha256": "3024131cd9150a66b64a2381982bf227ab6f12b847ac9ccb36f9120ba21d752a",
+      "bytes": 235100,
+      "sha256": "0a462b92f7bdaef71629fb7e0b48676d735f0a31616a8479fba137902aa9f6f6",
       "text": "HTML/SVG rendered UI text; screenshot only"
     },
     {
@@ -48,8 +48,8 @@
       "purpose": "review screenshot, not runtime artwork",
       "width": 393,
       "height": 851,
-      "bytes": 185836,
-      "sha256": "38a781c3c784cd21a94baa96424f11a5b13bbb7f66657ecd3bfe6713bef8c43e",
+      "bytes": 245650,
+      "sha256": "3b6ad5351510ce33a490c60222394d3c516595c4b423977e46f3cb6bd6fd0905",
       "text": "HTML/SVG rendered UI text; screenshot only"
     },
     {
@@ -57,8 +57,8 @@
       "purpose": "review screenshot, not runtime artwork",
       "width": 393,
       "height": 851,
-      "bytes": 184336,
-      "sha256": "b66590d66f5233ec5b4768193c6b2ac24354c73e47f82a955146b9cf21a08528",
+      "bytes": 240302,
+      "sha256": "4cadca73ba4e263ed3677dcac9f181e292316a4ef03c7f2bb03f8bf784badeb0",
       "text": "HTML/SVG rendered UI text; screenshot only"
     },
     {
@@ -66,8 +66,8 @@
       "purpose": "review screenshot, not runtime artwork",
       "width": 393,
       "height": 851,
-      "bytes": 182672,
-      "sha256": "6bb15045e3f5047007bc00db2988a0cf1c9a6e01417dab475a3b2807bb338275",
+      "bytes": 245955,
+      "sha256": "bc6cc9c21b1bbae66bea903f2a0b835efd1c179a95a3046a1503662d462c9171",
       "text": "HTML/SVG rendered UI text; screenshot only"
     },
     {
@@ -75,8 +75,17 @@
       "purpose": "review screenshot, not runtime artwork",
       "width": 414,
       "height": 896,
-      "bytes": 202022,
-      "sha256": "72bcdd7ccae2a84e381161e14c332532272d30254cd097cf80c76133b440fead",
+      "bytes": 255505,
+      "sha256": "80fac0137820d2993aef9cd8a6db5fb466fb366d392eccf4d1a7ebd887ccd92e",
+      "text": "HTML/SVG rendered UI text; screenshot only"
+    },
+    {
+      "file": "shelf-board-393x851.png",
+      "purpose": "review screenshot, not runtime artwork",
+      "width": 393,
+      "height": 851,
+      "bytes": 242202,
+      "sha256": "13d28201bbcd8810de2b885854d97e32af507f46582f19083dfb4045452ffc47",
       "text": "HTML/SVG rendered UI text; screenshot only"
     }
   ],
@@ -189,7 +198,8 @@
     "when to introduce other liquids"
   ],
   "notes": [
-    "All labels and numbers are rendered by software. The new sign PNG has no text.",
+    "All labels and numbers are rendered by software. The sign PNG has no text.",
+    "At the originator request, the entire shelf background is a single large wood plank, without a character. It reuses the unchanged blank sign PNG via SVG rotation and scaling.",
     "Existing prototype motions are retained; no priority-2 effects were added.",
     "The prototype copy is a presentation sample, not a new source of game rules.",
     "Google Fonts is requested as in the original prototype; local fallback fonts remain available."
