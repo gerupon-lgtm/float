@@ -6,6 +6,8 @@ import { CELLS, ROWMAX, dropCargo, stackRows } from '../logic/stacking.js';
 import { depthNow, weightOf, autoDrop, rowsUnderBridge, segmentFault, matchesTarget } from '../logic/melody.js';
 import { GRAPHICS, cargoArt } from './graphics.js';
 
+// 船の絵（144px）は、上の28pxが船の中の奥の面。船べりは上から28pxの位置なので、ここを船の高さ5に合わせる
+const BOAT_TOP = 28 / 116;
 const NOTE = { 96: 'ド', 93: 'ラ', 91: 'ソ', 88: 'ミ', 86: 'レ', 84: 'ド', 81: 'ラ', 79: 'ソ', 76: 'ミ', 74: 'レ', 72: 'ド' };
 const noteName = d => (onScale(d) ? NOTE[Math.round(midiOf(d.toNumber()))] : '外れ');
 const HOME = 84;   // エウレカで帰着する「ド」。上下は実機で決める（要件7.2）
@@ -71,7 +73,7 @@ export function melodyStage(n, base, route, ctx) {
       <rect x="${VW - 62}" y="${WATER - 34}" width="62" height="6" fill="#8a5a2e"/><rect x="${VW - 54}" y="${WATER - 46}" width="8" height="12" rx="3" fill="#5f3b1c"/>
       <rect x="${VW - 44}" y="${WATER - 74}" width="40" height="20" rx="3" fill="#d6452c" stroke="#5f3b1c" stroke-width="1.5"/><path d="M${VW - 24} ${WATER - 54}V${WATER - 34}" stroke="#5f3b1c" stroke-width="2.5"/>
       <text x="${VW - 24}" y="${WATER - 59.5}" font-size="11.5" font-weight="700" text-anchor="middle" fill="#fffaf0">港${qn}</text></g>`;
-    g += `<g id="hullg"><image href="${GRAPHICS.boat}" x="${HX}" y="${top}" width="${HW}" height="${HULL * U}" preserveAspectRatio="none"/>
+    g += `<g id="hullg"><image href="${GRAPHICS.boat}" x="${HX}" y="${top - HULL * U * BOAT_TOP}" width="${HW}" height="${HULL * U * (1 + BOAT_TOP)}" preserveAspectRatio="none"/>
 `;
     // 船の中（荷）は断面で見せる。船体には水の色を重ねず、水面の高さは船体の外側の線で示す
     for (const [k, p] of S.placed.entries()) {

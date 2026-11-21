@@ -13,7 +13,7 @@ import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 import { melodyStage } from './melody.js';
 
-const APP_VERSION = '0.9.11';
+const APP_VERSION = '0.9.12';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -145,7 +145,7 @@ function gateSVG(g,i){const x=g.x;
   if(g.k==='chamber'){return img('chamber',x-6,SURF-34,152,H-SURF+34)+tag(x+70,SURF-40,'入れ替え室')}
   return ''}
 const WET=`<rect id="wet" x="-60" y="0" width="120" height="0" opacity=".32"/>`;
-function shipSVG(){const hull=img('boat',-62,-60,124,60);
+function shipSVG(){const hull=img('boat',-62,-74.5,124,74.5)/* 絵の上28/144は船の中の奥の面。船べりを高さ60（深さ5）に合わせる */;
   if(G.S.grid){const r=G.placed.map(p=>{const it=G.S.items[p.id];return `<image href="${cargoArt(it[1])}" x="${-54+p.c*18}" y="${-8-(p.r+it[3])*ROWH}" width="${it[2]*18}" height="${it[3]*ROWH}" preserveAspectRatio="none"/>`}).join('');
     $('#ship',G.c).innerHTML=hull+r+WET;return}
   const items=[...G.on].sort((a,b)=>G.S.items[a][0]-G.S.items[b][0]);let r='';
