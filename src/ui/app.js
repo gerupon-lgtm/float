@@ -12,8 +12,9 @@ import { GRAPHICS, cargoArt } from './graphics.js';
 import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 import { melodyStage } from './melody.js';
+import { howtoScreen, partsScreen } from './guide.js';
 
-const APP_VERSION = '0.9.17';
+const APP_VERSION = '0.9.18';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -37,12 +38,15 @@ function wire(c){const m=$('#mute',c),h=$('#home',c);if(m)m.onclick=()=>{muted=!
 function title(){const c=show(`<div class="title-hero"><div class="hero"><div class="series">SIKUMI<br>NOTES<span>03</span></div><h1 class="logo">FLOAT</h1><div class="logo2">NOTES</div>
   <p class="tag">積んで、浮かべて、確かめる。</p></div><div class="symbols" role="img" aria-label="見習い、天秤、荷物の船"></div></div>
   <div class="title-menu"><div class="list"><button class="btn sub" id="go">おはなし</button><button class="btn" id="cont">連続プレイ</button><button class="btn sub" id="pick">選択プレイ</button>
-  <div class="row"><button class="btn sub" disabled>パーツの説明</button><button class="btn sub" disabled>遊び方と概要</button></div></div>
+  <div class="row"><button class="btn sub" id="parts">パーツの説明</button><button class="btn sub" id="howto">遊び方と概要</button></div></div>
   <div class="fine">© SIKUMI LAB　v${APP_VERSION} 試作</div></div>`,'cover');
   c.style.setProperty('--title-art',`url("${GRAPHICS.title}")`);
   $('#go',c).onclick=()=>{unlock();clack();stories()};
   $('#cont',c).onclick=()=>{unlock();clack();levels()};
-  $('#pick',c).onclick=()=>{unlock();clack();pick()}}
+  $('#pick',c).onclick=()=>{unlock();clack();pick()};
+  const guideCtx={show,topbar,wire,audio,title};
+  $('#parts',c).onclick=()=>{unlock();clack();partsScreen(guideCtx)};
+  $('#howto',c).onclick=()=>{unlock();clack();howtoScreen(guideCtx)}}
 // おはなし：序章を遊ぶ入口と、見た紙芝居の読み返し。何度でも見直せる
 const STORIES=[['王冠の謎',['s1','s2','s3','s4','s9','s10','s5']],['積み方',['s7']],['油の湖',['s8']],['銀色の湖',['s6']],['航路のメロディ',['s11','s12']]];
 function stories(){const c=show(`${topbar('おはなし')}<div class="list" style="max-width:none"><button class="btn" id="play">序章を遊ぶ</button>

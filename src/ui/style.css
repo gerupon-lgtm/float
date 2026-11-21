@@ -230,3 +230,19 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
   .mshelf{padding:10px 8px;gap:3px}.mshelf .chip{min-height:38px;padding:1px 3px}.mshelf .chip small{display:block;font-size:9px}.mshelf .chip img{height:22px}
   .melody-layout .say{min-height:0;font-size:12px}.melody-layout .row3 .btn{min-height:38px}
 }
+
+/* 遊び方と概要・パーツの説明（仮の見た目。Codex が仕上げる） */
+.guide-layout{overflow-y:auto}
+.guide{display:grid;gap:10px;width:100%;max-width:640px;margin:0 auto;padding-bottom:12px}
+.gsec{background:#fffaf0;border:2.5px solid var(--ink);border-radius:10px 14px 12px 8px;padding:8px 12px}
+.gsec h2{font-family:var(--disp);font-weight:400;font-size:19px;color:var(--red);margin:0 0 4px}
+.gsec p{margin:4px 0;font-size:15px;line-height:1.6;word-break:auto-phrase;text-wrap:pretty}
+.gsec b{font-family:var(--latin)}
+.gnote{font-size:13px!important;color:#5b6070}
+.gparts{display:grid;gap:8px}
+.gpart{display:grid;grid-template-columns:64px minmax(0,1fr);gap:10px;align-items:center;border-top:1px dashed #cdbf9f;padding-top:8px}
+.gpart:first-child{border-top:0;padding-top:0}
+.gpart>div>b{font-family:var(--body);font-size:16px}
+.gpart p{margin:2px 0 0;font-size:14px}
+.gart{width:64px;height:48px;display:grid;place-items:center}.gart img,.gart svg{max-width:100%;max-height:100%;object-fit:contain}
+@media (orientation:landscape) and (min-width:900px){.gparts{grid-template-columns:repeat(2,minmax(0,1fr))}.gpart:nth-child(2){border-top:0;padding-top:0}}
