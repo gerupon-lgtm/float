@@ -17,6 +17,9 @@ export const MELODY_ITEMS = {
   15: [15, '壺', 2, 2, '#d0743c'],
   20: [20, '石', 2, 1, '#9a9a92']
 };
+// 同じ重さ・同じマス数で、縦長の形もある（立てた麦袋、縦長の石）。積み方の面で山の高さに効く
+const TALL = { 5: [5, '麦袋', 1, 2, '#d8b56a'], 20: [20, '石', 1, 2, '#9a9a92'] };
+
 // 音階に乗らない重さのおとり（木は軽くて大きい）
 export const DECOYS = [[4, '木の板', 2, 1, '#c9955a'], [8, '木箱', 2, 2, '#b07a40'], [6, '木の板', 3, 1, '#c9955a']];
 
@@ -102,12 +105,15 @@ function buildRoute(seq, spec, r) {
   const loads = st.ports.filter(p => p.k === 'load').length;
   if (loads < (spec.loads?.[0] ?? 0) || loads > (spec.loads?.[1] ?? 9)) return null;
   if (new Set(seq).size < (spec.distinct ?? 3)) return null;
-  const ports = st.ports.map(p => (p.k === 'down' ? { k: 'down' } : { k: 'load', item: [...MELODY_ITEMS[p.w]] }));
+  // 形は重さごとに1つに決める（同じ重さで形が違うと、答えの荷が入れ替えられてしまうため）
+  const tall = spec.gates?.includes('bridge'), shapeOf = {};
+  const itemOf = w => [...(shapeOf[w] ??= (tall && TALL[w] && r() < 0.5 ? TALL[w] : MELODY_ITEMS[w]))];
+  const ports = st.ports.map(p => (p.k === 'down' ? { k: 'down' } : { k: 'load', item: itemOf(p.w) }));
   // 棚：答えの荷と、おとり2つ（音階に乗らない木と、答えにない重さの荷）
-  const answer = st.init.map(w => [...MELODY_ITEMS[w]]);
+  const answer = st.init.map(w => itemOf(w));
   const spare = Object.keys(MELODY_ITEMS).map(Number).filter(w => !st.init.includes(w));
   const decoys = [[...DECOYS[Math.floor(r() * DECOYS.length)]]];
-  if (spare.length) decoys.push([...MELODY_ITEMS[spare[Math.floor(r() * spare.length)]]]);
+  if (spare.length && answer.length < 4) decoys.push(itemOf(spare[Math.floor(r() * spare.length)]));
   const shelf = [...answer, ...decoys];
   for (let i = shelf.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [shelf[i], shelf[j]] = [shelf[j], shelf[i]]; }
   // 同じ重さが2つあっても別の荷を指すように、答えの荷は配列そのもので探す
@@ -121,14 +127,18 @@ function buildRoute(seq, spec, r) {
     route.cond[deep.i] = { k: 'shoal', d: deep.h / 2 };
   }
   if (spec.gates?.includes('bridge')) {
+    // 橋は、置き方を考えないと当たる海路に置く：通れる置き方があり、当たる置き方も十分にあること
     const cands = inner.filter(x => !route.cond[x.i]).sort((a, b) => a.h - b.h);
-    if (!cands.length) return null;
-    route.cond[cands[0].i] = { k: 'bridge', d: cands[0].h / 2 };
+    let chosen = false;
+    for (const x of cands) {
+      route.cond[x.i] = { k: 'bridge', d: x.h / 2 };
+      const st2 = placementStats(route, shelf, ids);
+      if (st2.ok > 0 && st2.bridge / st2.all >= (spec.mustPlace ?? 0.25)) { chosen = true; break; }
+      delete route.cond[x.i];
+    }
+    if (!chosen) return null;
   }
-  const placed = greedyPlacement(shelf, ids);
-  if (!placed) return null;
-  const sim = simulate(route, shelf, placed);
-  if (!sim.ok) return null;                   // 解けない問題は出さない（C-03）
+  if (!placementStats(route, shelf, ids).ok) return null;   // 解けない問題は出さない（C-03）
   return route;
 }
 
@@ -148,16 +158,43 @@ export function pickMelodies(spec, { count = 8, seed = 1, tries = 300000 } = {})
   return out;
 }
 
-// 公開する問題の検査：答えの積み方で、関門を通り、お題と一致すること（C-03）
-export function melodySolvable(route) {
+// 出航前の荷を、決めた順に、それぞれ好きな列へ落とすすべての置き方
+export function allPlacements(shelf, ids) {
+  const out = [];
+  const rec = (k, placed) => {
+    if (k === ids.length) { out.push(placed); return; }
+    for (let c = 0; c + shelf[ids[k]][2] <= CELLS; c++) {
+      const p = dropCargo(placed, shelf, ids[k], c);
+      if (p) rec(k + 1, [...placed, p]);
+    }
+  };
+  rec(0, []);
+  return out;
+}
+// 置き方ごとの結果：ok＝お題どおり通れる、bridge＝橋に当たる、all＝置き方の数
+export function placementStats(route, shelf, ids) {
+  let ok = 0, bridge = 0, all = 0;
+  for (const pl of allPlacements(shelf, ids)) {
+    all++;
+    const r = simulate(route, shelf, pl);
+    if (r.ok) ok++; else if (r.fault === 'bridge') bridge++;
+  }
+  return { ok, bridge, all };
+}
+// 答えの荷（出航時、下から順）の棚の番号
+export function answerIds(route) {
   const st = structureOf(route.target, 9, 9);
-  if (!st) return false;
+  if (!st) return null;
   const used = new Set(), ids = [];
   for (const w of st.init) {
     const id = route.items.findIndex((it, i) => !used.has(i) && it[0] === w);
-    if (id < 0) return false;
+    if (id < 0) return null;
     used.add(id); ids.push(id);
   }
-  const placed = greedyPlacement(route.items, ids);
-  return !!placed && simulate(route, route.items, placed).ok;
+  return ids;
+}
+// 公開する問題の検査：答えの順で、関門を通りお題と一致する置き方が少なくとも1つあること（C-03）
+export function melodySolvable(route) {
+  const ids = answerIds(route);
+  return !!ids && placementStats(route, route.items, ids).ok > 0;
 }

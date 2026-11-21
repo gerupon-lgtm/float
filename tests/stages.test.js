@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { STAGES } from '../src/content/stages.js';
 import { CHALLENGES } from '../src/content/challenges.js';
 import { isSolvable, problemOf } from '../src/logic/stage-check.js';
-import { melodySolvable } from '../src/logic/melody.js';
+import { melodySolvable, placementStats, answerIds } from '../src/logic/melody.js';
 
 for (const s of STAGES) {
   if (s.kind === 'melody') {
@@ -12,6 +12,11 @@ for (const s of STAGES) {
       if (s.generated) assert.ok(list.length >= 4, `${list.length}問しか作れない`);
       assert.equal(new Set(list.map(q => q.target.join(','))).size, list.length);
       for (const q of list) assert.ok(melodySolvable(q), q.target.join(' '));
+      // 橋のある面は、置き方を考えないと橋に当たる（置き方の1/4以上が当たる）
+      if (s.melody?.gates?.includes('bridge')) for (const q of list) {
+        const st = placementStats(q, q.items, answerIds(q));
+        assert.ok(st.bridge / st.all >= 0.25, `${q.target.join(' ')} は置き方が効かない`);
+      }
     });
     continue;
   }

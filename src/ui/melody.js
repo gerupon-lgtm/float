@@ -67,11 +67,32 @@ export function melodyStage(n, base, route, ctx) {
     // 看板：出航前と港での積み込みは「積載中」、荷下ろしは「荷下ろし中」。板の絵に文字を重ねる
     const sign = S.phase === 'prep' ? '積載中' : S.sign;
     if (sign) g += `<g class="mboard" aria-label="${sign}"><image href="${GRAPHICS['status-board']}" x="64" y="3" width="116" height="40" preserveAspectRatio="none"/><text x="122" y="29" font-size="14" text-anchor="middle" fill="#23304a" font-family="var(--disp)">${sign}</text></g>`;
-    for (let col = 0; col < CELLS && pick; col++) {
-      const x = cx + col * CW;
-      g += `<g class="col" data-col="${col}"><rect x="${x}" y="0" width="${CW}" height="${bottom - DECK}" fill="#efb32a" opacity=".001"/><path d="M${x + CW / 2 - 5} 32h10l-5 7z" fill="var(--red)" stroke="#23304a" stroke-width="1"/></g>`;
+    // 荷の山の段数。航海図の橋の「荷○段まで」と見比べる
+    g += `<g class="pile"><rect x="190" y="6" width="46" height="34" rx="5" fill="#fffaf0" stroke="#23304a" stroke-width="1.6"/><text x="213" y="19" font-size="9" font-weight="700" text-anchor="middle" fill="#23304a">荷の山</text><text x="213" y="35" font-size="13" font-weight="700" text-anchor="middle" fill="#23304a">${stackRows(S.placed, S.items)}段</text></g>`;
+    if (S.phase === 'prep' && S.sel == null && S.items.some((_, i) => i < items0 && !S.placed.some(p => p.id === i)))
+      g += `<text x="${HX + HW / 2}" y="60" font-size="10.5" font-weight="700" text-anchor="middle" fill="#23304a" stroke="#fffaf0" stroke-width="3" paint-order="stroke">右の棚から荷を選ぶ →</text>`;
+    // 荷を選んでいる間：積める範囲を光らせ、指を置いた列に落ちる位置の影を出す
+    if (pick) {
+      g += `<rect x="${cx}" y="46" width="${CELLS * CW}" height="${bottom - DECK - 46}" fill="#efb32a" opacity=".22" stroke="#d6452c" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+      for (let col = 1; col < CELLS; col++) g += `<path d="M${cx + col * CW} 46V${bottom - DECK}" stroke="#d6452c" stroke-width=".6" opacity=".5"/>`;
+      g += `<text x="${cx + CELLS * CW / 2}" y="60" font-size="10.5" font-weight="700" text-anchor="middle" fill="#23304a" stroke="#fffaf0" stroke-width="3" paint-order="stroke">ここを押して積む</text><g id="ghost"></g>`;
     }
     return `<svg viewBox="0 0 240 226" class="ship" role="img" aria-label="船と荷">${g}</svg>`;
+  }
+
+  // 落ちる位置の影（列 col に落としたとき）
+  function ghostSvg(col) {
+    if (S.sel == null || col == null) return '';
+    const it = S.items[S.sel], p = dropCargo(S.placed, S.items, S.sel, col), cx = HX + 8 * K, bottom = bottomY();
+    if (!p) return `<text x="${cx + CELLS * CW / 2}" y="76" font-size="11" font-weight="700" text-anchor="middle" fill="#d6452c" stroke="#fffaf0" stroke-width="3" paint-order="stroke">高すぎて積めない</text>`;
+    const x = cx + p.c * CW, y = bottom - DECK - (p.r + it[3]) * ROW, w = it[2] * CW, h = it[3] * ROW;
+    return `<image href="${cargoArt(it[1])}" x="${x}" y="${y}" width="${w}" height="${h}" preserveAspectRatio="none" opacity=".55"/><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="none" stroke="#d6452c" stroke-width="2" stroke-dasharray="4 2"/>`;
+  }
+  // 画面上の位置から、荷の中心がそこに来る列
+  function colAt(svg, e) {
+    const pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
+    const q = pt.matrixTransform(svg.getScreenCTM().inverse()), w = S.items[S.sel][2];
+    return Math.max(0, Math.min(CELLS - w, Math.round((q.x - (HX + 8 * K)) / CW - w / 2)));
   }
 
   // ---- 航海図＝深さの図 ----
@@ -143,8 +164,18 @@ export function melodyStage(n, base, route, ctx) {
     ctx.wire(c); bind(); playFx();
   }
   function bind() {
-    c.querySelectorAll('[data-i]').forEach(b => b.onclick = () => { au.unlock(); au.tap(); S.sel = +b.dataset.i; draw(); });
-    c.querySelectorAll('[data-col]').forEach(b => b.onclick = () => put(+b.dataset.col));
+    c.querySelectorAll('[data-i]').forEach(b => b.onclick = () => { au.unlock(); au.tap(); S.sel = S.sel === +b.dataset.i ? null : +b.dataset.i; draw(); });
+    // 船の上：押すと影が出て、指を動かすと影も動き、離すとその列に積む
+    const svg = $('.ship'), gh = () => $('#ghost');
+    if (svg && S.phase === 'prep' && S.sel != null) {
+      svg.style.touchAction = 'none'; svg.style.cursor = 'pointer';
+      let down = false;
+      svg.onpointerdown = e => { down = true; svg.setPointerCapture?.(e.pointerId); gh().innerHTML = ghostSvg(colAt(svg, e)); };
+      svg.onpointermove = e => { if (down || e.pointerType === 'mouse') gh().innerHTML = ghostSvg(colAt(svg, e)); };
+      svg.onpointerup = e => { if (!down) return; down = false; put(colAt(svg, e)); };
+      svg.onpointercancel = () => { down = false; gh().innerHTML = ''; };
+      svg.onpointerleave = e => { if (e.pointerType === 'mouse' && !down) gh().innerHTML = ''; };
+    }
     $('#undo').onclick = undo;
     $('#listen').onclick = () => { if (ctx.muted()) { say('音なしなら、航海図の♪の高さを見て進めばよい。'); return; } play(route.target.map(h => h / 2), false); };
     $('#go').onclick = () => (ended ? ended.act() : S.phase === 'prep' ? depart() : null);

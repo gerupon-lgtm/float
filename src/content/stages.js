@@ -39,8 +39,8 @@ export const STAGES=[
   lead:'港では、最後に積んだ荷から下ろします。航海図の♪（港の間を進むときの深さと音）を順にたどれるように、荷と積む順を考えましょう。',winner:'下ろすたびに浮いて、音が高くなったな。'},
  {id:'n2',name:'メロディ 2　積む港',kind:'melody',generated:true,melody:{notes:[5,5],loads:[1,1]},
   lead:'途中で荷を積む港があります。港で積んだ荷は、次の港で最初に下ります。',winner:'沈めば低く、浮けば高く。積む港で、メロディが上下するのだ。'},
- {id:'n3',name:'メロディ 3　浅瀬と橋',kind:'melody',generated:true,melody:{notes:[5,6],loads:[0,1],gates:['shoal','bridge']},
-  lead:'浅瀬と低い橋がある航路です。橋の下では、荷の山の高さにも気をつけましょう。',winner:'深さも、荷の高さも、メロディも。全部そろえて通ったな。'},
- {id:'n4',name:'メロディ 4　長い航路',kind:'melody',generated:true,melody:{notes:[6,7],loads:[2,2],gates:['shoal','bridge']},
-  lead:'長い航路です。積む港が2つあります。お題を聴いて、航海図をよく見て積みましょう。',winner:'見事だ。重さが深さになり、深さが音になる。仕組みが分かれば、歌も作れるのだ。'}
+ {id:'n3',name:'メロディ 3　浅瀬と橋',kind:'melody',generated:true,melody:{notes:[5,6],loads:[0,1],maxInit:4,gates:['shoal','bridge']},
+  lead:'浅瀬と低い橋がある航路です。橋の下は、荷の山が高いと通れません。どの列に積むかも考えましょう。',winner:'深さも、荷の高さも、メロディも。全部そろえて通ったな。'},
+ {id:'n4',name:'メロディ 4　長い航路',kind:'melody',generated:true,melody:{notes:[6,7],loads:[1,2],maxInit:4,gates:['shoal','bridge']},
+  lead:'長い航路です。積む港もあります。港で積む荷は、空いている中で一番低いところ（同じ高さなら左）に置かれます。',winner:'見事だ。重さが深さになり、深さが音になる。仕組みが分かれば、歌も作れるのだ。'}
 ];
