@@ -19,4 +19,4 @@ const html=readFileSync(join(dir,'index.html'),'utf8'),part=n=>new RegExp('<!-- 
 const page='<!doctype html>\n<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n'+part('head')+'<style>\n'+readFileSync(join(dir,'style.css'),'utf8')+'\n</style></head><body>\n'+part('body')+'<script type="module">\n'+js+'\n</script></body></html>\n';
 mkdirSync(join(root,'artifact'),{recursive:true});
 writeFileSync(join(root,'artifact/melody-visual.html'),page);
-console.log('artifact/melody-visual.html を作成（見本0.1.3、'+order.length+'モジュール、'+(Buffer.byteLength(page)/1024/1024).toFixed(1)+'MB）');
+console.log('artifact/melody-visual.html を作成（見本0.1.4、'+order.length+'モジュール、'+(Buffer.byteLength(page)/1024/1024).toFixed(1)+'MB）');

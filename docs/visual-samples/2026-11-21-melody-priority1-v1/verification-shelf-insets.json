@@ -1,0 +1,1455 @@
+{
+  "sampleVersion": "0.1.4",
+  "states": 28,
+  "records": [
+    {
+      "engine": "chromium",
+      "state": "five-choices",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        393,
+        851
+      ],
+      "page": [
+        393,
+        851
+      ],
+      "app": [
+        393,
+        851,
+        393,
+        851
+      ],
+      "shelf": [
+        106,
+        308,
+        106,
+        308
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 252.34375,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "石10\n1×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 60,
+          "bottom": 204.34375,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "壺15\n2×2マス",
+          "left": 10,
+          "right": 10,
+          "top": 108,
+          "bottom": 156.34375,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "木箱8\n2×2マス",
+          "left": 10,
+          "right": 10,
+          "top": 156,
+          "bottom": 108.34375,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "木の板4\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 204,
+          "bottom": 60.34375,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "two-choices",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        393,
+        851
+      ],
+      "page": [
+        393,
+        851
+      ],
+      "app": [
+        393,
+        851,
+        393,
+        851
+      ],
+      "shelf": [
+        106,
+        308,
+        106,
+        308
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "石10\n1×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 252.34375,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 60,
+          "bottom": 204.34375,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "one-choice",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        393,
+        851
+      ],
+      "page": [
+        393,
+        851
+      ],
+      "app": [
+        393,
+        851,
+        393,
+        851
+      ],
+      "shelf": [
+        106,
+        308,
+        106,
+        308
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 252.34375,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "empty",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        393,
+        851
+      ],
+      "page": [
+        393,
+        851
+      ],
+      "app": [
+        393,
+        851,
+        393,
+        851
+      ],
+      "shelf": [
+        106,
+        308,
+        106,
+        308
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "five-choices",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        414,
+        896
+      ],
+      "page": [
+        414,
+        896
+      ],
+      "app": [
+        414,
+        896,
+        414,
+        896
+      ],
+      "shelf": [
+        106,
+        332,
+        106,
+        332
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 275.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "石10\n1×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 60,
+          "bottom": 227.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "壺15\n2×2マス",
+          "left": 10,
+          "right": 10,
+          "top": 108,
+          "bottom": 179.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "木箱8\n2×2マス",
+          "left": 10,
+          "right": 10,
+          "top": 156,
+          "bottom": 131.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "木の板4\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 204,
+          "bottom": 83.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "two-choices",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        414,
+        896
+      ],
+      "page": [
+        414,
+        896
+      ],
+      "app": [
+        414,
+        896,
+        414,
+        896
+      ],
+      "shelf": [
+        106,
+        332,
+        106,
+        332
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "石10\n1×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 275.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 60,
+          "bottom": 227.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "one-choice",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        414,
+        896
+      ],
+      "page": [
+        414,
+        896
+      ],
+      "app": [
+        414,
+        896,
+        414,
+        896
+      ],
+      "shelf": [
+        106,
+        332,
+        106,
+        332
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 275.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "empty",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        414,
+        896
+      ],
+      "page": [
+        414,
+        896
+      ],
+      "app": [
+        414,
+        896,
+        414,
+        896
+      ],
+      "shelf": [
+        106,
+        332,
+        106,
+        332
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "five-choices",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        390,
+        844
+      ],
+      "page": [
+        390,
+        844
+      ],
+      "app": [
+        390,
+        844,
+        390,
+        844
+      ],
+      "shelf": [
+        106,
+        305,
+        106,
+        305
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 248.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "石10\n1×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 60,
+          "bottom": 200.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "壺15\n2×2マス",
+          "left": 10,
+          "right": 10,
+          "top": 108,
+          "bottom": 152.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "木箱8\n2×2マス",
+          "left": 10,
+          "right": 10,
+          "top": 156,
+          "bottom": 104.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "木の板4\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 204,
+          "bottom": 56.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "two-choices",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        390,
+        844
+      ],
+      "page": [
+        390,
+        844
+      ],
+      "app": [
+        390,
+        844,
+        390,
+        844
+      ],
+      "shelf": [
+        106,
+        305,
+        106,
+        305
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "石10\n1×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 248.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 60,
+          "bottom": 200.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "one-choice",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        390,
+        844
+      ],
+      "page": [
+        390,
+        844
+      ],
+      "app": [
+        390,
+        844,
+        390,
+        844
+      ],
+      "shelf": [
+        106,
+        305,
+        106,
+        305
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 248.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "empty",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        390,
+        844
+      ],
+      "page": [
+        390,
+        844
+      ],
+      "app": [
+        390,
+        844,
+        390,
+        844
+      ],
+      "shelf": [
+        106,
+        305,
+        106,
+        305
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "five-choices",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        375,
+        812
+      ],
+      "page": [
+        375,
+        812
+      ],
+      "app": [
+        375,
+        812,
+        375,
+        812
+      ],
+      "shelf": [
+        106,
+        288,
+        106,
+        288
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 232.09375,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "石10\n1×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 60,
+          "bottom": 184.09375,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "壺15\n2×2マス",
+          "left": 10,
+          "right": 10,
+          "top": 108,
+          "bottom": 136.09375,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "木箱8\n2×2マス",
+          "left": 10,
+          "right": 10,
+          "top": 156,
+          "bottom": 88.09375,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "木の板4\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 204,
+          "bottom": 40.09375,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "two-choices",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        375,
+        812
+      ],
+      "page": [
+        375,
+        812
+      ],
+      "app": [
+        375,
+        812,
+        375,
+        812
+      ],
+      "shelf": [
+        106,
+        288,
+        106,
+        288
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "石10\n1×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 232.09375,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 60,
+          "bottom": 184.09375,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "one-choice",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        375,
+        812
+      ],
+      "page": [
+        375,
+        812
+      ],
+      "app": [
+        375,
+        812,
+        375,
+        812
+      ],
+      "shelf": [
+        106,
+        288,
+        106,
+        288
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 232.09375,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "empty",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        375,
+        812
+      ],
+      "page": [
+        375,
+        812
+      ],
+      "app": [
+        375,
+        812,
+        375,
+        812
+      ],
+      "shelf": [
+        106,
+        288,
+        106,
+        288
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "five-choices",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        360,
+        740
+      ],
+      "page": [
+        360,
+        740
+      ],
+      "app": [
+        360,
+        740,
+        360,
+        740
+      ],
+      "shelf": [
+        106,
+        260,
+        106,
+        260
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 208,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "石10\n1×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 56,
+          "bottom": 164,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "壺15\n2×2マス",
+          "left": 10,
+          "right": 10,
+          "top": 100,
+          "bottom": 120,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "木箱8\n2×2マス",
+          "left": 10,
+          "right": 10,
+          "top": 144,
+          "bottom": 76,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "木の板4\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 188,
+          "bottom": 32,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "two-choices",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        360,
+        740
+      ],
+      "page": [
+        360,
+        740
+      ],
+      "app": [
+        360,
+        740,
+        360,
+        740
+      ],
+      "shelf": [
+        106,
+        260,
+        106,
+        260
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "石10\n1×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 208,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 56,
+          "bottom": 164,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "one-choice",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        360,
+        740
+      ],
+      "page": [
+        360,
+        740
+      ],
+      "app": [
+        360,
+        740,
+        360,
+        740
+      ],
+      "shelf": [
+        106,
+        260,
+        106,
+        260
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 208,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "chromium",
+      "state": "empty",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        360,
+        740
+      ],
+      "page": [
+        360,
+        740
+      ],
+      "app": [
+        360,
+        740,
+        360,
+        740
+      ],
+      "shelf": [
+        106,
+        260,
+        106,
+        260
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "state": "five-choices",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        393,
+        851
+      ],
+      "page": [
+        393,
+        851
+      ],
+      "app": [
+        393,
+        851,
+        393,
+        851
+      ],
+      "shelf": [
+        106,
+        308,
+        106,
+        308
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 252.328125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "石10\n1×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 60,
+          "bottom": 204.328125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "壺15\n2×2マス",
+          "left": 10,
+          "right": 10,
+          "top": 108,
+          "bottom": 156.328125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "木箱8\n2×2マス",
+          "left": 10,
+          "right": 10,
+          "top": 156,
+          "bottom": 108.328125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "木の板4\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 204,
+          "bottom": 60.328125,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "state": "two-choices",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        393,
+        851
+      ],
+      "page": [
+        393,
+        851
+      ],
+      "app": [
+        393,
+        851,
+        393,
+        851
+      ],
+      "shelf": [
+        106,
+        308,
+        106,
+        308
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "石10\n1×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 252.328125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 60,
+          "bottom": 204.328125,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "state": "one-choice",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        393,
+        851
+      ],
+      "page": [
+        393,
+        851
+      ],
+      "app": [
+        393,
+        851,
+        393,
+        851
+      ],
+      "shelf": [
+        106,
+        308,
+        106,
+        308
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 252.328125,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "state": "empty",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        393,
+        851
+      ],
+      "page": [
+        393,
+        851
+      ],
+      "app": [
+        393,
+        851,
+        393,
+        851
+      ],
+      "shelf": [
+        106,
+        308,
+        106,
+        308
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "state": "five-choices",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        414,
+        896
+      ],
+      "page": [
+        414,
+        896
+      ],
+      "app": [
+        414,
+        896,
+        414,
+        896
+      ],
+      "shelf": [
+        106,
+        332,
+        106,
+        332
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 275.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "石10\n1×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 60,
+          "bottom": 227.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "壺15\n2×2マス",
+          "left": 10,
+          "right": 10,
+          "top": 108,
+          "bottom": 179.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "木箱8\n2×2マス",
+          "left": 10,
+          "right": 10,
+          "top": 156,
+          "bottom": 131.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "木の板4\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 204,
+          "bottom": 83.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "state": "two-choices",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        414,
+        896
+      ],
+      "page": [
+        414,
+        896
+      ],
+      "app": [
+        414,
+        896,
+        414,
+        896
+      ],
+      "shelf": [
+        106,
+        332,
+        106,
+        332
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "石10\n1×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 275.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        },
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 60,
+          "bottom": 227.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "state": "one-choice",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        414,
+        896
+      ],
+      "page": [
+        414,
+        896
+      ],
+      "app": [
+        414,
+        896,
+        414,
+        896
+      ],
+      "shelf": [
+        106,
+        332,
+        106,
+        332
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [
+        {
+          "text": "麦袋5\n2×1マス",
+          "left": 10,
+          "right": 10,
+          "top": 12,
+          "bottom": 275.703125,
+          "textWidth": 47,
+          "textScroll": 47
+        }
+      ],
+      "errors": []
+    },
+    {
+      "engine": "webkit",
+      "state": "empty",
+      "version": "航路のメロディ 見本 0.1.4",
+      "viewport": [
+        414,
+        896
+      ],
+      "page": [
+        414,
+        896
+      ],
+      "app": [
+        414,
+        896,
+        414,
+        896
+      ],
+      "shelf": [
+        106,
+        332,
+        106,
+        332
+      ],
+      "board": [
+        726,
+        2167
+      ],
+      "boardHidden": "true",
+      "boardPointer": "none",
+      "buttons": [],
+      "errors": []
+    }
+  ]
+}

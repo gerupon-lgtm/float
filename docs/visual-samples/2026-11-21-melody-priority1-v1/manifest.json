@@ -1,7 +1,7 @@
 {
   "title": "FLOAT NOTES F-020 visual priority 1",
   "date": "2026-11-21",
-  "sampleVersion": "0.1.3",
+  "sampleVersion": "0.1.4",
   "status": "candidate; awaiting originator review; not integrated or deployed",
   "repository": "gerupon-lgtm/float",
   "baseCommit": "18472f1208a8b2f506dc3897f4931fe3bd8816dc",
@@ -26,12 +26,33 @@
       ]
     },
     {
+      "file": "cargo-board-v2.png",
+      "purpose": "flat cargo shelf background material, without raised frame",
+      "width": 726,
+      "height": 2167,
+      "bytes": 3016402,
+      "sha256": "9639641f381cc9ad004ec7332cbf91709d822827feb0593ed462dd3486359676",
+      "alpha": true,
+      "alphaRange": [
+        0,
+        253
+      ],
+      "source": "built-in image_gen edit of blank-status-board.png; byte-for-byte copy of generated PNG",
+      "generatedSource": "C:/Users/user/.codex/generated_images/01a1ab15-6bf8-77e2-84d8-64dcde91cd2d/exec-7506ba58-ed6e-4e0e-ac2c-da262b964eb6.png",
+      "opaqueBBoxAlpha128": [
+        9,
+        12,
+        716,
+        2155
+      ]
+    },
+    {
       "file": "correct-393x851.png",
       "purpose": "review screenshot, not runtime artwork",
       "width": 393,
       "height": 851,
-      "bytes": 240825,
-      "sha256": "12d35ba28c5c479c447f8269727dd7b8932bd9e340bf6bf9ad7c16ad83354fc9",
+      "bytes": 226798,
+      "sha256": "6dfa378ecc9b6989a5cdd556c51d2067799cab8f031a2e86561da2159ba2b867",
       "text": "HTML/SVG rendered UI text; screenshot only"
     },
     {
@@ -39,8 +60,8 @@
       "purpose": "review screenshot, not runtime artwork",
       "width": 393,
       "height": 851,
-      "bytes": 235100,
-      "sha256": "0a462b92f7bdaef71629fb7e0b48676d735f0a31616a8479fba137902aa9f6f6",
+      "bytes": 228035,
+      "sha256": "6e9e3098e13c2a2ed590ec4e5f2acf96d6da3e1415a93e57558b9542a94b1bce",
       "text": "HTML/SVG rendered UI text; screenshot only"
     },
     {
@@ -48,8 +69,8 @@
       "purpose": "review screenshot, not runtime artwork",
       "width": 393,
       "height": 851,
-      "bytes": 245650,
-      "sha256": "3b6ad5351510ce33a490c60222394d3c516595c4b423977e46f3cb6bd6fd0905",
+      "bytes": 231432,
+      "sha256": "868c3ad69c33a1a9eac7fc6da8f9b04a94da6df6866acbebba32d211a92ec268",
       "text": "HTML/SVG rendered UI text; screenshot only"
     },
     {
@@ -57,8 +78,8 @@
       "purpose": "review screenshot, not runtime artwork",
       "width": 393,
       "height": 851,
-      "bytes": 240302,
-      "sha256": "4cadca73ba4e263ed3677dcac9f181e292316a4ef03c7f2bb03f8bf784badeb0",
+      "bytes": 228292,
+      "sha256": "b61ce2d5afd1f6a2c36d288cdef7b79502cd851f1ea0ffc46a21ff0c1c21f28b",
       "text": "HTML/SVG rendered UI text; screenshot only"
     },
     {
@@ -66,8 +87,8 @@
       "purpose": "review screenshot, not runtime artwork",
       "width": 393,
       "height": 851,
-      "bytes": 245955,
-      "sha256": "bc6cc9c21b1bbae66bea903f2a0b835efd1c179a95a3046a1503662d462c9171",
+      "bytes": 231424,
+      "sha256": "117eb79fc752924a637c4810293ad6b40d4b6f77f8101cfc3c5346d68f31412a",
       "text": "HTML/SVG rendered UI text; screenshot only"
     },
     {
@@ -75,8 +96,8 @@
       "purpose": "review screenshot, not runtime artwork",
       "width": 414,
       "height": 896,
-      "bytes": 255505,
-      "sha256": "80fac0137820d2993aef9cd8a6db5fb466fb366d392eccf4d1a7ebd887ccd92e",
+      "bytes": 244251,
+      "sha256": "5fca09df443f95a98cc2c3ce64433dfe03d8dd677b750454e0b835a82a151a90",
       "text": "HTML/SVG rendered UI text; screenshot only"
     },
     {
@@ -84,8 +105,8 @@
       "purpose": "review screenshot, not runtime artwork",
       "width": 393,
       "height": 851,
-      "bytes": 242202,
-      "sha256": "13d28201bbcd8810de2b885854d97e32af507f46582f19083dfb4045452ffc47",
+      "bytes": 224728,
+      "sha256": "d201568b2c24134b816cd21c62db86ea8216948ac890b1019a150f5e2c990c86",
       "text": "HTML/SVG rendered UI text; screenshot only"
     }
   ],
@@ -125,6 +146,21 @@
         ]
       ],
       "states": 20,
+      "passed": true
+    },
+    "shelfInsets": {
+      "record": "verification-shelf-insets.json",
+      "states": 28,
+      "engines": [
+        "Chromium",
+        "WebKit"
+      ],
+      "minimumInsetPx": {
+        "left": 10,
+        "right": 10,
+        "top": 12,
+        "bottom": 12
+      },
       "passed": true
     },
     "chromium": {
@@ -198,8 +234,8 @@
     "when to introduce other liquids"
   ],
   "notes": [
-    "All labels and numbers are rendered by software. The sign PNG has no text.",
-    "At the originator request, the entire shelf background is a single large wood plank, without a character. It reuses the unchanged blank sign PNG via SVG rotation and scaling.",
+    "All labels and numbers are rendered by software. Both board PNGs have no text.",
+    "At the originator request, the entire shelf background is a single flat wooden plank, without a character. The cargo cards are inset from all four edges to avoid overlap with the outside contour.",
     "Existing prototype motions are retained; no priority-2 effects were added.",
     "The prototype copy is a presentation sample, not a new source of game rules.",
     "Google Fonts is requested as in the original prototype; local fallback fonts remain available."
