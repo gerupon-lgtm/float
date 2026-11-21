@@ -50,17 +50,27 @@ export function melodyStage(n, base, route, ctx) {
       <pattern id="ship-timber" patternUnits="userSpaceOnUse" width="17" height="11"><rect width="17" height="11" fill="#d89d50"/><path d="M0 10H17M3 3l9 -1" stroke="#8a5a2e" stroke-width="1.3"/><path d="M1 5l12 -1" stroke="#f2c771" stroke-width="1.4"/></pattern></defs>
       <rect width="${VW}" height="230" fill="var(--sky)"/><path d="M110 22q20 -14 40 0t40 0" fill="none" stroke="#fffaf0" stroke-width="5"/>
       <rect x="0" y="${WATER}" width="${VW}" height="100" fill="url(#mw)"/>`;
+    // 関門は幅 GW の絵で描き、航海中は右から左へ流して、船がその上・下を通る様子にする。当たったら船の前で止まる
+    const GW = 74, gpos = S.hit === 'shoal' || S.hit === 'bridge' ? ' transform="translate(-16 0)"' : '';
     if (gate?.k === 'shoal') {
       const ys = WATER + gate.d * U;
-      g += `<g class="gate"><path d="M${GX - 6} ${ys + 6}L${GX + 10} ${ys}H${VW}V230H${GX - 6}Z" fill="url(#ship-sand)" stroke="#8a5a2e" stroke-width="1.6"/>
-        <g font-size="10" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke"><text x="${(GX + VW) / 2 + 4}" y="${ys - 19}">浅瀬</text><text x="${(GX + VW) / 2 + 4}" y="${ys - 7}">${gate.d}まで</text></g></g>`;
+      g += `<g id="gate"${gpos}><path d="M${GX - 8} 230L${GX + 8} ${ys}H${GX + GW - 8}L${GX + GW + 8} 230Z" fill="url(#ship-sand)" stroke="#8a5a2e" stroke-width="1.6"/>
+        <g font-size="10" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke"><text x="${GX + GW / 2}" y="${ys - 19}">浅瀬</text><text x="${GX + GW / 2}" y="${ys - 7}">${gate.d}まで</text></g></g>`;
     }
     if (gate?.k === 'bridge') {
       const yb = WATER + gate.d * U - HULL * U;   // 橋の下面：深さがちょうど橋の値のときの船の縁の高さ
-      g += `<g class="gate"><rect x="${GX}" y="0" width="${VW - GX}" height="${yb}" fill="url(#ship-timber)"/><path d="M${GX} ${yb}H${VW}" stroke="#5f3b1c" stroke-width="3"/>
-        <g font-size="10" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke"><text x="${(GX + VW) / 2}" y="${yb - 18}">橋</text><text x="${(GX + VW) / 2}" y="${yb - 6}">${gate.d}以上</text></g></g>`;
+      g += `<g id="gate"${gpos}><rect x="${GX - 70}" y="${yb - 16}" width="${GW + 140}" height="16" fill="url(#ship-timber)" stroke="#5f3b1c" stroke-width="2"/>
+        <rect x="${GX - 70}" y="0" width="14" height="${yb}" fill="#8a5a2e"/><rect x="${GX + GW + 56}" y="0" width="14" height="${yb}" fill="#8a5a2e"/>
+        <path d="M${GX - 70} ${yb}H${GX + GW + 70}" stroke="#5f3b1c" stroke-width="3"/>
+        <g font-size="10" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke"><text x="${GX + GW / 2}" y="${yb - 22}">橋 ${gate.d}以上</text></g></g>`;
     }
-    g += `<g id="hullg"${S.hit === 'shoal' || S.hit === 'bridge' ? ' transform="translate(15 0)"' : ''}><image href="${GRAPHICS.boat}" x="${HX}" y="${top}" width="${HW}" height="${HULL * U}" preserveAspectRatio="none"/>
+    // 港に寄っている間は、右に岸壁を見せる
+    if (S.port) g += `<g id="quay"><path d="M${VW - 62} ${WATER - 30}H${VW}V230H${VW - 62}Z" fill="#b8ad9a" stroke="#5f3b1c" stroke-width="2"/>
+      <path d="M${VW - 62} ${WATER - 12}H${VW}M${VW - 62} ${WATER + 8}H${VW}M${VW - 62} ${WATER + 28}H${VW}M${VW - 40} ${WATER - 30}V${WATER - 12}M${VW - 18} ${WATER - 12}V${WATER + 8}M${VW - 46} ${WATER + 8}V${WATER + 28}" stroke="#7d7363" stroke-width="1.2"/>
+      <rect x="${VW - 62}" y="${WATER - 34}" width="62" height="6" fill="#8a5a2e"/><rect x="${VW - 54}" y="${WATER - 46}" width="8" height="12" rx="3" fill="#5f3b1c"/>
+      <rect x="${VW - 44}" y="${WATER - 74}" width="40" height="20" rx="3" fill="#d6452c" stroke="#5f3b1c" stroke-width="1.5"/><path d="M${VW - 24} ${WATER - 54}V${WATER - 34}" stroke="#5f3b1c" stroke-width="2.5"/>
+      <text x="${VW - 24}" y="${WATER - 59.5}" font-size="11.5" font-weight="700" text-anchor="middle" fill="#fffaf0">港${S.port}</text></g>`;
+    g += `<g id="hullg"><image href="${GRAPHICS.boat}" x="${HX}" y="${top}" width="${HW}" height="${HULL * U}" preserveAspectRatio="none"/>
       <rect x="${HX}" y="${WATER}" width="${HW}" height="${Math.max(0, bottom - WATER)}" fill="#3f97c0" opacity=".3"/>`;
     // 船の中（荷）は断面で見せる。水の色を荷に重ねないので、沈んでいるように見えない
     for (const [k, p] of S.placed.entries()) {
@@ -73,7 +83,7 @@ export function melodyStage(n, base, route, ctx) {
         <text x="${x + 10.5}" y="${y + 19.2}" font-size="11.5" font-weight="700" text-anchor="middle" fill="#23304a" font-family="Arial,sans-serif">${it[0]}</text></g></g>`;
     }
     g += `</g><line x1="0" x2="${HX}" y1="${WATER}" y2="${WATER}" stroke="#fffaf0" stroke-width="1.5" opacity=".8"/><line x1="${HX + HW}" x2="${VW}" y1="${WATER}" y2="${WATER}" stroke="#fffaf0" stroke-width="1.5" opacity=".8"/>`;
-    if (S.hit) g += `<text x="${GX + 2}" y="${S.hit === 'bridge' ? 58 : bottom + 20}" font-size="13" font-weight="700" text-anchor="middle" fill="#d6452c" stroke="#fffaf0" stroke-width="3.5" paint-order="stroke">ゴツン！</text>`;
+    if (S.hit) g += `<text x="${GX - 14}" y=""${S.hit === 'bridge' ? 58 : bottom + 20}" font-size="13" font-weight="700" text-anchor="middle" fill="#d6452c" stroke="#fffaf0" stroke-width="3.5" paint-order="stroke">ゴツン！</text>`;
     let sc = `<rect x="3" y="${WATER - 20}" width="52" height="${HULL * U + 30}" rx="6" fill="#fffaf0" stroke="#23304a" stroke-width="2"/><text x="29" y="${WATER - 7}" text-anchor="middle" font-size="10" font-weight="700" fill="#23304a">深さ・音</text>`;
     for (let i = 0; i <= 10; i++) {
       const y = WATER + i * U / 2;
@@ -202,7 +212,14 @@ export function melodyStage(n, base, route, ctx) {
   function playFx() {
     const f = S.fx; S.fx = null; if (!f) return;
     const hull = $('#hullg');
-    if (f.bump) { hull?.animate([{ transform: 'translate(-15px,0px)' }, { transform: 'translate(2px,0px)', offset: .7 }, { transform: 'translate(-3px,0px)', offset: .85 }, { transform: 'translate(0px,0px)' }], { duration: 650, easing: 'ease-in', composite: 'add' }); return; }
+    const gateEl = $('#gate'), VWn = S.phase === 'prep' ? 240 : 330, GXn = HX + HW + 16;
+    if (f.gatePass && gateEl) { gateEl.animate([{ transform: `translate(${VWn - GXn + 80}px,0px)` }, { transform: `translate(${-(GXn + 160)}px,0px)` }], { duration: f.gatePass, easing: 'linear', fill: 'forwards' }); return; }
+    if (f.gateHit && gateEl) {
+      gateEl.animate([{ transform: `translate(${VWn - GXn + 80}px,0px)` }, { transform: 'translate(-16px,0px)' }], { duration: f.gateHit, easing: 'ease-out', composite: 'replace' });
+      return;
+    }
+    if (f.quay) { $('#quay')?.animate([{ transform: 'translate(80px,0px)' }, { transform: 'translate(0px,0px)' }], { duration: 450, easing: 'ease-out' }); return; }
+    if (f.bump) { hull?.animate([{ transform: 'translate(0px,0px)' }, { transform: 'translate(-6px,0px)', offset: .3 }, { transform: 'translate(3px,0px)', offset: .65 }, { transform: 'translate(0px,0px)' }], { duration: 420, easing: 'ease-out' }); return; }
     if (f.drop != null) {
       $(`[data-n="${f.drop}"]`)?.animate([{ transform: `translate(0px, ${-f.fall}px)` }, { transform: 'translate(0px, 0px)' }], { duration: 380, easing: 'cubic-bezier(.55,0,.9,.55)' });
       hull?.animate([{ transform: `translate(0px, ${f.shift}px)` }, { transform: `translate(0px, ${f.shift}px)`, offset: .45 }, { transform: 'translate(0px, 0px)' }], { duration: 820, easing: 'ease-out' });
@@ -261,19 +278,27 @@ export function melodyStage(n, base, route, ctx) {
     const d = depth(), i = S.seg, fault = segmentFault(route, i, d, stackRows(S.placed, S.items));
     // 関門のある海路では、船の右に関門を出してから進む
     S.gate = route.cond?.[i] ? i : null;
-    if (S.gate != null) { draw(); await ctx.wait(650); if (!alive()) return; }
-    if (fault === 'shoal' || fault === 'bridge') { S.hit = fault; S.fx = { bump: true }; }
+    if (fault === 'shoal' || fault === 'bridge') {
+      // 関門が近づいてきて、船の前でぶつかる
+      S.fx = { gateHit: 900 }; draw(); await ctx.wait(900); if (!alive()) return;
+      S.hit = fault; S.fx = { bump: true };
+    }
     if (fault) return lose(FAULT[fault](i), fault === 'sink');
-    S.log.push(d); ring(d); say(`${i + 1}番目の海路。深さ${d.toNumber()}、「${noteName(d)}」。`, '航海の記録'); draw();
-    await ctx.wait(800); if (!alive()) return;
+    S.log.push(d); ring(d); say(`${i + 1}番目の海路。深さ${d.toNumber()}、「${noteName(d)}」。`, '航海の記録');
+    if (S.gate != null) {
+      // 関門が右から左へ流れ、船がその上（浅瀬）や下（橋）を通り抜ける
+      S.fx = { gatePass: 1700 }; draw(); await ctx.wait(1700); if (!alive()) return;
+      S.gate = null; draw();
+    } else { draw(); await ctx.wait(800); if (!alive()) return; }
     if (i >= route.ports.length) return arrive();
     const port = route.ports[i]; S.seg = i + 1;
+    S.port = i + 1; S.fx = { quay: true };   // 港に寄る間は岸壁を見せる
     if (port.k === 'down') {
       if (!S.placed.length) return lose('下ろす荷がなかったな。');
       const k = S.placed.length, it = S.items[S.placed[k - 1].id];
       say(`港に着きました。荷札${k}の${it[1]}（${it[0]}）を下ろします。`, '航海の記録');
       S.sign = '荷下ろし中'; draw(); au.wood(); await ctx.wait(600); if (!alive()) return;
-      await liftLast(); draw(); await ctx.wait(500); S.sign = null; draw(); await ctx.wait(250);
+      await liftLast(); draw(); await ctx.wait(500); S.sign = null; S.port = null; draw(); await ctx.wait(250);
       return sailSegment();
     }
     // 積む港：荷は空いている中で一番低い位置へ自動で置く。上から落ちてきて、船が沈む
@@ -281,7 +306,7 @@ export function melodyStage(n, base, route, ctx) {
     say(`港に着きました。${port.item[1]}（${port.item[0]}）を積み込みます。${base.tutorial ? '港で積んだ荷は、次の港で最初に下ります。' : ''}`, '航海の記録');
     S.sign = '積載中'; draw(); au.clack(); await ctx.wait(800); if (!alive()) return;
     if (!p) return lose('積む場所がなかったな。');
-    placeWithFx(p, 130); draw(); await ctx.wait(1200); S.sign = null;
+    placeWithFx(p, 130); draw(); await ctx.wait(1200); S.sign = null; S.port = null;
     return sailSegment();
   }
 
@@ -310,7 +335,7 @@ export function melodyStage(n, base, route, ctx) {
   }
 
   function lose(msg, sunk = false) {
-    S.phase = 'end'; S.sign = null;
+    S.phase = 'end'; S.sign = null; S.port = null;
     if (sunk) au.sink(); else au.miss();
     const r = R ? R.record('ng') : 'retry';
     say(msg);
@@ -319,7 +344,7 @@ export function melodyStage(n, base, route, ctx) {
   }
   function restart() {
     au.wood(); ended = null;
-    Object.assign(S, { items: route.items.map(x => [...x]), placed: [], sel: null, phase: 'prep', seg: 0, played: [], log: [], sign: null, fx: null, gate: null, hit: null });
+    Object.assign(S, { items: route.items.map(x => [...x]), placed: [], sel: null, phase: 'prep', seg: 0, played: [], log: [], sign: null, fx: null, gate: null, hit: null, port: null });
     if (base.tutorial) say(tutorialHint()); else say(`<span class="nar">${base.lead}</span>`, null);
     draw();
   }
