@@ -72,8 +72,8 @@ export function melodyStage(n, base, route, ctx) {
       <rect x="${VW - 44}" y="${WATER - 74}" width="40" height="20" rx="3" fill="#d6452c" stroke="#5f3b1c" stroke-width="1.5"/><path d="M${VW - 24} ${WATER - 54}V${WATER - 34}" stroke="#5f3b1c" stroke-width="2.5"/>
       <text x="${VW - 24}" y="${WATER - 59.5}" font-size="11.5" font-weight="700" text-anchor="middle" fill="#fffaf0">港${qn}</text></g>`;
     g += `<g id="hullg"><image href="${GRAPHICS.boat}" x="${HX}" y="${top}" width="${HW}" height="${HULL * U}" preserveAspectRatio="none"/>
-      <rect x="${HX}" y="${WATER}" width="${HW}" height="${Math.max(0, bottom - WATER)}" fill="#3f97c0" opacity=".3"/>`;
-    // 船の中（荷）は断面で見せる。水の色を荷に重ねないので、沈んでいるように見えない
+`;
+    // 船の中（荷）は断面で見せる。船体には水の色を重ねず、水面の高さは船体の外側の線で示す
     for (const [k, p] of S.placed.entries()) {
       const it = S.items[p.id], x = cx + p.c * CW, y = bottom - DECK - (p.r + it[3]) * ROW, w = it[2] * CW, h = it[3] * ROW;
       // 荷札（積んだ順の番号）と重さ。合計を伏せても、自分で足し算できるように重さは常に見せる
@@ -83,7 +83,9 @@ export function melodyStage(n, base, route, ctx) {
         <path d="M${x + 3} ${y + 10.8}H${x + 18}" stroke="#cdbf9f" stroke-width=".7"/>
         <text x="${x + 10.5}" y="${y + 19.2}" font-size="11.5" font-weight="700" text-anchor="middle" fill="#23304a" font-family="Arial,sans-serif">${it[0]}</text></g></g>`;
     }
-    g += `</g><line x1="0" x2="${HX}" y1="${WATER}" y2="${WATER}" stroke="#fffaf0" stroke-width="1.5" opacity=".8"/><line x1="${HX + HW}" x2="${VW}" y1="${WATER}" y2="${WATER}" stroke="#fffaf0" stroke-width="1.5" opacity=".8"/>`;
+    // 船の前を水面が横切る（喫水線）。外側から見た水の高さで、船が浮いていることを示す
+    g += `</g><line x1="0" x2="${VW}" y1="${WATER}" y2="${WATER}" stroke="#fffaf0" stroke-width="1.5" opacity=".85"/>
+      <path d="M${HX - 4} ${WATER}q6 -3 12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0" fill="none" stroke="#3f97c0" stroke-width="2.4" opacity=".9"/>`;
     if (S.hit) g += `<text x="${GX - 14}" y=""${S.hit === 'bridge' ? 58 : bottom + 20}" font-size="13" font-weight="700" text-anchor="middle" fill="#d6452c" stroke="#fffaf0" stroke-width="3.5" paint-order="stroke">ゴツン！</text>`;
     let sc = `<rect x="3" y="${WATER - 20}" width="52" height="${HULL * U + 30}" rx="6" fill="#fffaf0" stroke="#23304a" stroke-width="2"/><text x="29" y="${WATER - 7}" text-anchor="middle" font-size="10" font-weight="700" fill="#23304a">深さ・音</text>`;
     for (let i = 0; i <= 10; i++) {
