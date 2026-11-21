@@ -5,6 +5,7 @@ import { midiOf, onScale } from '../logic/pitch.js';
 import { CELLS, ROWMAX, dropCargo, stackRows } from '../logic/stacking.js';
 import { depthNow, weightOf, autoDrop, rowsUnderBridge, segmentFault, matchesTarget } from '../logic/melody.js';
 import { GRAPHICS, cargoArt } from './graphics.js';
+import { CHORDS, accompaniment } from '../logic/harmony.js';
 import { melodyArtDefs, melodyShoalArt, melodyBridgeArt, melodyQuayArt, melodyPileTag } from './melody-art.js';
 
 // 船の絵（144px）は、上の28pxが船の中の奥の面。船べりは上から28pxの位置なので、ここを船の高さ5に合わせる
@@ -344,16 +345,19 @@ export function melodyStage(n, base, route, ctx) {
   async function arrive() {
     if (S.placed.length) return lose('荷が残っているな。荷は全部下ろすのだ。');
     S.phase = 'replay'; S.gate = null; say('通しで聴きます。', '航海の記録'); draw(); await ctx.wait(500);
-    let all = true;
+    // お題どおりなら、通しで聴くときに和音の伴奏を付ける（クリア時のメロディ）
+    const oks = S.log.map((d, i) => matchesTarget(route, i, d)), all = oks.every(Boolean);
+    const acc = all ? accompaniment(S.log.map(d => midiOf(d.toNumber()))) : [];
     for (let i = 0; i < S.log.length; i++) {
       if (!alive()) return;
-      const d = S.log[i], ok = matchesTarget(route, i, d); all &&= ok;
+      const d = S.log[i], ok = oks[i];
       S.seg = i; S.played[i] = { ok, name: noteName(d), d: d.toNumber() }; draw();
-      au.bell(midiOf(d.toNumber()), 0.2, 0.7); await ctx.wait(520);
+      au.bell(midiOf(d.toNumber()), 0.2, 0.7); if (all) au.chord(CHORDS[acc[i]]);
+      await ctx.wait(520);
     }
     S.seg = S.log.length;
     if (!all) return lose(`港は回れたが、メロディがお題と違うな（赤い線）。${base.tutorial ? '積む順を逆にしてごらん。' : ''}`);
-    au.bell(HOME, 0.22, 1.6); await ctx.wait(900); if (!alive()) return;
+    au.bell(HOME, 0.22, 1.6); au.chord(CHORDS.I, 0.05, 1.6); await ctx.wait(900); if (!alive()) return;
     au.jingle(); S.phase = 'end';
     say(`<span class="eu">エウレカ！</span> ${base.winner}`);
     if (R) {

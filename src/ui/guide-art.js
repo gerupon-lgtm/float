@@ -3,12 +3,12 @@ import { AREA, HULL, SHIP, LIQUIDS, depthOf } from '../logic/physics.js';
 import { GRAPHICS } from './graphics.js';
 import { melodyArtDefs, melodyBridgeArt, melodyShoalArt, melodyPileTag } from './melody-art.js';
 
-const U = 15.6, WATER = 134, HX = 70, HW = 161.2;
+const GU = 15.6, WATER = 134, HX = 70, HW = 161.2;
 const number = x => String(Math.round(x * 100) / 100);
 const boat = depth => {
-  const top = WATER + depth * U - HULL * U;
-  return '<image href="' + GRAPHICS.boat + '" x="' + HX + '" y="' + (top - HULL * U * 28 / 116) +
-    '" width="' + HW + '" height="' + (HULL * U * 144 / 116) + '" preserveAspectRatio="none"/>';
+  const top = WATER + depth * GU - HULL * GU;
+  return '<image href="' + GRAPHICS.boat + '" x="' + HX + '" y="' + (top - HULL * GU * 28 / 116) +
+    '" width="' + HW + '" height="' + (HULL * GU * 144 / 116) + '" preserveAspectRatio="none"/>';
 };
 const sea = id => '<defs><pattern id="' + id + '" patternUnits="userSpaceOnUse" width="240" height="110" y="' + WATER +
   '"><image href="' + GRAPHICS['liquid-water'] + '" width="240" height="110" preserveAspectRatio="none"/></pattern></defs>' +
@@ -17,7 +17,7 @@ const waterline = '<path d="M0 134H62m176 0h92" stroke="#fffaf0" stroke-width="2
 
 export function calculationFigure() {
   // guide.js の既存の「重さ35」の例。同じ計算で船底から液面までを示す。
-  const weight = 35, depth = depthOf(weight, 'water'), bottom = WATER + depth * U;
+  const weight = 35, depth = depthOf(weight, 'water'), bottom = WATER + depth * GU;
   return '<figure class="guide-calculation"><div class="guide-figure-title">水での例</div>' +
     '<svg viewBox="0 50 330 174" role="img" aria-label="水中の船。沈む深さは液面から船底まで">' + sea('guide-calc-water') +
     boat(depth) + '<image href="' + GRAPHICS['cargo-stone'] + '" x="91" y="' + (bottom - 36) + '" width="41" height="28"/>' +
@@ -32,12 +32,12 @@ export function calculationFigure() {
 }
 
 export function gateFigures() {
-  const limit = HULL / 2, bottom = WATER + limit * U;
+  const limit = HULL / 2, bottom = WATER + limit * GU;
   return '<div class="guide-gates">' + ['shoal', 'bridge', 'lever'].map(kind => {
     const name = { shoal: '浅瀬', bridge: '低い橋', lever: '水中のレバー' }[kind];
     const condition = number(limit) + (kind === 'shoal' ? 'まで' : '以上');
     const before = kind === 'shoal' ? melodyShoalArt(150, 150, bottom) : '';
-    const after = kind === 'bridge' ? melodyBridgeArt(247.2, 74, WATER + limit * U - HULL * U - 3) : kind === 'lever'
+    const after = kind === 'bridge' ? melodyBridgeArt(247.2, 74, WATER + limit * GU - HULL * GU - 3) : kind === 'lever'
       ? '<image href="' + GRAPHICS['lever-arm'] + '" x="225" y="' + (bottom - 14) + '" width="65" height="43"/>' : '';
     return '<figure class="guide-gate"><figcaption><b>' + name + '</b><span>例：' + condition + '</span></figcaption>' +
       '<svg viewBox="0 0 330 226" role="img" aria-label="' + name + 'を、ちょうど深さ' + number(limit) + 'で通る例">' +

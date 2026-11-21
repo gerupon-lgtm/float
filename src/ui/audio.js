@@ -78,6 +78,12 @@ export class FloatAudio {
   bell(midi, gain = 0.2, length = 1.1) {
     if (this.ctx && !this.muted) this.#fm(hz(midi), gain, length, this.ctx.currentTime);
   }
+  // 伴奏の和音。やわらかいFM（変調を浅く）で、旋律より小さく鳴らす
+  chord(midis, gain = 0.045, length = 0.9) {
+    if (!this.ctx || this.muted) return;
+    const at = this.ctx.currentTime;
+    for (const m of midis) this.#fm(hz(m), gain, length, at, 1, 0.35, 0.02);
+  }
   wood(delay = 0) { this.drum('rim', 0.55, delay); }
   clack() { this.wood(0); this.wood(0.16); } // 拍子木
   tap() { this.drum('hat', 0.3); }

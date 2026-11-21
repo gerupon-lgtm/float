@@ -19,6 +19,19 @@ function visit(file) {
 }
 visit(join(root, 'src/ui/app.js'));
 
+// 1ページにまとめると、各ファイルの一番外側の名前が同じ場所に並ぶ。同じ名前があると読み込めないので、先に止める
+const owner = new Map();
+for (const file of order) {
+  const src = readFileSync(file, 'utf8');
+  for (const m of src.matchAll(/^(?:export )?(?:const|let|var|class|function|async function)\s+([A-Za-z_$][\w$]*)([^;\n]*)/gm)) {
+    const names = [m[1], ...[...m[2].matchAll(/,\s*([A-Za-z_$][\w$]*)\s*=/g)].map(x => x[1])];
+    for (const n of names) {
+      if (owner.has(n) && owner.get(n) !== file) throw new Error(`名前 ${n} が ${relative(root, owner.get(n))} と ${relative(root, file)} の両方にあります。1ページにまとめると衝突します。`);
+      owner.set(n, file);
+    }
+  }
+}
+
 const js = order.map(file => {
   const body = readFileSync(file, 'utf8')
     .replace(/^import .* from '\.[^']+';\r?\n/gm, '')
