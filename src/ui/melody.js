@@ -30,9 +30,9 @@ export function melodyStage(n, base, route, ctx) {
 
   function tutorialHint() {
     const k = S.placed.length;
-    if (k === 0) return '1、2、3…は立ち寄る港、♪の高さは港の間の深さと音。積む順は、最後の港から逆にたどると分かります。港4で深さ2→1、重さ10が下りる。それが一番下の荷です。';
-    if (k === 1) return '次は最初の♪。深さ2.5＝重さ25で、港1で深さ2へ浮くには5を下ろす。港では最後に積んだ荷から下りるので、5は一番上に積もう。';
-    return '荷を15積みました。出航して、♪をたどれるか確かめよう。';
+    if (k === 0) return '1、2、3…は立ち寄る港、♪の高さは港の間の深さと音だ。積む順は、最後の港から逆にたどってごらん。港4で深さ2から1へ浮く。重さ10が下りる。それが一番下の荷だ。';
+    if (k === 1) return '次は最初の♪だ。深さ2.5は重さ25。港1で深さ2へ浮くには、5を下ろせばよい。港では最後に積んだ荷から下りるから、5は一番上に積むのだ。';
+    return '重さ25になったな。出航して、♪をたどれるか確かめてごらん。';
   }
 
   // ---- 船 ----
@@ -146,7 +146,7 @@ export function melodyStage(n, base, route, ctx) {
     c.querySelectorAll('[data-i]').forEach(b => b.onclick = () => { au.unlock(); au.tap(); S.sel = +b.dataset.i; draw(); });
     c.querySelectorAll('[data-col]').forEach(b => b.onclick = () => put(+b.dataset.col));
     $('#undo').onclick = undo;
-    $('#listen').onclick = () => { if (ctx.muted()) { say('音なしでは、航海図の♪の高さを見て進めよう。'); return; } play(route.target.map(h => h / 2), false); };
+    $('#listen').onclick = () => { if (ctx.muted()) { say('音なしなら、航海図の♪の高さを見て進めばよい。'); return; } play(route.target.map(h => h / 2), false); };
     $('#go').onclick = () => (ended ? ended.act() : S.phase === 'prep' ? depart() : null);
   }
 
@@ -173,7 +173,7 @@ export function melodyStage(n, base, route, ctx) {
   function put(col) {
     if (S.sel == null) return;
     const p = dropCargo(S.placed, S.items, S.sel, col);
-    if (!p) { say(`高さ${ROWMAX}段を超えるので、そこには積めません。`); return; }
+    if (!p) { say(`そこに積むと、${ROWMAX}段を超えてしまうぞ。`); return; }
     au.unlock(); placeWithFx(p); S.sel = null; changed(460);
   }
   async function undo() { if (!S.placed.length || S.phase !== 'prep') return; await liftLast(); au.tap(); changed(0); }
@@ -194,7 +194,7 @@ export function melodyStage(n, base, route, ctx) {
 
   // ---- 航海 ----
   async function depart() {
-    if (!S.placed.length) { say('荷を積んでから出航しましょう。'); return; }
+    if (!S.placed.length) { say('荷を積んでから出航するのだ。'); return; }
     au.unlock();
     const before = bottomY();
     S.phase = 'sail'; S.seg = 0; S.log = [];
@@ -267,10 +267,11 @@ export function melodyStage(n, base, route, ctx) {
   function restart() {
     au.wood(); ended = null;
     Object.assign(S, { items: route.items.map(x => [...x]), placed: [], sel: null, phase: 'prep', seg: 0, played: [], log: [], sign: null, fx: null });
-    say(base.tutorial ? tutorialHint() : base.lead); draw();
+    if (base.tutorial) say(tutorialHint()); else say(`<span class="nar">${base.lead}</span>`, null);
+    draw();
   }
 
-  say(base.tutorial ? tutorialHint() : base.lead);
+  if (base.tutorial) say(tutorialHint()); else say(`<span class="nar">${base.lead}</span>`, null);
   draw();
   // 航海図の高さは枠の大きさで決まるので、配置が決まってから描き直す
   requestAnimationFrame(() => alive() && draw());
