@@ -148,6 +148,7 @@ export function melodyStage(n, base, route, ctx) {
   // ---- 航海図＝深さの図 ----
   // 縦は深さ（上ほど浅く、音は高い）。お題の点、浅瀬の海底、橋桁を同じ目盛りに描く。難しさによらず同じ情報量
   function chartSvg() {
+    // 橋の数字は橋桁の下寄せ。音符の棒（上へ約17）に重ならない高さに置く
     const tg = route.target, cnt = tg.length, x0 = 48, right = 352, step = (right - x0) / cnt;
     const box = $('.chartf'), maxCH = innerWidth > innerHeight ? 420 : 280;
     const CH = Math.max(200, Math.min(maxCH, box ? Math.round(box.clientHeight * 360 / Math.max(1, box.clientWidth)) : 230));
@@ -171,7 +172,7 @@ export function melodyStage(n, base, route, ctx) {
           <text x="${xc}" y="${B + 11}" font-size="9.5" text-anchor="middle" fill="#5f3b1c">浅瀬${cd.d}まで</text>`;
       if (cd?.k === 'bridge') g += `<path d="M${xa} ${T}H${xa + step}V${y(cd.d)}H${xa}Z" fill="url(#map-timber)" opacity=".85"/>
           <path d="M${xa} ${y(cd.d)}H${xa + step}" stroke="#5f3b1c" stroke-width="3"/>
-          <g font-size="9.5" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke"><text x="${xc}" y="${T + 12}">橋${cd.d}以上</text><text x="${xc}" y="${T + 24}">荷${rowsUnderBridge(cd.d)}段まで</text></g>`;
+          <g font-size="9.5" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke"><text x="${xc}" y="${Math.max(y(cd.d) - 36, T + 12)}">荷${rowsUnderBridge(cd.d)}段まで</text><text x="${xc}" y="${Math.max(y(cd.d) - 24, T + 24)}">橋${cd.d}以上</text></g>`;
       const r = S.played[i];
       if (r) {
         const color = r.ok ? '#2e7d5b' : '#bd3424', ry = y(r.d);
