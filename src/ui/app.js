@@ -16,7 +16,7 @@ import { classicStage } from './classic.js';
 import { howtoScreen, partsScreen } from './guide.js';
 import { lessonFigure } from './lesson.js';
 
-const APP_VERSION = '0.9.24';
+const APP_VERSION = '0.9.25';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -111,7 +111,7 @@ function finish(){stopRun();const run0=R,clear=run0.complete;const c=show(`${top
 function flow(){scene('s1',()=>scene('s2',()=>bal1(()=>scene('s3',()=>scene('s4',()=>bal2(()=>quiz(()=>scene('s9',()=>scene('s10',()=>scene('s5',()=>levels()))))))))))}
 // ---- 通信なしで使う仕組みと、新しい版の案内（F-012） ----
 function setupOffline(){if(!document.querySelector('meta[name="float-offline"]')||!('serviceWorker' in navigator))return;
-  const updates=createUpdateManager({serviceWorker:navigator.serviceWorker,currentVersion:APP_VERSION,canApply:()=>!G?.busy,reload:()=>location.reload(),
+  const updates=createUpdateManager({serviceWorker:navigator.serviceWorker,currentVersion:APP_VERSION,canApply:()=>!document.querySelector('.card:not(.leave) #go:disabled'),reload:()=>location.reload(),
     onChange:info=>{const n=document.getElementById('update-notice');if(!n)return;n.hidden=info?.status!=='ready'}});
   document.getElementById('update-apply').onclick=()=>updates.apply();
   updates.start().catch(()=>{/* 登録できない環境では、通信ありでそのまま遊べる */});

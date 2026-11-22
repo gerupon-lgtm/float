@@ -1,0 +1,131 @@
+{
+  "base": "57b50120ff15042fe5c7abb4135e82a66e7cfe13",
+  "version": "0.9.25",
+  "protectedFiles": [
+    {
+      "path": "src/content/challenges.js",
+      "sha256": "bd6a0f377606bd70fd2d7aaa47056d70fa7fdd29ebd52e3c9939aedca1d6af38"
+    },
+    {
+      "path": "src/content/fail-text.js",
+      "sha256": "2fb43d488574215116408b7174889ab6888c1e1811a55b189ed4e66754a1c2a8"
+    },
+    {
+      "path": "src/content/guide.js",
+      "sha256": "570844c50288672f05aa691763dd7723886b529370a221df9d59d9ec95f40895"
+    },
+    {
+      "path": "src/content/stages.js",
+      "sha256": "daa4a18f678b2a7f5b5b860af38593208a7a0dacc9d7135a9143598ff57a4ba5"
+    },
+    {
+      "path": "src/content/story.js",
+      "sha256": "15fbbe8ccec4818b058dce60745ea0cf87e39a36ac474972aca9921a3d0e9d44"
+    },
+    {
+      "path": "src/logic/fraction.js",
+      "sha256": "fb06c8842d93ce76108e4feb8acc4dac43b4b6fac25aee4a3e1f7b31e6390b27"
+    },
+    {
+      "path": "src/logic/generate.js",
+      "sha256": "e8c6f96d0a20f328689a8c537c0b9138f694cdcded9f867c18bc7d1b63ff7737"
+    },
+    {
+      "path": "src/logic/harmony.js",
+      "sha256": "53849f6e32b8d550680b1824b6b74f6341f23e877ad8b55519ad31cf89854595"
+    },
+    {
+      "path": "src/logic/melody.js",
+      "sha256": "671988ec225ced67bd93588bf1abaff73884cb538165b58b0206a5e580eea877"
+    },
+    {
+      "path": "src/logic/modes.js",
+      "sha256": "ba818b88f609059092fc4b4c2f775d90ae9200a16f372028d4c97894dd6f51da"
+    },
+    {
+      "path": "src/logic/physics.js",
+      "sha256": "951b5ff76863e4fabaf732755b5f8ced6f93d0bfd024dae5e76e72087761719b"
+    },
+    {
+      "path": "src/logic/pitch.js",
+      "sha256": "5988e320c4d81db32def22f6f58d88813689d72c5fbdf4a8245d075b4fa6cde1"
+    },
+    {
+      "path": "src/logic/stacking.js",
+      "sha256": "3a35e274d6db0352a4f6967e638647a0c68f3de92beb068247e06aea0f3d382a"
+    },
+    {
+      "path": "src/logic/stage-check.js",
+      "sha256": "30b7298c1f45bf0538cc3e04f91167327e03a4cd533633b935115ccd0b1be103"
+    },
+    {
+      "path": "src/pwa/worker.js",
+      "sha256": "ee5c6974ad8b2114090f3347b23908ce13f2573063959d66a248f1fced0c8928"
+    },
+    {
+      "path": "src/sound/psg-drums.js",
+      "sha256": "76e31b8a9dc67808a1290868e107788cf4cf2cd2bf540654b912d41fa8838f45"
+    },
+    {
+      "path": "src/sound/psg-ref.js",
+      "sha256": "846ba15a1b905abfe09af4c16ed46d9b57581090baa8fa13b8616f8e6e19b06f"
+    },
+    {
+      "path": "src/sound/psg-render.js",
+      "sha256": "037062198a2dced09e70df79166a1320ecdb2727a929e58fa20abba0be533f5d"
+    },
+    {
+      "path": "src/ui/art.js",
+      "sha256": "c4c46e1fc977451c8b1758b8efc26435f607baea762a07bd41a3f7931a2c24a8"
+    },
+    {
+      "path": "src/ui/audio.js",
+      "sha256": "ce6f37d90e646457d9600a96c868a9ef2b0f5508b99bfb1ea0223b86dce049e9"
+    },
+    {
+      "path": "src/ui/graphics.js",
+      "sha256": "1fce29bc2370c0f9f5c5c1117b1422da3e168afbcf3cb0b0eae1d5873e4e91e0"
+    },
+    {
+      "path": "src/ui/guide-art.js",
+      "sha256": "f9e89b84497116a262c8a042187784bfbd247dbbdbac0f88a88cbfab14b21c82"
+    },
+    {
+      "path": "src/ui/guide.js",
+      "sha256": "7d69d1f0ecf2fd03d8a729a89824ecbab048113f6364964f93e5329cdeab91f9"
+    },
+    {
+      "path": "src/ui/lesson.js",
+      "sha256": "3571e2028092179b23eb0889333ffed6b0a246acec35a258d55f6ed64def0b4b"
+    },
+    {
+      "path": "src/ui/melody-art.js",
+      "sha256": "ce02727972ced7fe6c34cb077a07a8f43b7d41b65f12c4fb9111a48dc596f3c9"
+    },
+    {
+      "path": "src/ui/melody.js",
+      "sha256": "d74ea595b6195b646770798a72098ebdece9c1c88232299538fc871423c6f876"
+    },
+    {
+      "path": "src/ui/update-manager.js",
+      "sha256": "286f128d28d8048230de312c55c32d4b5dfba40adc97cc54b07e656e85e6f724"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "state, band, coordinates, stop positions",
+      "sha256": "5354a62aadc121ad3441527674168d5c8d908510e014870b985094c8883579f5"
+    },
+    {
+      "name": "ghost and pointer mapping",
+      "sha256": "152193b6a57f158c5344c1e60c5835f105d94053dfd44b82fcd9b1f86642550a"
+    },
+    {
+      "name": "input, audio, durations, progression, judgments, saving",
+      "sha256": "c3e867f2fbb4958c34eb3e2e8bc4fd4e0663decf3078767713d2cb86d39ff084"
+    }
+  ],
+  "app": "version and broken update eligibility reference only",
+  "css": "classic-only additions",
+  "passed": true
+}

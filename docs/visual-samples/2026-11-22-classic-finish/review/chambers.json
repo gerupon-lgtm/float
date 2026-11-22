@@ -1,0 +1,19 @@
+{
+  "cases": [
+    {
+      "n": 10,
+      "liquid": "13.5",
+      "roomRemained": true,
+      "fixture": "same controller, queued waits, audio stub",
+      "passed": true
+    },
+    {
+      "n": 5,
+      "liquid": "0.8",
+      "roomRemained": true,
+      "fixture": "same controller, queued waits, audio stub",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

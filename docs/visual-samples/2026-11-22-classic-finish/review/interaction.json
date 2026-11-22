@@ -1,0 +1,91 @@
+{
+  "cases": 6,
+  "recordedPanelBounds": 240,
+  "records": [
+    {
+      "engine": "chromium",
+      "viewport": [
+        390,
+        664
+      ],
+      "pressed": "true",
+      "check": "\"✓\"",
+      "weight": [
+        45,
+        45
+      ],
+      "hit": true
+    },
+    {
+      "engine": "chromium",
+      "viewport": [
+        844,
+        390
+      ],
+      "pressed": "true",
+      "check": "\"✓\"",
+      "weight": [
+        45,
+        45
+      ],
+      "hit": true
+    },
+    {
+      "engine": "chromium",
+      "viewport": [
+        1366,
+        768
+      ],
+      "pressed": "true",
+      "check": "\"✓\"",
+      "weight": [
+        64,
+        64
+      ],
+      "hit": true
+    },
+    {
+      "engine": "webkit",
+      "viewport": [
+        390,
+        664
+      ],
+      "pressed": "true",
+      "check": "\"✓\"",
+      "weight": [
+        45,
+        45
+      ],
+      "hit": true
+    },
+    {
+      "engine": "webkit",
+      "viewport": [
+        844,
+        390
+      ],
+      "pressed": "true",
+      "check": "\"✓\"",
+      "weight": [
+        45,
+        45
+      ],
+      "hit": true
+    },
+    {
+      "engine": "webkit",
+      "viewport": [
+        1366,
+        768
+      ],
+      "pressed": "true",
+      "check": "\"✓\"",
+      "weight": [
+        64,
+        64
+      ],
+      "hit": true
+    }
+  ],
+  "passed": true
+}

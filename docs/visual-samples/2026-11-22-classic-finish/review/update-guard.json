@@ -1,0 +1,24 @@
+{
+  "cases": 3,
+  "records": [
+    {
+      "mode": "title",
+      "blockedWhileBusy": false,
+      "errors": [],
+      "passed": true
+    },
+    {
+      "mode": "sailing",
+      "blockedWhileBusy": true,
+      "errors": [],
+      "passed": true
+    },
+    {
+      "mode": "pre-chamber",
+      "blockedWhileBusy": true,
+      "errors": [],
+      "passed": true
+    }
+  ],
+  "passed": true
+}

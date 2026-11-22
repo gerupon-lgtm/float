@@ -7,6 +7,7 @@ import { rowsUnderBridge } from '../logic/melody.js';
 import { hintLevel, shoalText, shallowText, sinkText } from '../content/fail-text.js';
 import { GRAPHICS, cargoArt } from './graphics.js';
 import { melodyArtDefs, melodyShoalArt, melodyBridgeArt, melodyQuayArt, melodyPileTag } from './melody-art.js';
+import { classicArtDefs, classicCradleArt, classicLeverArt, classicChamberArt, classicChartLiquid, classicChartLever, classicChartChamber, classicHarborFlag, classicSafeBand } from './classic-art.js';
 
 const CL_BOAT_TOP = 28 / 116;
 const CL_NOTE = { 96: 'ド', 93: 'ラ', 91: 'ソ', 88: 'ミ', 86: 'レ', 84: 'ド', 81: 'ラ', 79: 'ソ', 76: 'ミ', 74: 'レ', 72: 'ド' };
@@ -68,12 +69,12 @@ export function classicStage(n, S, ctx) {
     const pick = st.phase === 'prep' && st.sel != null;
     const gpos = st.gateShift != null ? ` transform="translate(${st.gateShift} 0)"` : '';
     let g = `<defs><pattern id="cw" patternUnits="userSpaceOnUse" width="240" height="110" y="${WATER}"><image href="${GRAPHICS['liquid-' + st.liq]}" width="240" height="110" preserveAspectRatio="none"/></pattern>
-      ${melodyArtDefs()}</defs>
+      ${melodyArtDefs()}${classicArtDefs()}</defs>
       <rect width="${vw}" height="230" fill="var(--sky)"/><path d="M110 22q20 -14 40 0t40 0" fill="none" stroke="#fffaf0" stroke-width="5"/>
       <rect x="0" y="${WATER}" width="${vw}" height="100" fill="url(#cw)"/>`;
     // 出航前に台（船台）に載っている面：船の下に砂の斜面と台を描く
-    if (!st.floating) g += `<path d="M0 ${bottom + 1}H${HX + HW + 8}L${HX + HW + 70} 230H0Z" fill="var(--sand)" stroke="#23304a" stroke-width="2.5"/>
-      <path d="M${HX + 20} ${bottom}v10m${HW - 40} -10v10" stroke="#8a5a2e" stroke-width="7"/>`;
+    if (!st.floating) g += classicCradleArt(HX, HW, bottom);
+    if (st.sign === '入れ替え室') g += classicChamberArt(HX, HW, LIQUIDS[st.liq].c);
     if (gate?.k === 'shoal') {
       const ys = WATER + gate.d * U;
       g += `<g id="gate"${gpos}>${melodyShoalArt(GX, GW, ys)}
@@ -81,10 +82,8 @@ export function classicStage(n, S, ctx) {
     }
     if (gate?.k === 'lever') {
       const yl = WATER + gate.d * U;
-      g += `<g id="gate"${gpos}><path d="M${GX + 30} ${yl + 6}V230" stroke="#23304a" stroke-width="5"/>
-        <g id="arm"><image href="${GRAPHICS['lever-arm']}" x="${GX - 4}" y="${yl - 8}" width="68" height="26"/></g>
-        <path d="M${GX - 6} ${yl}H${GX + 66}" stroke="#d6452c" stroke-width="1.5" stroke-dasharray="4 3"/>
-        <text x="${GX + 30}" y="${Math.min(222, yl + 34)}" font-size="10" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#23304a" stroke-width="2.6" paint-order="stroke">レバー ${gate.d}以上</text></g>`;
+      g += `<g id="gate"${gpos}>${classicLeverArt(GX, yl)}</g>
+        <g class="classic-lever-caption"><path d="M${vw - 98} 47h94v21l-94-.5Z" fill="#fffaf0" stroke="#5f3b1c" stroke-width="1.2"/><text x="${vw - 51}" y="62" font-size="10" font-weight="700" text-anchor="middle" fill="#23304a">レバー ${gate.d}以上</text></g>`;
     }
     if (st.docked) g += `<g id="quay">${melodyQuayArt(vw, WATER)}
       <text x="${vw - 24}" y="${WATER - 59.5}" font-size="11.5" font-weight="700" text-anchor="middle" fill="#fffaf0">港</text></g>`;
@@ -155,16 +154,17 @@ export function classicStage(n, S, ctx) {
     let g = `<defs>
       <pattern id="cmap-sand" patternUnits="userSpaceOnUse" width="19" height="13"><rect width="19" height="13" fill="#e8c98a"/><path d="M1 4l7 -2m3 7l6 -1M2 12l4 -1" stroke="#b68a4d" stroke-width="1.2" opacity=".6"/></pattern>
       <pattern id="cmap-timber" patternUnits="userSpaceOnUse" width="17" height="11"><rect width="17" height="11" fill="#d89d50"/><path d="M0 10H17M3 3l9 -1" stroke="#8a5a2e" stroke-width="1.3"/><path d="M1 5l12 -1" stroke="#f2c771" stroke-width="1.4"/></pattern>
+      ${classicArtDefs()}
     </defs><rect width="360" height="${CH}" fill="#fff5df"/><text x="5" y="11" font-size="9" fill="#23304a">深さ 音</text>`;
     // 液体ごとの色（入れ替え室の列は、左が前の液体、右が後の液体）
     let liq = S.pre ?? S.start;
     cols.forEach((col, i) => {
       const xa = x0 + i * step;
       if (col.k === 'chamber') {
-        g += `<rect x="${xa}" y="${T}" width="${step / 2}" height="${HULL * DY}" fill="${CL_TINT[liq]}"/>`;
+        g += classicChartLiquid(xa, T, step / 2, HULL * DY, CL_TINT[liq]);
         liq = col.to;
-        g += `<rect x="${xa + step / 2}" y="${T}" width="${step / 2}" height="${HULL * DY}" fill="${CL_TINT[liq]}"/>`;
-      } else g += `<rect x="${xa}" y="${T}" width="${step}" height="${HULL * DY}" fill="${CL_TINT[liq]}"/>`;
+        g += classicChartLiquid(xa + step / 2, T, step / 2, HULL * DY, CL_TINT[liq]);
+      } else g += classicChartLiquid(xa, T, step, HULL * DY, CL_TINT[liq]);
     });
     for (let i = 0; i <= 10; i++) {
       const yy = y(i / 2);
@@ -177,11 +177,11 @@ export function classicStage(n, S, ctx) {
       if (col.k === 'shoal') g += `<path d="M${xa} ${y(col.d)}l${step / 4} -1l${step / 4} 1l${step / 4} -1l${step / 4} 1V${B}H${xa}Z" fill="url(#cmap-sand)" stroke="#8a5a2e" stroke-width="1.4"/>`;
       if (col.k === 'bridge') g += `<path d="M${xa} ${T}H${xa + step}V${y(col.d)}H${xa}Z" fill="url(#cmap-timber)" opacity=".85"/><path d="M${xa} ${y(col.d)}H${xa + step}" stroke="#5f3b1c" stroke-width="3"/>
         <g font-size="9.5" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke"><text x="${xc}" y="${Math.max(y(col.d) - 6, T + (grid ? 24 : 12))}">${col.d}以上</text>${grid ? `<text x="${xc}" y="${Math.max(y(col.d) - 18, T + 12)}">荷${rowsUnderBridge(col.d)}段まで</text>` : ''}</g>`;
-      if (col.k === 'lever') g += `<path d="M${xa + 4} ${y(col.d)}H${xa + step - 4}" stroke="#d6452c" stroke-width="2.4" stroke-dasharray="5 3"/><path d="M${xc} ${y(col.d)}V${B}" stroke="#23304a" stroke-width="2.5"/>
-        <circle cx="${xc}" cy="${y(col.d)}" r="3.5" fill="#d6452c" stroke="#23304a" stroke-width="1"/>
+      if (col.k === 'lever') g += `${classicChartLever(xa, y(col.d), step, B)}
         <text x="${xc}" y="${y(col.d) - 6}" font-size="9.5" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#23304a" stroke-width="2.6" paint-order="stroke">${col.d}以上</text>`;
       if (col.k === 'shoal') g += `<text x="${xc}" y="${y(col.d) - 5}" font-size="9.5" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke">${col.d}まで</text>`;
-      if (col.k === 'end') g += `<path d="M${xc - 8} ${T + 2}V${T + 30}" stroke="#23304a" stroke-width="2.5"/><path d="M${xc - 8} ${T + 2}l18 6l-18 6z" fill="#d6452c" stroke="#23304a" stroke-width="1.5"/>`;
+      if (col.k === 'chamber') g += classicChartChamber(xa, T, step, HULL * DY);
+      if (col.k === 'end') g += classicHarborFlag(xc, T);
       if (i > 0) g += `<path d="M${xa} ${T}V${B}" stroke="#8a5a2e" stroke-width="1" stroke-dasharray="3 3"/>`;
       const name = col.k === 'start' ? '出航' : col.k === 'end' ? '港' : CL_GATE[col.k];
       const sub = col.k === 'chamber' ? `${LIQUIDS[liq].n}→${LIQUIDS[col.to].n}` : col.k === 'start' ? LIQUIDS[liq].n : '';
@@ -191,7 +191,8 @@ export function classicStage(n, S, ctx) {
     });
     if (band) {
       const xa = x0 + step, w = (cnt - 2) * step;
-      g += `<rect x="${xa}" y="${y(band.lo)}" width="${w}" height="${Math.max(2, y(band.hi) - y(band.lo))}" fill="#2e7d5b" fill-opacity=".22" stroke="#2e7d5b" stroke-width="1.6" stroke-dasharray="5 3"/>
+      g += classicSafeBand(xa, y(band.lo), w, Math.max(2, y(band.hi) - y(band.lo)));
+      g += `
         <g font-size="9.5" font-weight="700" text-anchor="middle" fill="#1f5a40" stroke="#fffaf0" stroke-width="3" paint-order="stroke"><text x="${x0 + step / 2}" y="${y((band.lo + band.hi) / 2) - 2}">通れる深さ</text><text x="${x0 + step / 2}" y="${y((band.lo + band.hi) / 2) + 10}">${band.lo}〜${band.hi}</text></g>`;
     }
     // 今の船の位置と深さ（深さが見えるときだけ）
@@ -208,8 +209,8 @@ export function classicStage(n, S, ctx) {
     const prep = st.phase === 'prep', known = live() && st.floating, d = dNow();
     const used = new Set(st.placed.map(p => p.id));
     const chips = S.items.map((it, i) => grid
-      ? (used.has(i) ? '' : `<button class="chip ${st.sel === i ? 'on' : ''}" data-i="${i}" ${prep && !st.busy ? '' : 'disabled'}><img src="${cargoArt(it[1])}" alt=""><span>${it[1]}<b>${it[0]}</b><small>${it[2]}×${it[3]}マス</small></span></button>`)
-      : `<button class="chip ${st.on.has(i) ? 'on' : ''}" data-i="${i}" aria-pressed="${st.on.has(i)}" ${prep && !st.busy ? '' : 'disabled'}><img src="${cargoArt(it[1])}" alt=""><span>${it[1]}<b>${it[0]}</b><small>${st.on.has(i) ? '積んでいる' : '棚にある'}</small></span></button>`).join('');
+      ? (used.has(i) ? '' : `<button class="chip ${st.sel === i ? 'on' : ''}" data-i="${i}" ${prep && !st.busy ? '' : 'disabled'}><img src="${cargoArt(it[1])}" alt=""><span class="cargo-info"><span class="cargo-name">${it[1]}</span><b>${it[0]}</b><small>${it[2]}×${it[3]}マス</small></span></button>`)
+      : `<button class="chip ${st.on.has(i) ? 'on' : ''}" data-i="${i}" aria-pressed="${st.on.has(i)}" ${prep && !st.busy ? '' : 'disabled'}><img src="${cargoArt(it[1])}" alt=""><span class="cargo-info"><span class="cargo-name">${it[1]}</span><b>${it[0]}</b><small>${st.on.has(i) ? '積んでいる' : '棚にある'}</small></span></button>`).join('');
     const sub = R ? `<small class="sub">${R.position + 1}/${R.stageCount}面　<span id="ng">${ctx.ngText()}</span></small>` : '';
     c.innerHTML = `${ctx.topbar(`${S.name}${sub}`)}
       <div class="melody-plan">

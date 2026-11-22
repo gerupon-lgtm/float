@@ -320,3 +320,32 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 .classic-layout .say{height:88px;min-height:88px;overflow-y:auto}
 @media (orientation:portrait) and (max-height:700px){.classic-layout .say{height:78px;min-height:78px}}
 @media (orientation:landscape){.classic-layout .say{height:74px;min-height:74px}}
+
+/* classicの仕上げ。多い荷は2列の札にし、メロディ側の棚と操作は変えない。 */
+.classic-layout .mshelf .cargo-name{display:inline;font:inherit}
+.classic-layout .row3 .btn{height:46px;min-height:46px;line-height:1.25}
+.classic-layout .mid:has(.mshelf.many){grid-template-columns:minmax(0,1fr) 174px}
+.classic-layout .mid:has(.mshelf.many) .vessel{grid-template-rows:minmax(0,1fr) 28px}
+.classic-layout .mid:has(.mshelf.many) .tag-key{display:flex;align-items:center;justify-content:center;white-space:normal;line-height:12px;padding-inline:2px}
+.classic-layout .mshelf.many{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(44px,1fr);gap:4px;padding:8px;overflow:visible}
+.classic-layout .mshelf.many .chip{position:relative;display:block;min-height:44px;padding:4px;line-height:1.15}
+.classic-layout .mshelf.many .cargo-info{display:block}
+.classic-layout .mshelf.many .cargo-name{display:block;font-size:10.5px;line-height:1.2;text-align:center}
+.classic-layout .mshelf.many .chip img{position:absolute;left:4px;bottom:5px;width:18px;height:18px}
+.classic-layout .mshelf.many .chip b{display:block;margin:3px 0 0 20px;text-align:right;font:700 18px/1 Arial,sans-serif}
+.classic-layout .mshelf.many .chip.on b::before{content:"✓";font:900 10px/1 var(--body);margin-right:2px}
+.classic-layout .mshelf.many .chip small{display:none}
+@media (orientation:portrait) and (max-height:800px){
+  .card.classic-layout{grid-template-rows:auto minmax(150px,1fr) auto minmax(232px,1.08fr) auto auto}
+  .classic-layout .mshelf:not(.many){gap:3px;padding-block:8px}
+}
+@media (orientation:landscape) and (min-width:1024px){
+  .classic-layout .row3 .btn{height:52px;min-height:52px}
+  .classic-layout .mid:has(.mshelf.many){grid-template-columns:minmax(0,1fr) 252px}
+  .classic-layout .mshelf.many{padding:12px;gap:8px;grid-auto-rows:minmax(56px,1fr)}
+  .classic-layout .mshelf.many .chip{min-height:56px;padding:7px}
+  .classic-layout .mshelf.many .cargo-name{font-size:14px}
+  .classic-layout .mshelf.many .chip b{font-size:24px;margin-left:28px}
+  .classic-layout .mshelf.many .chip img{width:24px;height:24px;left:7px;bottom:7px}
+  .classic-layout .mshelf.many .chip.on b::before{font-size:13px}
+}
