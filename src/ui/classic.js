@@ -34,7 +34,15 @@ export function classicStage(n, S, ctx) {
   const id0 = ctx.token();
   const alive = () => ctx.alive(id0) && c.isConnected;
   const say = (h, who = 'アルキメデス') => { st.said = who ? `<span class="who">${who}</span>${h}` : h; const e = $('#say'); if (e) e.innerHTML = st.said; };
-  const intro = () => say(`<span class="nar">${S.lead}<br>深さ ＝ 重さ ÷（比重 × 底面積${S.area}）。船だけの重さは${SHIP}。</span>`, null);
+  // 最初の数面（S.band）：両方の関門を通れる深さの幅を、航路図と案内で示す
+  const band = (() => {
+    if (!S.band) return null;
+    const lo = Math.max(0, ...S.gates.filter(g => g.k === 'bridge' || g.k === 'lever').map(g => g.d));
+    const hi = Math.min(HULL, ...S.gates.filter(g => g.k === 'shoal').map(g => g.d));
+    return lo <= hi ? { lo, hi } : null;
+  })();
+  const gateLine = g => g.k === 'shoal' ? `浅瀬は${g.d}まで（深いとつかえる）` : g.k === 'bridge' ? `橋は${g.d}以上（浅いと当たる）` : g.k === 'lever' ? `レバーは${g.d}以上（浅いと届かない）` : '';
+  const intro = () => say(`<span class="nar">${S.lead}${band ? `${S.gates.map(gateLine).filter(Boolean).join('、')}。両方を通れるのは<b>深さ${band.lo}〜${band.hi}</b>（緑の帯）。` : ''}<br>深さ＝重さ÷（比重×底面積${S.area}）。船だけの重さ${SHIP}。</span>`, null);
 
   // 積み方の面以外の荷は、船の中に2マス幅で並べて見せる（重さの軽い順、1段に3つ）
   const shown = () => grid ? st.placed.map(p => ({ id: p.id, c: p.c, r: p.r, w: S.items[p.id][2], h: S.items[p.id][3] }))
@@ -181,6 +189,11 @@ export function classicStage(n, S, ctx) {
       g += `<text x="${xc}" y="${B + 14}" font-size="${name.length > 3 ? 9 : 10.5}" font-weight="700" text-anchor="middle" fill="${col.k === 'start' || col.k === 'end' ? '#23304a' : '#5f3b1c'}">${name}</text>`;
       if (sub) g += `<text x="${xc}" y="${B + 27}" font-size="9.5" text-anchor="middle" fill="#23304a">${sub}</text>`;
     });
+    if (band) {
+      const xa = x0 + step, w = (cnt - 2) * step;
+      g += `<rect x="${xa}" y="${y(band.lo)}" width="${w}" height="${Math.max(2, y(band.hi) - y(band.lo))}" fill="#2e7d5b" fill-opacity=".22" stroke="#2e7d5b" stroke-width="1.6" stroke-dasharray="5 3"/>
+        <g font-size="9.5" font-weight="700" text-anchor="middle" fill="#1f5a40" stroke="#fffaf0" stroke-width="3" paint-order="stroke"><text x="${x0 + step / 2}" y="${y((band.lo + band.hi) / 2) - 2}">通れる深さ</text><text x="${x0 + step / 2}" y="${y((band.lo + band.hi) / 2) + 10}">${band.lo}〜${band.hi}</text></g>`;
+    }
     // 今の船の位置と深さ（深さが見えるときだけ）
     if (st.floating && live()) {
       const xc = x0 + st.col * step + step / 2, dd = Math.min(dNow(), HULL);

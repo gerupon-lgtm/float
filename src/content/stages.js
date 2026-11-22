@@ -1,11 +1,11 @@
 // 面の定義。計算は src/logic に置き、ここは配置と文だけを持つ。数字は challenges.js の問題で決まる面がある。
 // items の1行は [重さ, 名前]。積み方の面は [重さ, 名前, 幅, 高さ, 色]
 export const STAGES=[
- {id:'w1',name:'水 1　はじめの航路',start:'water',cradle:true,generated:true,window:1,maxAnswers:4,on:[],gates:[{k:'shoal',x:300},{k:'bridge',x:560}],end:800,
+ {id:'w1',band:true,name:'水 1　はじめの航路',start:'water',cradle:true,generated:true,window:1,maxAnswers:4,on:[],gates:[{k:'shoal',x:300},{k:'bridge',x:560}],end:800,
   lead:'船を水に浮かべます。',winner:'見事に着いたな。浅瀬と低い橋の間には、ちょうどよい重さがあるのだ。'},
- {id:'w2',name:'水 2　細い水路',start:'water',cradle:true,generated:true,window:0.5,maxAnswers:3,on:[],gates:[{k:'bridge',x:300},{k:'shoal',x:560}],end:800,
+ {id:'w2',band:true,name:'水 2　細い水路',start:'water',cradle:true,generated:true,window:0.5,maxAnswers:3,on:[],gates:[{k:'bridge',x:300},{k:'shoal',x:560}],end:800,
   lead:'通れる深さの幅が、せまくなりました。',winner:'通れる幅がせまくても、重さを計算すれば通れるのだ。'},
- {id:'w3',name:'水 3　別の船',start:'water',cradle:true,generated:true,window:0.5,maxAnswers:3,areas:[8,12],on:[],gates:[{k:'shoal',x:300},{k:'bridge',x:560}],end:800,
+ {id:'w3',band:true,name:'水 3　別の船',start:'water',cradle:true,generated:true,window:0.5,maxAnswers:3,areas:[8,12],on:[],gates:[{k:'shoal',x:300},{k:'bridge',x:560}],end:800,
   lead:'今度は船の底面積が違います。',winner:'底が広い船ほど、同じ重さでも浅く沈むのだ。'},
  {id:'w4',name:'水 4　積み方',intro:['s7'],start:'water',cradle:true,grid:true,generated:true,count:4,gap:1,on:[],gates:[{k:'bridge',x:320}],end:640,
   lead:'荷はすべて運びます。荷を選び、積む列をタップしましょう。',winner:'沈み方だけでなく、積み方も大事なのだ。軽い木ほど、場所をとるぞ。'},
