@@ -3,7 +3,7 @@
 import { SHIP, HULL, depthFraction } from '../logic/physics.js';
 import { midiOf, onScale } from '../logic/pitch.js';
 import { CELLS, ROWMAX, dropCargo, stackRows } from '../logic/stacking.js';
-import { depthNow, weightOf, autoDrop, rowsUnderBridge, segmentFault, matchesTarget } from '../logic/melody.js';
+import { envOf, depthNow, weightOf, autoDrop, rowsUnderBridge, segmentFault, matchesTarget } from '../logic/melody.js';
 import { GRAPHICS, cargoArt } from './graphics.js';
 import { CHORDS, accompaniment } from '../logic/harmony.js';
 import { melodyArtDefs, melodyShoalArt, melodyBridgeArt, melodyQuayArt, melodyPileTag } from './melody-art.js';
@@ -24,7 +24,8 @@ export function melodyStage(n, base, route, ctx) {
   const items0 = route.items.length;
   const showLive = () => level === 'free' || S.phase !== 'prep';
   const showWeight = () => showLive() || level === 'normal';
-  const depth = () => depthNow(S.items, S.placed);
+  const env = envOf(route), LIQ_NAME = { water: '水', oil: '油' }[env.liq];
+  const depth = () => depthNow(S.items, S.placed, route);
   const ring = d => au.bell(midiOf(Math.min(d.toNumber(), HULL)), 0.2, 0.9);
   const c = ctx.show('', 'melody-layout');
   const $ = s => c.querySelector(s);
@@ -42,7 +43,7 @@ export function melodyStage(n, base, route, ctx) {
   // ---- 船 ----
   // 本番の船の絵と寸法（幅124・高さ60＝深さ5、1列18、1段16、甲板8）を1.3倍で描く
   const K = 1.3, U = 12 * K, ROW = 16 * K, DECK = 8 * K, CW = 18 * K, HW = 124 * K, HX = 70, WATER = 134;
-  const shownDepth = () => (showLive() ? depth() : depthFraction(SHIP, 'water'));
+  const shownDepth = () => (showLive() ? depth() : depthFraction(env.ship, env.liq));
   const bottomY = () => WATER + Math.min(shownDepth().toNumber(), HULL + 0.6) * U;
   // 発案者了承（2026-11-21）：橋の高さに届く荷の先端まで進んで止める。
   // 当たるかどうかは segmentFault の結果を使い、ここでは絵の接触位置だけを求める。
@@ -60,7 +61,7 @@ export function melodyStage(n, base, route, ctx) {
     const pick = S.phase === 'prep' && S.sel != null, cx = HX + 8 * K;
     // 出航したら棚を隠し、右に今の海路の関門（浅瀬・橋）を描く
     const VW = S.phase === 'prep' ? 240 : 330, GX = HX + HW + 16, gate = S.gate != null ? route.cond?.[S.gate] : null;
-    let g = `<defs><pattern id="mw" patternUnits="userSpaceOnUse" width="240" height="110" y="${WATER}"><image href="${GRAPHICS['liquid-water']}" width="240" height="110" preserveAspectRatio="none"/></pattern>
+    let g = `<defs><pattern id="mw" patternUnits="userSpaceOnUse" width="240" height="110" y="${WATER}"><image href="${GRAPHICS['liquid-' + env.liq]}" width="240" height="110" preserveAspectRatio="none"/></pattern>
       ${melodyArtDefs()}</defs>
       <rect width="${VW}" height="230" fill="var(--sky)"/><path d="M110 22q20 -14 40 0t40 0" fill="none" stroke="#fffaf0" stroke-width="5"/>
       <rect x="0" y="${WATER}" width="${VW}" height="100" fill="url(#mw)"/>`;
@@ -110,6 +111,8 @@ export function melodyStage(n, base, route, ctx) {
       sc += `<path d="M7 ${y}h${i % 2 ? 5 : 9}" stroke="#23304a" stroke-width="2"/><text x="19" y="${y + 3.5}" font-size="9.5" font-weight="700" fill="#23304a">${i % 2 ? '' : i / 2}</text><text x="${i % 2 ? 40 : 31}" y="${y + 3.5}" font-size="9" font-weight="700" fill="#23304a">${NOTE[midiOf(i / 2)]}</text>`;
     }
     g += sc;
+    // 液体と船の重さ。油の航路は小舟（船だけの重さ8）
+    g += `<text x="${VW - 5}" y="219" font-size="10" font-weight="700" text-anchor="end" fill="#fffaf0" stroke="#23304a" stroke-width="2.6" paint-order="stroke">${LIQ_NAME} 比重${env.liq === 'oil' ? '0.8' : '1'}・船だけ${env.ship}</text>`;
     if (live && !d.gt(HULL)) g += `<path d="M${HX - 1} ${bottom}l-8 -5v10z" fill="var(--red)" stroke="#23304a" stroke-width="1.2"/>`;
     // 看板：出航前と港での積み込みは「積載中」、荷下ろしは「荷下ろし中」。板の絵に文字を重ねる
     const sign = S.phase === 'prep' ? '積載中' : S.sign;
@@ -208,7 +211,7 @@ export function melodyStage(n, base, route, ctx) {
     c.innerHTML = `${ctx.topbar(`${base.name}${sub}`)}
       <div class="melody-plan">
       <section class="frame chartf" aria-label="航海図">${chartSvg()}</section>
-      <section class="stat mstat" aria-label="船の手がかり"><div>船全体の重さ<strong>${showWeight() ? weightOf(S.items, S.placed) : '？'}</strong></div><div>沈む深さ<strong>${live ? (d.gt(HULL) ? '沈没' : d.toNumber()) : '？'}</strong></div><div>音<strong>${live && !d.gt(HULL) ? noteName(d) : '？'}</strong></div></section>
+      <section class="stat mstat" aria-label="船の手がかり"><div>船全体の重さ<strong>${showWeight() ? weightOf(S.items, S.placed, route) : '？'}</strong></div><div>沈む深さ<strong>${live ? (d.gt(HULL) ? '沈没' : d.toNumber()) : '？'}</strong></div><div>音<strong>${live && !d.gt(HULL) ? noteName(d) : '？'}</strong></div></section>
       <div class="say" id="say" role="status" aria-live="polite">${S.said}</div>
       </div><div class="melody-work">
       <section class="mid${prep ? '' : ' sailing'}" aria-label="船と荷の棚"><div class="frame vessel">${shipSvg()}<span class="tag-key">荷札：上が順番／下が重さ</span></div>${prep ? `<div class="mshelf" aria-label="荷を選ぶ"><img class="shelf-board" src="${GRAPHICS['cargo-board']}" alt="" aria-hidden="true" draggable="false">${chips || '<p class="empty">荷をすべて<br>積みました</p>'}</div>` : ''}</section>

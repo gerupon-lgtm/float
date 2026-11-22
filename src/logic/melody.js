@@ -4,9 +4,11 @@ import { Fraction } from './fraction.js';
 import { SHIP, HULL, depthFraction, exact } from './physics.js';
 import { CELLS, ROWMAX, dropCargo, stackRows, pileClearsBridge } from './stacking.js';
 
-const LIQ = 'water';
+// 航路ごとの液体と船。油の航路は軽い小舟（船だけの重さ8）に乗り換え、空荷の深さを水と同じ1（ソ）にそろえる
+export const MELODY_LIQUIDS = { water: { liq: 'water', ship: SHIP, step: 5 }, oil: { liq: 'oil', ship: 8, step: 4 } };
+export const envOf = route => MELODY_LIQUIDS[route?.liq ?? 'water'];
 export const STEP_WEIGHT = 5;                 // 深さ0.5の重さ（水・底面積10）
-export const EMPTY_H = SHIP / STEP_WEIGHT;    // 空荷の h（深さ1）
+export const EMPTY_H = 2;                     // 空荷の h（深さ1）。水も油も同じ
 export const depthOfH = h => new Fraction(BigInt(h), 2n);
 export const hOfDepth = d => d.mul(2).toNumber();
 
@@ -22,9 +24,18 @@ const TALL = { 5: [5, '麦袋', 1, 2, '#d8b56a'], 20: [20, '石', 1, 2, '#9a9a92
 
 // 音階に乗らない重さのおとり（木は軽くて大きい）
 export const DECOYS = [[4, '木の板', 2, 1, '#c9955a'], [8, '木箱', 2, 2, '#b07a40'], [6, '木の板', 3, 1, '#c9955a']];
+// 油の航路の荷：深さ0.5が重さ4なので、4の倍数。水で使った5の倍数の荷が、ここではおとりになる
+export const OIL_ITEMS = {
+  4: [4, '木の板', 2, 1, '#c9955a'],
+  8: [8, '木箱', 2, 2, '#b07a40'],
+  12: [12, '壺', 3, 1, '#d0743c'],
+  16: [16, '石', 2, 1, '#9a9a92']
+};
+const OIL_TALL = { 4: [4, '木の板', 1, 2, '#c9955a'], 16: [16, '石', 1, 2, '#9a9a92'] };
+const OIL_DECOYS = [[5, '麦袋', 2, 1, '#d8b56a'], [10, '石', 1, 1, '#9a9a92'], [15, '壺', 2, 2, '#d0743c']];
 
-export const weightOf = (items, placed) => SHIP + placed.reduce((a, p) => a + items[p.id][0], 0);
-export const depthNow = (items, placed) => depthFraction(weightOf(items, placed), LIQ);
+export const weightOf = (items, placed, route) => envOf(route).ship + placed.reduce((a, p) => a + items[p.id][0], 0);
+export const depthNow = (items, placed, route) => depthFraction(weightOf(items, placed, route), envOf(route).liq);
 
 // 港で積む荷は、空いている中で一番低い位置へ自動で置く（同じ高さなら左）
 export function autoDrop(placed, items, id) {
@@ -57,7 +68,7 @@ export const matchesTarget = (route, i, depth) => depth.cmp(depthOfH(route.targe
 export function simulate(route, shelf, placed0) {
   const items = shelf.map(x => [...x]), placed = placed0.map(p => ({ ...p })), log = [];
   for (let i = 0; ; i++) {
-    const d = depthNow(items, placed), fault = segmentFault(route, i, d, stackRows(placed, items));
+    const d = depthNow(items, placed, route), fault = segmentFault(route, i, d, stackRows(placed, items));
     if (fault) return { ok: false, fault, seg: i, log };
     log.push(d);
     if (i >= route.ports.length) break;
@@ -77,13 +88,13 @@ export function simulate(route, shelf, placed0) {
 const random = seed => () => (seed = (seed * 1664525 + 1013904223) >>> 0) / 2 ** 32;
 
 // h の並びから、出航時の荷（下から上）と港の動きを決める。成り立たなければ null
-export function structureOf(seq, maxStep = 4, maxInit = 3) {
+export function structureOf(seq, maxStep = 4, maxInit = 3, step = STEP_WEIGHT) {
   if (seq.at(-1) !== EMPTY_H) return null;
   const loadStack = [], pops = [], ports = [];
   for (let i = 0; i + 1 < seq.length; i++) {
     const dh = seq[i + 1] - seq[i];
     if (dh === 0 || Math.abs(dh) > maxStep) return null;
-    const w = Math.abs(dh) * STEP_WEIGHT;
+    const w = Math.abs(dh) * step;
     if (dh > 0) { loadStack.push(w); ports.push({ k: 'load', w }); continue; }
     ports.push({ k: 'down' });
     if (loadStack.length) { if (loadStack.pop() !== w) return null; } else pops.push(w);
@@ -100,25 +111,27 @@ export function greedyPlacement(shelf, ids) {
 }
 
 function buildRoute(seq, spec, r) {
-  const st = structureOf(seq, spec.maxStep ?? 4, spec.maxInit ?? 3);
+  const env = MELODY_LIQUIDS[spec.liq ?? 'water'], table = env.liq === 'oil' ? OIL_ITEMS : MELODY_ITEMS, tallT = env.liq === 'oil' ? OIL_TALL : TALL;
+  const st = structureOf(seq, spec.maxStep ?? 4, spec.maxInit ?? 3, env.step);
   if (!st) return null;
   const loads = st.ports.filter(p => p.k === 'load').length;
   if (loads < (spec.loads?.[0] ?? 0) || loads > (spec.loads?.[1] ?? 9)) return null;
   if (new Set(seq).size < (spec.distinct ?? 3)) return null;
+  if (spec.minLeap && Math.max(...seq.slice(1).map((h, i) => Math.abs(h - seq[i]))) < spec.minLeap) return null;   // 大きく跳ぶ音を含む
   // 形は重さごとに1つに決める（同じ重さで形が違うと、答えの荷が入れ替えられてしまうため）
   const tall = spec.gates?.includes('bridge'), shapeOf = {};
-  const itemOf = w => [...(shapeOf[w] ??= (tall && TALL[w] && r() < 0.5 ? TALL[w] : MELODY_ITEMS[w]))];
+  const itemOf = w => [...(shapeOf[w] ??= (tall && tallT[w] && r() < 0.5 ? tallT[w] : table[w]))];
   const ports = st.ports.map(p => (p.k === 'down' ? { k: 'down' } : { k: 'load', item: itemOf(p.w) }));
   // 棚：答えの荷と、おとり2つ（音階に乗らない木と、答えにない重さの荷）
   const answer = st.init.map(w => itemOf(w));
-  const spare = Object.keys(MELODY_ITEMS).map(Number).filter(w => !st.init.includes(w));
-  const decoys = [[...DECOYS[Math.floor(r() * DECOYS.length)]]];
+  const spare = Object.keys(table).map(Number).filter(w => !st.init.includes(w));
+  const decoyList = env.liq === 'oil' ? OIL_DECOYS : DECOYS, decoys = [[...decoyList[Math.floor(r() * decoyList.length)]]];
   if (spare.length && answer.length < 4) decoys.push(itemOf(spare[Math.floor(r() * spare.length)]));
   const shelf = [...answer, ...decoys];
   for (let i = shelf.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [shelf[i], shelf[j]] = [shelf[j], shelf[i]]; }
   // 同じ重さが2つあっても別の荷を指すように、答えの荷は配列そのもので探す
   const ids = answer.map(a => shelf.indexOf(a));
-  const route = { target: seq, ports, cond: {}, items: shelf };
+  const route = { target: seq, ports, cond: {}, items: shelf, ...(env.liq === 'water' ? {} : { liq: env.liq }) };
   const inner = seq.slice(0, -1).map((h, i) => ({ h, i }));
   // 関門：浅瀬は一番深い海路、橋は浅い海路から順に。どちらも最後の空荷の海路には置かない。
   // 橋は、置き方を考えないと当たる海路に置く：通れる置き方があり、当たる置き方も十分にあること
@@ -215,7 +228,7 @@ export function placementStats(route, shelf, ids) {
 }
 // 答えの荷（出航時、下から順）の棚の番号
 export function answerIds(route) {
-  const st = structureOf(route.target, 9, 9);
+  const st = structureOf(route.target, 9, 9, envOf(route).step);
   if (!st) return null;
   const used = new Set(), ids = [];
   for (const w of st.init) {

@@ -52,5 +52,26 @@ export const STAGES=[
  {id:'n8',name:'メロディ 8　近い音',kind:'melody',generated:true,melody:{walk:true,notes:[7,7],loads:[1,2],maxStep:2,distinct:4,maxInit:4,gates:['shoal','bridge']},
   lead:'音の動きが小さい航路です。お題をよく聴き、♪の高さを一段ずつ見比べましょう。',winner:'小さな違いも、計算すれば聞き分けられるのだ。'},
  {id:'n9',name:'メロディ 9　最後の航海',kind:'melody',generated:true,melody:{walk:true,notes:[8,9],loads:[2,3],maxInit:4,gates:['shoal','bridge','bridge']},
-  lead:'浅瀬と二つの橋、積む港もある最後の航路です。これまでのすべてを使いましょう。',winner:'見事だ。重さが深さになり、深さが歌になる。もう立派な船乗りだな。'}
+  lead:'浅瀬と二つの橋、積む港もある最後の航路です。これまでのすべてを使いましょう。',winner:'見事だ。重さが深さになり、深さが歌になる。もう立派な船乗りだな。'},
+ {id:'n10',name:'メロディ 10　十の音',kind:'melody',generated:true,melody:{walk:true,notes:[10,10],loads:[2,3],maxInit:4,gates:['shoal']},
+  lead:'十の音の長い航路です。終着から逆にたどって、積む順を決めましょう。',winner:'十の音も、一つずつたどれば解けたな。'},
+ {id:'n11',name:'メロディ 11　三つの橋',kind:'melody',generated:true,melody:{walk:true,notes:[7,8],loads:[1,2],maxInit:4,gates:['bridge','bridge','bridge']},
+  lead:'低い橋が三つある航路です。港ごとに変わる荷の山の高さを、先まで読んで積みましょう。',winner:'三つの橋を、荷の山ごとくぐり抜けたな。'},
+ {id:'n12',name:'メロディ 12　大きな跳躍',kind:'melody',generated:true,melody:{walk:true,notes:[6,7],loads:[1,2],maxInit:4,minLeap:4,gates:['shoal']},
+  lead:'音が大きく跳ぶ航路です。重い荷を一度に下ろすと、音も大きく上がります。',winner:'大きな跳躍は、重い荷の仕業だったな。'},
+ {id:'n13',name:'メロディ 13　近い音と橋',kind:'melody',generated:true,melody:{walk:true,notes:[8,8],loads:[1,2],maxStep:2,distinct:4,maxInit:4,gates:['shoal','bridge']},
+  lead:'音の動きが小さい、長い航路です。橋の下では荷の山の高さにも気をつけましょう。',winner:'小さな音の違いも、深さの違いだ。よく聴き分けたな。'},
+ {id:'n14',name:'メロディ 14　大航海',kind:'melody',generated:true,melody:{walk:true,notes:[9,10],loads:[3,3],maxInit:4,gates:['shoal','bridge','bridge']},
+  lead:'積む港が三つ、浅瀬と橋が二つある大航海です。',winner:'見事な大航海だ。重さと深さと音が、すべてつながったな。'},
+ // 油の航路。軽い小舟（船だけの重さ8）に乗り換える。油では深さ0.5が重さ4
+ {id:'n15',name:'メロディ 15　油の航路',kind:'melody',generated:true,melody:{liq:'oil',walk:true,notes:[4,5],loads:[0,1]},
+  lead:'油の港では、軽い小舟（船だけの重さ8）に乗り換えます。油の比重は0.8なので、深さ0.5は重さ4。水のときと荷の重さが変わります。',winner:'油では、重さ4で音一つ分。液体が変われば、歌の作り方も変わるのだ。'},
+ {id:'n16',name:'メロディ 16　油と積む港',kind:'melody',generated:true,melody:{liq:'oil',walk:true,notes:[6,6],loads:[1,2]},
+  lead:'油の航路に、荷を積む港があります。港で積んだ荷は、次の港で最初に下ります。',winner:'油の上でも、積めば沈み、下ろせば浮くのだな。'},
+ {id:'n17',name:'メロディ 17　油の浅瀬と橋',kind:'melody',generated:true,melody:{liq:'oil',walk:true,notes:[6,7],loads:[1,2],maxInit:4,gates:['shoal','bridge']},
+  lead:'油の航路の浅瀬と橋です。橋の下では、荷の山の高さにも気をつけましょう。',winner:'液体が変わっても、関門の考え方は同じだな。'},
+ {id:'n18',name:'メロディ 18　油の長い航路',kind:'melody',generated:true,melody:{liq:'oil',walk:true,notes:[8,8],loads:[2,3],maxInit:4,gates:['shoal']},
+  lead:'八つの音の、油の長い航路です。重さ4ずつの違いを、計算でたどりましょう。',winner:'油の長い歌も、きちんと歌いきったな。'},
+ {id:'n19',name:'メロディ 19　油の最後の航海',kind:'melody',generated:true,melody:{liq:'oil',walk:true,notes:[8,9],loads:[2,3],maxInit:4,gates:['shoal','bridge','bridge']},
+  lead:'油の最後の航路です。浅瀬と二つの橋、積む港もあります。',winner:'見事だ。水でも油でも、浮力の仕組みは一つ。もう迷わないな。'}
 ];

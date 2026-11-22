@@ -14,7 +14,7 @@ import { createUpdateManager } from './update-manager.js';
 import { melodyStage } from './melody.js';
 import { howtoScreen, partsScreen } from './guide.js';
 
-const APP_VERSION = '0.9.20';
+const APP_VERSION = '0.9.21';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
