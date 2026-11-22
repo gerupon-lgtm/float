@@ -176,7 +176,7 @@ export function classicStage(n, S, ctx) {
       const xa = x0 + i * step, xc = xa + step / 2;
       if (col.k === 'shoal') g += `<path d="M${xa} ${y(col.d)}l${step / 4} -1l${step / 4} 1l${step / 4} -1l${step / 4} 1V${B}H${xa}Z" fill="url(#cmap-sand)" stroke="#8a5a2e" stroke-width="1.4"/>`;
       if (col.k === 'bridge') g += `<path d="M${xa} ${T}H${xa + step}V${y(col.d)}H${xa}Z" fill="url(#cmap-timber)" opacity=".85"/><path d="M${xa} ${y(col.d)}H${xa + step}" stroke="#5f3b1c" stroke-width="3"/>
-        <g font-size="9.5" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke"><text x="${xc}" y="${T + 12}">${col.d}以上</text>${grid ? `<text x="${xc}" y="${T + 24}">荷${rowsUnderBridge(col.d)}段まで</text>` : ''}</g>`;
+        <g font-size="9.5" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#5f3b1c" stroke-width="2.6" paint-order="stroke"><text x="${xc}" y="${Math.max(y(col.d) - 6, T + (grid ? 24 : 12))}">${col.d}以上</text>${grid ? `<text x="${xc}" y="${Math.max(y(col.d) - 18, T + 12)}">荷${rowsUnderBridge(col.d)}段まで</text>` : ''}</g>`;
       if (col.k === 'lever') g += `<path d="M${xa + 4} ${y(col.d)}H${xa + step - 4}" stroke="#d6452c" stroke-width="2.4" stroke-dasharray="5 3"/><path d="M${xc} ${y(col.d)}V${B}" stroke="#23304a" stroke-width="2.5"/>
         <circle cx="${xc}" cy="${y(col.d)}" r="3.5" fill="#d6452c" stroke="#23304a" stroke-width="1"/>
         <text x="${xc}" y="${y(col.d) - 6}" font-size="9.5" font-weight="700" text-anchor="middle" fill="#fffaf0" stroke="#23304a" stroke-width="2.6" paint-order="stroke">${col.d}以上</text>`;
