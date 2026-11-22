@@ -1,5 +1,6 @@
 // 問題の生成（要件7章）。面の配置は固定し、数字だけを変える。結果は src/content/challenges.js に保存する。
-import { AREA, SHIP, depthOf, isSunk, cellWeight } from './physics.js';
+import { AREA, SHIP, depthOf, depthFraction, isSunk, cellWeight } from './physics.js';
+import { Fraction } from './fraction.js';
 import { problemOf, selections, minRows, totalWeight } from './stage-check.js';
 
 const random = seed => () => (seed = (seed * 1664525 + 1013904223) >>> 0) / 2 ** 32;
@@ -16,7 +17,8 @@ export const SHAPES = [
 const cell = m => cellWeight(m);
 export const HEAVY_SHAPES = [
   [cell('gold'), '金', 1, 1, '#efb32a'], [cell('gold') * 2, '金の棒', 2, 1, '#efb32a'], [cell('lead'), '鉛', 1, 1, '#59616e'],
-  [cell('iron'), '鉄', 1, 1, '#7a6f66'], [cell('iron') * 2, '鉄の棒', 2, 1, '#7a6f66'], [cell('iron') * 4, '鉄箱', 2, 2, '#7a6f66']
+  [cell('iron'), '鉄', 1, 1, '#7a6f66'], [cell('iron') * 2, '鉄の棒', 2, 1, '#7a6f66'], [cell('iron') * 4, '鉄箱', 2, 2, '#7a6f66'],
+  [cell('stone'), '石', 1, 1, '#8c8f96']
 ];
 
 function chooseItems(r) {
@@ -51,7 +53,9 @@ function routeQuestion(stage, r) {
 }
 
 export function pickProblems(stage, { count = 8, seed = 1, tries = 40000 } = {}) {
-  const r = random(seed), out = [], keys = new Set();
+  const r = random(seed), out = [], keys = new Set(), used = new Map();
+  // 積み方の面は、関門の数字が同じお題ばかりにならないよう、同じ数字は3問までにする（足りなければ緩める）
+  const cap = stage.grid && !stage.noScale ? 3 : Infinity;
   for (let i = 0; i < tries && out.length < count; i++) {
     const q = stage.grid ? gridQuestion(stage, r) : stage.route ? routeQuestion(stage, r) : selectQuestion(stage, r);
     if (!q) continue;
@@ -59,6 +63,9 @@ export function pickProblems(stage, { count = 8, seed = 1, tries = 40000 } = {})
     if (keys.has(key)) continue;
     if (problemOf({ ...stage, ...q })) continue;
     if (!stage.grid && selections({ ...stage, ...q }).length > stage.maxAnswers) continue;
+    const gk = JSON.stringify(q.gates);
+    if ((used.get(gk) ?? 0) >= (i < tries / 2 ? cap : Infinity)) continue;
+    used.set(gk, (used.get(gk) ?? 0) + 1);
     keys.add(key);
     out.push(q);
   }
@@ -74,10 +81,20 @@ function selectQuestion(stage, r) {
 
 function gridQuestion(stage, r) {
   const items = [];
-  for (let i = 0; i < stage.count; i++) items.push(pick(r, stage.heavy ? HEAVY_SHAPES : SHAPES));
+  const shapes = stage.heavy ? HEAVY_SHAPES : SHAPES;
+  for (let i = 0; i < stage.count; i++) items.push(pick(r, shapes));
   const liquid = stage.gates.find(g => g.k === 'chamber')?.to ?? stage.start;
+  // 答えの音を音階に乗せる：最後の荷を、合計が音階に乗る形から選び直す
+  //（狙う深さを先に決める）
+  if (!stage.noScale) {
+    const target = pick(r, [4, 5, 6, 7, 8, 9].filter(x => x >= (stage.minDepth ?? 3) * 2)); // 深さ×2
+    const rest = SHIP + items.slice(0, -1).reduce((a, it) => a + it[0], 0);
+    const fits = shapes.filter(sh => depthFraction(rest + sh[0], liquid).mul(2).eq(Fraction.of(target)));
+    if (!fits.length) return null;
+    items[items.length - 1] = pick(r, fits);
+  }
   const w = SHIP + items.reduce((a, it) => a + it[0], 0), d = depthOf(w, liquid);
-  if (d < 3 || d > 4.5 || isSunk(w, stage.start)) return null;
+  if (d < (stage.minDepth ?? 3) || d > 4.5 || isSunk(w, stage.start)) return null;
   const lower = half(d - stage.gap);
   if (minRows(items, 3) > 3) return null;
   return { area: AREA, items, gates: stage.gates.map(g => ({ ...g, d: g.k === 'shoal' ? half(d) + 0.5 : lower })) };

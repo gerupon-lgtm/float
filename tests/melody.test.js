@@ -38,3 +38,12 @@ test('深さと h', () => {
   assert.equal(depthOfH(7).toNumber(), 3.5);
   assert.equal(rowsUnderBridge(2.5), 3);
 });
+
+test('液体ごとの船：どの航路でも空荷は深さ1（ソ）、音1つ分は深さ0.5', async () => {
+  const { MELODY_LIQUIDS } = await import('../src/logic/melody.js');
+  const { depthFraction } = await import('../src/logic/physics.js');
+  for (const env of Object.values(MELODY_LIQUIDS)) {
+    assert.equal(depthFraction(env.ship, env.liq, env.area).toNumber(), 1, env.liq);
+    assert.equal(depthFraction(env.ship + env.step, env.liq, env.area).toNumber(), 1.5, env.liq);
+  }
+});

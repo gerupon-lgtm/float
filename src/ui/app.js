@@ -13,8 +13,9 @@ import { FloatAudio } from './audio.js';
 import { createUpdateManager } from './update-manager.js';
 import { melodyStage } from './melody.js';
 import { howtoScreen, partsScreen } from './guide.js';
+import { lessonFigure } from './lesson.js';
 
-const APP_VERSION = '0.9.21';
+const APP_VERSION = '0.9.22';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -48,11 +49,11 @@ function title(){const c=show(`<div class="title-hero"><div class="hero"><div cl
   $('#parts',c).onclick=()=>{unlock();clack();partsScreen(guideCtx)};
   $('#howto',c).onclick=()=>{unlock();clack();howtoScreen(guideCtx)}}
 // おはなし：序章を遊ぶ入口と、見た紙芝居の読み返し。何度でも見直せる
-const STORIES=[['王冠の謎',['s1','s2','s3','s4','s9','s10','s5']],['積み方',['s7']],['油の湖',['s8']],['銀色の湖',['s6']],['航路のメロディ',['s11','s12']]];
+const STORIES=[['王冠の謎',['s1','s2','s3','s4','s9','s10','s5']],['積み方',['s7']],['油の湖',['s8','k1']],['銀色の湖',['s6','k2']],['航路のメロディ',['s11','s12','k3','k4']]];
 function stories(){const c=show(`${topbar('おはなし')}<div class="list" style="max-width:none"><button class="btn" id="play">序章を遊ぶ</button>
-  ${STORIES.map(([n,keys],i)=>{const open=keys.every(k=>book.seen(k));return `<button class="btn sub" data-r="${i}" ${open?'':'disabled'}>${open?n:'まだ読めません'}</button>`}).join('')}</div>`,'menu-layout stories-menu');
+  ${STORIES.map(([n,keys],i)=>{const open=book.seen(keys[0]);return `<button class="btn sub" data-r="${i}" ${open?'':'disabled'}>${open?n:'まだ読めません'}</button>`}).join('')}</div>`,'menu-layout stories-menu');
   wire(c);$('#play',c).onclick=()=>{wood();flow(0)};
-  c.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{wood();const keys=STORIES[+b.dataset.r][1];const read=i=>i>=keys.length?stories():scene(keys[i],()=>read(i+1));read(0)})}
+  c.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{wood();const keys=STORIES[+b.dataset.r][1].filter(k=>book.seen(k));const read=i=>i>=keys.length?stories():scene(keys[i],()=>read(i+1));read(0)})}
 function pick(){const c=show(`${topbar('選択プレイ')}<div class="list" style="max-width:none">${STAGES.map((s,i)=>`<button class="btn sub" data-s="${i}">${s.name}</button>`).join('')}</div>`,'menu-layout stage-menu');
   wire(c);c.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{wood();R=null;enter(+b.dataset.s)})}
 function levels(){const c=show(`${topbar('連続プレイ')}<div class="say"><span class="nar">全${STAGES.length}面を順に進みます。沈んだり関門に当たったりするとNGです。ノーマルとエキスパートでは、出航するまで深さが見えません。</span></div>
@@ -69,7 +70,7 @@ function goalText(S){let liq=S.pre??S.start;const mix=S.gates.some(g=>g.k==='cha
   return `${S.lead}<br>船の沈む深さに注意しましょう。<br>${rows}`}
 function ngText(){if(!R)return'';return R.level.limit===null?`失敗 ${R.ng}回`:`やり直し あと${R.left}回`}
 
-function scene(k,next){const s=SCENES[k];book.markSeen(k);const c=show(`${topbar('おはなし')}<div class="frame">${ART[s.art]()}</div>
+function scene(k,next){const s=SCENES[k];book.markSeen(k);const c=show(`${topbar(s.lesson?'比重の話':'おはなし')}<div class="frame">${s.lesson?lessonFigure(s.lesson):ART[s.art]()}</div>
   <div class="say"><span class="nar">${s.nar}</span><span class="who" style="margin-top:4px">${s.who}</span>${s.say}</div><button class="btn" id="n">つづき</button>`,'story-layout');
   wire(c);$('#n',c).onclick=()=>{wood();next()}}
 

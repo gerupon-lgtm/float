@@ -1,6 +1,6 @@
 // 航路のメロディの面（要件F-020、7.2節）。見た目は Codex の見本0.1.4（docs/visual-samples/2026-11-21-melody-priority1-v1）を移したもの。
 // 計算・判定は src/logic/melody.js。ここは画面と流れだけ。
-import { SHIP, HULL, depthFraction } from '../logic/physics.js';
+import { SHIP, HULL, AREA, LIQUIDS, depthFraction } from '../logic/physics.js';
 import { midiOf, onScale } from '../logic/pitch.js';
 import { CELLS, ROWMAX, dropCargo, stackRows } from '../logic/stacking.js';
 import { envOf, depthNow, weightOf, autoDrop, rowsUnderBridge, segmentFault, matchesTarget } from '../logic/melody.js';
@@ -24,7 +24,7 @@ export function melodyStage(n, base, route, ctx) {
   const items0 = route.items.length;
   const showLive = () => level === 'free' || S.phase !== 'prep';
   const showWeight = () => showLive() || level === 'normal';
-  const env = envOf(route), LIQ_NAME = { water: '水', oil: '油' }[env.liq];
+  const env = envOf(route), LIQ_NAME = { water: '水', oil: '油', mercury: '水銀' }[env.liq];
   const depth = () => depthNow(S.items, S.placed, route);
   const ring = d => au.bell(midiOf(Math.min(d.toNumber(), HULL)), 0.2, 0.9);
   const c = ctx.show('', 'melody-layout');
@@ -43,7 +43,7 @@ export function melodyStage(n, base, route, ctx) {
   // ---- 船 ----
   // 本番の船の絵と寸法（幅124・高さ60＝深さ5、1列18、1段16、甲板8）を1.3倍で描く
   const K = 1.3, U = 12 * K, ROW = 16 * K, DECK = 8 * K, CW = 18 * K, HW = 124 * K, HX = 70, WATER = 134;
-  const shownDepth = () => (showLive() ? depth() : depthFraction(env.ship, env.liq));
+  const shownDepth = () => (showLive() ? depth() : depthFraction(env.ship, env.liq, env.area));
   const bottomY = () => WATER + Math.min(shownDepth().toNumber(), HULL + 0.6) * U;
   // 発案者了承（2026-11-21）：橋の高さに届く荷の先端まで進んで止める。
   // 当たるかどうかは segmentFault の結果を使い、ここでは絵の接触位置だけを求める。
@@ -112,7 +112,7 @@ export function melodyStage(n, base, route, ctx) {
     }
     g += sc;
     // 液体と船の重さ。油の航路は小舟（船だけの重さ8）
-    g += `<text x="${VW - 5}" y="219" font-size="10" font-weight="700" text-anchor="end" fill="#fffaf0" stroke="#23304a" stroke-width="2.6" paint-order="stroke">${LIQ_NAME} 比重${env.liq === 'oil' ? '0.8' : '1'}・船だけ${env.ship}</text>`;
+    g += `<text x="${VW - 5}" y="219" font-size="10" font-weight="700" text-anchor="end" fill="#fffaf0" stroke="#23304a" stroke-width="2.6" paint-order="stroke">${LIQ_NAME} 比重${LIQUIDS[env.liq].s}${env.area === AREA ? '' : '・底面積' + env.area}・船だけ${env.ship}</text>`;
     if (live && !d.gt(HULL)) g += `<path d="M${HX - 1} ${bottom}l-8 -5v10z" fill="var(--red)" stroke="#23304a" stroke-width="1.2"/>`;
     // 看板：出航前と港での積み込みは「積載中」、荷下ろしは「荷下ろし中」。板の絵に文字を重ねる
     const sign = S.phase === 'prep' ? '積載中' : S.sign;

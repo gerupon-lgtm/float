@@ -3,6 +3,9 @@ import { AREA, SHIP, depthFraction, isSunk, clearsShoal, reachesDepth } from './
 import { CELLS, ROWMAX, dropCargo, stackRows, pileClearsBridge } from './stacking.js';
 import { onScale } from './pitch.js';
 
+// 答えの音を判定する液体（入れ替え室の先、なければ最初の液体）
+export const finalLiquid = stage => stage.gates.find(g => g.k === 'chamber')?.to ?? stage.pre ?? stage.start;
+
 // 重さと荷の段数を決めたとき、航路を通れるか
 export function runRoute(stage, weight, rows = 0) {
   const area = stage.area ?? AREA;
@@ -61,11 +64,12 @@ export function problemOf(stage) {
     const ids = stage.items.map((_, i) => i);
     const tallest = Math.min(ROWMAX, stage.items.reduce((a, it) => a + it[3], 0));
     if (runRoute(stage, totalWeight(stage.items, ids), tallest)) return '積み方を問わず通れる';
+    if (!stage.noScale && !onScale(depthFraction(totalWeight(stage.items, ids), finalLiquid(stage), stage.area ?? AREA))) return '音階に乗る答えがない';
     return null;
   }
   const sols = selections(stage), n = stage.items.length;
   if (sols.some(s => s.length === n)) return '全部積めば解ける';
   if (sols.some(s => s.length === 0)) return '何も積まなくても解ける';
-  if (!stage.noScale && !sols.some(s => onScale(depthFraction(totalWeight(stage.items, s), stage.gates.find(g => g.k === 'chamber')?.to ?? stage.pre ?? stage.start, stage.area ?? AREA)))) return '音階に乗る答えがない';
+  if (!stage.noScale && !sols.some(s => onScale(depthFraction(totalWeight(stage.items, s), finalLiquid(stage), stage.area ?? AREA)))) return '音階に乗る答えがない';
   return null;
 }

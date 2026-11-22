@@ -1,11 +1,16 @@
 // 航路のメロディ（要件F-020、7.2節）。計算・判定・お題の作成と検査。画面は src/ui/melody.js。
-// 水・底面積10・船の重さ10。深さ0.5（音1つ分）は重さ5。お題は深さ×2の整数 h（3〜10、最後は空荷の2）で持つ。
+// 水・底面積10・船の重さ10。深さ0.5（音1つ分）は重さ5（油・水銀は MELODY_LIQUIDS）。お題は深さ×2の整数 h（3〜10、最後は空荷の2）で持つ。
 import { Fraction } from './fraction.js';
-import { SHIP, HULL, depthFraction, exact } from './physics.js';
+import { SHIP, HULL, AREA, depthFraction, exact } from './physics.js';
 import { CELLS, ROWMAX, dropCargo, stackRows, pileClearsBridge } from './stacking.js';
 
 // 航路ごとの液体と船。油の航路は軽い小舟（船だけの重さ8）に乗り換え、空荷の深さを水と同じ1（ソ）にそろえる
-export const MELODY_LIQUIDS = { water: { liq: 'water', ship: SHIP, step: 5 }, oil: { liq: 'oil', ship: 8, step: 4 } };
+// 水銀の航路は、底面積8の鉄の船（船だけの重さ108）。深さ0.5は 13.5×8×0.5＝重さ54。水なら沈む船も、水銀では深さ1で浮く
+export const MELODY_LIQUIDS = {
+  water: { liq: 'water', ship: SHIP, step: 5, area: AREA },
+  oil: { liq: 'oil', ship: 8, step: 4, area: AREA },
+  mercury: { liq: 'mercury', ship: 108, step: 54, area: 8 }
+};
 export const envOf = route => MELODY_LIQUIDS[route?.liq ?? 'water'];
 export const STEP_WEIGHT = 5;                 // 深さ0.5の重さ（水・底面積10）
 export const EMPTY_H = 2;                     // 空荷の h（深さ1）。水も油も同じ
@@ -33,9 +38,24 @@ export const OIL_ITEMS = {
 };
 const OIL_TALL = { 4: [4, '木の板', 1, 2, '#c9955a'], 16: [16, '石', 1, 2, '#9a9a92'] };
 const OIL_DECOYS = [[5, '麦袋', 2, 1, '#d8b56a'], [10, '石', 1, 1, '#9a9a92'], [15, '壺', 2, 2, '#d0743c']];
+// 水銀の航路の荷：深さ0.5が重さ54なので、54の倍数。重い金属の荷になる
+export const MERCURY_ITEMS = {
+  54: [54, '鉄の棒', 2, 1, '#7a6f66'],
+  108: [108, '鉄の板', 3, 1, '#7a6f66'],
+  162: [162, '金塊', 2, 1, '#efb32a'],
+  216: [216, '大金塊', 3, 1, '#efb32a']
+};
+const MERCURY_TALL = { 54: [54, '鉄の棒', 1, 2, '#7a6f66'], 162: [162, '金塊', 1, 2, '#efb32a'] };
+// 元の遊び方の重い荷が、ここではおとりになる（54の倍数でない）
+const MERCURY_DECOYS = [[76, '金', 1, 1, '#efb32a'], [44, '鉛', 1, 1, '#59616e'], [128, '鉄箱', 2, 2, '#7a6f66']];
+const TABLES = {
+  water: { items: MELODY_ITEMS, tall: TALL, decoys: DECOYS },
+  oil: { items: OIL_ITEMS, tall: OIL_TALL, decoys: OIL_DECOYS },
+  mercury: { items: MERCURY_ITEMS, tall: MERCURY_TALL, decoys: MERCURY_DECOYS }
+};
 
 export const weightOf = (items, placed, route) => envOf(route).ship + placed.reduce((a, p) => a + items[p.id][0], 0);
-export const depthNow = (items, placed, route) => depthFraction(weightOf(items, placed, route), envOf(route).liq);
+export const depthNow = (items, placed, route) => depthFraction(weightOf(items, placed, route), envOf(route).liq, envOf(route).area);
 
 // 港で積む荷は、空いている中で一番低い位置へ自動で置く（同じ高さなら左）
 export function autoDrop(placed, items, id) {
@@ -111,7 +131,7 @@ export function greedyPlacement(shelf, ids) {
 }
 
 function buildRoute(seq, spec, r) {
-  const env = MELODY_LIQUIDS[spec.liq ?? 'water'], table = env.liq === 'oil' ? OIL_ITEMS : MELODY_ITEMS, tallT = env.liq === 'oil' ? OIL_TALL : TALL;
+  const env = MELODY_LIQUIDS[spec.liq ?? 'water'], { items: table, tall: tallT, decoys: decoyList } = TABLES[env.liq];
   const st = structureOf(seq, spec.maxStep ?? 4, spec.maxInit ?? 3, env.step);
   if (!st) return null;
   const loads = st.ports.filter(p => p.k === 'load').length;
@@ -125,7 +145,7 @@ function buildRoute(seq, spec, r) {
   // 棚：答えの荷と、おとり2つ（音階に乗らない木と、答えにない重さの荷）
   const answer = st.init.map(w => itemOf(w));
   const spare = Object.keys(table).map(Number).filter(w => !st.init.includes(w));
-  const decoyList = env.liq === 'oil' ? OIL_DECOYS : DECOYS, decoys = [[...decoyList[Math.floor(r() * decoyList.length)]]];
+  const decoys = [[...decoyList[Math.floor(r() * decoyList.length)]]];
   if (spare.length && answer.length < 4) decoys.push(itemOf(spare[Math.floor(r() * spare.length)]));
   const shelf = [...answer, ...decoys];
   for (let i = shelf.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [shelf[i], shelf[j]] = [shelf[j], shelf[i]]; }

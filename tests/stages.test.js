@@ -28,3 +28,13 @@ for (const s of STAGES) {
     for (const q of list) assert.equal(problemOf({ ...s, ...q }), null);
   });
 }
+
+test('油・水銀・積み方の面も、答えの深さが音階に乗る', async () => {
+  const { depthFraction } = await import('../src/logic/physics.js');
+  const { onScale } = await import('../src/logic/pitch.js');
+  const { finalLiquid, totalWeight } = await import('../src/logic/stage-check.js');
+  for (const s of STAGES.filter(s => s.grid)) for (const p of CHALLENGES[s.id]) {
+    const st = { ...s, ...p };
+    assert.ok(onScale(depthFraction(totalWeight(st.items, st.items.map((_, i) => i)), finalLiquid(st), st.area)), s.id);
+  }
+});
