@@ -311,3 +311,8 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
   .gbody>p{font-size:17px;max-width:48em}
   .gsec h2{font-size:22px}
 }
+
+/* 元の遊び方の面（classic.js）。航路のメロディの画面をそのまま使い、荷が多い棚だけ詰める */
+.mshelf.many{gap:3px;overflow-y:auto;padding-block:8px}
+.mshelf.many .chip{min-height:0;padding-block:2px}.mshelf.many .chip small{display:none}.mshelf.many .chip img{height:18px;width:18px}
+.mshelf.many .chip b{font-size:14px}
