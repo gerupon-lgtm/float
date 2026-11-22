@@ -15,7 +15,7 @@ import { melodyStage } from './melody.js';
 import { howtoScreen, partsScreen } from './guide.js';
 import { lessonFigure } from './lesson.js';
 
-const APP_VERSION = '0.9.22';
+const APP_VERSION = '0.9.23';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -117,7 +117,7 @@ function stage(n){stopRun();const base=STAGES[n];if(base.kind==='melody'){G=null
     <div class="formula" id="fm"></div><div class="say" id="t" style="min-height:60px"></div>
     <div class="shelf" id="sh"></div><div class="row"><button class="btn sub" id="ring">深さの音</button><button class="btn" id="dep">出航</button></div>`,'stage-layout');
   wire(c);G.c=c;drawWorld();$('#t',c).innerHTML=goalText(S);renderShelf();syncUI();loop(run);
-  $('#dep',c).onclick=()=>depart();$('#ring',c).onclick=()=>{unlock();if(G.floating&&!(G.hide&&!G.sailing))bell(midiOf(G.d));else{tap();say('船が出ると、沈んだ深さの音が鳴ります。')}};
+  $('#dep',c).onclick=()=>depart();$('#ring',c).onclick=()=>{unlock();if(G.floating&&!(G.hide&&!G.sailing))audio.depthBell(G.d);else{tap();say('船が出ると、沈んだ深さの音が鳴ります。')}};
   if(S.pre)intoMercury()}
 
 const weight=()=>SHIP+(G.S.grid?G.placed.reduce((a,p)=>a+G.S.items[p.id][0],0):[...G.on].reduce((a,i)=>a+G.S.items[i][0],0));
@@ -180,18 +180,18 @@ function renderShelf(){if(G.S.grid)return renderPack();const S=G.S,sh=$('#sh',G.
   sh.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{if(G.busy)return;unlock();const i=+b.dataset.i;const adding=!G.on.has(i);adding?G.on.add(i):G.on.delete(i);b.setAttribute('aria-pressed',G.on.has(i));adding?audio.land(S.items[i][0]):tap();shipSVG();
     if(G.floating)settle();syncUI()})}
 function settle(){if(G.hide&&!G.sailing)return;const to=dp(weight(),G.liq),from=G.d;const id=run;
-  tween(380,e=>{if(id===run)G.d=from+(to-from)*e;syncUI()}).then(()=>{bell(midiOf(to),.17,.9);if(isSunk(weight(),G.liq,G.S.area))sink(sinkMsg())})}
+  tween(380,e=>{if(id===run)G.d=from+(to-from)*e;syncUI()}).then(()=>{audio.depthBell(to,.17,.9);if(isSunk(weight(),G.liq,G.S.area))sink(sinkMsg())})}
 
 async function intoMercury(){G.busy=true;lock(true);say('入れ替え室で、水を水銀に入れ替えます。');await wait(500);
   const room=$('#room',G.c);room.setAttribute('width',140);const f=[];await tween(1200,e=>{room.setAttribute('opacity',e);G.d=1+(0.074-1)*e;});
-  $('#l1',G.c).setAttribute('fill',liquidFill('mercury'));G.liq='mercury';G.d=dp(weight(),'mercury');bell(midiOf(G.d));syncUI();G.busy=false;lock(false);
+  $('#l1',G.c).setAttribute('fill',liquidFill('mercury'));G.liq='mercury';G.d=dp(weight(),'mercury');audio.depthBell(G.d);syncUI();G.busy=false;lock(false);
   await wait(300);scene2Return()}
 function scene2Return(){say(goalText(G.S))}
 function lock(v){$('#dep',G.c).disabled=v;$('#ring',G.c).disabled=false}
 
 async function depart(){if(G.busy)return;unlock();if(G.S.grid&&G.placed.length<G.S.items.length){say('荷はすべて積みましょう。');return}G.busy=true;lock(true);const id=run;const S=G.S;G.sailing=true;
-  if(G.floating&&G.hide){const to=dp(weight(),G.liq),from=G.d;await tween(600,e=>{G.d=from+(Math.min(to,HULL+1)-from)*e;syncUI()});G.d=to;bell(midiOf(to));syncUI();if(isSunk(weight(),G.liq,G.S.area))return sink(sinkMsg())}
-  if(!G.floating){const to=dp(weight(),G.liq);await tween(700,e=>{G.lift=20*(1-e);G.x=120*e;G.d=Math.min(to,HULL+1)*e;syncUI()});G.floating=true;G.d=to;bell(midiOf(to));syncUI();
+  if(G.floating&&G.hide){const to=dp(weight(),G.liq),from=G.d;await tween(600,e=>{G.d=from+(Math.min(to,HULL+1)-from)*e;syncUI()});G.d=to;audio.depthBell(to);syncUI();if(isSunk(weight(),G.liq,G.S.area))return sink(sinkMsg())}
+  if(!G.floating){const to=dp(weight(),G.liq);await tween(700,e=>{G.lift=20*(1-e);G.x=120*e;G.d=Math.min(to,HULL+1)*e;syncUI()});G.floating=true;G.d=to;audio.depthBell(to);syncUI();
     if(isSunk(weight(),G.liq,G.S.area))return sink(sinkMsg())}
   for(const g of S.gates){if(id!==run)return;
     if(g.k==='chamber'){await moveTo(g.x+70);const r=await chamber(g);if(!r)return;continue}
@@ -204,7 +204,7 @@ async function depart(){if(G.busy)return;unlock();if(G.S.grid&&G.placed.length<G
 async function moveTo(x){const from=G.x;await tween(Math.max(450,Math.abs(x-from)*7),e=>{G.x=from+(x-from)*e})}
 async function chamber(g){say(`入れ替え室：${LIQUIDS[G.liq].n}を${LIQUIDS[g.to].n}に入れ替えます。`);const id=run;const l2=$('#l2',G.c);const room=$('#room',G.c);room.setAttribute('x',g.x);room.setAttribute('width',140);room.setAttribute('fill',liquidFill(g.to));
   const wait0=await tween(600,e=>room.setAttribute('opacity',e));G.liq=g.to;G.passed=true;
-  const to=dp(weight(),g.to),from=G.d;await tween(900,e=>{G.d=from+(Math.min(to,HULL+1.2)-from)*e;syncUI()});G.d=to;bell(midiOf(to));syncUI();
+  const to=dp(weight(),g.to),from=G.d;await tween(900,e=>{G.d=from+(Math.min(to,HULL+1.2)-from)*e;syncUI()});G.d=to;audio.depthBell(to);syncUI();
   if(isSunk(weight(),g.to,G.S.area)){sink(sinkMsg());return false}return true}
 const hint=()=>hintLevel(R?.level.id);
 const sinkMsg=()=>sinkText(hint(),weight(),LIQUIDS[G.liq].n,sinkingWeight(G.liq,G.S.area));

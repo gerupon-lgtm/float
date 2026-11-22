@@ -26,7 +26,7 @@ export function melodyStage(n, base, route, ctx) {
   const showWeight = () => showLive() || level === 'normal';
   const env = envOf(route), LIQ_NAME = { water: '水', oil: '油', mercury: '水銀' }[env.liq];
   const depth = () => depthNow(S.items, S.placed, route);
-  const ring = d => au.bell(midiOf(Math.min(d.toNumber(), HULL)), 0.2, 0.9);
+  const ring = d => au.depthBell(d.toNumber(), 0.2, 0.9);
   const c = ctx.show('', 'melody-layout');
   const $ = s => c.querySelector(s);
   const id0 = ctx.token();
@@ -285,7 +285,7 @@ export function melodyStage(n, base, route, ctx) {
   let playing = false;
   async function play(depths, home) {
     if (playing) return; playing = true; au.unlock();
-    for (const d of depths) { if (!alive()) break; au.bell(midiOf(Math.min(d, HULL)), 0.2, 0.7); await ctx.wait(480); }
+    for (const d of depths) { if (!alive()) break; au.depthBell(d, 0.2, 0.7); await ctx.wait(480); }
     if (home && alive()) { await ctx.wait(80); au.bell(HOME, 0.2, 1.4); }
     playing = false;
   }
@@ -355,7 +355,7 @@ export function melodyStage(n, base, route, ctx) {
       if (!alive()) return;
       const d = S.log[i], ok = oks[i];
       S.seg = i; S.played[i] = { ok, name: noteName(d), d: d.toNumber() }; draw();
-      au.bell(midiOf(d.toNumber()), 0.2, 0.7); if (all) au.chord(CHORDS[acc[i]]);
+      au.depthBell(d.toNumber(), 0.2, 0.7); if (all) au.chord(CHORDS[acc[i]]);
       await ctx.wait(520);
     }
     S.seg = S.log.length;

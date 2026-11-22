@@ -1,6 +1,7 @@
 // 音の土台（出力の余裕、残響、消音）は AQUA NOTES の audio.js に合わせた。
 // 音程のある音はFM音源、打楽器はPSGのノイズ（src/sound）で鳴らす。音色は実機で詰める。
 import { renderAll } from '../sound/psg-render.js';
+import { voiceOf } from '../logic/pitch.js';
 
 export const DEFAULT_LATENCY_MS = 30;
 const hz = midi => 440 * 2 ** ((midi - 69) / 12);
@@ -61,7 +62,8 @@ export class FloatAudio {
     src.start(this.ctx.currentTime + delay);
   }
   // FM音源の1音。変調を立ち上がりで強くし、余韻で弱めて、明るさが引いていくようにする
-  #fm(freq, gain, length, at, ratio = 2, peak = 1.1, rest = 0.06) {
+  // vib：音程を揺らす幅（周波数に対する割合）。半端な深さの合図
+  #fm(freq, gain, length, at, ratio = 2, peak = 1.1, rest = 0.06, vib = 0) {
     const ctx = this.ctx, car = ctx.createOscillator(), mod = ctx.createOscillator(), depth = ctx.createGain(), env = ctx.createGain();
     car.frequency.value = freq;
     mod.frequency.value = freq * ratio;
@@ -72,11 +74,22 @@ export class FloatAudio {
     env.gain.exponentialRampToValueAtTime(0.0001, at + length);
     mod.connect(depth).connect(car.frequency);
     car.connect(env).connect(this.bus);
-    for (const o of [mod, car]) { o.start(at); o.stop(at + length + 0.02); }
+    const oscs = [mod, car];
+    if (vib) {
+      const lfo = ctx.createOscillator(), amount = ctx.createGain();
+      lfo.frequency.value = 7; amount.gain.value = freq * vib;
+      lfo.connect(amount).connect(car.frequency); oscs.push(lfo);
+    }
+    for (const o of oscs) { o.start(at); o.stop(at + length + 0.02); }
   }
   // 深さの音
   bell(midi, gain = 0.2, length = 1.1) {
     if (this.ctx && !this.muted) this.#fm(hz(midi), gain, length, this.ctx.currentTime);
+  }
+  // 深さの音：一番近い音階の音。半端な深さなら揺らす（pitch.js の voiceOf）
+  depthBell(depth, gain = 0.2, length = 1.1) {
+    const v = voiceOf(depth);
+    if (this.ctx && !this.muted) this.#fm(hz(v.midi), gain, length, this.ctx.currentTime, 2, 1.1, 0.06, v.wobble ? 0.025 : 0);
   }
   // 伴奏の和音。やわらかいFM（変調を浅く）で、旋律より小さく鳴らす
   chord(midis, gain = 0.045, length = 0.9) {
