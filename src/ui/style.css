@@ -342,7 +342,7 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 @media (orientation:landscape) and (min-width:1024px){
   .classic-layout .row3 .btn{height:52px;min-height:52px}
   .classic-layout .mid:has(.mshelf.many){grid-template-columns:minmax(0,1fr) 252px}
-  .classic-layout .mshelf.many{padding:12px;gap:8px;grid-auto-rows:minmax(56px,1fr)}
+  .classic-layout .mshelf.many{padding:12px;gap:8px;grid-auto-rows:minmax(64px,max-content);align-content:start}
   .classic-layout .mshelf.many .chip{min-height:56px;padding:7px}
   .classic-layout .mshelf.many .cargo-name{font-size:14px}
   .classic-layout .mshelf.many .chip b{font-size:24px;margin-left:28px}

@@ -16,7 +16,7 @@ import { classicStage } from './classic.js';
 import { howtoScreen, partsScreen } from './guide.js';
 import { lessonFigure } from './lesson.js';
 
-const APP_VERSION = '0.9.25';
+const APP_VERSION = '0.9.26';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);

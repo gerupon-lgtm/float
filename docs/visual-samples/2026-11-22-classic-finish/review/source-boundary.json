@@ -1,6 +1,6 @@
 {
   "base": "57b50120ff15042fe5c7abb4135e82a66e7cfe13",
-  "version": "0.9.25",
+  "version": "0.9.26",
   "protectedFiles": [
     {
       "path": "src/content/challenges.js",
