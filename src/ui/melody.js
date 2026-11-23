@@ -1,7 +1,7 @@
 // 航路のメロディの面（要件F-020、7.2節）。見た目は Codex の見本0.1.4（docs/visual-samples/2026-11-21-melody-priority1-v1）を移したもの。
 // 計算・判定は src/logic/melody.js。ここは画面と流れだけ。
 import { SHIP, HULL, AREA, LIQUIDS, depthFraction, depthLabel } from '../logic/physics.js';
-import { midiOf, onScale } from '../logic/pitch.js';
+import { midiOf, onScale, voiceOf } from '../logic/pitch.js';
 import { CELLS, ROWMAX, dropCargo, stackRows, pileExtra } from '../logic/stacking.js';
 import { keelMark } from './chart-mark.js';
 import { envOf, depthNow, weightOf, autoDrop, rowsUnderBridge, segmentFault, matchesTarget } from '../logic/melody.js';
@@ -148,14 +148,24 @@ export function melodyStage(n, base, route, ctx) {
 
   // ---- 航海図＝深さの図 ----
   // 縦は深さ（上ほど浅く、音は高い）。お題の点、浅瀬の海底、橋桁を同じ目盛りに描く。難しさによらず同じ情報量
+  // 港の積み下ろし：下ろす港は緑の札、積む港は橙の札。札の下に、積む荷の名前と重さ（港が多い航路は重さだけ）
+  function portTag(x, B, p, tight, last) {
+    const down = p.k === 'down', w = tight ? 26 : 40, y0 = B + 36;
+    let g = `<g class="port-act"><rect x="${x - w / 2}" y="${y0}" width="${w}" height="15" rx="7.5" fill="${down ? '#dcefe4' : '#fde3c8'}" stroke="${down ? '#2e7d5b' : '#c0560e'}" stroke-width="1.4"/>
+      <text x="${x}" y="${y0 + 11}" font-size="${tight ? 9.5 : 10}" font-weight="700" text-anchor="middle" fill="${down ? '#1f5a40' : '#8a3d08'}">${down ? (tight ? '↑下' : '↑下ろす') : (tight ? '↓積' : '↓積む')}</text>`;
+    if (!down) g += `<text x="${x}" y="${y0 + 27}" font-size="${tight ? 10 : 9.5}" font-weight="700" text-anchor="middle" fill="#23304a">${tight ? p.item[0] : p.item[1] + p.item[0]}</text>`;
+    if (last) g += `<text x="${x}" y="${y0 + 27}" font-size="9.5" font-weight="700" text-anchor="middle" fill="#d6452c">終着</text>`;
+    return g + '</g>';
+  }
   function chartSvg() {
     // 橋の数字は橋桁の下寄せ。音符の棒（上へ約17）に重ならない高さに置く
     const tg = route.target, cnt = tg.length, x0 = 48, right = 352, step = (right - x0) / cnt;
     const box = $('.chartf'), maxCH = innerWidth > innerHeight ? 420 : 280;
     const CH = Math.max(200, Math.min(maxCH, box ? Math.round(box.clientHeight * 360 / Math.max(1, box.clientWidth)) : 230));
     const tight = cnt >= 7;   // 港が多い航路は、港の札を数字だけにし、下ろす／積むも短く書く
-    // 上の余白：1段目に通しで聴いた結果（✓ミなど）、2段目に船の絵。目盛りはその下から
-    const T = 38, DY = (CH - 108) / HULL, y = d => T + d * DY, B = y(HULL);
+    // 上の余白：通しで聴いた結果（✓ミなど）。航海中は、船の絵をこの段に置き、船の上に今鳴っている音を書く
+    const T = 22, DY = (CH - 92) / HULL, y = d => T + d * DY, B = y(HULL);
+    const sailing = S.phase === 'sail' || S.phase === 'replay', kNow = Math.min(S.seg, cnt - 1);
     let g = `<defs>
       <pattern id="map-sand" patternUnits="userSpaceOnUse" width="19" height="13"><rect width="19" height="13" fill="#e8c98a"/><path d="M1 4l7 -2m3 7l6 -1M2 12l4 -1" stroke="#b68a4d" stroke-width="1.2" opacity=".6"/></pattern>
       <pattern id="map-timber" patternUnits="userSpaceOnUse" width="17" height="11"><rect width="17" height="11" fill="#d89d50"/><path d="M0 10H17M3 3l9 -1" stroke="#8a5a2e" stroke-width="1.3"/><path d="M1 5l12 -1" stroke="#f2c771" stroke-width="1.4"/></pattern>
@@ -180,7 +190,7 @@ export function melodyStage(n, base, route, ctx) {
         const color = r.ok ? '#2e7d5b' : '#bd3424', ry = y(r.d);
         if (i && S.played[i - 1]) g += `<path d="M${xa - 6} ${y(S.played[i - 1].d)}L${xa + 6} ${ry}" fill="none" stroke="${color}" stroke-width="2" stroke-dasharray="3 2"/>`;
         g += `<g class="actual-depth"><path d="M${xa + 6} ${ry}H${xa + step - 6}" stroke="${color}" stroke-width="4" stroke-linecap="round"/>
-          <text x="${xc + 4}" y="12" font-size="10.5" font-weight="700" text-anchor="middle" fill="${color}" stroke="#fffaf0" stroke-width="3" paint-order="stroke">${r.ok ? '✓' : '×'}${r.name}</text></g>`;
+          ${sailing && i === kNow ? '' : `<text x="${xc + 4}" y="12" font-size="10.5" font-weight="700" text-anchor="middle" fill="${color}" stroke="#fffaf0" stroke-width="3" paint-order="stroke">${r.ok ? '✓' : '×'}${r.name}</text>`}</g>`;
       }
       // お題は音符で示す：線の高さ＝深さ＝音の高さ
       const ty = y(t);
@@ -193,14 +203,15 @@ export function melodyStage(n, base, route, ctx) {
       if (i > 0 && i < cnt) g += `<path d="M${x} ${T}V${y(HULL)}" stroke="#8a5a2e" stroke-width="1" stroke-dasharray="3 3"/>
         <g class="port"><rect x="${x - (tight ? 10 : 14)}" y="${B + 17}" width="${tight ? 20 : 28}" height="16" rx="3" fill="#d6452c" stroke="#5f3b1c" stroke-width="1.2"/>
         <text x="${x}" y="${B + 29}" font-size="10.5" font-weight="700" text-anchor="middle" fill="#fffaf0">${tight ? i : '港' + i}</text></g>
-        ${tight ? `<text x="${x}" y="${B + 46}" font-size="10" font-weight="700" text-anchor="middle" fill="#23304a">${p.k === 'down' ? '↑' : '↓' + p.item[0]}</text>`
-          : `<text x="${x}" y="${B + 46}" font-size="9.5" font-weight="700" text-anchor="middle" fill="#23304a">${p.k === 'down' ? '↑下ろす' : '↓' + p.item[1] + p.item[0]}</text>`}${i === cnt - 1 ? `<text x="${x}" y="${B + 59}" font-size="9.5" font-weight="700" text-anchor="middle" fill="#d6452c">終着</text>` : ''}`;
+        ${portTag(x, B, p, tight, i === cnt - 1)}`;
       else g += `<text x="${x}" y="${B + (tight ? 59 : 29)}" font-size="10" text-anchor="${i ? 'end' : 'start'}" fill="#23304a">${i ? '停泊' : '出航'}</text>`;
     }
     if (S.phase !== 'prep') {
-      const k = Math.min(S.seg, cnt - 1), dd = S.played[k]?.d ?? S.log[k]?.toNumber() ?? depth().toNumber();
+      const k = kNow, r = S.played[k], dd = r?.d ?? S.log[k]?.toNumber() ?? depth().toNumber();
       const dk = Math.min(dd, HULL), extra = pileExtra(stackRows(S.placed, S.items)).toNumber();
-      g += keelMark(x0 + k * step + step / 2, y(dk), extra > 0 ? y(Math.max(0, dk - extra)) : null, T - 3);
+      const v = voiceOf(dd), label = NOTE[v.midi] + (v.wobble ? '〜' : '');
+      const lane = sailing ? { y: 17, label, color: r ? (r.ok ? '#2e7d5b' : '#bd3424') : '#23304a' } : null;
+      g += keelMark(x0 + k * step + step / 2, y(dk), extra > 0 ? y(Math.max(0, dk - extra)) : null, lane);
     }
     return `<svg viewBox="0 0 360 ${CH}" class="chart" role="img" aria-label="航海図。上ほど浅く高い音。音符がお題。数字は立ち寄る港で、上向き矢印は荷下ろし、下向き矢印は積載。">${g}</svg>`;
   }
