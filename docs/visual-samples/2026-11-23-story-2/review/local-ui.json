@@ -1,0 +1,4262 @@
+{
+  "label": "local",
+  "url": "http://127.0.0.1:5195/",
+  "version": "0.9.30",
+  "replay": [
+    {
+      "engine": "chromium",
+      "width": 412,
+      "height": 732,
+      "key": "s13",
+      "viewport": [
+        412,
+        732
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 398,
+        "bottom": 339.5,
+        "w": 384,
+        "h": 291.5
+      },
+      "say": {
+        "x": 14,
+        "y": 347.5,
+        "right": 398,
+        "bottom": 520.28125,
+        "w": 384,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 666,
+        "right": 398,
+        "bottom": 722,
+        "w": 384,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 412,
+      "cardWidth": 412,
+      "cardClient": 412,
+      "cardHeight": 732,
+      "cardClientHeight": 732,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-old-ship.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "王の荷を届け終えるころ、船はすっかり古くなっていました。船底の板のすき間から、水がしみ込んできます。見習い師匠、船の中に水が！ このままでは、帰り道の浅瀬でつかえてしまいます。"
+    },
+    {
+      "engine": "chromium",
+      "width": 412,
+      "height": 732,
+      "key": "s14",
+      "viewport": [
+        412,
+        732
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 398,
+        "bottom": 339.5,
+        "w": 384,
+        "h": 291.5
+      },
+      "say": {
+        "x": 14,
+        "y": 347.5,
+        "right": 398,
+        "bottom": 569.875,
+        "w": 384,
+        "h": 222.375
+      },
+      "button": {
+        "x": 14,
+        "y": 666,
+        "right": 398,
+        "bottom": 722,
+        "w": 384,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 412,
+      "cardWidth": 412,
+      "cardClient": 412,
+      "cardHeight": 732,
+      "cardClientHeight": 732,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-screw.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、らせんの筒を船に据えつけました。筒を回すと、船底の水が汲み上げられ、外へ流れ出ます。アルキメデス船に入った水も、重さのうちだ。回すたびに水が減り、船は浮く。だが、汲み出した水は戻らぬぞ。王の大船シュラクシア号でも、この仕掛けで船底の水をかき出したものだ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 412,
+      "height": 732,
+      "key": "s15",
+      "viewport": [
+        412,
+        732
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 398,
+        "bottom": 339.5,
+        "w": 384,
+        "h": 291.5
+      },
+      "say": {
+        "x": 14,
+        "y": 347.5,
+        "right": 398,
+        "bottom": 520.28125,
+        "w": 384,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 666,
+        "right": 398,
+        "bottom": 722,
+        "w": 384,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 412,
+      "cardWidth": 412,
+      "cardClient": 412,
+      "cardHeight": 732,
+      "cardClientHeight": 732,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "その夜、嵐が来ました。波に打たれて、船底の傷みはいっそうひどくなりました。見習い師匠、スクリューを回している間にも、水が入ってきます！ 汲み出しすぎたら、どうすれば……。"
+    },
+    {
+      "engine": "chromium",
+      "width": 412,
+      "height": 732,
+      "key": "s20",
+      "viewport": [
+        412,
+        732
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 398,
+        "bottom": 339.5,
+        "w": 384,
+        "h": 291.5
+      },
+      "say": {
+        "x": 14,
+        "y": 347.5,
+        "right": 398,
+        "bottom": 520.28125,
+        "w": 384,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 666,
+        "right": 398,
+        "bottom": 722,
+        "w": 384,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 412,
+      "cardWidth": 412,
+      "cardClient": 412,
+      "cardHeight": 732,
+      "cardClientHeight": 732,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、波の音の中で静かに言いました。アルキメデス慌てるな。回せば10汲み出し、その間に5入る。何もしなくても5入る。汲み出しすぎたら、待てばよい。待つのも一手だ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 412,
+      "height": 732,
+      "key": "s16",
+      "viewport": [
+        412,
+        732
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 398,
+        "bottom": 339.5,
+        "w": 384,
+        "h": 291.5
+      },
+      "say": {
+        "x": 14,
+        "y": 347.5,
+        "right": 398,
+        "bottom": 545.078125,
+        "w": 384,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 14,
+        "y": 666,
+        "right": 398,
+        "bottom": 722,
+        "w": 384,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 412,
+      "cardWidth": 412,
+      "cardClient": 412,
+      "cardHeight": 732,
+      "cardClientHeight": 732,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-shipwright.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "嵐を抜け、船はやっとのことで港へ帰り着きました。岸で待っていたのは、王の大船シュラクシア号を造った船大工、アルキアスです。アルキアスよく、この船で帰ってきたな。船底の板はぼろぼろだ。すぐに張り替えよう。"
+    },
+    {
+      "engine": "chromium",
+      "width": 412,
+      "height": 732,
+      "key": "s17",
+      "viewport": [
+        412,
+        732
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 398,
+        "bottom": 339.5,
+        "w": 384,
+        "h": 291.5
+      },
+      "say": {
+        "x": 14,
+        "y": 347.5,
+        "right": 398,
+        "bottom": 520.28125,
+        "w": 384,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 666,
+        "right": 398,
+        "bottom": 722,
+        "w": 384,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 412,
+      "cardWidth": 412,
+      "cardClient": 412,
+      "cardHeight": 732,
+      "cardClientHeight": 732,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-repaired.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "船は、新しい板で見違えるように直りました。アルキアスシュラクシア号のときも、あんたのスクリューに助けられた。重さと水の仕組みが分かる者がいると、船大工は心強い。さあ、新しい船で、王の荷を運んでくれ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 412,
+      "height": 732,
+      "key": "s18",
+      "viewport": [
+        412,
+        732
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 398,
+        "bottom": 339.5,
+        "w": 384,
+        "h": 291.5
+      },
+      "say": {
+        "x": 14,
+        "y": 347.5,
+        "right": 398,
+        "bottom": 520.28125,
+        "w": 384,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 666,
+        "right": 398,
+        "bottom": 722,
+        "w": 384,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 412,
+      "cardWidth": 412,
+      "cardClient": 412,
+      "cardHeight": 732,
+      "cardClientHeight": 732,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "シラクサに戻ると、王ヒエロン2世が二人を宮殿に呼びました。荷の重さで歌う船の話が、王の耳にも届いていたのです。ヒエロン2世荷を積み下ろしすると歌う船があると聞いた。わたしの前で、その旋律を聴かせてくれ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 412,
+      "height": 732,
+      "key": "s19",
+      "viewport": [
+        412,
+        732
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 398,
+        "bottom": 339.5,
+        "w": 384,
+        "h": 291.5
+      },
+      "say": {
+        "x": 14,
+        "y": 347.5,
+        "right": 398,
+        "bottom": 569.875,
+        "w": 384,
+        "h": 222.375
+      },
+      "button": {
+        "x": 14,
+        "y": 666,
+        "right": 398,
+        "bottom": 722,
+        "w": 384,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 412,
+      "cardWidth": 412,
+      "cardClient": 412,
+      "cardHeight": 732,
+      "cardClientHeight": 732,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "見習いは水槽に船を浮かべ、荷をひとつずつ下ろしていきました。沈む深さが変わるたびに、澄んだ音が響きます。アルキメデス重さが深さを決め、深さが音を決める。王冠のときと同じ、浮く力の仕組みです。まだ分からないことは、たくさんあります。だから面白いのです。"
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 664,
+      "key": "s13",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 503.78125,
+        "w": 362,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-old-ship.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "王の荷を届け終えるころ、船はすっかり古くなっていました。船底の板のすき間から、水がしみ込んできます。見習い師匠、船の中に水が！ このままでは、帰り道の浅瀬でつかえてしまいます。"
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 664,
+      "key": "s14",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 553.375,
+        "w": 362,
+        "h": 222.375
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-screw.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、らせんの筒を船に据えつけました。筒を回すと、船底の水が汲み上げられ、外へ流れ出ます。アルキメデス船に入った水も、重さのうちだ。回すたびに水が減り、船は浮く。だが、汲み出した水は戻らぬぞ。王の大船シュラクシア号でも、この仕掛けで船底の水をかき出したものだ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 664,
+      "key": "s15",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 503.78125,
+        "w": 362,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "その夜、嵐が来ました。波に打たれて、船底の傷みはいっそうひどくなりました。見習い師匠、スクリューを回している間にも、水が入ってきます！ 汲み出しすぎたら、どうすれば……。"
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 664,
+      "key": "s20",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 528.578125,
+        "w": 362,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、波の音の中で静かに言いました。アルキメデス慌てるな。回せば10汲み出し、その間に5入る。何もしなくても5入る。汲み出しすぎたら、待てばよい。待つのも一手だ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 664,
+      "key": "s16",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 528.578125,
+        "w": 362,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-shipwright.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "嵐を抜け、船はやっとのことで港へ帰り着きました。岸で待っていたのは、王の大船シュラクシア号を造った船大工、アルキアスです。アルキアスよく、この船で帰ってきたな。船底の板はぼろぼろだ。すぐに張り替えよう。"
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 664,
+      "key": "s17",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 528.578125,
+        "w": 362,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-repaired.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "船は、新しい板で見違えるように直りました。アルキアスシュラクシア号のときも、あんたのスクリューに助けられた。重さと水の仕組みが分かる者がいると、船大工は心強い。さあ、新しい船で、王の荷を運んでくれ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 664,
+      "key": "s18",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 528.578125,
+        "w": 362,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "シラクサに戻ると、王ヒエロン2世が二人を宮殿に呼びました。荷の重さで歌う船の話が、王の耳にも届いていたのです。ヒエロン2世荷を積み下ろしすると歌う船があると聞いた。わたしの前で、その旋律を聴かせてくれ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 664,
+      "key": "s19",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 553.375,
+        "w": 362,
+        "h": 222.375
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "見習いは水槽に船を浮かべ、荷をひとつずつ下ろしていきました。沈む深さが変わるたびに、澄んだ音が響きます。アルキメデス重さが深さを決め、深さが音を決める。王冠のときと同じ、浮く力の仕組みです。まだ分からないことは、たくさんあります。だから面白いのです。"
+    },
+    {
+      "engine": "chromium",
+      "width": 844,
+      "height": 390,
+      "key": "s13",
+      "viewport": [
+        844,
+        390
+      ],
+      "frame": {
+        "x": 37.3125,
+        "y": 48.25,
+        "right": 471.96875,
+        "bottom": 377.734375,
+        "w": 434.65625,
+        "h": 329.484375
+      },
+      "say": {
+        "x": 495.28125,
+        "y": 42,
+        "right": 797,
+        "bottom": 264.375,
+        "w": 301.71875,
+        "h": 222.375
+      },
+      "button": {
+        "x": 495.28125,
+        "y": 324,
+        "right": 797,
+        "bottom": 380,
+        "w": 301.71875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 844,
+      "cardWidth": 844,
+      "cardClient": 844,
+      "cardHeight": 390,
+      "cardClientHeight": 390,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-old-ship.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "王の荷を届け終えるころ、船はすっかり古くなっていました。船底の板のすき間から、水がしみ込んできます。見習い師匠、船の中に水が！ このままでは、帰り道の浅瀬でつかえてしまいます。"
+    },
+    {
+      "engine": "chromium",
+      "width": 844,
+      "height": 390,
+      "key": "s14",
+      "viewport": [
+        844,
+        390
+      ],
+      "frame": {
+        "x": 37.3125,
+        "y": 48.25,
+        "right": 471.96875,
+        "bottom": 377.734375,
+        "w": 434.65625,
+        "h": 329.484375
+      },
+      "say": {
+        "x": 495.28125,
+        "y": 42,
+        "right": 797,
+        "bottom": 313.96875,
+        "w": 301.71875,
+        "h": 271.96875
+      },
+      "button": {
+        "x": 495.28125,
+        "y": 324,
+        "right": 797,
+        "bottom": 380,
+        "w": 301.71875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 844,
+      "cardWidth": 844,
+      "cardClient": 844,
+      "cardHeight": 390,
+      "cardClientHeight": 390,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-screw.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、らせんの筒を船に据えつけました。筒を回すと、船底の水が汲み上げられ、外へ流れ出ます。アルキメデス船に入った水も、重さのうちだ。回すたびに水が減り、船は浮く。だが、汲み出した水は戻らぬぞ。王の大船シュラクシア号でも、この仕掛けで船底の水をかき出したものだ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 844,
+      "height": 390,
+      "key": "s15",
+      "viewport": [
+        844,
+        390
+      ],
+      "frame": {
+        "x": 37.3125,
+        "y": 48.25,
+        "right": 471.96875,
+        "bottom": 377.734375,
+        "w": 434.65625,
+        "h": 329.484375
+      },
+      "say": {
+        "x": 495.28125,
+        "y": 42,
+        "right": 797,
+        "bottom": 239.578125,
+        "w": 301.71875,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 495.28125,
+        "y": 324,
+        "right": 797,
+        "bottom": 380,
+        "w": 301.71875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 844,
+      "cardWidth": 844,
+      "cardClient": 844,
+      "cardHeight": 390,
+      "cardClientHeight": 390,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "その夜、嵐が来ました。波に打たれて、船底の傷みはいっそうひどくなりました。見習い師匠、スクリューを回している間にも、水が入ってきます！ 汲み出しすぎたら、どうすれば……。"
+    },
+    {
+      "engine": "chromium",
+      "width": 844,
+      "height": 390,
+      "key": "s20",
+      "viewport": [
+        844,
+        390
+      ],
+      "frame": {
+        "x": 37.3125,
+        "y": 48.25,
+        "right": 471.96875,
+        "bottom": 377.734375,
+        "w": 434.65625,
+        "h": 329.484375
+      },
+      "say": {
+        "x": 495.28125,
+        "y": 42,
+        "right": 797,
+        "bottom": 239.578125,
+        "w": 301.71875,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 495.28125,
+        "y": 324,
+        "right": 797,
+        "bottom": 380,
+        "w": 301.71875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 844,
+      "cardWidth": 844,
+      "cardClient": 844,
+      "cardHeight": 390,
+      "cardClientHeight": 390,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、波の音の中で静かに言いました。アルキメデス慌てるな。回せば10汲み出し、その間に5入る。何もしなくても5入る。汲み出しすぎたら、待てばよい。待つのも一手だ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 844,
+      "height": 390,
+      "key": "s16",
+      "viewport": [
+        844,
+        390
+      ],
+      "frame": {
+        "x": 37.3125,
+        "y": 48.25,
+        "right": 471.96875,
+        "bottom": 377.734375,
+        "w": 434.65625,
+        "h": 329.484375
+      },
+      "say": {
+        "x": 495.28125,
+        "y": 42,
+        "right": 797,
+        "bottom": 289.171875,
+        "w": 301.71875,
+        "h": 247.171875
+      },
+      "button": {
+        "x": 495.28125,
+        "y": 324,
+        "right": 797,
+        "bottom": 380,
+        "w": 301.71875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 844,
+      "cardWidth": 844,
+      "cardClient": 844,
+      "cardHeight": 390,
+      "cardClientHeight": 390,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-shipwright.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "嵐を抜け、船はやっとのことで港へ帰り着きました。岸で待っていたのは、王の大船シュラクシア号を造った船大工、アルキアスです。アルキアスよく、この船で帰ってきたな。船底の板はぼろぼろだ。すぐに張り替えよう。"
+    },
+    {
+      "engine": "chromium",
+      "width": 844,
+      "height": 390,
+      "key": "s17",
+      "viewport": [
+        844,
+        390
+      ],
+      "frame": {
+        "x": 37.3125,
+        "y": 48.25,
+        "right": 471.96875,
+        "bottom": 377.734375,
+        "w": 434.65625,
+        "h": 329.484375
+      },
+      "say": {
+        "x": 495.28125,
+        "y": 42,
+        "right": 797,
+        "bottom": 264.375,
+        "w": 301.71875,
+        "h": 222.375
+      },
+      "button": {
+        "x": 495.28125,
+        "y": 324,
+        "right": 797,
+        "bottom": 380,
+        "w": 301.71875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 844,
+      "cardWidth": 844,
+      "cardClient": 844,
+      "cardHeight": 390,
+      "cardClientHeight": 390,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-repaired.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "船は、新しい板で見違えるように直りました。アルキアスシュラクシア号のときも、あんたのスクリューに助けられた。重さと水の仕組みが分かる者がいると、船大工は心強い。さあ、新しい船で、王の荷を運んでくれ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 844,
+      "height": 390,
+      "key": "s18",
+      "viewport": [
+        844,
+        390
+      ],
+      "frame": {
+        "x": 37.3125,
+        "y": 48.25,
+        "right": 471.96875,
+        "bottom": 377.734375,
+        "w": 434.65625,
+        "h": 329.484375
+      },
+      "say": {
+        "x": 495.28125,
+        "y": 42,
+        "right": 797,
+        "bottom": 264.375,
+        "w": 301.71875,
+        "h": 222.375
+      },
+      "button": {
+        "x": 495.28125,
+        "y": 324,
+        "right": 797,
+        "bottom": 380,
+        "w": 301.71875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 844,
+      "cardWidth": 844,
+      "cardClient": 844,
+      "cardHeight": 390,
+      "cardClientHeight": 390,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "シラクサに戻ると、王ヒエロン2世が二人を宮殿に呼びました。荷の重さで歌う船の話が、王の耳にも届いていたのです。ヒエロン2世荷を積み下ろしすると歌う船があると聞いた。わたしの前で、その旋律を聴かせてくれ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 844,
+      "height": 390,
+      "key": "s19",
+      "viewport": [
+        844,
+        390
+      ],
+      "frame": {
+        "x": 37.3125,
+        "y": 48.25,
+        "right": 471.96875,
+        "bottom": 377.734375,
+        "w": 434.65625,
+        "h": 329.484375
+      },
+      "say": {
+        "x": 495.28125,
+        "y": 42,
+        "right": 797,
+        "bottom": 313.96875,
+        "w": 301.71875,
+        "h": 271.96875
+      },
+      "button": {
+        "x": 495.28125,
+        "y": 324,
+        "right": 797,
+        "bottom": 380,
+        "w": 301.71875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 844,
+      "cardWidth": 844,
+      "cardClient": 844,
+      "cardHeight": 390,
+      "cardClientHeight": 390,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "見習いは水槽に船を浮かべ、荷をひとつずつ下ろしていきました。沈む深さが変わるたびに、澄んだ音が響きます。アルキメデス重さが深さを決め、深さが音を決める。王冠のときと同じ、浮く力の仕組みです。まだ分からないことは、たくさんあります。だから面白いのです。"
+    },
+    {
+      "engine": "chromium",
+      "width": 1366,
+      "height": 768,
+      "key": "s13",
+      "viewport": [
+        1366,
+        768
+      ],
+      "frame": {
+        "x": 28,
+        "y": 78.671875,
+        "right": 904.203125,
+        "bottom": 739.3125,
+        "w": 876.203125,
+        "h": 660.640625
+      },
+      "say": {
+        "x": 928.203125,
+        "y": 116.078125,
+        "right": 1319,
+        "bottom": 288.859375,
+        "w": 390.796875,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 928.203125,
+        "y": 569.125,
+        "right": 1319,
+        "bottom": 625.125,
+        "w": 390.796875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1366,
+      "cardWidth": 1366,
+      "cardClient": 1366,
+      "cardHeight": 768,
+      "cardClientHeight": 768,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-old-ship.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "王の荷を届け終えるころ、船はすっかり古くなっていました。船底の板のすき間から、水がしみ込んできます。見習い師匠、船の中に水が！ このままでは、帰り道の浅瀬でつかえてしまいます。"
+    },
+    {
+      "engine": "chromium",
+      "width": 1366,
+      "height": 768,
+      "key": "s14",
+      "viewport": [
+        1366,
+        768
+      ],
+      "frame": {
+        "x": 28,
+        "y": 78.671875,
+        "right": 904.203125,
+        "bottom": 739.3125,
+        "w": 876.203125,
+        "h": 660.640625
+      },
+      "say": {
+        "x": 928.203125,
+        "y": 116.078125,
+        "right": 1319,
+        "bottom": 338.453125,
+        "w": 390.796875,
+        "h": 222.375
+      },
+      "button": {
+        "x": 928.203125,
+        "y": 569.125,
+        "right": 1319,
+        "bottom": 625.125,
+        "w": 390.796875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1366,
+      "cardWidth": 1366,
+      "cardClient": 1366,
+      "cardHeight": 768,
+      "cardClientHeight": 768,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-screw.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、らせんの筒を船に据えつけました。筒を回すと、船底の水が汲み上げられ、外へ流れ出ます。アルキメデス船に入った水も、重さのうちだ。回すたびに水が減り、船は浮く。だが、汲み出した水は戻らぬぞ。王の大船シュラクシア号でも、この仕掛けで船底の水をかき出したものだ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 1366,
+      "height": 768,
+      "key": "s15",
+      "viewport": [
+        1366,
+        768
+      ],
+      "frame": {
+        "x": 28,
+        "y": 78.671875,
+        "right": 904.203125,
+        "bottom": 739.3125,
+        "w": 876.203125,
+        "h": 660.640625
+      },
+      "say": {
+        "x": 928.203125,
+        "y": 116.078125,
+        "right": 1319,
+        "bottom": 288.859375,
+        "w": 390.796875,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 928.203125,
+        "y": 569.125,
+        "right": 1319,
+        "bottom": 625.125,
+        "w": 390.796875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1366,
+      "cardWidth": 1366,
+      "cardClient": 1366,
+      "cardHeight": 768,
+      "cardClientHeight": 768,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "その夜、嵐が来ました。波に打たれて、船底の傷みはいっそうひどくなりました。見習い師匠、スクリューを回している間にも、水が入ってきます！ 汲み出しすぎたら、どうすれば……。"
+    },
+    {
+      "engine": "chromium",
+      "width": 1366,
+      "height": 768,
+      "key": "s20",
+      "viewport": [
+        1366,
+        768
+      ],
+      "frame": {
+        "x": 28,
+        "y": 78.671875,
+        "right": 904.203125,
+        "bottom": 739.3125,
+        "w": 876.203125,
+        "h": 660.640625
+      },
+      "say": {
+        "x": 928.203125,
+        "y": 116.078125,
+        "right": 1319,
+        "bottom": 288.859375,
+        "w": 390.796875,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 928.203125,
+        "y": 569.125,
+        "right": 1319,
+        "bottom": 625.125,
+        "w": 390.796875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1366,
+      "cardWidth": 1366,
+      "cardClient": 1366,
+      "cardHeight": 768,
+      "cardClientHeight": 768,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、波の音の中で静かに言いました。アルキメデス慌てるな。回せば10汲み出し、その間に5入る。何もしなくても5入る。汲み出しすぎたら、待てばよい。待つのも一手だ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 1366,
+      "height": 768,
+      "key": "s16",
+      "viewport": [
+        1366,
+        768
+      ],
+      "frame": {
+        "x": 28,
+        "y": 78.671875,
+        "right": 904.203125,
+        "bottom": 739.3125,
+        "w": 876.203125,
+        "h": 660.640625
+      },
+      "say": {
+        "x": 928.203125,
+        "y": 116.078125,
+        "right": 1319,
+        "bottom": 313.65625,
+        "w": 390.796875,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 928.203125,
+        "y": 569.125,
+        "right": 1319,
+        "bottom": 625.125,
+        "w": 390.796875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1366,
+      "cardWidth": 1366,
+      "cardClient": 1366,
+      "cardHeight": 768,
+      "cardClientHeight": 768,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-shipwright.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "嵐を抜け、船はやっとのことで港へ帰り着きました。岸で待っていたのは、王の大船シュラクシア号を造った船大工、アルキアスです。アルキアスよく、この船で帰ってきたな。船底の板はぼろぼろだ。すぐに張り替えよう。"
+    },
+    {
+      "engine": "chromium",
+      "width": 1366,
+      "height": 768,
+      "key": "s17",
+      "viewport": [
+        1366,
+        768
+      ],
+      "frame": {
+        "x": 28,
+        "y": 78.671875,
+        "right": 904.203125,
+        "bottom": 739.3125,
+        "w": 876.203125,
+        "h": 660.640625
+      },
+      "say": {
+        "x": 928.203125,
+        "y": 116.078125,
+        "right": 1319,
+        "bottom": 288.859375,
+        "w": 390.796875,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 928.203125,
+        "y": 569.125,
+        "right": 1319,
+        "bottom": 625.125,
+        "w": 390.796875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1366,
+      "cardWidth": 1366,
+      "cardClient": 1366,
+      "cardHeight": 768,
+      "cardClientHeight": 768,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-repaired.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "船は、新しい板で見違えるように直りました。アルキアスシュラクシア号のときも、あんたのスクリューに助けられた。重さと水の仕組みが分かる者がいると、船大工は心強い。さあ、新しい船で、王の荷を運んでくれ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 1366,
+      "height": 768,
+      "key": "s18",
+      "viewport": [
+        1366,
+        768
+      ],
+      "frame": {
+        "x": 28,
+        "y": 78.671875,
+        "right": 904.203125,
+        "bottom": 739.3125,
+        "w": 876.203125,
+        "h": 660.640625
+      },
+      "say": {
+        "x": 928.203125,
+        "y": 116.078125,
+        "right": 1319,
+        "bottom": 288.859375,
+        "w": 390.796875,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 928.203125,
+        "y": 569.125,
+        "right": 1319,
+        "bottom": 625.125,
+        "w": 390.796875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1366,
+      "cardWidth": 1366,
+      "cardClient": 1366,
+      "cardHeight": 768,
+      "cardClientHeight": 768,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "シラクサに戻ると、王ヒエロン2世が二人を宮殿に呼びました。荷の重さで歌う船の話が、王の耳にも届いていたのです。ヒエロン2世荷を積み下ろしすると歌う船があると聞いた。わたしの前で、その旋律を聴かせてくれ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 1366,
+      "height": 768,
+      "key": "s19",
+      "viewport": [
+        1366,
+        768
+      ],
+      "frame": {
+        "x": 28,
+        "y": 78.671875,
+        "right": 904.203125,
+        "bottom": 739.3125,
+        "w": 876.203125,
+        "h": 660.640625
+      },
+      "say": {
+        "x": 928.203125,
+        "y": 116.078125,
+        "right": 1319,
+        "bottom": 338.453125,
+        "w": 390.796875,
+        "h": 222.375
+      },
+      "button": {
+        "x": 928.203125,
+        "y": 569.125,
+        "right": 1319,
+        "bottom": 625.125,
+        "w": 390.796875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1366,
+      "cardWidth": 1366,
+      "cardClient": 1366,
+      "cardHeight": 768,
+      "cardClientHeight": 768,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "見習いは水槽に船を浮かべ、荷をひとつずつ下ろしていきました。沈む深さが変わるたびに、澄んだ音が響きます。アルキメデス重さが深さを決め、深さが音を決める。王冠のときと同じ、浮く力の仕組みです。まだ分からないことは、たくさんあります。だから面白いのです。"
+    },
+    {
+      "engine": "chromium",
+      "width": 1920,
+      "height": 1080,
+      "key": "s13",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "frame": {
+        "x": 188,
+        "y": 150.75,
+        "right": 1288,
+        "bottom": 979.25,
+        "w": 1100,
+        "h": 828.5
+      },
+      "say": {
+        "x": 1312,
+        "y": 126,
+        "right": 1713,
+        "bottom": 298.78125,
+        "w": 401,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 1312,
+        "y": 854,
+        "right": 1713,
+        "bottom": 910,
+        "w": 401,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1920,
+      "cardWidth": 1600,
+      "cardClient": 1600,
+      "cardHeight": 1080,
+      "cardClientHeight": 1080,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-old-ship.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "王の荷を届け終えるころ、船はすっかり古くなっていました。船底の板のすき間から、水がしみ込んできます。見習い師匠、船の中に水が！ このままでは、帰り道の浅瀬でつかえてしまいます。"
+    },
+    {
+      "engine": "chromium",
+      "width": 1920,
+      "height": 1080,
+      "key": "s14",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "frame": {
+        "x": 188,
+        "y": 150.75,
+        "right": 1288,
+        "bottom": 979.25,
+        "w": 1100,
+        "h": 828.5
+      },
+      "say": {
+        "x": 1312,
+        "y": 126,
+        "right": 1713,
+        "bottom": 348.375,
+        "w": 401,
+        "h": 222.375
+      },
+      "button": {
+        "x": 1312,
+        "y": 854,
+        "right": 1713,
+        "bottom": 910,
+        "w": 401,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1920,
+      "cardWidth": 1600,
+      "cardClient": 1600,
+      "cardHeight": 1080,
+      "cardClientHeight": 1080,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-screw.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、らせんの筒を船に据えつけました。筒を回すと、船底の水が汲み上げられ、外へ流れ出ます。アルキメデス船に入った水も、重さのうちだ。回すたびに水が減り、船は浮く。だが、汲み出した水は戻らぬぞ。王の大船シュラクシア号でも、この仕掛けで船底の水をかき出したものだ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 1920,
+      "height": 1080,
+      "key": "s15",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "frame": {
+        "x": 188,
+        "y": 150.75,
+        "right": 1288,
+        "bottom": 979.25,
+        "w": 1100,
+        "h": 828.5
+      },
+      "say": {
+        "x": 1312,
+        "y": 126,
+        "right": 1713,
+        "bottom": 298.78125,
+        "w": 401,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 1312,
+        "y": 854,
+        "right": 1713,
+        "bottom": 910,
+        "w": 401,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1920,
+      "cardWidth": 1600,
+      "cardClient": 1600,
+      "cardHeight": 1080,
+      "cardClientHeight": 1080,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "その夜、嵐が来ました。波に打たれて、船底の傷みはいっそうひどくなりました。見習い師匠、スクリューを回している間にも、水が入ってきます！ 汲み出しすぎたら、どうすれば……。"
+    },
+    {
+      "engine": "chromium",
+      "width": 1920,
+      "height": 1080,
+      "key": "s20",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "frame": {
+        "x": 188,
+        "y": 150.75,
+        "right": 1288,
+        "bottom": 979.25,
+        "w": 1100,
+        "h": 828.5
+      },
+      "say": {
+        "x": 1312,
+        "y": 126,
+        "right": 1713,
+        "bottom": 273.984375,
+        "w": 401,
+        "h": 147.984375
+      },
+      "button": {
+        "x": 1312,
+        "y": 854,
+        "right": 1713,
+        "bottom": 910,
+        "w": 401,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1920,
+      "cardWidth": 1600,
+      "cardClient": 1600,
+      "cardHeight": 1080,
+      "cardClientHeight": 1080,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、波の音の中で静かに言いました。アルキメデス慌てるな。回せば10汲み出し、その間に5入る。何もしなくても5入る。汲み出しすぎたら、待てばよい。待つのも一手だ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 1920,
+      "height": 1080,
+      "key": "s16",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "frame": {
+        "x": 188,
+        "y": 150.75,
+        "right": 1288,
+        "bottom": 979.25,
+        "w": 1100,
+        "h": 828.5
+      },
+      "say": {
+        "x": 1312,
+        "y": 126,
+        "right": 1713,
+        "bottom": 323.578125,
+        "w": 401,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 1312,
+        "y": 854,
+        "right": 1713,
+        "bottom": 910,
+        "w": 401,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1920,
+      "cardWidth": 1600,
+      "cardClient": 1600,
+      "cardHeight": 1080,
+      "cardClientHeight": 1080,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-shipwright.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "嵐を抜け、船はやっとのことで港へ帰り着きました。岸で待っていたのは、王の大船シュラクシア号を造った船大工、アルキアスです。アルキアスよく、この船で帰ってきたな。船底の板はぼろぼろだ。すぐに張り替えよう。"
+    },
+    {
+      "engine": "chromium",
+      "width": 1920,
+      "height": 1080,
+      "key": "s17",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "frame": {
+        "x": 188,
+        "y": 150.75,
+        "right": 1288,
+        "bottom": 979.25,
+        "w": 1100,
+        "h": 828.5
+      },
+      "say": {
+        "x": 1312,
+        "y": 126,
+        "right": 1713,
+        "bottom": 298.78125,
+        "w": 401,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 1312,
+        "y": 854,
+        "right": 1713,
+        "bottom": 910,
+        "w": 401,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1920,
+      "cardWidth": 1600,
+      "cardClient": 1600,
+      "cardHeight": 1080,
+      "cardClientHeight": 1080,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-repaired.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "船は、新しい板で見違えるように直りました。アルキアスシュラクシア号のときも、あんたのスクリューに助けられた。重さと水の仕組みが分かる者がいると、船大工は心強い。さあ、新しい船で、王の荷を運んでくれ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 1920,
+      "height": 1080,
+      "key": "s18",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "frame": {
+        "x": 188,
+        "y": 150.75,
+        "right": 1288,
+        "bottom": 979.25,
+        "w": 1100,
+        "h": 828.5
+      },
+      "say": {
+        "x": 1312,
+        "y": 126,
+        "right": 1713,
+        "bottom": 298.78125,
+        "w": 401,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 1312,
+        "y": 854,
+        "right": 1713,
+        "bottom": 910,
+        "w": 401,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1920,
+      "cardWidth": 1600,
+      "cardClient": 1600,
+      "cardHeight": 1080,
+      "cardClientHeight": 1080,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "シラクサに戻ると、王ヒエロン2世が二人を宮殿に呼びました。荷の重さで歌う船の話が、王の耳にも届いていたのです。ヒエロン2世荷を積み下ろしすると歌う船があると聞いた。わたしの前で、その旋律を聴かせてくれ。"
+    },
+    {
+      "engine": "chromium",
+      "width": 1920,
+      "height": 1080,
+      "key": "s19",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "frame": {
+        "x": 188,
+        "y": 150.75,
+        "right": 1288,
+        "bottom": 979.25,
+        "w": 1100,
+        "h": 828.5
+      },
+      "say": {
+        "x": 1312,
+        "y": 126,
+        "right": 1713,
+        "bottom": 323.578125,
+        "w": 401,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 1312,
+        "y": 854,
+        "right": 1713,
+        "bottom": 910,
+        "w": 401,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1920,
+      "cardWidth": 1600,
+      "cardClient": 1600,
+      "cardHeight": 1080,
+      "cardClientHeight": 1080,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "見習いは水槽に船を浮かべ、荷をひとつずつ下ろしていきました。沈む深さが変わるたびに、澄んだ音が響きます。アルキメデス重さが深さを決め、深さが音を決める。王冠のときと同じ、浮く力の仕組みです。まだ分からないことは、たくさんあります。だから面白いのです。"
+    },
+    {
+      "engine": "webkit",
+      "width": 412,
+      "height": 732,
+      "key": "s13",
+      "viewport": [
+        412,
+        732
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 398,
+        "bottom": 339.5,
+        "w": 384,
+        "h": 291.5
+      },
+      "say": {
+        "x": 14,
+        "y": 347.5,
+        "right": 398,
+        "bottom": 520.28125,
+        "w": 384,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 666,
+        "right": 398,
+        "bottom": 722,
+        "w": 384,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 412,
+      "cardWidth": 412,
+      "cardClient": 412,
+      "cardHeight": 732,
+      "cardClientHeight": 732,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-old-ship.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "王の荷を届け終えるころ、船はすっかり古くなっていました。船底の板のすき間から、水がしみ込んできます。見習い師匠、船の中に水が！ このままでは、帰り道の浅瀬でつかえてしまいます。"
+    },
+    {
+      "engine": "webkit",
+      "width": 412,
+      "height": 732,
+      "key": "s14",
+      "viewport": [
+        412,
+        732
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 398,
+        "bottom": 339.5,
+        "w": 384,
+        "h": 291.5
+      },
+      "say": {
+        "x": 14,
+        "y": 347.5,
+        "right": 398,
+        "bottom": 569.875,
+        "w": 384,
+        "h": 222.375
+      },
+      "button": {
+        "x": 14,
+        "y": 666,
+        "right": 398,
+        "bottom": 722,
+        "w": 384,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 412,
+      "cardWidth": 412,
+      "cardClient": 412,
+      "cardHeight": 732,
+      "cardClientHeight": 732,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-screw.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、らせんの筒を船に据えつけました。筒を回すと、船底の水が汲み上げられ、外へ流れ出ます。アルキメデス船に入った水も、重さのうちだ。回すたびに水が減り、船は浮く。だが、汲み出した水は戻らぬぞ。王の大船シュラクシア号でも、この仕掛けで船底の水をかき出したものだ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 412,
+      "height": 732,
+      "key": "s15",
+      "viewport": [
+        412,
+        732
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 398,
+        "bottom": 339.5,
+        "w": 384,
+        "h": 291.5
+      },
+      "say": {
+        "x": 14,
+        "y": 347.5,
+        "right": 398,
+        "bottom": 495.484375,
+        "w": 384,
+        "h": 147.984375
+      },
+      "button": {
+        "x": 14,
+        "y": 666,
+        "right": 398,
+        "bottom": 722,
+        "w": 384,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 412,
+      "cardWidth": 412,
+      "cardClient": 412,
+      "cardHeight": 732,
+      "cardClientHeight": 732,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "その夜、嵐が来ました。波に打たれて、船底の傷みはいっそうひどくなりました。見習い師匠、スクリューを回している間にも、水が入ってきます！ 汲み出しすぎたら、どうすれば……。"
+    },
+    {
+      "engine": "webkit",
+      "width": 412,
+      "height": 732,
+      "key": "s20",
+      "viewport": [
+        412,
+        732
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 398,
+        "bottom": 339.5,
+        "w": 384,
+        "h": 291.5
+      },
+      "say": {
+        "x": 14,
+        "y": 347.5,
+        "right": 398,
+        "bottom": 520.28125,
+        "w": 384,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 666,
+        "right": 398,
+        "bottom": 722,
+        "w": 384,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 412,
+      "cardWidth": 412,
+      "cardClient": 412,
+      "cardHeight": 732,
+      "cardClientHeight": 732,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、波の音の中で静かに言いました。アルキメデス慌てるな。回せば10汲み出し、その間に5入る。何もしなくても5入る。汲み出しすぎたら、待てばよい。待つのも一手だ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 412,
+      "height": 732,
+      "key": "s16",
+      "viewport": [
+        412,
+        732
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 398,
+        "bottom": 339.5,
+        "w": 384,
+        "h": 291.5
+      },
+      "say": {
+        "x": 14,
+        "y": 347.5,
+        "right": 398,
+        "bottom": 520.28125,
+        "w": 384,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 666,
+        "right": 398,
+        "bottom": 722,
+        "w": 384,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 412,
+      "cardWidth": 412,
+      "cardClient": 412,
+      "cardHeight": 732,
+      "cardClientHeight": 732,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-shipwright.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "嵐を抜け、船はやっとのことで港へ帰り着きました。岸で待っていたのは、王の大船シュラクシア号を造った船大工、アルキアスです。アルキアスよく、この船で帰ってきたな。船底の板はぼろぼろだ。すぐに張り替えよう。"
+    },
+    {
+      "engine": "webkit",
+      "width": 412,
+      "height": 732,
+      "key": "s17",
+      "viewport": [
+        412,
+        732
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 398,
+        "bottom": 339.5,
+        "w": 384,
+        "h": 291.5
+      },
+      "say": {
+        "x": 14,
+        "y": 347.5,
+        "right": 398,
+        "bottom": 520.28125,
+        "w": 384,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 666,
+        "right": 398,
+        "bottom": 722,
+        "w": 384,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 412,
+      "cardWidth": 412,
+      "cardClient": 412,
+      "cardHeight": 732,
+      "cardClientHeight": 732,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-repaired.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "船は、新しい板で見違えるように直りました。アルキアスシュラクシア号のときも、あんたのスクリューに助けられた。重さと水の仕組みが分かる者がいると、船大工は心強い。さあ、新しい船で、王の荷を運んでくれ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 412,
+      "height": 732,
+      "key": "s18",
+      "viewport": [
+        412,
+        732
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 398,
+        "bottom": 339.5,
+        "w": 384,
+        "h": 291.5
+      },
+      "say": {
+        "x": 14,
+        "y": 347.5,
+        "right": 398,
+        "bottom": 520.28125,
+        "w": 384,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 666,
+        "right": 398,
+        "bottom": 722,
+        "w": 384,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 412,
+      "cardWidth": 412,
+      "cardClient": 412,
+      "cardHeight": 732,
+      "cardClientHeight": 732,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "シラクサに戻ると、王ヒエロン2世が二人を宮殿に呼びました。荷の重さで歌う船の話が、王の耳にも届いていたのです。ヒエロン2世荷を積み下ろしすると歌う船があると聞いた。わたしの前で、その旋律を聴かせてくれ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 412,
+      "height": 732,
+      "key": "s19",
+      "viewport": [
+        412,
+        732
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 398,
+        "bottom": 339.5,
+        "w": 384,
+        "h": 291.5
+      },
+      "say": {
+        "x": 14,
+        "y": 347.5,
+        "right": 398,
+        "bottom": 569.875,
+        "w": 384,
+        "h": 222.375
+      },
+      "button": {
+        "x": 14,
+        "y": 666,
+        "right": 398,
+        "bottom": 722,
+        "w": 384,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 412,
+      "cardWidth": 412,
+      "cardClient": 412,
+      "cardHeight": 732,
+      "cardClientHeight": 732,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "見習いは水槽に船を浮かべ、荷をひとつずつ下ろしていきました。沈む深さが変わるたびに、澄んだ音が響きます。アルキメデス重さが深さを決め、深さが音を決める。王冠のときと同じ、浮く力の仕組みです。まだ分からないことは、たくさんあります。だから面白いのです。"
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 664,
+      "key": "s13",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 503.78125,
+        "w": 362,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-old-ship.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "王の荷を届け終えるころ、船はすっかり古くなっていました。船底の板のすき間から、水がしみ込んできます。見習い師匠、船の中に水が！ このままでは、帰り道の浅瀬でつかえてしまいます。"
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 664,
+      "key": "s14",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 553.375,
+        "w": 362,
+        "h": 222.375
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-screw.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、らせんの筒を船に据えつけました。筒を回すと、船底の水が汲み上げられ、外へ流れ出ます。アルキメデス船に入った水も、重さのうちだ。回すたびに水が減り、船は浮く。だが、汲み出した水は戻らぬぞ。王の大船シュラクシア号でも、この仕掛けで船底の水をかき出したものだ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 664,
+      "key": "s15",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 503.78125,
+        "w": 362,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "その夜、嵐が来ました。波に打たれて、船底の傷みはいっそうひどくなりました。見習い師匠、スクリューを回している間にも、水が入ってきます！ 汲み出しすぎたら、どうすれば……。"
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 664,
+      "key": "s20",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 503.78125,
+        "w": 362,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、波の音の中で静かに言いました。アルキメデス慌てるな。回せば10汲み出し、その間に5入る。何もしなくても5入る。汲み出しすぎたら、待てばよい。待つのも一手だ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 664,
+      "key": "s16",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 528.578125,
+        "w": 362,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-shipwright.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "嵐を抜け、船はやっとのことで港へ帰り着きました。岸で待っていたのは、王の大船シュラクシア号を造った船大工、アルキアスです。アルキアスよく、この船で帰ってきたな。船底の板はぼろぼろだ。すぐに張り替えよう。"
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 664,
+      "key": "s17",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 528.578125,
+        "w": 362,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-repaired.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "船は、新しい板で見違えるように直りました。アルキアスシュラクシア号のときも、あんたのスクリューに助けられた。重さと水の仕組みが分かる者がいると、船大工は心強い。さあ、新しい船で、王の荷を運んでくれ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 664,
+      "key": "s18",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 528.578125,
+        "w": 362,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "シラクサに戻ると、王ヒエロン2世が二人を宮殿に呼びました。荷の重さで歌う船の話が、王の耳にも届いていたのです。ヒエロン2世荷を積み下ろしすると歌う船があると聞いた。わたしの前で、その旋律を聴かせてくれ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "height": 664,
+      "key": "s19",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 553.375,
+        "w": 362,
+        "h": 222.375
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "見習いは水槽に船を浮かべ、荷をひとつずつ下ろしていきました。沈む深さが変わるたびに、澄んだ音が響きます。アルキメデス重さが深さを決め、深さが音を決める。王冠のときと同じ、浮く力の仕組みです。まだ分からないことは、たくさんあります。だから面白いのです。"
+    },
+    {
+      "engine": "webkit",
+      "width": 844,
+      "height": 390,
+      "key": "s13",
+      "viewport": [
+        844,
+        390
+      ],
+      "frame": {
+        "x": 37.3125,
+        "y": 48.25,
+        "right": 471.96875,
+        "bottom": 377.734375,
+        "w": 434.65625,
+        "h": 329.484375
+      },
+      "say": {
+        "x": 495.28125,
+        "y": 42,
+        "right": 812,
+        "bottom": 214.78125,
+        "w": 316.71875,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 495.28125,
+        "y": 324,
+        "right": 812,
+        "bottom": 380,
+        "w": 316.71875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 844,
+      "cardWidth": 844,
+      "cardClient": 844,
+      "cardHeight": 390,
+      "cardClientHeight": 390,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-old-ship.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "王の荷を届け終えるころ、船はすっかり古くなっていました。船底の板のすき間から、水がしみ込んできます。見習い師匠、船の中に水が！ このままでは、帰り道の浅瀬でつかえてしまいます。"
+    },
+    {
+      "engine": "webkit",
+      "width": 844,
+      "height": 390,
+      "key": "s14",
+      "viewport": [
+        844,
+        390
+      ],
+      "frame": {
+        "x": 37.3125,
+        "y": 48.25,
+        "right": 471.96875,
+        "bottom": 377.734375,
+        "w": 434.65625,
+        "h": 329.484375
+      },
+      "say": {
+        "x": 495.28125,
+        "y": 42,
+        "right": 812,
+        "bottom": 289.171875,
+        "w": 316.71875,
+        "h": 247.171875
+      },
+      "button": {
+        "x": 495.28125,
+        "y": 324,
+        "right": 812,
+        "bottom": 380,
+        "w": 316.71875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 844,
+      "cardWidth": 844,
+      "cardClient": 844,
+      "cardHeight": 390,
+      "cardClientHeight": 390,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-screw.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、らせんの筒を船に据えつけました。筒を回すと、船底の水が汲み上げられ、外へ流れ出ます。アルキメデス船に入った水も、重さのうちだ。回すたびに水が減り、船は浮く。だが、汲み出した水は戻らぬぞ。王の大船シュラクシア号でも、この仕掛けで船底の水をかき出したものだ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 844,
+      "height": 390,
+      "key": "s15",
+      "viewport": [
+        844,
+        390
+      ],
+      "frame": {
+        "x": 37.3125,
+        "y": 48.25,
+        "right": 471.96875,
+        "bottom": 377.734375,
+        "w": 434.65625,
+        "h": 329.484375
+      },
+      "say": {
+        "x": 495.28125,
+        "y": 42,
+        "right": 812,
+        "bottom": 239.578125,
+        "w": 316.71875,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 495.28125,
+        "y": 324,
+        "right": 812,
+        "bottom": 380,
+        "w": 316.71875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 844,
+      "cardWidth": 844,
+      "cardClient": 844,
+      "cardHeight": 390,
+      "cardClientHeight": 390,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "その夜、嵐が来ました。波に打たれて、船底の傷みはいっそうひどくなりました。見習い師匠、スクリューを回している間にも、水が入ってきます！ 汲み出しすぎたら、どうすれば……。"
+    },
+    {
+      "engine": "webkit",
+      "width": 844,
+      "height": 390,
+      "key": "s20",
+      "viewport": [
+        844,
+        390
+      ],
+      "frame": {
+        "x": 37.3125,
+        "y": 48.25,
+        "right": 471.96875,
+        "bottom": 377.734375,
+        "w": 434.65625,
+        "h": 329.484375
+      },
+      "say": {
+        "x": 495.28125,
+        "y": 42,
+        "right": 812,
+        "bottom": 239.578125,
+        "w": 316.71875,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 495.28125,
+        "y": 324,
+        "right": 812,
+        "bottom": 380,
+        "w": 316.71875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 844,
+      "cardWidth": 844,
+      "cardClient": 844,
+      "cardHeight": 390,
+      "cardClientHeight": 390,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、波の音の中で静かに言いました。アルキメデス慌てるな。回せば10汲み出し、その間に5入る。何もしなくても5入る。汲み出しすぎたら、待てばよい。待つのも一手だ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 844,
+      "height": 390,
+      "key": "s16",
+      "viewport": [
+        844,
+        390
+      ],
+      "frame": {
+        "x": 37.3125,
+        "y": 48.25,
+        "right": 471.96875,
+        "bottom": 377.734375,
+        "w": 434.65625,
+        "h": 329.484375
+      },
+      "say": {
+        "x": 495.28125,
+        "y": 42,
+        "right": 812,
+        "bottom": 239.578125,
+        "w": 316.71875,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 495.28125,
+        "y": 324,
+        "right": 812,
+        "bottom": 380,
+        "w": 316.71875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 844,
+      "cardWidth": 844,
+      "cardClient": 844,
+      "cardHeight": 390,
+      "cardClientHeight": 390,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-shipwright.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "嵐を抜け、船はやっとのことで港へ帰り着きました。岸で待っていたのは、王の大船シュラクシア号を造った船大工、アルキアスです。アルキアスよく、この船で帰ってきたな。船底の板はぼろぼろだ。すぐに張り替えよう。"
+    },
+    {
+      "engine": "webkit",
+      "width": 844,
+      "height": 390,
+      "key": "s17",
+      "viewport": [
+        844,
+        390
+      ],
+      "frame": {
+        "x": 37.3125,
+        "y": 48.25,
+        "right": 471.96875,
+        "bottom": 377.734375,
+        "w": 434.65625,
+        "h": 329.484375
+      },
+      "say": {
+        "x": 495.28125,
+        "y": 42,
+        "right": 812,
+        "bottom": 264.375,
+        "w": 316.71875,
+        "h": 222.375
+      },
+      "button": {
+        "x": 495.28125,
+        "y": 324,
+        "right": 812,
+        "bottom": 380,
+        "w": 316.71875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 844,
+      "cardWidth": 844,
+      "cardClient": 844,
+      "cardHeight": 390,
+      "cardClientHeight": 390,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-repaired.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "船は、新しい板で見違えるように直りました。アルキアスシュラクシア号のときも、あんたのスクリューに助けられた。重さと水の仕組みが分かる者がいると、船大工は心強い。さあ、新しい船で、王の荷を運んでくれ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 844,
+      "height": 390,
+      "key": "s18",
+      "viewport": [
+        844,
+        390
+      ],
+      "frame": {
+        "x": 37.3125,
+        "y": 48.25,
+        "right": 471.96875,
+        "bottom": 377.734375,
+        "w": 434.65625,
+        "h": 329.484375
+      },
+      "say": {
+        "x": 495.28125,
+        "y": 42,
+        "right": 812,
+        "bottom": 264.375,
+        "w": 316.71875,
+        "h": 222.375
+      },
+      "button": {
+        "x": 495.28125,
+        "y": 324,
+        "right": 812,
+        "bottom": 380,
+        "w": 316.71875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 844,
+      "cardWidth": 844,
+      "cardClient": 844,
+      "cardHeight": 390,
+      "cardClientHeight": 390,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "シラクサに戻ると、王ヒエロン2世が二人を宮殿に呼びました。荷の重さで歌う船の話が、王の耳にも届いていたのです。ヒエロン2世荷を積み下ろしすると歌う船があると聞いた。わたしの前で、その旋律を聴かせてくれ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 844,
+      "height": 390,
+      "key": "s19",
+      "viewport": [
+        844,
+        390
+      ],
+      "frame": {
+        "x": 37.3125,
+        "y": 48.25,
+        "right": 471.96875,
+        "bottom": 377.734375,
+        "w": 434.65625,
+        "h": 329.484375
+      },
+      "say": {
+        "x": 495.28125,
+        "y": 42,
+        "right": 812,
+        "bottom": 264.375,
+        "w": 316.71875,
+        "h": 222.375
+      },
+      "button": {
+        "x": 495.28125,
+        "y": 324,
+        "right": 812,
+        "bottom": 380,
+        "w": 316.71875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 844,
+      "cardWidth": 844,
+      "cardClient": 844,
+      "cardHeight": 390,
+      "cardClientHeight": 390,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "見習いは水槽に船を浮かべ、荷をひとつずつ下ろしていきました。沈む深さが変わるたびに、澄んだ音が響きます。アルキメデス重さが深さを決め、深さが音を決める。王冠のときと同じ、浮く力の仕組みです。まだ分からないことは、たくさんあります。だから面白いのです。"
+    },
+    {
+      "engine": "webkit",
+      "width": 1366,
+      "height": 768,
+      "key": "s13",
+      "viewport": [
+        1366,
+        768
+      ],
+      "frame": {
+        "x": 28,
+        "y": 78.671875,
+        "right": 904.203125,
+        "bottom": 739.3125,
+        "w": 876.203125,
+        "h": 660.640625
+      },
+      "say": {
+        "x": 928.203125,
+        "y": 116.078125,
+        "right": 1334,
+        "bottom": 288.859375,
+        "w": 405.796875,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 928.203125,
+        "y": 569.125,
+        "right": 1334,
+        "bottom": 625.125,
+        "w": 405.796875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1366,
+      "cardWidth": 1366,
+      "cardClient": 1366,
+      "cardHeight": 768,
+      "cardClientHeight": 768,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-old-ship.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "王の荷を届け終えるころ、船はすっかり古くなっていました。船底の板のすき間から、水がしみ込んできます。見習い師匠、船の中に水が！ このままでは、帰り道の浅瀬でつかえてしまいます。"
+    },
+    {
+      "engine": "webkit",
+      "width": 1366,
+      "height": 768,
+      "key": "s14",
+      "viewport": [
+        1366,
+        768
+      ],
+      "frame": {
+        "x": 28,
+        "y": 78.671875,
+        "right": 904.203125,
+        "bottom": 739.3125,
+        "w": 876.203125,
+        "h": 660.640625
+      },
+      "say": {
+        "x": 928.203125,
+        "y": 116.078125,
+        "right": 1334,
+        "bottom": 338.453125,
+        "w": 405.796875,
+        "h": 222.375
+      },
+      "button": {
+        "x": 928.203125,
+        "y": 569.125,
+        "right": 1334,
+        "bottom": 625.125,
+        "w": 405.796875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1366,
+      "cardWidth": 1366,
+      "cardClient": 1366,
+      "cardHeight": 768,
+      "cardClientHeight": 768,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-screw.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、らせんの筒を船に据えつけました。筒を回すと、船底の水が汲み上げられ、外へ流れ出ます。アルキメデス船に入った水も、重さのうちだ。回すたびに水が減り、船は浮く。だが、汲み出した水は戻らぬぞ。王の大船シュラクシア号でも、この仕掛けで船底の水をかき出したものだ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 1366,
+      "height": 768,
+      "key": "s15",
+      "viewport": [
+        1366,
+        768
+      ],
+      "frame": {
+        "x": 28,
+        "y": 78.671875,
+        "right": 904.203125,
+        "bottom": 739.3125,
+        "w": 876.203125,
+        "h": 660.640625
+      },
+      "say": {
+        "x": 928.203125,
+        "y": 116.078125,
+        "right": 1334,
+        "bottom": 264.0625,
+        "w": 405.796875,
+        "h": 147.984375
+      },
+      "button": {
+        "x": 928.203125,
+        "y": 569.125,
+        "right": 1334,
+        "bottom": 625.125,
+        "w": 405.796875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1366,
+      "cardWidth": 1366,
+      "cardClient": 1366,
+      "cardHeight": 768,
+      "cardClientHeight": 768,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "その夜、嵐が来ました。波に打たれて、船底の傷みはいっそうひどくなりました。見習い師匠、スクリューを回している間にも、水が入ってきます！ 汲み出しすぎたら、どうすれば……。"
+    },
+    {
+      "engine": "webkit",
+      "width": 1366,
+      "height": 768,
+      "key": "s20",
+      "viewport": [
+        1366,
+        768
+      ],
+      "frame": {
+        "x": 28,
+        "y": 78.671875,
+        "right": 904.203125,
+        "bottom": 739.3125,
+        "w": 876.203125,
+        "h": 660.640625
+      },
+      "say": {
+        "x": 928.203125,
+        "y": 116.078125,
+        "right": 1334,
+        "bottom": 264.0625,
+        "w": 405.796875,
+        "h": 147.984375
+      },
+      "button": {
+        "x": 928.203125,
+        "y": 569.125,
+        "right": 1334,
+        "bottom": 625.125,
+        "w": 405.796875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1366,
+      "cardWidth": 1366,
+      "cardClient": 1366,
+      "cardHeight": 768,
+      "cardClientHeight": 768,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、波の音の中で静かに言いました。アルキメデス慌てるな。回せば10汲み出し、その間に5入る。何もしなくても5入る。汲み出しすぎたら、待てばよい。待つのも一手だ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 1366,
+      "height": 768,
+      "key": "s16",
+      "viewport": [
+        1366,
+        768
+      ],
+      "frame": {
+        "x": 28,
+        "y": 78.671875,
+        "right": 904.203125,
+        "bottom": 739.3125,
+        "w": 876.203125,
+        "h": 660.640625
+      },
+      "say": {
+        "x": 928.203125,
+        "y": 116.078125,
+        "right": 1334,
+        "bottom": 288.859375,
+        "w": 405.796875,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 928.203125,
+        "y": 569.125,
+        "right": 1334,
+        "bottom": 625.125,
+        "w": 405.796875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1366,
+      "cardWidth": 1366,
+      "cardClient": 1366,
+      "cardHeight": 768,
+      "cardClientHeight": 768,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-shipwright.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "嵐を抜け、船はやっとのことで港へ帰り着きました。岸で待っていたのは、王の大船シュラクシア号を造った船大工、アルキアスです。アルキアスよく、この船で帰ってきたな。船底の板はぼろぼろだ。すぐに張り替えよう。"
+    },
+    {
+      "engine": "webkit",
+      "width": 1366,
+      "height": 768,
+      "key": "s17",
+      "viewport": [
+        1366,
+        768
+      ],
+      "frame": {
+        "x": 28,
+        "y": 78.671875,
+        "right": 904.203125,
+        "bottom": 739.3125,
+        "w": 876.203125,
+        "h": 660.640625
+      },
+      "say": {
+        "x": 928.203125,
+        "y": 116.078125,
+        "right": 1334,
+        "bottom": 288.859375,
+        "w": 405.796875,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 928.203125,
+        "y": 569.125,
+        "right": 1334,
+        "bottom": 625.125,
+        "w": 405.796875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1366,
+      "cardWidth": 1366,
+      "cardClient": 1366,
+      "cardHeight": 768,
+      "cardClientHeight": 768,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-repaired.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "船は、新しい板で見違えるように直りました。アルキアスシュラクシア号のときも、あんたのスクリューに助けられた。重さと水の仕組みが分かる者がいると、船大工は心強い。さあ、新しい船で、王の荷を運んでくれ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 1366,
+      "height": 768,
+      "key": "s18",
+      "viewport": [
+        1366,
+        768
+      ],
+      "frame": {
+        "x": 28,
+        "y": 78.671875,
+        "right": 904.203125,
+        "bottom": 739.3125,
+        "w": 876.203125,
+        "h": 660.640625
+      },
+      "say": {
+        "x": 928.203125,
+        "y": 116.078125,
+        "right": 1334,
+        "bottom": 288.859375,
+        "w": 405.796875,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 928.203125,
+        "y": 569.125,
+        "right": 1334,
+        "bottom": 625.125,
+        "w": 405.796875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1366,
+      "cardWidth": 1366,
+      "cardClient": 1366,
+      "cardHeight": 768,
+      "cardClientHeight": 768,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "シラクサに戻ると、王ヒエロン2世が二人を宮殿に呼びました。荷の重さで歌う船の話が、王の耳にも届いていたのです。ヒエロン2世荷を積み下ろしすると歌う船があると聞いた。わたしの前で、その旋律を聴かせてくれ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 1366,
+      "height": 768,
+      "key": "s19",
+      "viewport": [
+        1366,
+        768
+      ],
+      "frame": {
+        "x": 28,
+        "y": 78.671875,
+        "right": 904.203125,
+        "bottom": 739.3125,
+        "w": 876.203125,
+        "h": 660.640625
+      },
+      "say": {
+        "x": 928.203125,
+        "y": 116.078125,
+        "right": 1334,
+        "bottom": 313.65625,
+        "w": 405.796875,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 928.203125,
+        "y": 569.125,
+        "right": 1334,
+        "bottom": 625.125,
+        "w": 405.796875,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1366,
+      "cardWidth": 1366,
+      "cardClient": 1366,
+      "cardHeight": 768,
+      "cardClientHeight": 768,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "見習いは水槽に船を浮かべ、荷をひとつずつ下ろしていきました。沈む深さが変わるたびに、澄んだ音が響きます。アルキメデス重さが深さを決め、深さが音を決める。王冠のときと同じ、浮く力の仕組みです。まだ分からないことは、たくさんあります。だから面白いのです。"
+    },
+    {
+      "engine": "webkit",
+      "width": 1920,
+      "height": 1080,
+      "key": "s13",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "frame": {
+        "x": 188,
+        "y": 150.75,
+        "right": 1288,
+        "bottom": 979.25,
+        "w": 1100,
+        "h": 828.5
+      },
+      "say": {
+        "x": 1312,
+        "y": 126,
+        "right": 1728,
+        "bottom": 298.78125,
+        "w": 416,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 1312,
+        "y": 854,
+        "right": 1728,
+        "bottom": 910,
+        "w": 416,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1920,
+      "cardWidth": 1600,
+      "cardClient": 1600,
+      "cardHeight": 1080,
+      "cardClientHeight": 1080,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-old-ship.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "王の荷を届け終えるころ、船はすっかり古くなっていました。船底の板のすき間から、水がしみ込んできます。見習い師匠、船の中に水が！ このままでは、帰り道の浅瀬でつかえてしまいます。"
+    },
+    {
+      "engine": "webkit",
+      "width": 1920,
+      "height": 1080,
+      "key": "s14",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "frame": {
+        "x": 188,
+        "y": 150.75,
+        "right": 1288,
+        "bottom": 979.25,
+        "w": 1100,
+        "h": 828.5
+      },
+      "say": {
+        "x": 1312,
+        "y": 126,
+        "right": 1728,
+        "bottom": 348.375,
+        "w": 416,
+        "h": 222.375
+      },
+      "button": {
+        "x": 1312,
+        "y": 854,
+        "right": 1728,
+        "bottom": 910,
+        "w": 416,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1920,
+      "cardWidth": 1600,
+      "cardClient": 1600,
+      "cardHeight": 1080,
+      "cardClientHeight": 1080,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-screw.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、らせんの筒を船に据えつけました。筒を回すと、船底の水が汲み上げられ、外へ流れ出ます。アルキメデス船に入った水も、重さのうちだ。回すたびに水が減り、船は浮く。だが、汲み出した水は戻らぬぞ。王の大船シュラクシア号でも、この仕掛けで船底の水をかき出したものだ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 1920,
+      "height": 1080,
+      "key": "s15",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "frame": {
+        "x": 188,
+        "y": 150.75,
+        "right": 1288,
+        "bottom": 979.25,
+        "w": 1100,
+        "h": 828.5
+      },
+      "say": {
+        "x": 1312,
+        "y": 126,
+        "right": 1728,
+        "bottom": 273.984375,
+        "w": 416,
+        "h": 147.984375
+      },
+      "button": {
+        "x": 1312,
+        "y": 854,
+        "right": 1728,
+        "bottom": 910,
+        "w": 416,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1920,
+      "cardWidth": 1600,
+      "cardClient": 1600,
+      "cardHeight": 1080,
+      "cardClientHeight": 1080,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "その夜、嵐が来ました。波に打たれて、船底の傷みはいっそうひどくなりました。見習い師匠、スクリューを回している間にも、水が入ってきます！ 汲み出しすぎたら、どうすれば……。"
+    },
+    {
+      "engine": "webkit",
+      "width": 1920,
+      "height": 1080,
+      "key": "s20",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "frame": {
+        "x": 188,
+        "y": 150.75,
+        "right": 1288,
+        "bottom": 979.25,
+        "w": 1100,
+        "h": 828.5
+      },
+      "say": {
+        "x": 1312,
+        "y": 126,
+        "right": 1728,
+        "bottom": 273.984375,
+        "w": 416,
+        "h": 147.984375
+      },
+      "button": {
+        "x": 1312,
+        "y": 854,
+        "right": 1728,
+        "bottom": 910,
+        "w": 416,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1920,
+      "cardWidth": 1600,
+      "cardClient": 1600,
+      "cardHeight": 1080,
+      "cardClientHeight": 1080,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、波の音の中で静かに言いました。アルキメデス慌てるな。回せば10汲み出し、その間に5入る。何もしなくても5入る。汲み出しすぎたら、待てばよい。待つのも一手だ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 1920,
+      "height": 1080,
+      "key": "s16",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "frame": {
+        "x": 188,
+        "y": 150.75,
+        "right": 1288,
+        "bottom": 979.25,
+        "w": 1100,
+        "h": 828.5
+      },
+      "say": {
+        "x": 1312,
+        "y": 126,
+        "right": 1728,
+        "bottom": 298.78125,
+        "w": 416,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 1312,
+        "y": 854,
+        "right": 1728,
+        "bottom": 910,
+        "w": 416,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1920,
+      "cardWidth": 1600,
+      "cardClient": 1600,
+      "cardHeight": 1080,
+      "cardClientHeight": 1080,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-shipwright.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "嵐を抜け、船はやっとのことで港へ帰り着きました。岸で待っていたのは、王の大船シュラクシア号を造った船大工、アルキアスです。アルキアスよく、この船で帰ってきたな。船底の板はぼろぼろだ。すぐに張り替えよう。"
+    },
+    {
+      "engine": "webkit",
+      "width": 1920,
+      "height": 1080,
+      "key": "s17",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "frame": {
+        "x": 188,
+        "y": 150.75,
+        "right": 1288,
+        "bottom": 979.25,
+        "w": 1100,
+        "h": 828.5
+      },
+      "say": {
+        "x": 1312,
+        "y": 126,
+        "right": 1728,
+        "bottom": 298.78125,
+        "w": 416,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 1312,
+        "y": 854,
+        "right": 1728,
+        "bottom": 910,
+        "w": 416,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1920,
+      "cardWidth": 1600,
+      "cardClient": 1600,
+      "cardHeight": 1080,
+      "cardClientHeight": 1080,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-repaired.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "船は、新しい板で見違えるように直りました。アルキアスシュラクシア号のときも、あんたのスクリューに助けられた。重さと水の仕組みが分かる者がいると、船大工は心強い。さあ、新しい船で、王の荷を運んでくれ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 1920,
+      "height": 1080,
+      "key": "s18",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "frame": {
+        "x": 188,
+        "y": 150.75,
+        "right": 1288,
+        "bottom": 979.25,
+        "w": 1100,
+        "h": 828.5
+      },
+      "say": {
+        "x": 1312,
+        "y": 126,
+        "right": 1728,
+        "bottom": 298.78125,
+        "w": 416,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 1312,
+        "y": 854,
+        "right": 1728,
+        "bottom": 910,
+        "w": 416,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1920,
+      "cardWidth": 1600,
+      "cardClient": 1600,
+      "cardHeight": 1080,
+      "cardClientHeight": 1080,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "シラクサに戻ると、王ヒエロン2世が二人を宮殿に呼びました。荷の重さで歌う船の話が、王の耳にも届いていたのです。ヒエロン2世荷を積み下ろしすると歌う船があると聞いた。わたしの前で、その旋律を聴かせてくれ。"
+    },
+    {
+      "engine": "webkit",
+      "width": 1920,
+      "height": 1080,
+      "key": "s19",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "frame": {
+        "x": 188,
+        "y": 150.75,
+        "right": 1288,
+        "bottom": 979.25,
+        "w": 1100,
+        "h": 828.5
+      },
+      "say": {
+        "x": 1312,
+        "y": 126,
+        "right": 1728,
+        "bottom": 323.578125,
+        "w": 416,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 1312,
+        "y": 854,
+        "right": 1728,
+        "bottom": 910,
+        "w": 416,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 1920,
+      "cardWidth": 1600,
+      "cardClient": 1600,
+      "cardHeight": 1080,
+      "cardClientHeight": 1080,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "見習いは水槽に船を浮かべ、荷をひとつずつ下ろしていきました。沈む深さが変わるたびに、澄んだ音が響きます。アルキメデス重さが深さを決め、深さが音を決める。王冠のときと同じ、浮く力の仕組みです。まだ分からないことは、たくさんあります。だから面白いのです。"
+    }
+  ],
+  "entry": [
+    {
+      "engine": "chromium",
+      "stageId": "p1",
+      "key": "s13",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 503.78125,
+        "w": 362,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-old-ship.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "王の荷を届け終えるころ、船はすっかり古くなっていました。船底の板のすき間から、水がしみ込んできます。見習い師匠、船の中に水が！ このままでは、帰り道の浅瀬でつかえてしまいます。"
+    },
+    {
+      "engine": "chromium",
+      "stageId": "p1",
+      "key": "s14",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 553.375,
+        "w": 362,
+        "h": 222.375
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-screw.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、らせんの筒を船に据えつけました。筒を回すと、船底の水が汲み上げられ、外へ流れ出ます。アルキメデス船に入った水も、重さのうちだ。回すたびに水が減り、船は浮く。だが、汲み出した水は戻らぬぞ。王の大船シュラクシア号でも、この仕掛けで船底の水をかき出したものだ。"
+    },
+    {
+      "engine": "chromium",
+      "stageId": "p1",
+      "firstOnly": true,
+      "seen": {
+        "s13": 1,
+        "s14": 1
+      }
+    },
+    {
+      "engine": "chromium",
+      "stageId": "p12",
+      "key": "s15",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 503.78125,
+        "w": 362,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "その夜、嵐が来ました。波に打たれて、船底の傷みはいっそうひどくなりました。見習い師匠、スクリューを回している間にも、水が入ってきます！ 汲み出しすぎたら、どうすれば……。"
+    },
+    {
+      "engine": "chromium",
+      "stageId": "p12",
+      "key": "s20",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 528.578125,
+        "w": 362,
+        "h": 197.578125
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、波の音の中で静かに言いました。アルキメデス慌てるな。回せば10汲み出し、その間に5入る。何もしなくても5入る。汲み出しすぎたら、待てばよい。待つのも一手だ。"
+    },
+    {
+      "engine": "chromium",
+      "stageId": "p12",
+      "firstOnly": true,
+      "seen": {
+        "s15": 1,
+        "s20": 1
+      }
+    },
+    {
+      "engine": "webkit",
+      "stageId": "p1",
+      "key": "s13",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 503.78125,
+        "w": 362,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-old-ship.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "王の荷を届け終えるころ、船はすっかり古くなっていました。船底の板のすき間から、水がしみ込んできます。見習い師匠、船の中に水が！ このままでは、帰り道の浅瀬でつかえてしまいます。"
+    },
+    {
+      "engine": "webkit",
+      "stageId": "p1",
+      "key": "s14",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 553.375,
+        "w": 362,
+        "h": 222.375
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-screw.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、らせんの筒を船に据えつけました。筒を回すと、船底の水が汲み上げられ、外へ流れ出ます。アルキメデス船に入った水も、重さのうちだ。回すたびに水が減り、船は浮く。だが、汲み出した水は戻らぬぞ。王の大船シュラクシア号でも、この仕掛けで船底の水をかき出したものだ。"
+    },
+    {
+      "engine": "webkit",
+      "stageId": "p1",
+      "firstOnly": true,
+      "seen": {
+        "s13": 1,
+        "s14": 1
+      }
+    },
+    {
+      "engine": "webkit",
+      "stageId": "p12",
+      "key": "s15",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 503.78125,
+        "w": 362,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "その夜、嵐が来ました。波に打たれて、船底の傷みはいっそうひどくなりました。見習い師匠、スクリューを回している間にも、水が入ってきます！ 汲み出しすぎたら、どうすれば……。"
+    },
+    {
+      "engine": "webkit",
+      "stageId": "p12",
+      "key": "s20",
+      "viewport": [
+        390,
+        664
+      ],
+      "frame": {
+        "x": 14,
+        "y": 48,
+        "right": 376,
+        "bottom": 323,
+        "w": 362,
+        "h": 275
+      },
+      "say": {
+        "x": 14,
+        "y": 331,
+        "right": 376,
+        "bottom": 503.78125,
+        "w": 362,
+        "h": 172.78125
+      },
+      "button": {
+        "x": 14,
+        "y": 598,
+        "right": 376,
+        "bottom": 654,
+        "w": 362,
+        "h": 56
+      },
+      "frameSayOverlap": false,
+      "frameButtonOverlap": false,
+      "sayButtonOverlap": false,
+      "pageWidth": 390,
+      "cardWidth": 390,
+      "cardClient": 390,
+      "cardHeight": 664,
+      "cardClientHeight": 664,
+      "src": "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-storm.webp",
+      "natural": [
+        960,
+        720
+      ],
+      "text": "アルキメデスは、波の音の中で静かに言いました。アルキメデス慌てるな。回せば10汲み出し、その間に5入る。何もしなくても5入る。汲み出しすぎたら、待てばよい。待つのも一手だ。"
+    },
+    {
+      "engine": "webkit",
+      "stageId": "p12",
+      "firstOnly": true,
+      "seen": {
+        "s15": 1,
+        "s20": 1
+      }
+    }
+  ],
+  "errors": []
+}

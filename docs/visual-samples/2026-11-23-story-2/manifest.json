@@ -1,0 +1,343 @@
+{
+  "generator": "built-in image_gen, reference-guided, background opaque",
+  "conversion": "Pillow resize only, LANCZOS, RGB WebP quality=90 method=6",
+  "assets": [
+    {
+      "key": "00-archias-character",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1ab15-6bf8-77e2-84d8-64dcde91cd2d\\exec-64813bc3-7f46-44b2-a33a-a1bbd16e1867.png",
+      "raw": "docs/visual-samples/2026-11-23-story-2/00-archias-character.png",
+      "references": [
+        "docs/reference/character-sheet-2026-11-05.png",
+        "public/graphics/prologue-harbor.webp"
+      ],
+      "output": null,
+      "rawInfo": {
+        "path": "docs/visual-samples/2026-11-23-story-2/00-archias-character.png",
+        "size": [
+          1448,
+          1086
+        ],
+        "bytes": 2648966,
+        "sha256": "9d97a6a478fa3e3c2c79262157937e8baca90edd17b79f0fd22868b1f2161638"
+      },
+      "referenceInfo": [
+        {
+          "path": "docs/reference/character-sheet-2026-11-05.png",
+          "size": [
+            1536,
+            1024
+          ],
+          "bytes": 2526078,
+          "sha256": "f364d44e5ee54e17c974e88a9e5f33432545026cd150b54910509469ac60e80b"
+        },
+        {
+          "path": "public/graphics/prologue-harbor.webp",
+          "size": [
+            960,
+            720
+          ],
+          "bytes": 190276,
+          "sha256": "db90aa2560d017afc76b147c26fd5950d47ab46df58a5629aea9bacbade63ce1"
+        }
+      ]
+    },
+    {
+      "key": "01-chapter-old-ship",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1ab15-6bf8-77e2-84d8-64dcde91cd2d\\exec-8dc2eca8-2568-411b-b237-42672bdaebb1.png",
+      "raw": "docs/visual-samples/2026-11-23-story-2/01-chapter-old-ship.png",
+      "references": [
+        "public/graphics/prologue-harbor.webp",
+        "docs/reference/character-sheet-2026-11-05.png"
+      ],
+      "output": "public/graphics/chapter-old-ship.webp",
+      "rawInfo": {
+        "path": "docs/visual-samples/2026-11-23-story-2/01-chapter-old-ship.png",
+        "size": [
+          1448,
+          1086
+        ],
+        "bytes": 3669479,
+        "sha256": "0755b773aaa0dee742cd6ea266c01b602ebb32a9f28ddc7fdaf51249c3a2d30a"
+      },
+      "referenceInfo": [
+        {
+          "path": "public/graphics/prologue-harbor.webp",
+          "size": [
+            960,
+            720
+          ],
+          "bytes": 190276,
+          "sha256": "db90aa2560d017afc76b147c26fd5950d47ab46df58a5629aea9bacbade63ce1"
+        },
+        {
+          "path": "docs/reference/character-sheet-2026-11-05.png",
+          "size": [
+            1536,
+            1024
+          ],
+          "bytes": 2526078,
+          "sha256": "f364d44e5ee54e17c974e88a9e5f33432545026cd150b54910509469ac60e80b"
+        }
+      ],
+      "distributionInfo": {
+        "path": "public/graphics/chapter-old-ship.webp",
+        "size": [
+          960,
+          720
+        ],
+        "bytes": 366842,
+        "sha256": "58bae4357ea7227ae1b9559f878e4998eef6a0bfe8054d9c8bad001a850da7b7"
+      }
+    },
+    {
+      "key": "02-chapter-screw",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1ab15-6bf8-77e2-84d8-64dcde91cd2d\\exec-5fd22b2e-0998-4dd2-b775-c65495fdafcb.png",
+      "raw": "docs/visual-samples/2026-11-23-story-2/02-chapter-screw.png",
+      "references": [
+        "public/graphics/prologue-harbor.webp",
+        "docs/reference/character-sheet-2026-11-05.png"
+      ],
+      "output": "public/graphics/chapter-screw.webp",
+      "rawInfo": {
+        "path": "docs/visual-samples/2026-11-23-story-2/02-chapter-screw.png",
+        "size": [
+          1448,
+          1086
+        ],
+        "bytes": 3596805,
+        "sha256": "adbd3cec268588e12124e2382d3db25fca52e934f67a975cd5b22ab5d77690e7"
+      },
+      "referenceInfo": [
+        {
+          "path": "public/graphics/prologue-harbor.webp",
+          "size": [
+            960,
+            720
+          ],
+          "bytes": 190276,
+          "sha256": "db90aa2560d017afc76b147c26fd5950d47ab46df58a5629aea9bacbade63ce1"
+        },
+        {
+          "path": "docs/reference/character-sheet-2026-11-05.png",
+          "size": [
+            1536,
+            1024
+          ],
+          "bytes": 2526078,
+          "sha256": "f364d44e5ee54e17c974e88a9e5f33432545026cd150b54910509469ac60e80b"
+        }
+      ],
+      "distributionInfo": {
+        "path": "public/graphics/chapter-screw.webp",
+        "size": [
+          960,
+          720
+        ],
+        "bytes": 367384,
+        "sha256": "dc45e26062f6193ab430b9b7a7e7dee5fa955034df76bfbadeff95f1404634b3"
+      }
+    },
+    {
+      "key": "03-chapter-storm",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1ab15-6bf8-77e2-84d8-64dcde91cd2d\\exec-2eab9924-7b59-49f9-8a62-364169b911fe.png",
+      "raw": "docs/visual-samples/2026-11-23-story-2/03-chapter-storm.png",
+      "references": [
+        "docs/visual-samples/2026-11-23-story-2/02-chapter-screw.png",
+        "docs/visual-samples/2026-11-23-story-2/01-chapter-old-ship.png"
+      ],
+      "output": "public/graphics/chapter-storm.webp",
+      "rawInfo": {
+        "path": "docs/visual-samples/2026-11-23-story-2/03-chapter-storm.png",
+        "size": [
+          1448,
+          1086
+        ],
+        "bytes": 3775678,
+        "sha256": "81195f5dd055434f576924efa852efb5a1a1e200d06bad94da8c2e84afb8ffc3"
+      },
+      "referenceInfo": [
+        {
+          "path": "docs/visual-samples/2026-11-23-story-2/02-chapter-screw.png",
+          "size": [
+            1448,
+            1086
+          ],
+          "bytes": 3596805,
+          "sha256": "adbd3cec268588e12124e2382d3db25fca52e934f67a975cd5b22ab5d77690e7"
+        },
+        {
+          "path": "docs/visual-samples/2026-11-23-story-2/01-chapter-old-ship.png",
+          "size": [
+            1448,
+            1086
+          ],
+          "bytes": 3669479,
+          "sha256": "0755b773aaa0dee742cd6ea266c01b602ebb32a9f28ddc7fdaf51249c3a2d30a"
+        }
+      ],
+      "distributionInfo": {
+        "path": "public/graphics/chapter-storm.webp",
+        "size": [
+          960,
+          720
+        ],
+        "bytes": 382900,
+        "sha256": "7f1a896a6eb674a64dc3049c3d538e26e67d3ea00b8d3de6da3a7116c3d1ed54"
+      }
+    },
+    {
+      "key": "04-chapter-shipwright",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1ab15-6bf8-77e2-84d8-64dcde91cd2d\\exec-b7d1a348-7b15-4135-af44-2600c9ed8b50.png",
+      "raw": "docs/visual-samples/2026-11-23-story-2/04-chapter-shipwright.png",
+      "references": [
+        "docs/visual-samples/2026-11-23-story-2/00-archias-character.png",
+        "docs/visual-samples/2026-11-23-story-2/01-chapter-old-ship.png",
+        "public/graphics/prologue-harbor.webp"
+      ],
+      "output": "public/graphics/chapter-shipwright.webp",
+      "rawInfo": {
+        "path": "docs/visual-samples/2026-11-23-story-2/04-chapter-shipwright.png",
+        "size": [
+          1448,
+          1086
+        ],
+        "bytes": 3565907,
+        "sha256": "34c274eb5338a9ba3e9752859962e837130b579ae44b076d20975c4a4ebc3577"
+      },
+      "referenceInfo": [
+        {
+          "path": "docs/visual-samples/2026-11-23-story-2/00-archias-character.png",
+          "size": [
+            1448,
+            1086
+          ],
+          "bytes": 2648966,
+          "sha256": "9d97a6a478fa3e3c2c79262157937e8baca90edd17b79f0fd22868b1f2161638"
+        },
+        {
+          "path": "docs/visual-samples/2026-11-23-story-2/01-chapter-old-ship.png",
+          "size": [
+            1448,
+            1086
+          ],
+          "bytes": 3669479,
+          "sha256": "0755b773aaa0dee742cd6ea266c01b602ebb32a9f28ddc7fdaf51249c3a2d30a"
+        },
+        {
+          "path": "public/graphics/prologue-harbor.webp",
+          "size": [
+            960,
+            720
+          ],
+          "bytes": 190276,
+          "sha256": "db90aa2560d017afc76b147c26fd5950d47ab46df58a5629aea9bacbade63ce1"
+        }
+      ],
+      "distributionInfo": {
+        "path": "public/graphics/chapter-shipwright.webp",
+        "size": [
+          960,
+          720
+        ],
+        "bytes": 350662,
+        "sha256": "121bb9e3810341e99b7c3724a6f5a569c8dcba80141203306f1b8c806851faad"
+      }
+    },
+    {
+      "key": "05-chapter-repaired",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1ab15-6bf8-77e2-84d8-64dcde91cd2d\\exec-8755212d-e172-416d-8d16-b78609464082.png",
+      "raw": "docs/visual-samples/2026-11-23-story-2/05-chapter-repaired.png",
+      "references": [
+        "docs/visual-samples/2026-11-23-story-2/00-archias-character.png",
+        "public/graphics/prologue-harbor.webp"
+      ],
+      "output": "public/graphics/chapter-repaired.webp",
+      "rawInfo": {
+        "path": "docs/visual-samples/2026-11-23-story-2/05-chapter-repaired.png",
+        "size": [
+          1448,
+          1086
+        ],
+        "bytes": 3355655,
+        "sha256": "87d31806d13f60e50e0605992febb4fd71adf00c453b17269fddf07c0cad0b0d"
+      },
+      "referenceInfo": [
+        {
+          "path": "docs/visual-samples/2026-11-23-story-2/00-archias-character.png",
+          "size": [
+            1448,
+            1086
+          ],
+          "bytes": 2648966,
+          "sha256": "9d97a6a478fa3e3c2c79262157937e8baca90edd17b79f0fd22868b1f2161638"
+        },
+        {
+          "path": "public/graphics/prologue-harbor.webp",
+          "size": [
+            960,
+            720
+          ],
+          "bytes": 190276,
+          "sha256": "db90aa2560d017afc76b147c26fd5950d47ab46df58a5629aea9bacbade63ce1"
+        }
+      ],
+      "distributionInfo": {
+        "path": "public/graphics/chapter-repaired.webp",
+        "size": [
+          960,
+          720
+        ],
+        "bytes": 324752,
+        "sha256": "78a592e01a63be95fbbec9e2e8749078e1f72e132081120a9c2e0068cf9856ee"
+      }
+    },
+    {
+      "key": "06-chapter-finale",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1ab15-6bf8-77e2-84d8-64dcde91cd2d\\exec-695fb9cf-a0c0-4a34-a793-f48667ca4914.png",
+      "raw": "docs/visual-samples/2026-11-23-story-2/06-chapter-finale.png",
+      "references": [
+        "public/graphics/prologue-command.webp",
+        "public/graphics/prologue-harbor.webp"
+      ],
+      "output": "public/graphics/chapter-finale.webp",
+      "rawInfo": {
+        "path": "docs/visual-samples/2026-11-23-story-2/06-chapter-finale.png",
+        "size": [
+          1448,
+          1086
+        ],
+        "bytes": 3377891,
+        "sha256": "b62c6908a583c87217c8e9fc8c356dee5575b137d9f5bb43b20642e3feaae9f2"
+      },
+      "referenceInfo": [
+        {
+          "path": "public/graphics/prologue-command.webp",
+          "size": [
+            960,
+            720
+          ],
+          "bytes": 188416,
+          "sha256": "02b9287a3b22ea3fbaea7bbc35f316e2cbe5bff83d97c936d20e12832257bc56"
+        },
+        {
+          "path": "public/graphics/prologue-harbor.webp",
+          "size": [
+            960,
+            720
+          ],
+          "bytes": 190276,
+          "sha256": "db90aa2560d017afc76b147c26fd5950d47ab46df58a5629aea9bacbade63ce1"
+        }
+      ],
+      "distributionInfo": {
+        "path": "public/graphics/chapter-finale.webp",
+        "size": [
+          960,
+          720
+        ],
+        "bytes": 311782,
+        "sha256": "aef3ee545040e08249e7a17c6bf3501c62fd25bf3fe212108120a30dedfb7d3d"
+      }
+    }
+  ]
+}

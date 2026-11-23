@@ -153,3 +153,21 @@
 | 実画面の確認画像・検査記録 | `docs/visual-samples/2026-11-22-classic-finish/review/`。入れ替え室の前後2枚は待機だけ検査側で保持して撮影した見本で、実時間の16航海とは区別する |
 
 新しいラスター画像は生成していません。採用済みの船・荷・液体と、木・砂・石のSVGを再利用しました。荷が多い棚は2列とし、名前・重さ・押す場所を広げています。計算・判定・出題・音・保存、積む2種類の操作、深さを伏せる扱い、停止位置と各動作時間は保持しています。スマホ実機の見え方・指操作・聴感は未確認です。
+
+## 2026-11-23：古い船と王の前の旋律 v0.9.30
+
+[設定画・紙芝居6枚・実画面の一覧](visual-samples/2026-11-23-story-2/README.md) ／ [変更範囲と検査](reviews/2026-11-23-story-2.md)
+
+| 素材 | 原本（`docs/visual-samples/2026-11-23-story-2/`） | 配信先 |
+|---|---|---|
+| 船大工アルキアスの全身・横姿・表情2種 | `00-archias-character.png` | 設定資料のみ |
+| 浸水する古い船 | `01-chapter-old-ship.png` | `public/graphics/chapter-old-ship.webp` |
+| スクリューで汲み出す師弟 | `02-chapter-screw.png` | `public/graphics/chapter-screw.webp` |
+| 嵐の夜の汲み出し | `03-chapter-storm.png` | `public/graphics/chapter-storm.webp` |
+| 港の船大工 | `04-chapter-shipwright.png` | `public/graphics/chapter-shipwright.webp` |
+| 新しい板で直った船 | `05-chapter-repaired.png` | `public/graphics/chapter-repaired.webp` |
+| 王の前の水槽と模型の船 | `06-chapter-finale.png` | `public/graphics/chapter-finale.webp` |
+
+原本7枚は1448×1086のPNG。配信6枚は960×720のWebPで、合計2,104,322バイトです。内蔵image_genで採用済みの絵を参照して生成し、原本を保持したうえで縮小・形式変換だけを行いました。生成指示と参照画像、寸法・容量・照合値は同フォルダーへ保存しています。語り・台詞は画像へ入れず、宮殿の音符だけを絵の記号として描いています。
+
+`src/ui/graphics.js` の6キー追加で既存の `later(...)` が仮画像から切り替わります。本文・紙芝居の順番と初回条件・ゲームの計算・お題・音・保存は変更していません。アルキアスとシュラクシア号を言い伝えとして扱う既存の説明も保持しています。

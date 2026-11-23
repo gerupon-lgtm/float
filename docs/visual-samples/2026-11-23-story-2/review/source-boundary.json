@@ -1,0 +1,26 @@
+{
+  "baseline": "94cf9f49192dc24e46fca65fa8adb948c318e591",
+  "branch": "main",
+  "version": "0.9.30",
+  "existingChanged": [
+    "docs/assets.md",
+    "package.json",
+    "src/ui/app.js",
+    "src/ui/graphics.js"
+  ],
+  "unchanged": [
+    "src/logic",
+    "src/content",
+    "src/pwa",
+    "src/ui/classic.js",
+    "src/ui/melody.js",
+    "src/ui/audio.js",
+    "src/ui/art.js",
+    "src/ui/style.css",
+    "index.html"
+  ],
+  "appOnlyVersionChanged": true,
+  "stageCount": 60,
+  "generatedQuestions": 472,
+  "passed": true
+}

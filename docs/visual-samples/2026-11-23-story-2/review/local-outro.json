@@ -1,0 +1,56 @@
+{
+  "url": "http://127.0.0.1:5195/",
+  "cases": [
+    {
+      "id": "p15",
+      "solution": [
+        1,
+        2,
+        0,
+        1,
+        3,
+        2
+      ],
+      "earnedOutro": true,
+      "images": [
+        "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-shipwright.webp",
+        "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-repaired.webp"
+      ],
+      "seen": {
+        "s16": 1,
+        "s17": 1
+      }
+    },
+    {
+      "id": "n24",
+      "solution": [
+        {
+          "id": 1,
+          "c": 0,
+          "r": 0
+        },
+        {
+          "id": 4,
+          "c": 0,
+          "r": 1
+        },
+        {
+          "id": 2,
+          "c": 3,
+          "r": 0
+        }
+      ],
+      "earnedOutro": true,
+      "images": [
+        "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp",
+        "http://127.0.0.1:5195/v0.9.30/public/graphics/chapter-finale.webp"
+      ],
+      "seen": {
+        "s18": 1,
+        "s19": 1
+      }
+    }
+  ],
+  "errors": [],
+  "passed": true
+}
