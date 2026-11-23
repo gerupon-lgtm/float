@@ -354,3 +354,6 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 /* 結果の画面：章を選ぶ・表紙へ を横に並べる */
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .melody-layout .row3.row4{grid-template-columns:repeat(4,minmax(0,1fr))}
+/* 長い面の名前でも画面が横に広がらないよう、見出しの行を縮められるようにする */
+.melody-layout>*,.melody-layout .top,.melody-plan,.melody-work{min-width:0}
+.melody-layout .top b{flex:1 1 0}

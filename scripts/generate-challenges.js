@@ -10,7 +10,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const target = join(root, 'src/content/challenges.js');
 // 種は面の並び順から作る。スクリューの面（F-028）は後から間に入れたので、ほかの面の種を変えないよう別に数える
 let k = 0, kp = 0;
-const seedOf = s => (s.pumpQ ? 3026 + kp++ : 2026 + k++);
+const seedOf = s => (s.seed ?? (s.pumpQ ? 3026 + kp++ : 2026 + k++));   // 後から間に入れた面は seed を決めて持つ
 const data = Object.fromEntries(STAGES.filter(s => s.generated).map(s => { const seed = seedOf(s); return [s.id, s.kind === 'melody' ? pickMelodies(s.melody, { seed }) : pickProblems(s, { seed })]; }));
 const text = `// 自動生成（npm run generate:challenges）。手で直さない。\nexport const CHALLENGES = ${JSON.stringify(data)};\n`;
 if (process.argv.includes('--check')) {
