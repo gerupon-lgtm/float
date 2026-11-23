@@ -26,3 +26,7 @@ export function pileTop(rows) {
 }
 // 橋の下面は、深さ limit の船の縁の高さにある
 export const pileClearsBridge = (depth, limit, rows) => pileTop(rows).sub(depth).cmp(Fraction.of(HULL).sub(exact(limit))) <= 0;
+
+// 荷の山が船の縁より高い分（深さの単位）。航路図で「荷の山の上」の印を、船底の印からこの分だけ上に描く。
+// 橋は「船底の深さ − この分」が橋の深さ以上なら通れる（pileClearsBridge と同じ式）
+export const pileExtra = rows => pileTop(rows).sub(Fraction.of(HULL));

@@ -14,3 +14,13 @@ test('積み方の面：悪い積み方は橋に当たり、良い積み方は�
   assert.equal(pileClearsBridge(d, 3, 6), false);
   assert.equal(pileClearsBridge(d, 3, 3), true);
 });
+
+test('荷の山の印：船底の深さ−荷の山の分が橋の深さ以上なら、荷の山も橋を通る', async () => {
+  const { pileClearsBridge, pileExtra } = await import('../src/logic/stacking.js');
+  const { exact } = await import('../src/logic/physics.js');
+  for (const rows of [0, 1, 2, 3, 4, 5, 6]) for (const dd of [2, 3, 3.5, 4, 4.5, 5]) for (const limit of [1.5, 2, 2.5, 3, 3.5, 4]) {
+    const d = exact(dd), extra = pileExtra(rows);
+    const byMark = d.sub(extra).cmp(exact(limit)) >= 0;
+    assert.equal(byMark, pileClearsBridge(d, limit, rows), `rows${rows} d${dd} limit${limit}`);
+  }
+});

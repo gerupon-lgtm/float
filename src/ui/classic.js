@@ -2,7 +2,8 @@
 // 計算・判定は src/logic。ここは画面と流れだけ（判定の順番と内容は以前の app.js と同じ）。
 import { SHIP, HULL, LIQUIDS, depthOf, depthFraction, depthLabel, isSunk, sinkingWeight, clearsShoal, reachesDepth } from '../logic/physics.js';
 import { midiOf } from '../logic/pitch.js';
-import { CELLS, ROWMAX, dropCargo, stackRows, pileClearsBridge } from '../logic/stacking.js';
+import { CELLS, ROWMAX, dropCargo, stackRows, pileClearsBridge, pileExtra } from '../logic/stacking.js';
+import { keelMark } from './chart-mark.js';
 import { rowsUnderBridge } from '../logic/melody.js';
 import { hintLevel, shoalText, shallowText, sinkText } from '../content/fail-text.js';
 import { GRAPHICS, cargoArt } from './graphics.js';
@@ -214,8 +215,8 @@ export function classicStage(n, S, ctx) {
     if (st.floating && live()) {
       const xc = x0 + st.col * step + step / 2, dd = Math.min(dNow(), HULL);
       const xm = st.approach ? x0 + st.col * step + 2 : xc;   // スクリューの面：関門の手前にいる間は列の左端
-      g += `<g class="chart-ship"><path d="M${xm - 15} ${y(dd)}h30" stroke="#d6452c" stroke-width="2.6"/><path d="M${xm} ${y(dd) + 1.5}l-5 7h10z" fill="#d6452c" stroke="#23304a" stroke-width="1"/>
-        <text x="${xm}" y="${y(dd) + 18}" font-size="9" font-weight="700" text-anchor="middle" fill="#d6452c" stroke="#fffaf0" stroke-width="2.6" paint-order="stroke">船底</text></g>`;
+      const extra = grid ? pileExtra(stackRows(st.placed, S.items)).toNumber() : 0;
+      g += keelMark(xm, y(dd), extra > 0 ? y(Math.max(0, dd - extra)) : null);
     }
     return `<svg viewBox="0 0 360 ${CH}" class="chart" role="img" aria-label="航路図。左から出航、関門、港の順。上ほど浅く高い音。砂は浅瀬（それより深いとつかえる）、木は橋（それより浅いと当たる）。">${g}</svg>`;
   }

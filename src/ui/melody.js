@@ -2,7 +2,8 @@
 // 計算・判定は src/logic/melody.js。ここは画面と流れだけ。
 import { SHIP, HULL, AREA, LIQUIDS, depthFraction, depthLabel } from '../logic/physics.js';
 import { midiOf, onScale } from '../logic/pitch.js';
-import { CELLS, ROWMAX, dropCargo, stackRows } from '../logic/stacking.js';
+import { CELLS, ROWMAX, dropCargo, stackRows, pileExtra } from '../logic/stacking.js';
+import { keelMark } from './chart-mark.js';
 import { envOf, depthNow, weightOf, autoDrop, rowsUnderBridge, segmentFault, matchesTarget } from '../logic/melody.js';
 import { GRAPHICS, cargoArt } from './graphics.js';
 import { CHORDS, accompaniment } from '../logic/harmony.js';
@@ -197,7 +198,8 @@ export function melodyStage(n, base, route, ctx) {
     }
     if (S.phase !== 'prep') {
       const k = Math.min(S.seg, cnt - 1), dd = S.played[k]?.d ?? S.log[k]?.toNumber() ?? depth().toNumber();
-      g += `<g class="chart-ship"><image href="${GRAPHICS.boat}" x="${x0 + k * step + step / 2 - 12}" y="${y(Math.min(dd, HULL)) - 11.6}" width="24" height="11.6" preserveAspectRatio="none"/></g>`;
+      const dk = Math.min(dd, HULL), extra = pileExtra(stackRows(S.placed, S.items)).toNumber();
+      g += keelMark(x0 + k * step + step / 2, y(dk), extra > 0 ? y(Math.max(0, dk - extra)) : null);
     }
     return `<svg viewBox="0 0 360 ${CH}" class="chart" role="img" aria-label="航海図。上ほど浅く高い音。音符がお題。数字は立ち寄る港で、上向き矢印は荷下ろし、下向き矢印は積載。">${g}</svg>`;
   }
