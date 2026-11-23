@@ -353,3 +353,4 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 .melody-layout .top b{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 /* 結果の画面：章を選ぶ・表紙へ を横に並べる */
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.melody-layout .row3.row4{grid-template-columns:repeat(4,minmax(0,1fr))}

@@ -5,6 +5,7 @@ import { midiOf } from '../logic/pitch.js';
 import { CELLS, ROWMAX, dropCargo, stackRows, pileClearsBridge, pileExtra } from '../logic/stacking.js';
 import { keelMark } from './chart-mark.js';
 import { rowsUnderBridge } from '../logic/melody.js';
+import { crankOnce, waitOnce } from '../logic/pump.js';
 import { hintLevel, shoalText, shallowText, sinkText } from '../content/fail-text.js';
 import { GRAPHICS, cargoArt } from './graphics.js';
 import { melodyArtDefs, melodyShoalArt, melodyBridgeArt, melodyQuayArt, melodyPileTag } from './melody-art.js';
@@ -49,7 +50,7 @@ export function classicStage(n, S, ctx) {
     return lo <= hi ? { lo, hi } : null;
   })();
   const gateLine = g => g.k === 'shoal' ? `浅瀬は${g.d}まで（深いとつかえる）` : g.k === 'bridge' ? `橋は${g.d}以上（浅いと当たる）` : g.k === 'lever' ? `レバーは${g.d}以上（浅いと届かない）` : '';
-  const intro = () => P ? say(`<span class="nar">${S.lead}<br>1回まわすと、船の中の水が${P.per}減る。深さ＝重さ÷（比重×底面積${S.area}）。</span>`, null) : say(`<span class="nar">${S.lead}${band ? `${S.gates.map(gateLine).filter(Boolean).join('、')}。両方を通れるのは<b>深さ${band.lo}〜${band.hi}</b>（緑の帯）。` : ''}<br>深さ＝重さ÷（比重×底面積${S.area}）。船だけの重さ${SHIP}。</span>`, null);
+  const intro = () => P ? say(`<span class="nar">${S.lead}<br>${P.inflow ? `1回まわすと水${P.per}を汲み出すが、その間に${P.inflow}しみ込む。「待つ」と${P.inflow}しみ込む。` : `1回まわすと、船の中の水が${P.per}減る。`}深さ＝重さ÷（比重×底面積${S.area}）。</span>`, null) : say(`<span class="nar">${S.lead}${band ? `${S.gates.map(gateLine).filter(Boolean).join('、')}。両方を通れるのは<b>深さ${band.lo}〜${band.hi}</b>（緑の帯）。` : ''}<br>深さ＝重さ÷（比重×底面積${S.area}）。船だけの重さ${SHIP}。</span>`, null);
 
   // 積み方の面以外の荷は、船の中に2マス幅で並べて見せる（重さの軽い順、1段に3つ）
   const shown = () => grid ? st.placed.map(p => ({ id: p.id, c: p.c, r: p.r, w: S.items[p.id][2], h: S.items[p.id][3] }))
@@ -238,7 +239,7 @@ export function classicStage(n, S, ctx) {
       <div class="say" id="say" role="status" aria-live="polite">${st.said}</div>
       </div><div class="melody-work">
       <section class="mid${!P && prep ? '' : ' sailing'}" aria-label="船と荷の棚"><div class="frame vessel">${shipSvg()}<span class="tag-key">${P ? '荷の札は重さ。青いのは船に入った水' : `荷の札は重さ${grid ? '' : '。棚の荷を押すと積む／下ろす'}`}</span></div>${P ? '' : prep ? `<div class="mshelf${S.items.length > 5 ? ' many' : ''}" aria-label="荷を選ぶ"><img class="shelf-board" src="${GRAPHICS['cargo-board']}" alt="" aria-hidden="true" draggable="false">${chips || '<p class="empty">荷をすべて<br>積みました</p>'}</div>` : ''}</section>
-      <div class="row3"><button class="btn sub" id="ring">深さの音</button>${P ? `<button class="btn sub" id="crank" ${stop && !st.busy && !ended ? '' : 'disabled'}>回す（残り${st.turns}）</button>` : `<button class="btn sub" id="undo" ${prep && !st.busy && (grid ? st.placed.length : st.on.size) ? '' : 'disabled'}>${grid ? 'ひとつ戻す' : '全部下ろす'}</button>`}<button class="btn" id="go" ${ended || (stop && !st.busy) ? '' : 'disabled'}>${ended ? ended.label : prep ? '出航' : st.phase === 'pump' ? '進む' : '航海中'}</button></div></div>`;
+      <div class="row3${P?.inflow ? ' row4' : ''}">${P?.inflow ? `<button class="btn sub" id="wait" ${stop && !st.busy && !ended ? '' : 'disabled'}>待つ</button>` : ''}<button class="btn sub" id="ring">深さの音</button>${P ? `<button class="btn sub" id="crank" ${stop && !st.busy && !ended ? '' : 'disabled'}>回す（残り${st.turns}）</button>` : `<button class="btn sub" id="undo" ${prep && !st.busy && (grid ? st.placed.length : st.on.size) ? '' : 'disabled'}>${grid ? 'ひとつ戻す' : '全部下ろす'}</button>`}<button class="btn" id="go" ${ended || (stop && !st.busy) ? '' : 'disabled'}>${ended ? ended.label : prep ? '出航' : st.phase === 'pump' ? '進む' : '航海中'}</button></div></div>`;
     ctx.wire(c); bind(); playFx();
   }
   function bind() {
@@ -262,7 +263,7 @@ export function classicStage(n, S, ctx) {
       svg.onpointercancel = () => { down = false; gh().innerHTML = ''; };
       svg.onpointerleave = e => { if (e.pointerType === 'mouse' && !down) gh().innerHTML = ''; };
     }
-    if (P) $('#crank').onclick = crank; else $('#undo').onclick = undo;
+    if (P) { $('#crank').onclick = crank; if (P.inflow) $('#wait').onclick = waitTurn; } else $('#undo').onclick = undo;
     $('#ring').onclick = () => {
       au.unlock();
       if (st.floating && live()) au.depthBell(dNow());
@@ -297,12 +298,24 @@ export function classicStage(n, S, ctx) {
     if (!P || st.busy || !stopped() || ended) return;
     au.unlock();
     if (st.turns <= 0) { au.tap(); say('もう腕が上がらない。回せるのはここまでだ。'); return; }
-    if (st.water <= 0) { au.tap(); say('船の中に、もう水は無いぞ。'); return; }
+    if (st.water <= (P.inflow ?? 0)) { au.tap(); say(P.inflow ? 'これ以上回しても、しみ込む水と同じで減らないぞ。' : '船の中に、もう水は無いぞ。'); return; }
     const before = bottomY();
-    st.water = Math.max(0, st.water - P.per); st.turns--;
+    st.water = crankOnce(st.water, P); st.turns--;
     st.fx = { shift: before - bottomY(), pour: true };
     draw();
     if (live()) au.depthBell(dNow(), 0.17, 0.8); else au.tap();
+  }
+  // 待つ（傷みのひどい船だけ）：何もせず、水がしみ込むのを待つ。汲み出しすぎたときの救済
+  function waitTurn() {
+    if (!P?.inflow || st.busy || !stopped() || ended) return;
+    au.unlock();
+    if (st.turns <= 0) { au.tap(); say('もう腕が上がらない。回せるのはここまでだ。'); return; }
+    const before = bottomY();
+    st.water = waitOnce(st.water, P); st.turns--;
+    st.fx = { shift: before - bottomY() };
+    draw();
+    if (live()) au.depthBell(dNow(), 0.17, 0.8); else au.tap();
+    if (isSunk(weight(), st.liq, S.area)) sinkNow();
   }
   function undo() {
     if (st.busy || st.phase !== 'prep') return;
@@ -352,7 +365,7 @@ export function classicStage(n, S, ctx) {
           if (isSunk(weight(), st.liq, S.area)) return sinkNow();
         }
         st.seenW = weight(); st.phase = 'pump'; st.busy = false; st.gate = g; st.gateShift = 0;
-        say(`${CL_GATE[g.k]}（${g.d}${g.k === 'shoal' ? 'まで' : '以上'}）の手前で止まった。スクリューを回すか、このまま進むか。`); draw();
+        say(`${CL_GATE[g.k]}（${g.d}${g.k === 'shoal' ? 'まで' : '以上'}）の手前で止まった。${P.inflow ? 'スクリューを回すか、待つか、' : 'スクリューを回すか、'}このまま進むか。`); draw();
         await new Promise(res => { st.resume = res; }); st.resume = null; if (!alive()) return;
         const b = bottomY(); st.phase = 'sail'; st.busy = true; st.approach = false; st.fx = { shift: b - bottomY() }; draw();
         if (hide) au.depthBell(dNow()); await wait(hide ? 700 : 250); if (!alive()) return;
