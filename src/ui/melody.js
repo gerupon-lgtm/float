@@ -223,7 +223,7 @@ export function melodyStage(n, base, route, ctx) {
     const chips = S.items.map((it, i) => (S.placed.some(p => p.id === i) || i >= items0) ? ''
       : `<button class="chip ${S.sel === i ? 'on' : ''}" data-i="${i}" ${prep ? '' : 'disabled'}><img src="${cargoArt(it[1])}" alt=""><span>${it[1]}<b>${it[0]}</b><small>${it[2]}×${it[3]}マス</small></span></button>`).join('');
     const sub = R ? `<small class="sub">${R.position + 1}/${R.stageCount}面　<span id="ng">${ctx.ngText()}</span></small>` : '';
-    c.innerHTML = `${ctx.topbar(`${base.name}${sub}`)}
+    c.innerHTML = `${ctx.topbar(`${base.name}${sub}`, { pick: R ? null : S.phase === 'prep' || ended?.act === restart })}
       <div class="melody-plan">
       <section class="frame chartf" aria-label="航海図">${chartSvg()}</section>
       <section class="stat mstat" aria-label="船の手がかり"><div>船全体の重さ<strong>${showWeight() ? weightOf(S.items, S.placed, route) : '？'}</strong></div><div>沈む深さ<strong>${live ? (d.gt(HULL) ? '沈没' : depthLabel(d.toNumber())) : '？'}</strong></div><div>音<strong>${live && !d.gt(HULL) ? noteName(d) : '？'}</strong></div></section>

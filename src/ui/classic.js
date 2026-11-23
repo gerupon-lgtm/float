@@ -231,7 +231,7 @@ export function classicStage(n, S, ctx) {
       : `<button class="chip ${st.on.has(i) ? 'on' : ''}" data-i="${i}" aria-pressed="${st.on.has(i)}" ${prep && !st.busy ? '' : 'disabled'}><img src="${cargoArt(it[1])}" alt=""><span class="cargo-info"><span class="cargo-name">${it[1]}</span><b>${it[0]}</b><small>${st.on.has(i) ? '積んでいる' : '棚にある'}</small></span></button>`).join('');
     const stop = stopped();
     const sub = R ? `<small class="sub">${R.position + 1}/${R.stageCount}面　<span id="ng">${ctx.ngText()}</span></small>` : '';
-    c.innerHTML = `${ctx.topbar(`${S.name}${sub}`)}
+    c.innerHTML = `${ctx.topbar(`${S.name}${sub}`, { pick: R ? null : prep || ended?.act === restart })}
       <div class="melody-plan">
       <section class="frame chartf" aria-label="航路図">${chartSvg()}</section>
       <section class="stat mstat" aria-label="船の手がかり">${P ? `<div>船の中の水<strong>${st.water}</strong></div>` : `<div>液体の比重<strong>${LIQUIDS[st.liq].s}</strong></div>`}<div>船全体の重さ<strong>${weight()}</strong></div><div>沈む深さ<strong>${known ? (d > HULL ? '沈没' : depthLabel(d)) : '？'}</strong></div></section>

@@ -349,3 +349,5 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
   .classic-layout .mshelf.many .chip img{width:24px;height:24px;left:7px;bottom:7px}
   .classic-layout .mshelf.many .chip.on b::before{font-size:13px}
 }
+/* 面の見出しは1行に収める（ボタンが増えても行の高さが変わらないように） */
+.melody-layout .top b{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

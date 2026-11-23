@@ -34,8 +34,10 @@ function show(html,cls=''){const c=document.createElement('section');c.className
     while(frame.nextSibling)side.append(frame.nextSibling);c.append(side)}
   app.append(c);
   const old=cur;cur=c;requestAnimationFrame(()=>requestAnimationFrame(()=>{c.classList.remove('enter');if(old){old.classList.add('leave');setTimeout(()=>old.remove(),460)}}));return c}
-const topbar=t=>`<div class="top"><b>${t}</b><span><button class="tiny" id="mute">${muted?'音なし':'音あり'}</button> <button class="tiny" id="home">表紙</button></span></div>`;
-function wire(c){const m=$('#mute',c),h=$('#home',c);if(m)m.onclick=()=>{muted=!muted;audio.setMuted(muted);m.textContent=muted?'音なし':'音あり'};if(h)h.onclick=()=>{stopRun();title()}}
+// 選択プレイの面では「面を選ぶ」を出す（opt.pick が null 以外）。押せるのは遊ぶ前と失敗したあと（opt.pick が true）。
+// 出し入れすると見出しの行の高さが変わるので、航海中も出したまま押せなくする
+const topbar=(t,opt={})=>`<div class="top"><b>${t}</b><span>${opt.pick!=null?`<button class="tiny" id="pickst" ${opt.pick?'':'disabled'}>面を選ぶ</button> `:''}<button class="tiny" id="mute">${muted?'音なし':'音あり'}</button> <button class="tiny" id="home">表紙</button></span></div>`;
+function wire(c){const m=$('#mute',c),h=$('#home',c),ps=$('#pickst',c);if(m)m.onclick=()=>{muted=!muted;audio.setMuted(muted);m.textContent=muted?'音なし':'音あり'};if(h)h.onclick=()=>{stopRun();title()};if(ps)ps.onclick=()=>{audio.wood();pick()}}
 
 function title(){const c=show(`<div class="title-hero"><div class="hero"><div class="series">SIKUMI<br>NOTES<span>03</span></div><h1 class="logo">FLOAT</h1><div class="logo2">NOTES</div>
   <p class="tag">積んで、浮かべて、確かめる。</p></div><div class="symbols" role="img" aria-label="見習い、天秤、荷物の船"></div></div>
