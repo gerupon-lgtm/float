@@ -34,3 +34,11 @@ test('重さ0はエラーにする', () => assert.throws(() => depthOf(0, 'water
 test('素材の1マスの重さ', () => {
   assert.deepEqual(['wood', 'wheat', 'jar', 'stone', 'iron', 'lead', 'gold'].map(cellWeight), [2, 2.8, 4, 10, 32, 44, 76]);
 });
+
+test('画面の深さ：割り切れなければ小数2けたに丸めて「約」を付ける', async () => {
+  const { depthLabel } = await import('../src/logic/physics.js');
+  assert.equal(depthLabel(3.5), '3.5');
+  assert.equal(depthLabel(1.125), '1.125');
+  assert.equal(depthLabel(152 / 108), '約1.41');
+  assert.equal(depthLabel(10 / 135), '約0.07');
+});

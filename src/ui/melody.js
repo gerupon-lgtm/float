@@ -1,6 +1,6 @@
 // 航路のメロディの面（要件F-020、7.2節）。見た目は Codex の見本0.1.4（docs/visual-samples/2026-11-21-melody-priority1-v1）を移したもの。
 // 計算・判定は src/logic/melody.js。ここは画面と流れだけ。
-import { SHIP, HULL, AREA, LIQUIDS, depthFraction } from '../logic/physics.js';
+import { SHIP, HULL, AREA, LIQUIDS, depthFraction, depthLabel } from '../logic/physics.js';
 import { midiOf, onScale } from '../logic/pitch.js';
 import { CELLS, ROWMAX, dropCargo, stackRows } from '../logic/stacking.js';
 import { envOf, depthNow, weightOf, autoDrop, rowsUnderBridge, segmentFault, matchesTarget } from '../logic/melody.js';
@@ -212,7 +212,7 @@ export function melodyStage(n, base, route, ctx) {
     c.innerHTML = `${ctx.topbar(`${base.name}${sub}`)}
       <div class="melody-plan">
       <section class="frame chartf" aria-label="航海図">${chartSvg()}</section>
-      <section class="stat mstat" aria-label="船の手がかり"><div>船全体の重さ<strong>${showWeight() ? weightOf(S.items, S.placed, route) : '？'}</strong></div><div>沈む深さ<strong>${live ? (d.gt(HULL) ? '沈没' : d.toNumber()) : '？'}</strong></div><div>音<strong>${live && !d.gt(HULL) ? noteName(d) : '？'}</strong></div></section>
+      <section class="stat mstat" aria-label="船の手がかり"><div>船全体の重さ<strong>${showWeight() ? weightOf(S.items, S.placed, route) : '？'}</strong></div><div>沈む深さ<strong>${live ? (d.gt(HULL) ? '沈没' : depthLabel(d.toNumber())) : '？'}</strong></div><div>音<strong>${live && !d.gt(HULL) ? noteName(d) : '？'}</strong></div></section>
       <div class="say" id="say" role="status" aria-live="polite">${S.said}</div>
       </div><div class="melody-work">
       <section class="mid${prep ? '' : ' sailing'}" aria-label="船と荷の棚"><div class="frame vessel">${shipSvg()}<span class="tag-key">荷札：上が順番／下が重さ</span></div>${prep ? `<div class="mshelf" aria-label="荷を選ぶ"><img class="shelf-board" src="${GRAPHICS['cargo-board']}" alt="" aria-hidden="true" draggable="false">${chips || '<p class="empty">荷をすべて<br>積みました</p>'}</div>` : ''}</section>
@@ -317,7 +317,7 @@ export function melodyStage(n, base, route, ctx) {
       S.hit = fault; S.fx = { bump: true };
     }
     if (fault) return lose(FAULT[fault](i), fault === 'sink');
-    S.log.push(d); ring(d); say(S.docked ? `港${S.port}が終着。荷をすべて下ろした。空の船は深さ${d.toNumber()}、「${noteName(d)}」。` : `${i + 1}番目の海路。深さ${d.toNumber()}、「${noteName(d)}」。`, '航海の記録');
+    S.log.push(d); ring(d); say(S.docked ? `港${S.port}が終着。荷をすべて下ろした。空の船は深さ${depthLabel(d.toNumber())}、「${noteName(d)}」。` : `${i + 1}番目の海路。深さ${d.toNumber()}、「${noteName(d)}」。`, '航海の記録');
     if (S.gate != null) {
       // 関門が右から左へ流れ、船がその上（浅瀬）や下（橋）を通り抜ける
       S.fx = { gatePass: 1700 }; draw(); await ctx.wait(1700); if (!alive()) return;

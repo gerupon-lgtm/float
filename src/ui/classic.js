@@ -1,6 +1,6 @@
 // 元の遊び方の面。画面の構成は航路のメロディ（src/ui/melody.js）にそろえる：上に航路図、手がかり、船の拡大と右に荷の棚、案内、ボタン。
 // 計算・判定は src/logic。ここは画面と流れだけ（判定の順番と内容は以前の app.js と同じ）。
-import { SHIP, HULL, LIQUIDS, depthOf, depthFraction, isSunk, sinkingWeight, clearsShoal, reachesDepth } from '../logic/physics.js';
+import { SHIP, HULL, LIQUIDS, depthOf, depthFraction, depthLabel, isSunk, sinkingWeight, clearsShoal, reachesDepth } from '../logic/physics.js';
 import { midiOf } from '../logic/pitch.js';
 import { CELLS, ROWMAX, dropCargo, stackRows, pileClearsBridge } from '../logic/stacking.js';
 import { rowsUnderBridge } from '../logic/melody.js';
@@ -13,7 +13,6 @@ const CL_BOAT_TOP = 28 / 116;
 const CL_NOTE = { 96: 'ド', 93: 'ラ', 91: 'ソ', 88: 'ミ', 86: 'レ', 84: 'ド', 81: 'ラ', 79: 'ソ', 76: 'ミ', 74: 'レ', 72: 'ド' };
 const CL_TINT = { water: '#c4e1df', oil: '#efdc9c', mercury: '#cfd2d8' };
 const CL_GATE = { shoal: '浅瀬', bridge: '橋', lever: 'レバー', chamber: '入れ替え室' };
-const clRound = x => Math.round(x * 100) / 100;
 
 // ctx：app.js から渡す道具（show, topbar, wire, audio, run, book, ngText, enter, finish, pick, wait, token, alive, muted）
 export function classicStage(n, S, ctx) {
@@ -215,7 +214,7 @@ export function classicStage(n, S, ctx) {
     c.innerHTML = `${ctx.topbar(`${S.name}${sub}`)}
       <div class="melody-plan">
       <section class="frame chartf" aria-label="航路図">${chartSvg()}</section>
-      <section class="stat mstat" aria-label="船の手がかり"><div>液体の比重<strong>${LIQUIDS[st.liq].s}</strong></div><div>船全体の重さ<strong>${weight()}</strong></div><div>沈む深さ<strong>${known ? (d > HULL ? '沈没' : clRound(d)) : '？'}</strong></div></section>
+      <section class="stat mstat" aria-label="船の手がかり"><div>液体の比重<strong>${LIQUIDS[st.liq].s}</strong></div><div>船全体の重さ<strong>${weight()}</strong></div><div>沈む深さ<strong>${known ? (d > HULL ? '沈没' : depthLabel(d)) : '？'}</strong></div></section>
       <div class="say" id="say" role="status" aria-live="polite">${st.said}</div>
       </div><div class="melody-work">
       <section class="mid${prep ? '' : ' sailing'}" aria-label="船と荷の棚"><div class="frame vessel">${shipSvg()}<span class="tag-key">荷の札は重さ${grid ? '' : '。棚の荷を押すと積む／下ろす'}</span></div>${prep ? `<div class="mshelf${S.items.length > 5 ? ' many' : ''}" aria-label="荷を選ぶ"><img class="shelf-board" src="${GRAPHICS['cargo-board']}" alt="" aria-hidden="true" draggable="false">${chips || '<p class="empty">荷をすべて<br>積みました</p>'}</div>` : ''}</section>
@@ -359,7 +358,7 @@ export function classicStage(n, S, ctx) {
   }
   function win() {
     au.jingle(); st.phase = 'end';
-    say(`<span class="eu">エウレカ！</span> ${S.winner}<br><span class="nar">重さ${weight()}、深さ${clRound(dNow())}で到着。</span>`);
+    say(`<span class="eu">エウレカ！</span> ${S.winner}<br><span class="nar">重さ${weight()}、深さ${depthLabel(dNow())}で到着。</span>`);
     if (R) {
       const r = R.record('clear'); ctx.book.recordBest(R.level.id, R.cleared);
       ended = { label: r === 'complete' ? '結果へ' : '次の面へ', act: () => { au.wood(); r === 'complete' ? ctx.finish() : ctx.enter(R.position); } };

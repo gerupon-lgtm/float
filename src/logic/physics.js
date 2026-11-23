@@ -35,3 +35,9 @@ export const isSunk = (weight, liquid, area = AREA, hull = HULL) => depthFractio
 export const sinkingWeight = (liquid, area = AREA, hull = HULL) => Fraction.of(LIQUIDS[liquid].sg).mul(area).mul(hull).toNumber();
 export const clearsShoal = (depth, limit) => depth.cmp(exact(limit)) <= 0;
 export const reachesDepth = (depth, limit) => depth.cmp(exact(limit)) >= 0;
+
+// 画面に出す深さ：小数3けたまでで割り切れればそのまま、割り切れなければ小数2けたに丸めて「約」を付ける（判定には使わない）
+export function depthLabel(d) {
+  const r = Math.round(d * 1000) / 1000;
+  return Math.abs(r - d) < 1e-9 ? String(r) : `約${Math.round(d * 100) / 100}`;
+}
