@@ -3,6 +3,8 @@ import { AREA, SHIP, depthFraction, isSunk, clearsShoal, reachesDepth } from './
 import { CELLS, ROWMAX, dropCargo, stackRows, pileClearsBridge } from './stacking.js';
 import { onScale } from './pitch.js';
 
+import { pumpPlans, pumpProblem } from './pump.js';
+
 // 答えの音を判定する液体（入れ替え室の先、なければ最初の液体）
 export const finalLiquid = stage => stage.gates.find(g => g.k === 'chamber')?.to ?? stage.pre ?? stage.start;
 
@@ -50,6 +52,7 @@ export function minRows(items, cutoff = Infinity) {
 }
 
 export function isSolvable(stage) {
+  if (stage.pump) return pumpPlans(stage).length > 0;
   if (stage.grid) {
     const w = totalWeight(stage.items, stage.items.map((_, i) => i));
     return runRoute(stage, w, minRows(stage.items));
@@ -59,6 +62,7 @@ export function isSolvable(stage) {
 
 // 問題の検査。問題ありなら理由の文字列を返す
 export function problemOf(stage) {
+  if (stage.pump) return pumpProblem(stage);
   if (!isSolvable(stage)) return '解けない';
   if (stage.grid) {
     const ids = stage.items.map((_, i) => i);

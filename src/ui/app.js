@@ -16,7 +16,7 @@ import { classicStage } from './classic.js';
 import { howtoScreen, partsScreen } from './guide.js';
 import { lessonFigure } from './lesson.js';
 
-const APP_VERSION = '0.9.27';
+const APP_VERSION = '0.9.28';
 const audio = new FloatAudio();
 const unlock = () => audio.unlock();
 const bell = (m, g, d) => audio.bell(m, g, d);
@@ -50,7 +50,7 @@ function title(){const c=show(`<div class="title-hero"><div class="hero"><div cl
   $('#parts',c).onclick=()=>{unlock();clack();partsScreen(guideCtx)};
   $('#howto',c).onclick=()=>{unlock();clack();howtoScreen(guideCtx)}}
 // おはなし：序章を遊ぶ入口と、見た紙芝居の読み返し。何度でも見直せる
-const STORIES=[['王冠の謎',['s1','s2','s3','s4','s9','s10','s5']],['積み方',['s7']],['油の湖',['s8','k1']],['銀色の湖',['s6','k2']],['航路のメロディ',['s11','s12','k3','k4']]];
+const STORIES=[['王冠の謎',['s1','s2','s3','s4','s9','s10','s5']],['積み方',['s7']],['油の湖',['s8','k1']],['銀色の湖',['s6','k2']],['古い船',['s13','s14']],['航路のメロディ',['s11','s12','k3','k4']]];
 function stories(){const c=show(`${topbar('おはなし')}<div class="list" style="max-width:none"><button class="btn" id="play">序章を遊ぶ</button>
   ${STORIES.map(([n,keys],i)=>{const open=book.seen(keys[0]);return `<button class="btn sub" data-r="${i}" ${open?'':'disabled'}>${open?n:'まだ読めません'}</button>`}).join('')}</div>`,'menu-layout stories-menu');
   wire(c);$('#play',c).onclick=()=>{wood();flow(0)};

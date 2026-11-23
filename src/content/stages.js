@@ -31,6 +31,17 @@ export const STAGES=[
   lead:'積み方も大事な面です。金は小さくても、とても重い荷です。',winner:'大きさと重さは別のものだ。金が教えてくれたな。'},
  {id:'m5',name:'水銀 5　最後の航路',start:'mercury',grid:true,heavy:true,minDepth:2,showDepth:true,generated:true,count:5,gap:0.5,gates:[{k:'lever',x:320},{k:'bridge',x:580}],end:800,
   lead:'積み方も大事な面です。レバーに届く重さと、橋を通る積み方を両方考えましょう。',winner:'見事だ。王の荷は、すべて届いたぞ。だが、まだ分からないことがある。だから面白いのだ。'},
+ // スクリューの面（F-028）。古い船に水がしみ込む。関門の手前で止まり、スクリューで水を汲み出して深さを合わせる
+ {id:'p1',name:'スクリュー 1　しみ込む水',start:'water',generated:true,intro:['s13','s14'],pumpQ:{leaks:[5,10],spare:2},gates:[{k:'shoal'}],
+  lead:'船に入った水も重さのうち。浅瀬の手前で止まるので、スクリューを回して水を汲み出し、浅くしましょう。',winner:'回すたびに水が減り、船が浮く。水も荷と同じ重さだ。'},
+ {id:'p2',name:'スクリュー 2　二つの浅瀬',start:'water',generated:true,pumpQ:{spare:1},gates:[{k:'shoal'},{k:'shoal'}],
+  lead:'浅瀬が二つ。間でまた水がしみ込みます。回せる回数には限りがあります。',winner:'次にしみ込む水まで、先に読めたな。'},
+ {id:'p3',name:'スクリュー 3　水を味方に',start:'water',generated:true,pumpQ:{spare:1,keep:true},gates:[{k:'shoal'},{k:'bridge'}],
+  lead:'浅瀬の先に低い橋。汲み出しすぎると、橋の下をくぐれません。汲み出した水は戻せません。',winner:'しみ込む水も、使いようで味方になる。'},
+ {id:'p4',name:'スクリュー 4　腕の力',start:'water',generated:true,pumpQ:{spare:0,keep:true},gates:[{k:'bridge'},{k:'shoal'},{k:'shoal'}],
+  lead:'回せる回数は、ちょうど足りる分だけ。一回もむだにできません。',winner:'一回のむだもなかった。計算のおかげだ。'},
+ {id:'p5',name:'スクリュー 5　嵐の航路',start:'water',generated:true,pumpQ:{spare:0,early:true,leaks:[5,10,15],starts:[15,20,25,30]},gates:[{k:'shoal'},{k:'bridge'},{k:'shoal'},{k:'shoal'}],
+  lead:'嵐で水が多くしみ込みます。関門の手前だけで汲み出していては、間に合わないかもしれません。',winner:'見事だ。古い船でも、仕組みが分かれば港へ着ける。'},
  // 航路のメロディ（F-020）。港で積み下ろしして、海路ごとの深さの音をお題のメロディに合わせる。お題は深さ×2の整数で持つ
  {id:'n0',name:'メロディ 0　はじめの航海',kind:'melody',tutorial:true,intro:['s11','s12'],
   route:{target:[5,4,5,4,2],ports:[{k:'down'},{k:'load',item:[5,'麦袋',2,1,'#c9a75c']},{k:'down'},{k:'down'}],cond:{},items:[[10,'石',1,1,'#9a9a92'],[5,'麦袋',2,1,'#d8b56a']]},

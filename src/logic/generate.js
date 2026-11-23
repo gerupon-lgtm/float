@@ -2,6 +2,7 @@
 import { AREA, SHIP, depthOf, depthFraction, isSunk, cellWeight } from './physics.js';
 import { Fraction } from './fraction.js';
 import { problemOf, selections, minRows, totalWeight } from './stage-check.js';
+import { pumpPlans, pumpRun, lazyPlan } from './pump.js';
 
 const random = seed => () => (seed = (seed * 1664525 + 1013904223) >>> 0) / 2 ** 32;
 const pick = (r, list) => list[Math.floor(r() * list.length)];
@@ -57,12 +58,12 @@ export function pickProblems(stage, { count = 8, seed = 1, tries = 40000 } = {})
   // 積み方の面は、関門の数字が同じお題ばかりにならないよう、同じ数字は3問までにする（足りなければ緩める）
   const cap = stage.grid && !stage.noScale ? 3 : Infinity;
   for (let i = 0; i < tries && out.length < count; i++) {
-    const q = stage.grid ? gridQuestion(stage, r) : stage.route ? routeQuestion(stage, r) : selectQuestion(stage, r);
+    const q = stage.pumpQ ? pumpQuestion(stage, r) : stage.grid ? gridQuestion(stage, r) : stage.route ? routeQuestion(stage, r) : selectQuestion(stage, r);
     if (!q) continue;
     const key = JSON.stringify(q);
     if (keys.has(key)) continue;
     if (problemOf({ ...stage, ...q })) continue;
-    if (!stage.grid && selections({ ...stage, ...q }).length > stage.maxAnswers) continue;
+    if (!stage.grid && !stage.pumpQ && selections({ ...stage, ...q }).length > stage.maxAnswers) continue;
     const gk = JSON.stringify(q.gates);
     if ((used.get(gk) ?? 0) >= (i < tries / 2 ? cap : Infinity)) continue;
     used.set(gk, (used.get(gk) ?? 0) + 1);
@@ -98,4 +99,34 @@ function gridQuestion(stage, r) {
   const lower = half(d - stage.gap);
   if (minRows(items, 3) > 3) return null;
   return { area: AREA, items, gates: stage.gates.map(g => ({ ...g, d: g.k === 'shoal' ? half(d) + 0.5 : lower })) };
+}
+
+// スクリューの面：荷・最初の水・しみ込む量・関門の深さを決め、回せる回数は「通るのに要る最少の回数＋余り」にする
+const PUMP_CARGO = [[5, '木箱'], [10, '石'], [15, '麦袋'], [20, '石']];
+function pumpQuestion(stage, r) {
+  const Q = stage.pumpQ, per = 5, n = stage.gates.length;
+  const items = Array.from({ length: 1 + Math.floor(r() * 3) }, () => pick(r, PUMP_CARGO)).sort((a, b) => a[0] - b[0]);
+  const pump = { per, start: pick(r, Q.starts ?? [10, 15, 20, 25]), leak: stage.gates.map(() => pick(r, Q.leaks ?? [0, 5, 10])), turns: 30 };
+  const gates = stage.gates.map(g => ({ ...g, d: pick(r, [1.5, 2, 2.5, 3, 3.5, 4, 4.5]) }));
+  const q = { area: AREA, items, on: items.map((_, i) => i), gates, pump };
+  const plans = pumpPlans({ ...stage, ...q });
+  if (!plans.length) return null;
+  pump.turns = Math.min(...plans.map(p => p.reduce((a, k) => a + k, 0))) + (Q.spare ?? 0);
+  const st = { ...stage, ...q };
+  if (pump.turns < 1) return null;
+  // 見せたい考えどころ
+  if (Q.early && pumpRun(st, lazyPlan(st)).ok) return null;          // 関門の手前だけで回すと間に合わない
+  if (Q.keep && pumpRun(st, greedyPlan(st)).ok) return null;         // 回せるだけ回すと、橋に届かない
+  return q;
+}
+// 止まるたびに、回せるだけ回す
+function greedyPlan(stage) {
+  const P = stage.pump, plan = [];
+  let water = P.start, left = P.turns;
+  for (let i = 0; i <= stage.gates.length; i++) {
+    if (i > 0) water += P.leak[i - 1];
+    const k = Math.min(left, Math.ceil(water / P.per));
+    plan.push(k); left -= k; water = Math.max(0, water - k * P.per);
+  }
+  return plan;
 }

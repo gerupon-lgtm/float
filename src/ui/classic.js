@@ -19,13 +19,19 @@ export function classicStage(n, S, ctx) {
   const { audio: au } = ctx;
   const R = ctx.run();
   const hide = !!R?.hidesDepth && !S.showDepth, grid = !!S.grid;
+  // スクリューの面（F-028）：船に水がしみ込み、関門の手前で止まって汲み出す
+  const P = S.pump ?? null;
   const st = {
     liq: S.start, on: new Set(S.on), placed: [], sel: null, phase: 'prep', col: 0, gate: null, gateShift: null, hit: null,
-    sign: null, fx: null, said: '', docked: false, floating: !S.cradle, sunk: false, busy: false
+    sign: null, fx: null, said: '', docked: false, floating: !S.cradle, sunk: false, busy: false,
+    water: P?.start ?? 0, turns: P?.turns ?? 0, seenW: 0, resume: null
   };
   const hiddenW = SHIP + (S.loaded ? [...st.on].reduce((a, i) => a + S.items[i][0], 0) : 0);
-  const weight = () => SHIP + (grid ? st.placed.reduce((a, p) => a + S.items[p.id][0], 0) : [...st.on].reduce((a, i) => a + S.items[i][0], 0));
-  const live = () => !hide || st.phase !== 'prep';
+  const weight = () => SHIP + st.water + (grid ? st.placed.reduce((a, p) => a + S.items[p.id][0], 0) : [...st.on].reduce((a, i) => a + S.items[i][0], 0));
+  st.seenW = weight();
+  // 止まっている間（港・関門の手前）は、ノーマル以上で深さを伏せる
+  const stopped = () => st.phase === 'prep' || st.phase === 'pump';
+  const live = () => !hide || !stopped();
   const depthF = () => depthFraction(weight(), st.liq, S.area);
   const dNow = () => depthF().toNumber();
   const hint = () => hintLevel(R?.level.id);
@@ -42,7 +48,7 @@ export function classicStage(n, S, ctx) {
     return lo <= hi ? { lo, hi } : null;
   })();
   const gateLine = g => g.k === 'shoal' ? `浅瀬は${g.d}まで（深いとつかえる）` : g.k === 'bridge' ? `橋は${g.d}以上（浅いと当たる）` : g.k === 'lever' ? `レバーは${g.d}以上（浅いと届かない）` : '';
-  const intro = () => say(`<span class="nar">${S.lead}${band ? `${S.gates.map(gateLine).filter(Boolean).join('、')}。両方を通れるのは<b>深さ${band.lo}〜${band.hi}</b>（緑の帯）。` : ''}<br>深さ＝重さ÷（比重×底面積${S.area}）。船だけの重さ${SHIP}。</span>`, null);
+  const intro = () => P ? say(`<span class="nar">${S.lead}<br>1回まわすと、船の中の水が${P.per}減る。深さ＝重さ÷（比重×底面積${S.area}）。</span>`, null) : say(`<span class="nar">${S.lead}${band ? `${S.gates.map(gateLine).filter(Boolean).join('、')}。両方を通れるのは<b>深さ${band.lo}〜${band.hi}</b>（緑の帯）。` : ''}<br>深さ＝重さ÷（比重×底面積${S.area}）。船だけの重さ${SHIP}。</span>`, null);
 
   // 積み方の面以外の荷は、船の中に2マス幅で並べて見せる（重さの軽い順、1段に3つ）
   const shown = () => grid ? st.placed.map(p => ({ id: p.id, c: p.c, r: p.r, w: S.items[p.id][2], h: S.items[p.id][3] }))
@@ -50,9 +56,9 @@ export function classicStage(n, S, ctx) {
 
   // ---- 船の拡大 ----
   const K = 1.3, U = 12 * K, ROW = 16 * K, DECK = 8 * K, CW = 18 * K, HW = 124 * K, HX = 70, WATER = 134;
-  const shownDepth = () => (live() ? dNow() : depthOf(hiddenW, st.liq, S.area));
+  const shownDepth = () => (live() ? dNow() : depthOf(P ? st.seenW : hiddenW, st.liq, S.area));
   const bottomY = () => (st.floating ? WATER + Math.min(shownDepth(), HULL + 0.6) * U : WATER - 12);
-  const VW = () => (st.phase === 'prep' ? 240 : 330), GX = HX + HW + 16, GW = 74;
+  const VW = () => (stopped() ? 240 : 330), GX = HX + HW + 16, GW = 74;
   function bridgeContact() {
     const gate = st.gate, front = HX + HW;
     if (gate?.k !== 'bridge') return { x: front, shift: 54 };
@@ -87,6 +93,16 @@ export function classicStage(n, S, ctx) {
     if (st.docked) g += `<g id="quay">${melodyQuayArt(vw, WATER)}
       <text x="${vw - 24}" y="${WATER - 59.5}" font-size="11.5" font-weight="700" text-anchor="middle" fill="#fffaf0">港</text></g>`;
     g += `<g id="hullg"><image href="${GRAPHICS.boat}" x="${HX}" y="${top - HULL * U * CL_BOAT_TOP}" width="${HW}" height="${HULL * U * (1 + CL_BOAT_TOP)}" preserveAspectRatio="none"/>`;
+    if (P) {
+      // 船の中の水（重さ1で、底面積いっぱいに広がる高さ）と、らせんの筒（仮の絵）
+      const hw = Math.min(HULL * U - DECK, st.water / S.area * U);
+      if (hw > 0) g += `<rect id="bilge" x="${HX + 12}" y="${bottom - 7 - hw}" width="${HW - 24}" height="${hw}" fill="#2f86c7" opacity=".8" stroke="#23304a" stroke-width="1"/><path d="M${HX + 12} ${bottom - 7 - hw}q6 -3 12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0t12 0" fill="none" stroke="#fffaf0" stroke-width="1.6"/>`;
+      const sx = HX + HW - 34;
+      g += `<g class="screw"><path d="M${sx} ${bottom - 8}L${sx + 22} ${top - 22}" stroke="#8a5a2e" stroke-width="13" stroke-linecap="round"/>
+        <path d="M${sx - 3} ${bottom - 20}l10 -4M${sx + 2} ${bottom - 40}l10 -4M${sx + 6} ${bottom - 60}l10 -4M${sx + 10} ${bottom - 80}l10 -4M${sx + 14} ${top - 4}l10 -4" stroke="#f2c771" stroke-width="2.4"/>
+        <circle cx="${sx + 24}" cy="${top - 26}" r="5" fill="#5f3b1c" stroke="#23304a" stroke-width="1.5"/></g>
+        <path id="spout" d="M${sx + 26} ${top - 20}q16 4 18 30" fill="none" stroke="#3f97c0" stroke-width="4" stroke-linecap="round" opacity="0"/>`;
+    }
     for (const p of shown()) {
       const it = S.items[p.id], x = cx + p.c * CW, y = bottom - DECK - (p.r + p.h) * ROW, w = p.w * CW, h = p.h * ROW;
       const ceiling = gate?.k === 'bridge' ? WATER + gate.d * U - HULL * U : null;
@@ -118,10 +134,10 @@ export function classicStage(n, S, ctx) {
     g += sc;
     g += `<text x="${vw - 5}" y="219" font-size="10" font-weight="700" text-anchor="end" fill="#fffaf0" stroke="#23304a" stroke-width="2.6" paint-order="stroke">${LIQUIDS[st.liq].n} 比重${LIQUIDS[st.liq].s}・底面積${S.area}・船だけ${SHIP}</text>`;
     if (live() && st.floating && shownDepth() <= HULL) g += `<path d="M${HX - 1} ${bottom}l-8 -5v10z" fill="var(--red)" stroke="#23304a" stroke-width="1.2"/>`;
-    const sign = st.sign ?? (st.phase === 'prep' ? '積載中' : null);
+    const sign = st.sign ?? (P ? (st.phase === 'prep' ? '出航準備' : st.phase === 'pump' ? '汲み出し' : null) : st.phase === 'prep' ? '積載中' : null);
     if (sign) g += `<g class="mboard" aria-label="${sign}"><image href="${GRAPHICS['status-board']}" x="64" y="3" width="116" height="40" preserveAspectRatio="none"/><text x="122" y="29" font-size="14" text-anchor="middle" fill="#23304a" font-family="var(--disp)">${sign}</text></g>`;
     if (grid) g += melodyPileTag(stackRows(st.placed, S.items));
-    if (st.phase === 'prep' && st.sel == null && !st.sign && (grid ? !st.placed.length : !st.on.size))
+    if (!P && st.phase === 'prep' && st.sel == null && !st.sign && (grid ? !st.placed.length : !st.on.size))
       g += `<text x="${HX + HW / 2}" y="60" font-size="10.5" font-weight="700" text-anchor="middle" fill="#23304a" stroke="#fffaf0" stroke-width="3" paint-order="stroke">右の棚から荷を選ぶ →</text>`;
     if (pick) {
       g += `<rect x="${cx}" y="46" width="${CELLS * CW}" height="${bottom - DECK - 46}" fill="#efb32a" opacity=".22" stroke="#d6452c" stroke-width="1.5" stroke-dasharray="4 3"/>`;
@@ -183,7 +199,7 @@ export function classicStage(n, S, ctx) {
       if (col.k === 'end') g += classicHarborFlag(xc, T);
       if (i > 0) g += `<path d="M${xa} ${T}V${B}" stroke="#8a5a2e" stroke-width="1" stroke-dasharray="3 3"/>`;
       const name = col.k === 'start' ? '出航' : col.k === 'end' ? '港' : CL_GATE[col.k];
-      const sub = col.k === 'chamber' ? `${LIQUIDS[liq].n}→${LIQUIDS[col.to].n}` : col.k === 'start' ? LIQUIDS[liq].n : '';
+      const sub = col.k === 'chamber' ? `${LIQUIDS[liq].n}→${LIQUIDS[col.to].n}` : col.k === 'start' ? LIQUIDS[liq].n : P && i > 0 && i <= S.gates.length ? `水+${P.leak[i - 1]}` : '';
       if (col.k === 'chamber') liq = col.to;
       g += `<text x="${xc}" y="${B + 14}" font-size="${name.length > 3 ? 9 : 10.5}" font-weight="700" text-anchor="middle" fill="${col.k === 'start' || col.k === 'end' ? '#23304a' : '#5f3b1c'}">${name}</text>`;
       if (sub) g += `<text x="${xc}" y="${B + 27}" font-size="9.5" text-anchor="middle" fill="#23304a">${sub}</text>`;
@@ -210,6 +226,10 @@ export function classicStage(n, S, ctx) {
     const chips = S.items.map((it, i) => grid
       ? (used.has(i) ? '' : `<button class="chip ${st.sel === i ? 'on' : ''}" data-i="${i}" ${prep && !st.busy ? '' : 'disabled'}><img src="${cargoArt(it[1])}" alt=""><span class="cargo-info"><span class="cargo-name">${it[1]}</span><b>${it[0]}</b><small>${it[2]}×${it[3]}マス</small></span></button>`)
       : `<button class="chip ${st.on.has(i) ? 'on' : ''}" data-i="${i}" aria-pressed="${st.on.has(i)}" ${prep && !st.busy ? '' : 'disabled'}><img src="${cargoArt(it[1])}" alt=""><span class="cargo-info"><span class="cargo-name">${it[1]}</span><b>${it[0]}</b><small>${st.on.has(i) ? '積んでいる' : '棚にある'}</small></span></button>`).join('');
+    const stop = stopped(), nextGate = st.phase === 'pump' ? S.gates[st.col - 1] : S.gates[0];
+    const pumpBox = P && stop ? `<div class="mshelf pumpbox" aria-label="スクリュー"><img class="shelf-board" src="${GRAPHICS['cargo-board']}" alt="" aria-hidden="true" draggable="false">
+      <p class="pinfo">船の中の水<b>${st.water}</b></p><p class="pinfo">回せる回数<b>${st.turns}</b></p><p class="pinfo">1回で減る水<b>${P.per}</b></p>
+      <p class="pinfo">次の関門<b class="small">${nextGate ? `${CL_GATE[nextGate.k]} ${nextGate.d}${nextGate.k === 'shoal' ? 'まで' : '以上'}` : '港'}</b></p></div>` : '';
     const sub = R ? `<small class="sub">${R.position + 1}/${R.stageCount}面　<span id="ng">${ctx.ngText()}</span></small>` : '';
     c.innerHTML = `${ctx.topbar(`${S.name}${sub}`)}
       <div class="melody-plan">
@@ -217,8 +237,8 @@ export function classicStage(n, S, ctx) {
       <section class="stat mstat" aria-label="船の手がかり"><div>液体の比重<strong>${LIQUIDS[st.liq].s}</strong></div><div>船全体の重さ<strong>${weight()}</strong></div><div>沈む深さ<strong>${known ? (d > HULL ? '沈没' : depthLabel(d)) : '？'}</strong></div></section>
       <div class="say" id="say" role="status" aria-live="polite">${st.said}</div>
       </div><div class="melody-work">
-      <section class="mid${prep ? '' : ' sailing'}" aria-label="船と荷の棚"><div class="frame vessel">${shipSvg()}<span class="tag-key">荷の札は重さ${grid ? '' : '。棚の荷を押すと積む／下ろす'}</span></div>${prep ? `<div class="mshelf${S.items.length > 5 ? ' many' : ''}" aria-label="荷を選ぶ"><img class="shelf-board" src="${GRAPHICS['cargo-board']}" alt="" aria-hidden="true" draggable="false">${chips || '<p class="empty">荷をすべて<br>積みました</p>'}</div>` : ''}</section>
-      <div class="row3"><button class="btn sub" id="ring">深さの音</button><button class="btn sub" id="undo" ${prep && !st.busy && (grid ? st.placed.length : st.on.size) ? '' : 'disabled'}>${grid ? 'ひとつ戻す' : '全部下ろす'}</button><button class="btn" id="go" ${ended || (prep && !st.busy) ? '' : 'disabled'}>${ended ? ended.label : prep ? '出航' : '航海中'}</button></div></div>`;
+      <section class="mid${(P ? stopped() : prep) ? '' : ' sailing'}" aria-label="船と荷の棚"><div class="frame vessel">${shipSvg()}<span class="tag-key">${P ? '荷の札は重さ。青いのは船に入った水' : `荷の札は重さ${grid ? '' : '。棚の荷を押すと積む／下ろす'}`}</span></div>${P ? pumpBox : prep ? `<div class="mshelf${S.items.length > 5 ? ' many' : ''}" aria-label="荷を選ぶ"><img class="shelf-board" src="${GRAPHICS['cargo-board']}" alt="" aria-hidden="true" draggable="false">${chips || '<p class="empty">荷をすべて<br>積みました</p>'}</div>` : ''}</section>
+      <div class="row3"><button class="btn sub" id="ring">深さの音</button>${P ? `<button class="btn sub" id="crank" ${stop && !st.busy && !ended ? '' : 'disabled'}>回す（残り${st.turns}）</button>` : `<button class="btn sub" id="undo" ${prep && !st.busy && (grid ? st.placed.length : st.on.size) ? '' : 'disabled'}>${grid ? 'ひとつ戻す' : '全部下ろす'}</button>`}<button class="btn" id="go" ${ended || (stop && !st.busy) ? '' : 'disabled'}>${ended ? ended.label : prep ? '出航' : st.phase === 'pump' ? '進む' : '航海中'}</button></div></div>`;
     ctx.wire(c); bind(); playFx();
   }
   function bind() {
@@ -242,13 +262,13 @@ export function classicStage(n, S, ctx) {
       svg.onpointercancel = () => { down = false; gh().innerHTML = ''; };
       svg.onpointerleave = e => { if (e.pointerType === 'mouse' && !down) gh().innerHTML = ''; };
     }
-    $('#undo').onclick = undo;
+    if (P) $('#crank').onclick = crank; else $('#undo').onclick = undo;
     $('#ring').onclick = () => {
       au.unlock();
       if (st.floating && live()) au.depthBell(dNow());
       else { au.tap(); say('船が出ると、沈んだ深さの音が鳴ります。'); }
     };
-    $('#go').onclick = () => (ended ? ended.act() : st.phase === 'prep' && !st.busy ? depart() : null);
+    $('#go').onclick = () => (ended ? ended.act() : st.busy ? null : st.phase === 'prep' ? depart() : st.phase === 'pump' ? st.resume?.() : null);
   }
 
   // ---- 動き ----
@@ -260,6 +280,7 @@ export function classicStage(n, S, ctx) {
     if (f.bump) { hull?.animate([{ transform: 'translate(0px,0px)' }, { transform: 'translate(-6px,0px)', offset: .3 }, { transform: 'translate(3px,0px)', offset: .65 }, { transform: 'translate(0px,0px)' }], { duration: 420, easing: 'ease-out' }); return; }
     if (f.sink) { hull?.animate([{ transform: 'translate(0px,0px)', opacity: 1 }, { transform: 'translate(0px,90px)', opacity: .35 }], { duration: 1100, easing: 'ease-in', fill: 'forwards' }); return; }
     if (f.lever) { $('#arm')?.animate([{ transform: 'translate(0px,0px)' }, { transform: 'translate(0px,10px)' }], { duration: 300, easing: 'ease-out', fill: 'forwards' }); return; }
+    if (f.pour) $('#spout')?.animate([{ opacity: 0 }, { opacity: 1, offset: .2 }, { opacity: 1, offset: .7 }, { opacity: 0 }], { duration: 650 });
     if (f.drop != null) $(`[data-id="${f.drop}"]`)?.animate([{ transform: 'translate(0px,-90px)' }, { transform: 'translate(0px,0px)' }], { duration: 380, easing: 'cubic-bezier(.55,0,.9,.55)' });
     if (f.shift) hull?.animate([{ transform: `translate(0px, ${f.shift}px)` }, ...(f.drop != null ? [{ transform: `translate(0px, ${f.shift}px)`, offset: .45 }] : []), { transform: 'translate(0px, 0px)' }], { duration: f.drop != null ? 820 : 600, easing: 'ease-out' });
   }
@@ -271,6 +292,17 @@ export function classicStage(n, S, ctx) {
     const before = bottomY(); st.placed.push(p); st.fx = { drop: p.id, shift: before - bottomY() };
     setTimeout(() => alive() && au.land(S.items[p.id][0]), 360);
     st.sel = null; changed(460);
+  }
+  function crank() {
+    if (!P || st.busy || !stopped() || ended) return;
+    au.unlock();
+    if (st.turns <= 0) { au.tap(); say('もう腕が上がらない。回せるのはここまでだ。'); return; }
+    if (st.water <= 0) { au.tap(); say('船の中に、もう水は無いぞ。'); return; }
+    const before = bottomY();
+    st.water = Math.max(0, st.water - P.per); st.turns--;
+    st.fx = { shift: before - bottomY(), pour: true };
+    draw();
+    if (live()) au.depthBell(dNow(), 0.17, 0.8); else au.tap();
   }
   function undo() {
     if (st.busy || st.phase !== 'prep') return;
@@ -311,6 +343,18 @@ export function classicStage(n, S, ctx) {
         st.sign = null; draw();
         if (isSunk(weight(), st.liq, S.area)) return sinkNow();
         continue;
+      }
+      if (P) {
+        if (P.leak[gi]) {
+          const b = bottomY(); st.water += P.leak[gi]; st.fx = { shift: b - bottomY() }; say(`古い船底から、水が${P.leak[gi]}しみ込んだ。`, '航海の記録'); draw(); au.depthBell(dNow());
+          await wait(1000); if (!alive()) return;
+          if (isSunk(weight(), st.liq, S.area)) return sinkNow();
+        }
+        st.seenW = weight(); st.phase = 'pump'; st.busy = false;
+        say(`${CL_GATE[g.k]}（${g.d}${g.k === 'shoal' ? 'まで' : '以上'}）の手前で止まった。スクリューを回すか、このまま進むか。`); draw();
+        await new Promise(res => { st.resume = res; }); st.resume = null; if (!alive()) return;
+        const b = bottomY(); st.phase = 'sail'; st.busy = true; st.fx = { shift: b - bottomY() }; draw();
+        if (hide) au.depthBell(dNow()); await wait(hide ? 700 : 250); if (!alive()) return;
       }
       st.gate = g; st.gateShift = null;
       const d = depthF(), vw = VW();
@@ -353,6 +397,8 @@ export function classicStage(n, S, ctx) {
   // 積み直し：荷はそのままにして港へ戻る（以前と同じ）
   function restart() {
     au.wood(); ended = null;
+    Object.assign(st, { water: P?.start ?? 0, turns: P?.turns ?? 0, resume: null });
+    st.seenW = weight();
     Object.assign(st, { liq: S.pre ?? S.start, phase: 'prep', col: 0, gate: null, gateShift: null, hit: null, sign: null, fx: null, docked: false, floating: !S.cradle, sunk: false, busy: false, sel: null });
     intro(); draw();
   }

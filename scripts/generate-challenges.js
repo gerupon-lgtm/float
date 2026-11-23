@@ -8,7 +8,10 @@ import { pickMelodies } from '../src/logic/melody.js';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const target = join(root, 'src/content/challenges.js');
-const data = Object.fromEntries(STAGES.filter(s => s.generated).map((s, i) => [s.id, s.kind === 'melody' ? pickMelodies(s.melody, { seed: 2026 + i }) : pickProblems(s, { seed: 2026 + i })]));
+// 種は面の並び順から作る。スクリューの面（F-028）は後から間に入れたので、ほかの面の種を変えないよう別に数える
+let k = 0, kp = 0;
+const seedOf = s => (s.pumpQ ? 3026 + kp++ : 2026 + k++);
+const data = Object.fromEntries(STAGES.filter(s => s.generated).map(s => { const seed = seedOf(s); return [s.id, s.kind === 'melody' ? pickMelodies(s.melody, { seed }) : pickProblems(s, { seed })]; }));
 const text = `// 自動生成（npm run generate:challenges）。手で直さない。\nexport const CHALLENGES = ${JSON.stringify(data)};\n`;
 if (process.argv.includes('--check')) {
   if (readFileSync(target, 'utf8') !== text) { console.error('challenges.js が生成結果と一致しません。'); process.exit(1); }
