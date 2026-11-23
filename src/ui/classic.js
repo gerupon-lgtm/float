@@ -213,7 +213,7 @@ export function classicStage(n, S, ctx) {
     // 今の船の位置と深さ（深さが見えるときだけ）
     if (st.floating && live()) {
       const xc = x0 + st.col * step + step / 2, dd = Math.min(dNow(), HULL);
-      const xm = st.phase === 'pump' ? x0 + st.col * step + 2 : xc;
+      const xm = st.approach ? x0 + st.col * step + 2 : xc;   // スクリューの面：関門の手前にいる間は列の左端
       g += `<g class="chart-ship"><path d="M${xm - 15} ${y(dd)}h30" stroke="#d6452c" stroke-width="2.4"/><path d="M${xm - 15} ${y(dd) - 7}h30l-5 7h-20z" fill="#f17b3d" stroke="#23304a" stroke-width="1.2"/>
         <text x="${xm}" y="${y(dd) + 12}" font-size="9" font-weight="700" text-anchor="middle" fill="#d6452c" stroke="#fffaf0" stroke-width="2.6" paint-order="stroke">船底</text></g>`;
     }
@@ -335,6 +335,7 @@ export function classicStage(n, S, ctx) {
     if (isSunk(weight(), st.liq, S.area)) return sinkNow();
     for (let gi = 0; gi < S.gates.length; gi++) {
       const g = S.gates[gi]; if (!alive()) return;
+      st.approach = !!P && g.k !== 'chamber';
       await atCol(gi + 1, 200); if (!alive()) return;
       if (g.k === 'chamber') {
         st.sign = '入れ替え室'; say(`入れ替え室：${LIQUIDS[st.liq].n}を${LIQUIDS[g.to].n}に入れ替えます。`, '航海の記録'); draw(); await wait(800); if (!alive()) return;
@@ -352,7 +353,7 @@ export function classicStage(n, S, ctx) {
         st.seenW = weight(); st.phase = 'pump'; st.busy = false; st.gate = g; st.gateShift = 0;
         say(`${CL_GATE[g.k]}（${g.d}${g.k === 'shoal' ? 'まで' : '以上'}）の手前で止まった。スクリューを回すか、このまま進むか。`); draw();
         await new Promise(res => { st.resume = res; }); st.resume = null; if (!alive()) return;
-        const b = bottomY(); st.phase = 'sail'; st.busy = true; st.fx = { shift: b - bottomY() }; draw();
+        const b = bottomY(); st.phase = 'sail'; st.busy = true; st.approach = false; st.fx = { shift: b - bottomY() }; draw();
         if (hide) au.depthBell(dNow()); await wait(hide ? 700 : 250); if (!alive()) return;
       }
       st.gate = g; st.gateShift = null;
@@ -396,7 +397,7 @@ export function classicStage(n, S, ctx) {
   // 積み直し：荷はそのままにして港へ戻る（以前と同じ）
   function restart() {
     au.wood(); ended = null;
-    Object.assign(st, { water: P?.start ?? 0, turns: P?.turns ?? 0, resume: null });
+    Object.assign(st, { water: P?.start ?? 0, turns: P?.turns ?? 0, resume: null, approach: false });
     st.seenW = weight();
     Object.assign(st, { liq: S.pre ?? S.start, phase: 'prep', col: 0, gate: null, gateShift: null, hit: null, sign: null, fx: null, docked: false, floating: !S.cradle, sunk: false, busy: false, sel: null });
     intro(); draw();
