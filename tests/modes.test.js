@@ -36,3 +36,16 @@ test('低い記録で最高を消さず、保存できなくても動く', () =>
   broken.markSeen('s6');
   assert.equal(broken.seen('s6'), true);
 });
+
+test('章：全部の面が、どれかの章にちょうど1回ずつ、並び順のまま入る', async () => {
+  const { CHAPTERS, chapterSpan } = await import('../src/content/chapters.js');
+  const { STAGES } = await import('../src/content/stages.js');
+  let next = 0;
+  for (const ch of CHAPTERS) { const sp = chapterSpan(STAGES, ch); assert.equal(sp.start, next, ch.id); next = sp.start + sp.count; }
+  assert.equal(next, STAGES.length);
+});
+test('章ごとの連続プレイ：最高記録の鍵は章×レベル、以前の通しの記録の鍵は変えない', async () => {
+  const { ContinuousRun } = await import('../src/logic/modes.js');
+  assert.equal(new ContinuousRun('normal', 5, { id: 'oil', start: 5 }).bestKey, 'oil/normal');
+  assert.equal(new ContinuousRun('normal', 48).bestKey, 'normal');
+});

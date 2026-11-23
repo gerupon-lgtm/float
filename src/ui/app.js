@@ -4,6 +4,7 @@ import { midiOf, onScale } from '../logic/pitch.js';
 import { hintLevel, shoalText, shallowText, sinkText } from '../content/fail-text.js';
 import { CELLS, ROWMAX, ROWH, dropCargo, stackRows, pileClearsBridge } from '../logic/stacking.js';
 import { LEVELS, ContinuousRun, ModeBook } from '../logic/modes.js';
+import { CHAPTERS, chapterSpan } from '../content/chapters.js';
 import { STAGES } from '../content/stages.js';
 import { CHALLENGES } from '../content/challenges.js';
 import { SCENES } from '../content/story.js';
@@ -59,9 +60,13 @@ function stories(){const c=show(`${topbar('おはなし')}<div class="list" styl
   c.querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{wood();const keys=STORIES[+b.dataset.r][1].filter(k=>book.seen(k));const read=i=>i>=keys.length?stories():scene(keys[i],()=>read(i+1));read(0)})}
 function pick(){const c=show(`${topbar('選択プレイ')}<div class="list" style="max-width:none">${STAGES.map((s,i)=>`<button class="btn sub" data-s="${i}">${s.name}</button>`).join('')}</div>`,'menu-layout stage-menu');
   wire(c);c.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{wood();R=null;enter(+b.dataset.s)})}
-function levels(){const c=show(`${topbar('連続プレイ')}<div class="say"><span class="nar">全${STAGES.length}面を順に進みます。沈んだり関門に当たったりするとNGです。ノーマルとエキスパートでは、出航するまで深さが見えません。</span></div>
-  <div class="list" style="max-width:none">${LEVELS.map(l=>`<button class="btn sub" data-l="${l.id}">${l.name}<small style="display:block;font-size:14px">${l.note}　最高 ${book.best(l.id)}面</small></button>`).join('')}</div>`,'menu-layout levels-menu');
-  wire(c);c.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{unlock();clack();R=new ContinuousRun(b.dataset.l,STAGES.length);enter(0)})}
+// 連続プレイ：章を選び、レベルを選ぶ。NGと最高記録は章ごと
+function levels(){const c=show(`${topbar('連続プレイ')}<div class="say"><span class="nar">章を選んでください。章の中の面を順に進みます。NGも最高記録も、章ごとに数えます。</span></div>
+  <div class="list" style="max-width:none">${CHAPTERS.map((ch,i)=>{const sp=chapterSpan(STAGES,ch);return `<button class="btn sub" data-c="${i}">${ch.name}<small style="display:block;font-size:12px">全${sp.count}面　最高 ${LEVELS.map(l=>`${l.name}${book.best(`${ch.id}/${l.id}`)}`).join('　')}</small></button>`}).join('')}${LEVELS.some(l=>book.best(l.id))?`<p class="nar" style="margin:4px 0 0;font-size:13px">以前の版の通しの記録：${LEVELS.filter(l=>book.best(l.id)).map(l=>`${l.name} ${book.best(l.id)}面`).join('　')}</p>`:''}</div>`,'menu-layout levels-menu');
+  wire(c);c.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{wood();chapterLevels(CHAPTERS[+b.dataset.c])})}
+function chapterLevels(ch){const sp=chapterSpan(STAGES,ch);const c=show(`${topbar(ch.name)}<div class="say"><span class="nar">全${sp.count}面を順に進みます。沈んだり関門に当たったりするとNGです。ノーマルとエキスパートでは、出航するまで深さが見えません。</span></div>
+  <div class="list" style="max-width:none">${LEVELS.map(l=>`<button class="btn sub" data-l="${l.id}">${l.name}<small style="display:block;font-size:14px">${l.note}　最高 ${book.best(`${ch.id}/${l.id}`)}/${sp.count}面</small></button>`).join('')}<button class="btn sub" id="back">章を選ぶ</button></div>`,'menu-layout levels-menu');
+  wire(c);$('#back',c).onclick=()=>{wood();levels()};c.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{unlock();clack();R=new ContinuousRun(b.dataset.l,sp.count,{id:ch.id,name:ch.name,start:sp.start});enter(sp.start)})}
 // 面に入る。新しい要素の紙芝居は初回だけ流す
 function enter(n){const list=(STAGES[n].intro??[]).filter(k=>!book.seen(k));
   const play=i=>{if(i>=list.length)return stage(n);book.markSeen(list[i]);scene(list[i],()=>play(i+1))};play(0)}
@@ -102,13 +107,14 @@ function tween(ms,fn){const id=run;ms*=calm();return new Promise(res=>{const t0=
   const f=now=>{if(id!==run)return;const p=Math.min(1,(now-t0)/ms),e=p*p*(3-2*p);fn(e);if(p<1)requestAnimationFrame(f);else res()};requestAnimationFrame(f)})}
 
 // 航路のメロディの面は src/ui/melody.js が受け持つ。画面の道具をまとめて渡す
-const melodyCtx={show,topbar,wire,audio,book,ngText,finish,pick,enter:n=>enter(n),wait,run:()=>R,token:()=>run,alive:id=>id===run,muted:()=>muted};
+const melodyCtx={show,topbar,wire,audio,book,ngText,finish,pick,enter:n=>enter((R?.start??0)+n),wait,run:()=>R,token:()=>run,alive:id=>id===run,muted:()=>muted};
 function stage(n){stopRun();const base=STAGES[n];if(base.kind==='melody'){return melodyStage(n,base,base.route??question(base),melodyCtx)}
   classicStage(n,{area:AREA,...base,...question(base)},melodyCtx)}
 
-function finish(){stopRun();const run0=R,clear=run0.complete;const c=show(`${topbar(clear?'ALL CLEAR':'GAME OVER')}<div class="frame">${ART.harbor()}</div>
-  <div class="say"><span class="who">${clear?'エウレカ！':'見習い'}</span>${clear?'全部の面をクリアしました。':'今回はここまで。まだ分からないことが、見つかりました。'}<br><span class="nar">${run0.level.name}　クリア ${run0.cleared}/${run0.stageCount}面　NG ${run0.ng}回　最高 ${book.best(run0.level.id)}面</span></div><button class="btn" id="n">表紙へ</button>`,'story-layout');
-  wire(c);$('#n',c).onclick=()=>{wood();R=null;title()}}
+function finish(){stopRun();const run0=R,clear=run0.complete,ch=run0.chapter;const c=show(`${topbar(clear?'CHAPTER CLEAR':'GAME OVER')}<div class="frame">${ART.harbor()}</div>
+  <div class="say"><span class="who">${clear?'エウレカ！':'見習い'}</span>${clear?`${ch?ch.name+'の':'全部の'}面をクリアしました。`:'今回はここまで。まだ分からないことが、見つかりました。'}<br><span class="nar">${run0.level.name}　クリア ${run0.cleared}/${run0.stageCount}面　NG ${run0.ng}回　最高 ${book.best(run0.bestKey)}面</span></div>
+  <div class="row2"><button class="btn sub" id="ch">章を選ぶ</button><button class="btn" id="n">表紙へ</button></div>`,'story-layout');
+  wire(c);$('#ch',c).onclick=()=>{wood();R=null;levels()};$('#n',c).onclick=()=>{wood();R=null;title()}}
 
 function flow(){scene('s1',()=>scene('s2',()=>bal1(()=>scene('s3',()=>scene('s4',()=>bal2(()=>quiz(()=>scene('s9',()=>scene('s10',()=>scene('s5',()=>levels()))))))))))}
 // ---- 通信なしで使う仕組みと、新しい版の案内（F-012） ----

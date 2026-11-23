@@ -10,17 +10,22 @@ export const LEVELS = Object.freeze([
 export const levelOf = id => LEVELS.find(l => l.id === id) ?? null;
 
 export class ContinuousRun {
-  constructor(levelId, stageCount) {
+  // chapter を渡すと、その章だけの連続プレイ（start は STAGES での最初の面の位置）
+  constructor(levelId, stageCount, chapter = null) {
     const level = levelOf(levelId);
     if (!level) throw new Error(`レベル ${levelId} がありません。`);
     this.level = level;
     this.stageCount = stageCount;
+    this.chapter = chapter;
+    this.start = chapter?.start ?? 0;
     this.position = 0;
     this.cleared = 0;
     this.ng = 0;
     this.over = false;
     this.complete = false;
   }
+  // 最高記録の鍵：章ごと×レベルごと。章の無い通しの記録（以前の版）は、レベルの id のまま残す
+  get bestKey() { return this.chapter ? `${this.chapter.id}/${this.level.id}` : this.level.id; }
   get left() { return this.level.limit === null ? null : Math.max(0, this.level.limit - this.ng); }
   // 制限のあるレベルでは、出航まで深さを見せない
   get hidesDepth() { return this.level.limit !== null; }
@@ -39,7 +44,7 @@ export class ContinuousRun {
   }
 }
 
-// 記録：レベルごとの最高（クリアした面数）と、見た紙芝居。保存できない端末でも遊べるよう、失敗は無視する
+// 記録：章×レベルごとの最高（クリアした面数）と、見た紙芝居。鍵は ContinuousRun.bestKey。保存できない端末でも遊べるよう、失敗は無視する
 export class ModeBook {
   constructor(storage) {
     this.storage = storage;
