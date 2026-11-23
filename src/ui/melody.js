@@ -199,7 +199,7 @@ export function melodyStage(n, base, route, ctx) {
     if (S.phase !== 'prep') {
       const k = Math.min(S.seg, cnt - 1), dd = S.played[k]?.d ?? S.log[k]?.toNumber() ?? depth().toNumber();
       const dk = Math.min(dd, HULL), extra = pileExtra(stackRows(S.placed, S.items)).toNumber();
-      g += keelMark(x0 + k * step + step / 2, y(dk), extra > 0 ? y(Math.max(0, dk - extra)) : null);
+      g += keelMark(x0 + k * step + step / 2, y(dk), extra > 0 ? y(Math.max(0, dk - extra)) : null, T - 3);
     }
     return `<svg viewBox="0 0 360 ${CH}" class="chart" role="img" aria-label="航海図。上ほど浅く高い音。音符がお題。数字は立ち寄る港で、上向き矢印は荷下ろし、下向き矢印は積載。">${g}</svg>`;
   }

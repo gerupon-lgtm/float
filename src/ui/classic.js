@@ -216,7 +216,7 @@ export function classicStage(n, S, ctx) {
       const xc = x0 + st.col * step + step / 2, dd = Math.min(dNow(), HULL);
       const xm = st.approach ? x0 + st.col * step + 2 : xc;   // スクリューの面：関門の手前にいる間は列の左端
       const extra = grid ? pileExtra(stackRows(st.placed, S.items)).toNumber() : 0;
-      g += keelMark(xm, y(dd), extra > 0 ? y(Math.max(0, dd - extra)) : null);
+      g += keelMark(xm, y(dd), extra > 0 ? y(Math.max(0, dd - extra)) : null, T - 3);
     }
     return `<svg viewBox="0 0 360 ${CH}" class="chart" role="img" aria-label="航路図。左から出航、関門、港の順。上ほど浅く高い音。砂は浅瀬（それより深いとつかえる）、木は橋（それより浅いと当たる）。">${g}</svg>`;
   }
