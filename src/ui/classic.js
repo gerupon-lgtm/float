@@ -210,12 +210,12 @@ export function classicStage(n, S, ctx) {
       g += `
         <g font-size="9.5" font-weight="700" text-anchor="middle" fill="#1f5a40" stroke="#fffaf0" stroke-width="3" paint-order="stroke"><text x="${x0 + step / 2}" y="${y((band.lo + band.hi) / 2) - 2}">通れる深さ</text><text x="${x0 + step / 2}" y="${y((band.lo + band.hi) / 2) + 10}">${band.lo}〜${band.hi}</text></g>`;
     }
-    // 今の船の位置と深さ（深さが見えるときだけ）
+    // 今の船底の深さ（深さが見えるときだけ）。船の絵は描かない（橋の列で、船が橋の上にあるように見えるため）
     if (st.floating && live()) {
       const xc = x0 + st.col * step + step / 2, dd = Math.min(dNow(), HULL);
       const xm = st.approach ? x0 + st.col * step + 2 : xc;   // スクリューの面：関門の手前にいる間は列の左端
-      g += `<g class="chart-ship"><path d="M${xm - 15} ${y(dd)}h30" stroke="#d6452c" stroke-width="2.4"/><path d="M${xm - 15} ${y(dd) - 7}h30l-5 7h-20z" fill="#f17b3d" stroke="#23304a" stroke-width="1.2"/>
-        <text x="${xm}" y="${y(dd) + 12}" font-size="9" font-weight="700" text-anchor="middle" fill="#d6452c" stroke="#fffaf0" stroke-width="2.6" paint-order="stroke">船底</text></g>`;
+      g += `<g class="chart-ship"><path d="M${xm - 15} ${y(dd)}h30" stroke="#d6452c" stroke-width="2.6"/><path d="M${xm} ${y(dd) + 1.5}l-5 7h10z" fill="#d6452c" stroke="#23304a" stroke-width="1"/>
+        <text x="${xm}" y="${y(dd) + 18}" font-size="9" font-weight="700" text-anchor="middle" fill="#d6452c" stroke="#fffaf0" stroke-width="2.6" paint-order="stroke">船底</text></g>`;
     }
     return `<svg viewBox="0 0 360 ${CH}" class="chart" role="img" aria-label="航路図。左から出航、関門、港の順。上ほど浅く高い音。砂は浅瀬（それより深いとつかえる）、木は橋（それより浅いと当たる）。">${g}</svg>`;
   }
