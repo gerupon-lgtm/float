@@ -154,7 +154,8 @@ export function melodyStage(n, base, route, ctx) {
     const box = $('.chartf'), maxCH = innerWidth > innerHeight ? 420 : 280;
     const CH = Math.max(200, Math.min(maxCH, box ? Math.round(box.clientHeight * 360 / Math.max(1, box.clientWidth)) : 230));
     const tight = cnt >= 7;   // 港が多い航路は、港の札を数字だけにし、下ろす／積むも短く書く
-    const T = 22, DY = (CH - 92) / HULL, y = d => T + d * DY, B = y(HULL);
+    // 上の余白：1段目に通しで聴いた結果（✓ミなど）、2段目に船の絵。目盛りはその下から
+    const T = 38, DY = (CH - 108) / HULL, y = d => T + d * DY, B = y(HULL);
     let g = `<defs>
       <pattern id="map-sand" patternUnits="userSpaceOnUse" width="19" height="13"><rect width="19" height="13" fill="#e8c98a"/><path d="M1 4l7 -2m3 7l6 -1M2 12l4 -1" stroke="#b68a4d" stroke-width="1.2" opacity=".6"/></pattern>
       <pattern id="map-timber" patternUnits="userSpaceOnUse" width="17" height="11"><rect width="17" height="11" fill="#d89d50"/><path d="M0 10H17M3 3l9 -1" stroke="#8a5a2e" stroke-width="1.3"/><path d="M1 5l12 -1" stroke="#f2c771" stroke-width="1.4"/></pattern>
