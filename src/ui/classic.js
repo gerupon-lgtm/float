@@ -58,7 +58,7 @@ export function classicStage(n, S, ctx) {
   const K = 1.3, U = 12 * K, ROW = 16 * K, DECK = 8 * K, CW = 18 * K, HW = 124 * K, HX = 70, WATER = 134;
   const shownDepth = () => (live() ? dNow() : depthOf(P ? st.seenW : hiddenW, st.liq, S.area));
   const bottomY = () => (st.floating ? WATER + Math.min(shownDepth(), HULL + 0.6) * U : WATER - 12);
-  const VW = () => (stopped() ? 240 : 330), GX = HX + HW + 16, GW = 74;
+  const VW = () => (P ? 330 : stopped() ? 240 : 330), GX = HX + HW + 16, GW = 74;
   function bridgeContact() {
     const gate = st.gate, front = HX + HW;
     if (gate?.k !== 'bridge') return { x: front, shift: 54 };
@@ -213,7 +213,9 @@ export function classicStage(n, S, ctx) {
     // 今の船の位置と深さ（深さが見えるときだけ）
     if (st.floating && live()) {
       const xc = x0 + st.col * step + step / 2, dd = Math.min(dNow(), HULL);
-      g += `<g class="chart-ship"><image href="${GRAPHICS.boat}" x="${xc - 13}" y="${y(dd) - 12.5}" width="26" height="12.5" preserveAspectRatio="none"/><path d="M${xc - 16} ${y(dd)}h32" stroke="#d6452c" stroke-width="1.6"/></g>`;
+      const xm = st.phase === 'pump' ? x0 + st.col * step + 2 : xc;
+      g += `<g class="chart-ship"><path d="M${xm - 15} ${y(dd)}h30" stroke="#d6452c" stroke-width="2.4"/><path d="M${xm - 15} ${y(dd) - 7}h30l-5 7h-20z" fill="#f17b3d" stroke="#23304a" stroke-width="1.2"/>
+        <text x="${xm}" y="${y(dd) + 12}" font-size="9" font-weight="700" text-anchor="middle" fill="#d6452c" stroke="#fffaf0" stroke-width="2.6" paint-order="stroke">船底</text></g>`;
     }
     return `<svg viewBox="0 0 360 ${CH}" class="chart" role="img" aria-label="航路図。左から出航、関門、港の順。上ほど浅く高い音。砂は浅瀬（それより深いとつかえる）、木は橋（それより浅いと当たる）。">${g}</svg>`;
   }
@@ -226,18 +228,15 @@ export function classicStage(n, S, ctx) {
     const chips = S.items.map((it, i) => grid
       ? (used.has(i) ? '' : `<button class="chip ${st.sel === i ? 'on' : ''}" data-i="${i}" ${prep && !st.busy ? '' : 'disabled'}><img src="${cargoArt(it[1])}" alt=""><span class="cargo-info"><span class="cargo-name">${it[1]}</span><b>${it[0]}</b><small>${it[2]}×${it[3]}マス</small></span></button>`)
       : `<button class="chip ${st.on.has(i) ? 'on' : ''}" data-i="${i}" aria-pressed="${st.on.has(i)}" ${prep && !st.busy ? '' : 'disabled'}><img src="${cargoArt(it[1])}" alt=""><span class="cargo-info"><span class="cargo-name">${it[1]}</span><b>${it[0]}</b><small>${st.on.has(i) ? '積んでいる' : '棚にある'}</small></span></button>`).join('');
-    const stop = stopped(), nextGate = st.phase === 'pump' ? S.gates[st.col - 1] : S.gates[0];
-    const pumpBox = P && stop ? `<div class="mshelf pumpbox" aria-label="スクリュー"><img class="shelf-board" src="${GRAPHICS['cargo-board']}" alt="" aria-hidden="true" draggable="false">
-      <p class="pinfo">船の中の水<b>${st.water}</b></p><p class="pinfo">回せる回数<b>${st.turns}</b></p><p class="pinfo">1回で減る水<b>${P.per}</b></p>
-      <p class="pinfo">次の関門<b class="small">${nextGate ? `${CL_GATE[nextGate.k]} ${nextGate.d}${nextGate.k === 'shoal' ? 'まで' : '以上'}` : '港'}</b></p></div>` : '';
+    const stop = stopped();
     const sub = R ? `<small class="sub">${R.position + 1}/${R.stageCount}面　<span id="ng">${ctx.ngText()}</span></small>` : '';
     c.innerHTML = `${ctx.topbar(`${S.name}${sub}`)}
       <div class="melody-plan">
       <section class="frame chartf" aria-label="航路図">${chartSvg()}</section>
-      <section class="stat mstat" aria-label="船の手がかり"><div>液体の比重<strong>${LIQUIDS[st.liq].s}</strong></div><div>船全体の重さ<strong>${weight()}</strong></div><div>沈む深さ<strong>${known ? (d > HULL ? '沈没' : depthLabel(d)) : '？'}</strong></div></section>
+      <section class="stat mstat" aria-label="船の手がかり">${P ? `<div>船の中の水<strong>${st.water}</strong></div>` : `<div>液体の比重<strong>${LIQUIDS[st.liq].s}</strong></div>`}<div>船全体の重さ<strong>${weight()}</strong></div><div>沈む深さ<strong>${known ? (d > HULL ? '沈没' : depthLabel(d)) : '？'}</strong></div></section>
       <div class="say" id="say" role="status" aria-live="polite">${st.said}</div>
       </div><div class="melody-work">
-      <section class="mid${(P ? stopped() : prep) ? '' : ' sailing'}" aria-label="船と荷の棚"><div class="frame vessel">${shipSvg()}<span class="tag-key">${P ? '荷の札は重さ。青いのは船に入った水' : `荷の札は重さ${grid ? '' : '。棚の荷を押すと積む／下ろす'}`}</span></div>${P ? pumpBox : prep ? `<div class="mshelf${S.items.length > 5 ? ' many' : ''}" aria-label="荷を選ぶ"><img class="shelf-board" src="${GRAPHICS['cargo-board']}" alt="" aria-hidden="true" draggable="false">${chips || '<p class="empty">荷をすべて<br>積みました</p>'}</div>` : ''}</section>
+      <section class="mid${!P && prep ? '' : ' sailing'}" aria-label="船と荷の棚"><div class="frame vessel">${shipSvg()}<span class="tag-key">${P ? '荷の札は重さ。青いのは船に入った水' : `荷の札は重さ${grid ? '' : '。棚の荷を押すと積む／下ろす'}`}</span></div>${P ? '' : prep ? `<div class="mshelf${S.items.length > 5 ? ' many' : ''}" aria-label="荷を選ぶ"><img class="shelf-board" src="${GRAPHICS['cargo-board']}" alt="" aria-hidden="true" draggable="false">${chips || '<p class="empty">荷をすべて<br>積みました</p>'}</div>` : ''}</section>
       <div class="row3"><button class="btn sub" id="ring">深さの音</button>${P ? `<button class="btn sub" id="crank" ${stop && !st.busy && !ended ? '' : 'disabled'}>回す（残り${st.turns}）</button>` : `<button class="btn sub" id="undo" ${prep && !st.busy && (grid ? st.placed.length : st.on.size) ? '' : 'disabled'}>${grid ? 'ひとつ戻す' : '全部下ろす'}</button>`}<button class="btn" id="go" ${ended || (stop && !st.busy) ? '' : 'disabled'}>${ended ? ended.label : prep ? '出航' : st.phase === 'pump' ? '進む' : '航海中'}</button></div></div>`;
     ctx.wire(c); bind(); playFx();
   }
@@ -350,14 +349,14 @@ export function classicStage(n, S, ctx) {
           await wait(1000); if (!alive()) return;
           if (isSunk(weight(), st.liq, S.area)) return sinkNow();
         }
-        st.seenW = weight(); st.phase = 'pump'; st.busy = false;
+        st.seenW = weight(); st.phase = 'pump'; st.busy = false; st.gate = g; st.gateShift = 0;
         say(`${CL_GATE[g.k]}（${g.d}${g.k === 'shoal' ? 'まで' : '以上'}）の手前で止まった。スクリューを回すか、このまま進むか。`); draw();
         await new Promise(res => { st.resume = res; }); st.resume = null; if (!alive()) return;
         const b = bottomY(); st.phase = 'sail'; st.busy = true; st.fx = { shift: b - bottomY() }; draw();
         if (hide) au.depthBell(dNow()); await wait(hide ? 700 : 250); if (!alive()) return;
       }
       st.gate = g; st.gateShift = null;
-      const d = depthF(), vw = VW();
+      const d = depthF(), vw = VW(), near = P ? 0 : null;   // スクリューの面は、関門がすぐ前にある所から動く
       if (g.k === 'lever') {
         st.fx = { gate: [vw - GX + 150, LEVER_STOP, 1000, 'ease-out'] }; draw(); await wait(1000); if (!alive()) return;
         st.gateShift = LEVER_STOP;
@@ -374,11 +373,11 @@ export function classicStage(n, S, ctx) {
       }
       if (fault) {
         const stop = fault[0] === 'bridge' ? bridgeContact().shift : -16;
-        st.fx = { gate: [vw - GX + 150, stop, 900, 'ease-out'] }; draw(); await wait(900); if (!alive()) return;
+        st.fx = { gate: [near ?? vw - GX + 150, stop, near != null ? 500 : 900, 'ease-out'] }; draw(); await wait(900); if (!alive()) return;
         st.gateShift = stop; st.hit = fault[0]; st.fx = { bump: true }; draw();
         return fail(fault[1]);
       }
-      st.fx = { gate: [vw - GX + 80, -(GX + 160), 1700] }; draw(); await wait(1700); if (!alive()) return;
+      st.fx = { gate: [near ?? vw - GX + 80, -(GX + 160), near != null ? 1400 : 1700] }; draw(); await wait(1700); if (!alive()) return;
       st.gate = null;
     }
     st.col = cols.length - 1; st.docked = true; st.fx = { quay: true }; draw(); await wait(700); if (!alive()) return;

@@ -349,8 +349,3 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
   .classic-layout .mshelf.many .chip img{width:24px;height:24px;left:7px;bottom:7px}
   .classic-layout .mshelf.many .chip.on b::before{font-size:13px}
 }
-/* スクリューの面（F-028）：棚の代わりに、水の量と回せる回数を出す（仮の見た目） */
-.mshelf.pumpbox{display:flex;flex-direction:column;justify-content:center;gap:8px;padding-inline:10px}
-.pumpbox .pinfo{position:relative;margin:0;background:#fffaf0;border:2px solid var(--ink);border-radius:8px;padding:4px 6px;font-size:11px;font-weight:700;text-align:center;line-height:1.25}
-.pumpbox .pinfo b{display:block;font-size:22px;font-family:var(--disp)}
-.pumpbox .pinfo b.small{font-size:13px}
