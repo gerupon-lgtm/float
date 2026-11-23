@@ -210,7 +210,7 @@ export function melodyStage(n, base, route, ctx) {
       const k = kNow, r = S.played[k], dd = r?.d ?? S.log[k]?.toNumber() ?? depth().toNumber();
       const dk = Math.min(dd, HULL), extra = pileExtra(stackRows(S.placed, S.items)).toNumber();
       const v = voiceOf(dd), label = NOTE[v.midi] + (v.wobble ? '〜' : '');
-      const lane = sailing ? { y: 17, label, color: r ? (r.ok ? '#2e7d5b' : '#bd3424') : '#23304a' } : null;
+      const lane = sailing ? { y: 21, label, color: r ? (r.ok ? '#2e7d5b' : '#bd3424') : '#23304a' } : null;
       g += keelMark(x0 + k * step + step / 2, y(dk), extra > 0 ? y(Math.max(0, dk - extra)) : null, lane);
     }
     return `<svg viewBox="0 0 360 ${CH}" class="chart" role="img" aria-label="航海図。上ほど浅く高い音。音符がお題。数字は立ち寄る港で、上向き矢印は荷下ろし、下向き矢印は積載。">${g}</svg>`;

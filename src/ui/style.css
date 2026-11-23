@@ -317,9 +317,9 @@ button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
 .mshelf.many .chip{min-height:0;padding-block:2px}.mshelf.many .chip small{display:none}.mshelf.many .chip img{height:18px;width:18px}
 .mshelf.many .chip b{font-size:14px}
 /* クリアや失敗で案内の文が長くなっても、画面の配置が動かないよう高さを固定する */
-.classic-layout .say{height:88px;min-height:88px;overflow-y:auto}
-@media (orientation:portrait) and (max-height:700px){.classic-layout .say{height:78px;min-height:78px}}
-@media (orientation:landscape){.classic-layout .say{height:74px;min-height:74px}}
+.melody-layout .say{height:88px;min-height:88px;overflow-y:auto}
+@media (orientation:portrait) and (max-height:700px){.melody-layout .say{height:78px;min-height:78px}}
+@media (orientation:landscape){.melody-layout .say{height:78px;min-height:78px}}
 
 /* classicの仕上げ。多い荷は2列の札にし、メロディ側の棚と操作は変えない。 */
 .classic-layout .mshelf .cargo-name{display:inline;font:inherit}
