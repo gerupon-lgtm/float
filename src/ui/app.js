@@ -53,7 +53,7 @@ function title(){const c=show(`<div class="title-hero"><div class="hero"><div cl
   $('#parts',c).onclick=()=>{unlock();clack();partsScreen(guideCtx)};
   $('#howto',c).onclick=()=>{unlock();clack();howtoScreen(guideCtx)}}
 // おはなし：序章を遊ぶ入口と、見た紙芝居の読み返し。何度でも見直せる
-const STORIES=[['王冠の謎',['s1','s2','s3','s4','s9','s10','s5']],['積み方',['s7']],['油の湖',['s8','k1']],['銀色の湖',['s6','k2']],['古い船',['s13','s14']],['航路のメロディ',['s11','s12','k3','k4']]];
+const STORIES=[['王冠の謎',['s1','s2','s3','s4','s9','s10','s5']],['積み方',['s7']],['油の湖',['s8','k1']],['銀色の湖',['s6','k2']],['古い船',['s13','s14','s15','s20','s16','s17']],['航路のメロディ',['s11','s12','k3','k4']],['王の前の旋律',['s18','s19']]];
 function stories(){const c=show(`${topbar('おはなし')}<div class="list" style="max-width:none"><button class="btn" id="play">序章を遊ぶ</button>
   ${STORIES.map(([n,keys],i)=>{const open=book.seen(keys[0]);return `<button class="btn sub" data-r="${i}" ${open?'':'disabled'}>${open?n:'まだ読めません'}</button>`}).join('')}</div>`,'menu-layout stories-menu');
   wire(c);$('#play',c).onclick=()=>{wood();flow(0)};
@@ -67,6 +67,8 @@ function levels(){const c=show(`${topbar('連続プレイ')}<div class="say"><sp
 function chapterLevels(ch){const sp=chapterSpan(STAGES,ch);const c=show(`${topbar(ch.name)}<div class="say"><span class="nar">全${sp.count}面を順に進みます。沈んだり関門に当たったりするとNGです。ノーマルとエキスパートでは、出航するまで深さが見えません。</span></div>
   <div class="list" style="max-width:none">${LEVELS.map(l=>`<button class="btn sub" data-l="${l.id}">${l.name}<small style="display:block;font-size:14px">${l.note}　最高 ${book.best(`${ch.id}/${l.id}`)}/${sp.count}面</small></button>`).join('')}<button class="btn sub" id="back">章を選ぶ</button></div>`,'menu-layout levels-menu');
   wire(c);$('#back',c).onclick=()=>{wood();levels()};c.querySelectorAll('[data-l]').forEach(b=>b.onclick=()=>{unlock();clack();R=new ContinuousRun(b.dataset.l,sp.count,{id:ch.id,name:ch.name,start:sp.start});enter(sp.start)})}
+// 面をクリアしたあとの紙芝居（章の終わりなど）。初回だけ流してから next へ
+function outro(keys,next){const list=(keys??[]).filter(k=>!book.seen(k));const play=i=>{if(i>=list.length)return next();book.markSeen(list[i]);scene(list[i],()=>play(i+1))};play(0)}
 // 面に入る。新しい要素の紙芝居は初回だけ流す
 function enter(n){const list=(STAGES[n].intro??[]).filter(k=>!book.seen(k));
   const play=i=>{if(i>=list.length)return stage(n);book.markSeen(list[i]);scene(list[i],()=>play(i+1))};play(0)}
@@ -107,7 +109,7 @@ function tween(ms,fn){const id=run;ms*=calm();return new Promise(res=>{const t0=
   const f=now=>{if(id!==run)return;const p=Math.min(1,(now-t0)/ms),e=p*p*(3-2*p);fn(e);if(p<1)requestAnimationFrame(f);else res()};requestAnimationFrame(f)})}
 
 // 航路のメロディの面は src/ui/melody.js が受け持つ。画面の道具をまとめて渡す
-const melodyCtx={show,topbar,wire,audio,book,ngText,finish,pick,enter:n=>enter((R?.start??0)+n),wait,run:()=>R,token:()=>run,alive:id=>id===run,muted:()=>muted};
+const melodyCtx={show,topbar,wire,audio,book,ngText,finish,pick,outro,enter:n=>enter((R?.start??0)+n),wait,run:()=>R,token:()=>run,alive:id=>id===run,muted:()=>muted};
 function stage(n){stopRun();const base=STAGES[n];if(base.kind==='melody'){return melodyStage(n,base,base.route??question(base),melodyCtx)}
   classicStage(n,{area:AREA,...base,...question(base)},melodyCtx)}
 

@@ -421,8 +421,8 @@ export function classicStage(n, S, ctx) {
     say(`<span class="eu">エウレカ！</span> ${S.winner}<br><span class="nar">重さ${weight()}、深さ${depthLabel(dNow())}で到着。</span>`);
     if (R) {
       const r = R.record('clear'); ctx.book.recordBest(R.bestKey, R.cleared);
-      ended = { label: r === 'complete' ? '結果へ' : '次の面へ', act: () => { au.wood(); r === 'complete' ? ctx.finish() : ctx.enter(R.position); } };
-    } else ended = { label: '面を選ぶ', act: () => { au.wood(); ctx.pick(); } };
+      ended = { label: r === 'complete' ? '結果へ' : '次の面へ', act: () => { au.wood(); ctx.outro(S.outro, () => (r === 'complete' ? ctx.finish() : ctx.enter(R.position))); } };
+    } else ended = { label: '面を選ぶ', act: () => { au.wood(); ctx.outro(S.outro, ctx.pick); } };
     draw();
     const f = $('.chartf'); f.style.position = 'relative'; f.insertAdjacentHTML('beforeend', '<div class="stamp">エウレカ！</div>');
   }

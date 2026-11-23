@@ -54,13 +54,13 @@ export const STAGES=[
   lead:'油の湖を古い船で渡ります。油では重さ4で深さ0.5。スクリューも、1回で水4を汲み出します。',winner:'液体が変わっても、重さと深さの関係で考えればよい。'},
  {id:'p11',name:'スクリュー 11　油の長い航路',start:'oil',generated:true,pumpQ:{spare:0,keep:true},gates:[{k:'shoal'},{k:'lever'},{k:'shoal'},{k:'bridge'}],
   lead:'油の上の長い航路です。回数はちょうど足りる分だけ。',winner:'油の上でも、一回のむだもなかったな。'},
- {id:'p12',name:'スクリュー 12　傷みのひどい船',start:'water',generated:true,pumpQ:{spare:1,inflow:true},gates:[{k:'shoal'},{k:'bridge'}],
+ {id:'p12',name:'スクリュー 12　傷みのひどい船',start:'water',intro:['s15','s20'],generated:true,pumpQ:{spare:1,inflow:true},gates:[{k:'shoal'},{k:'bridge'}],
   lead:'船の傷みがひどくなり、止まっている間も水がしみ込みます。1回まわすと水10を汲み出しますが、その間に5しみ込みます。汲み出しすぎたら「待つ」で水を入れられます。',winner:'回しても待っても水は動く。傷んだ船の扱いにも慣れてきたな。'},
  {id:'p13',name:'スクリュー 13　待つ勇気',start:'water',generated:true,pumpQ:{spare:0,inflow:true,needWait:true},gates:[{k:'bridge'},{k:'shoal'},{k:'lever'}],
   lead:'回してばかりでは通れない航路です。どこかで「待つ」が必要になります。',winner:'待つのも、立派な一手だ。'},
  {id:'p14',name:'スクリュー 14　嵐の傷んだ船',start:'water',generated:true,pumpQ:{spare:1,inflow:true,leaks:[1,2,3]},gates:[{k:'shoal'},{k:'bridge'},{k:'shoal'},{k:'lever'},{k:'shoal'}],
   lead:'嵐の中を、傷んだ船で進みます。しみ込む水が多く、止まっている間もしみ込みます。',winner:'嵐の中でも、計算は裏切らない。'},
- {id:'p15',name:'スクリュー 15　最後の帰港',start:'water',generated:true,pumpQ:{spare:0,inflow:true,early:true,leaks:[1,2,3]},gates:[{k:'shoal'},{k:'bridge'},{k:'lever'},{k:'shoal'},{k:'shoal'}],
+ {id:'p15',name:'スクリュー 15　最後の帰港',start:'water',outro:['s16','s17'],generated:true,pumpQ:{spare:0,inflow:true,early:true,leaks:[1,2,3]},gates:[{k:'shoal'},{k:'bridge'},{k:'lever'},{k:'shoal'},{k:'shoal'}],
   lead:'港はもうすぐ。回数はちょうど足りる分だけです。回すか、待つか、先に読みましょう。',winner:'見事だ。古い船でも、仕組みが分かれば港へ着ける。'},
  // 航路のメロディ（F-020）。港で積み下ろしして、海路ごとの深さの音をお題のメロディに合わせる。お題は深さ×2の整数で持つ
  {id:'n0',name:'メロディ 0　はじめの航海',kind:'melody',tutorial:true,intro:['s11','s12'],
@@ -124,6 +124,6 @@ export const STAGES=[
   lead:'水銀の航路で、近い音と橋の組み合わせです。',winner:'重い荷でも、細かい動きを作れるのだな。'},
  {id:'n29',name:'メロディ 28　水銀の三つの橋',kind:'melody',generated:true,seed:4105,melody:{liq:'mercury',walk:true,notes:[7,8],loads:[1,2],maxInit:4,gates:['bridge','bridge','bridge']},
   lead:'水銀の航路に橋が三つ。横に長い荷の積み方を考えましょう。',winner:'これで最後の大航海へ進めるぞ。'},
- {id:'n24',name:'メロディ 29　銀色の大航海',kind:'melody',generated:true,melody:{liq:'mercury',walk:true,notes:[9,10],loads:[3,3],maxInit:4,gates:['shoal','bridge','bridge']},
+ {id:'n24',name:'メロディ 29　銀色の大航海',kind:'melody',outro:['s18','s19'],generated:true,melody:{liq:'mercury',walk:true,notes:[9,10],loads:[3,3],maxInit:4,gates:['shoal','bridge','bridge']},
   lead:'水銀の最後の航路です。積む港が三つ、浅瀬と橋が二つあります。',winner:'見事だ。水でも油でも水銀でも、浮力の仕組みは一つ。もう迷わないな。'}
 ];
